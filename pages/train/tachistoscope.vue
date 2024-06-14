@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { TachistoscopeProcedure } from "~/types/types";
+import {
+  TachistoscopeProcedure,
+  TachistoscopeTrainingResult,
+} from "~/types/types";
 
 const route = useRoute();
 const router = useRouter();
@@ -18,6 +21,7 @@ const centerText = ref("");
 const centeTextSub = ref("");
 const stimuliType = ref("");
 const isKorean = ref(false);
+const elapsedTime = ref(0);
 
 const charSets: Record<string, string> = {
   Numbers: "0123456789",
@@ -29,6 +33,14 @@ const charSets: Record<string, string> = {
 };
 
 const trialCount = ref(0);
+// boolean array represents the trial number and the user's response is correct or not
+const trialData: Record<number, boolean> = {};
+
+// computed property, percentage of correct responses
+const accuracy = computed(() => {
+  const correct = Object.values(trialData).filter((value) => value).length;
+  return Number(((correct / trialCount.value) * 100).toFixed(2));
+});
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -78,12 +90,13 @@ const generatePrompt = () => {
 const askForInput = () => {
   instruction.value =
     "Please type the characters you saw\n (Press Enter or space to submit)";
-  trainingStep.value = 4;
+  trainingStep.value = 3;
 };
 
 const redyMessage = () => {
   centerText.value = "Get Ready!";
-  centeTextSub.value = "Trial #" + trialCount.value;
+  centeTextSub.value =
+    "Trial #" + trialCount.value + " | Elapsed Time: " + elapsedTime.value;
   trainingStep.value = 1;
 };
 
@@ -100,30 +113,37 @@ const showBlankScreen = async (time: number) => {
 };
 
 const train = async () => {
+  // check if training time is up
+  if (elapsedTime.value >= trainingTime.value) {
+    saveResult();
+    return;
+  }
+
   reset();
   trialCount.value += 1;
   redyMessage();
   await wait(1500);
 
-  await showBlankScreen(2000);
+  await showBlankScreen(1000);
 
   generatePrompt();
   await wait(presentationTime.value);
-
-  await showBlankScreen(1000);
-
   askForInput();
 };
 
 const evaluateInput = async (input: string) => {
   console.log("User input:", input);
-  trainingStep.value = 5;
+  trainingStep.value = 4;
 
   if (input === prompt.value) {
     instruction.value = "Correct!\n(Press Enter or space to continue)";
+    trialData[trialCount.value] = true;
   } else {
     instruction.value = "Incorrect!\n(Press Enter or space to continue)";
+    trialData[trialCount.value] = false;
   }
+
+  console.log("Current accuracy:", accuracy.value + "%");
 
   // Wait for the user to release the enter or space key
   await wait(1000);
@@ -139,6 +159,20 @@ const evaluateInput = async (input: string) => {
   window.addEventListener("keydown", handleKeydown);
 };
 
+const saveResult = () => {
+  const result = new TachistoscopeTrainingResult(
+    new Date(),
+    elapsedTime.value,
+    "0",
+    "0",
+    accuracy.value,
+    trialCount.value
+  );
+
+  const resultJson = result.toJSON();
+  console.log(resultJson); // Example of handling, replace with actual save logic
+};
+
 onMounted(() => {
   parseData();
   train();
@@ -150,7 +184,11 @@ onMounted(() => {
     <Title>Training - Tachistoscope</Title>
   </Head>
 
-  <TrainingBase :trainingTime="trainingTime" :top="instruction">
+  <TrainingBase
+    :trainingTime="trainingTime"
+    :top="instruction"
+    v-model="elapsedTime"
+  >
     <div class="flex flex-col justify-center items-center h-full space-y-10">
       <!-- center text -->
       <TitleHud
@@ -162,16 +200,13 @@ onMounted(() => {
       <!-- display the prompt -->
       <CenterPrompt v-if="trainingStep === 2" :prompt="prompt" />
 
-      <!-- display the distractor -->
-      <BouncingChars v-if="trainingStep === 3" :charCount="stimuliLength * 2" />
-
       <!-- display the user input handler -->
       <UserInputHandler
-        v-if="trainingStep >= 4"
-        :allowInput="trainingStep === 4"
+        v-if="trainingStep >= 3"
+        :allowInput="trainingStep === 3"
         :stimuliLength="stimuliLength"
         :prompt="prompt"
-        :hidePrompt="trainingStep !== 5"
+        :hidePrompt="trainingStep !== 4"
         :isKorean="isKorean"
         @evaluate="evaluateInput"
       />
@@ -180,5 +215,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Additional styles if needed */
+/* Add */
 </style>

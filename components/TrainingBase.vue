@@ -17,7 +17,7 @@
     <!-- Bottom right timer -->
     <div
       class="absolute bottom-0 right-0 text-lg p-4 px-8"
-      :style="{ color: elapsedTime > props.trainingTime ? 'yellow' : 'white' }"
+      :style="{ color: timer > props.trainingTime ? 'yellow' : 'white' }"
     >
       {{ formattedTime }}
     </div>
@@ -33,22 +33,28 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const model = defineModel();
 
 const startTime = ref<number | null>(null);
-const elapsedTime = ref(0);
+const timer = ref(0);
 let timerInterval: number | null = null;
 
 const formattedTime = computed(() => {
-  const minutes = Math.floor(elapsedTime.value / 60);
-  const seconds = (elapsedTime.value % 60).toString().padStart(2, "0");
+  const minutes = Math.floor(timer.value / 60);
+  const seconds = (timer.value % 60).toString().padStart(2, "0");
   return `${minutes}:${seconds}`;
+});
+
+// each time a second increments, update the model
+watch(timer, (newVal) => {
+  model.value = newVal;
 });
 
 onMounted(() => {
   startTime.value = Date.now();
   timerInterval = window.setInterval(() => {
     if (startTime.value !== null) {
-      elapsedTime.value = Math.floor((Date.now() - startTime.value) / 1000);
+      timer.value = Math.floor((Date.now() - startTime.value) / 1000);
     }
   }, 1000);
 });
@@ -62,8 +68,8 @@ onUnmounted(() => {
 watch(
   () => props.trainingTime,
   (newVal) => {
-    if (elapsedTime.value > newVal) {
-      elapsedTime.value = newVal;
+    if (timer.value > newVal) {
+      timer.value = newVal;
     }
   }
 );
