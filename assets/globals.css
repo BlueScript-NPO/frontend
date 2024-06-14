@@ -7,9 +7,12 @@
 
 /* Define your global styles here */
 .text-main {
-  @apply text-8xl font-light text-center text-red-500 font-mono w-full;
+  @apply text-8xl font-light text-center text-red-500 w-full;
   letter-spacing: 0.5em;
   margin-right: -0.5em;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .flex-center {

@@ -2,7 +2,6 @@
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { TachistoscopeProcedure } from "~/types/types";
-import UserInputHandler from "~/components/UserInputHandler.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -12,14 +11,22 @@ const trainingTime = ref(0);
 const charPool = ref("");
 const stimuliLength = ref(0);
 const presentationTime = ref(0);
-const distractionTime = ref(0);
-const charUpper = ref(false);
-
 const trainingStep = ref(0);
 const prompt = ref("");
 const instruction = ref("");
 const centerText = ref("");
 const centeTextSub = ref("");
+const stimuliType = ref("");
+const isKorean = ref(false);
+
+const charSets: Record<string, string> = {
+  Numbers: "0123456789",
+  Alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  "Korean Alphabet": "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ",
+  "Codes (Alphanumeric)": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+  "Codes (Korean)":
+    "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ0123456789",
+};
 
 const trialCount = ref(0);
 
@@ -35,26 +42,15 @@ const parseData = () => {
         trainingPreset.value = data;
         trainingTime.value = data.trainingTime; // trainingTime is already in seconds, no need to multiply by 1000
         presentationTime.value = data.presentationTime * 1000; // convert to milliseconds
-        distractionTime.value = data.distractionTime * 1000; // convert to milliseconds
         stimuliLength.value = data.stimuliLength;
+        stimuliType.value = data.stimuliType;
+        charPool.value = charSets[stimuliType.value];
 
-        switch (data.stimuliType) {
-          case "Numbers":
-            charPool.value = "0123456789";
-            break;
-          case "Upper Case Letters":
-            charPool.value = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            charUpper.value = true;
-            break;
-          case "Lower Case Letters":
-            charPool.value = "abcdefghijklmnopqrstuvwxyz";
-            break;
-          case "Codes":
-            charPool.value = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            charUpper.value = true;
-            break;
-          default:
-            charPool.value = "";
+        if (
+          stimuliType.value === "Korean Alphabet" ||
+          stimuliType.value === "Codes (Korean)"
+        ) {
+          isKorean.value = true;
         }
       } else {
         router.push("/train");
@@ -98,16 +94,6 @@ const reset = () => {
   centerText.value = "";
 };
 
-const showDistraction = async () => {
-  if (distractionTime.value > 0) {
-    console.log("Showing distraction");
-    trainingStep.value = 3;
-    await wait(distractionTime.value); // Ensure the wait is awaited
-  }
-  // await showBlankScreen(500); // Ensure this is awaited as well
-  trainingStep.value = 4;
-};
-
 const showBlankScreen = async (time: number) => {
   trainingStep.value = 0;
   await wait(time);
@@ -125,8 +111,6 @@ const train = async () => {
   await wait(presentationTime.value);
 
   await showBlankScreen(1000);
-
-  await showDistraction();
 
   askForInput();
 };
@@ -157,8 +141,6 @@ const evaluateInput = async (input: string) => {
 
 onMounted(() => {
   parseData();
-
-  console.log("distractionTime", distractionTime.value);
   train();
 });
 </script>
@@ -188,9 +170,9 @@ onMounted(() => {
         v-if="trainingStep >= 4"
         :allowInput="trainingStep === 4"
         :stimuliLength="stimuliLength"
-        :charUpper="charUpper"
         :prompt="prompt"
         :hidePrompt="trainingStep !== 5"
+        :isKorean="isKorean"
         @evaluate="evaluateInput"
       />
     </div>

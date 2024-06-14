@@ -6,23 +6,34 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  charUpper: {
-    type: Boolean,
-    default: false,
-  },
   allowInput: {
     type: Boolean,
-    default: true,
+    required: true,
   },
   hidePrompt: {
     type: Boolean,
-    default: false,
+    required: true,
+  },
+  isKorean: {
+    type: Boolean,
+    required: true,
   },
   prompt: {
     type: String,
     required: true,
   },
 });
+
+const convertToKorean = (char: string): string => {
+  const englishCodes = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const koreanCodes =
+    "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ0123456789";
+  const index = englishCodes.indexOf(char.toUpperCase());
+  if (index !== -1) {
+    return koreanCodes[index];
+  }
+  return char;
+};
 
 const emits = defineEmits(["evaluate"]);
 
@@ -37,10 +48,10 @@ const handleKeydown = (event: KeyboardEvent) => {
   } else if (event.key === "Enter" || event.key === " ") {
     emits("evaluate", userInput.value);
   } else if (isAlphaNumeric && userInput.value.length < props.stimuliLength) {
-    if (props.charUpper) {
-      userInput.value += event.key.toUpperCase();
+    if (props.isKorean) {
+      userInput.value += convertToKorean(event.key.toUpperCase());
     } else {
-      userInput.value += event.key.toLowerCase();
+      userInput.value += event.key.toUpperCase();
     }
   }
 };
@@ -49,7 +60,14 @@ const getPaddedInput = (): string => {
   const totalLength = props.stimuliLength;
   const inputLength = userInput.value.length;
   const spacesNeeded = totalLength - inputLength;
-  const spaces = " ".repeat(spacesNeeded);
+  let spaces = "";
+
+  if (props.isKorean) {
+    spaces = "　".repeat(spacesNeeded);
+  } else {
+    spaces = " ".repeat(spacesNeeded);
+  }
+
   return userInput.value + spaces;
 };
 

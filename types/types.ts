@@ -10,8 +10,13 @@ export interface Parameter {
 export class StimuliTypeParameter implements Parameter {
   type = "select";
   value = "Numbers";
-  options = ["Numbers", "Upper Case Letters", "Lower Case Letters", "Codes"];
-
+  options = [
+    "Numbers",
+    "Alphabet",
+    "Korean Alphabet",
+    "Codes (Alphanumeric)",
+    "Codes (Korean)",
+  ];
   static fromJSON(json: any): StimuliTypeParameter {
     const param = new StimuliTypeParameter();
     param.value = json.value;
@@ -137,11 +142,6 @@ export class TachistoscopeProcedure extends BaseProcedure {
         key: "presentationTime",
         label: "Presentation Time (seconds)",
         parameter: new NumParameter(0.1, 5.0, 0.05),
-      },
-      {
-        key: "distractionTime",
-        label: "Distraction Time (seconds)",
-        parameter: new NumParameter(0, 10, 1),
       },
       {
         key: "stimuliLength",
