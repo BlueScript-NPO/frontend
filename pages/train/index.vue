@@ -9,21 +9,21 @@ import {
 import type { Parameter } from "~/types/types";
 import type { FormError, FormErrorEvent } from "#ui/types";
 
-const procedures = [
+const trainingProcedures = [
   new TachistoscopeProcedure(),
   new VisualSpanProcedure(),
   new VisualScanProcedure(),
 ];
 
-const selectedProcedureName = ref(procedures[0].name);
-const selectedProcedure = computed(
+const selectedProcedureName = ref(trainingProcedures[0].name);
+const selectedTrainingProcedure = computed(
   () =>
-    procedures.find(
+    trainingProcedures.find(
       (procedure) => procedure.name === selectedProcedureName.value
     ) || null
 );
 
-const validate = (state: any): FormError[] => {
+const validateForm = (state: any): FormError[] => {
   const errors: FormError[] = [];
   state.parameters.forEach(
     ({ label, parameter }: { label: string; parameter: any }) => {
@@ -52,8 +52,8 @@ const validate = (state: any): FormError[] => {
   return errors;
 };
 
-const onSubmit = async () => {
-  const data = selectedProcedure.value?.parameters.reduce(
+const handleFormSubmit = async () => {
+  const formData = selectedTrainingProcedure.value?.parameters.reduce(
     (acc, { key, parameter }) => {
       acc[key] = parameter.value;
       return acc;
@@ -61,10 +61,11 @@ const onSubmit = async () => {
     {} as Record<string, any>
   );
 
-  if (data) {
-    const jsonString = JSON.stringify(data);
+  if (formData) {
+    const jsonString = JSON.stringify(formData);
     const routeName =
-      selectedProcedure.value?.name.toLowerCase().replace(/ /g, "-") || "train";
+      selectedTrainingProcedure.value?.name.toLowerCase().replace(/ /g, "-") ||
+      "train";
     router.push({
       name: `train-${routeName}`,
       query: { data: encodeURIComponent(jsonString) },
@@ -72,7 +73,7 @@ const onSubmit = async () => {
   }
 };
 
-const onError = async (event: FormErrorEvent) => {
+const handleFormError = async (event: FormErrorEvent) => {
   const element = document.getElementById(event.errors[0].id);
   element?.focus();
   element?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -105,21 +106,21 @@ const router = useRouter();
       </h2>
       <USelect
         v-model="selectedProcedureName"
-        :options="procedures.map((p) => p.name)"
+        :options="trainingProcedures.map((p) => p.name)"
         label="Procedure"
       />
     </template>
 
     <UForm
-      v-if="selectedProcedure"
-      :validate="validate"
-      :state="selectedProcedure"
+      v-if="selectedTrainingProcedure"
+      :validate="validateForm"
+      :state="selectedTrainingProcedure"
       class="space-y-4"
-      @submit="onSubmit"
-      @error="onError"
+      @submit="handleFormSubmit"
+      @error="handleFormError"
     >
       <div
-        v-for="{ label, parameter } in selectedProcedure.parameters"
+        v-for="{ label, parameter } in selectedTrainingProcedure.parameters"
         :key="label"
       >
         <UFormGroup :label="label" :name="label">

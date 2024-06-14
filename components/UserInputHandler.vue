@@ -1,64 +1,71 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, defineProps, defineEmits } from "vue";
+import {
+  ref,
+  onMounted,
+  onUnmounted,
+  computed,
+  defineProps,
+  defineEmits,
+} from "vue";
 
 const props = defineProps({
-  stimuliLength: {
+  numberOfStimuli: {
     type: Number,
     required: true,
   },
-  allowInput: {
+  inputEnabled: {
     type: Boolean,
     required: true,
   },
-  hidePrompt: {
+  hidePromptText: {
     type: Boolean,
     required: true,
   },
-  isKorean: {
+  usingKoreanCharacters: {
     type: Boolean,
     required: true,
   },
-  prompt: {
+  stimulusPrompt: {
     type: String,
     required: true,
   },
 });
 
-const emits = defineEmits(["evaluate"]);
-const userInput = ref<string>("");
+const emits = defineEmits(["evaluateInput"]);
+const userResponse = ref<string>("");
 
-const englishCodes = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-const koreanCodes =
+const englishCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const koreanCharacters =
   "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ0123456789";
 
 const convertToKorean = (char: string): string => {
-  const index = englishCodes.indexOf(char.toUpperCase());
-  return index !== -1 ? koreanCodes[index] : char;
+  const index = englishCharacters.indexOf(char.toUpperCase());
+  return index !== -1 ? koreanCharacters[index] : char;
 };
 
 const handleKeydown = (event: KeyboardEvent) => {
-  if (!props.allowInput) return;
+  if (!props.inputEnabled) return;
 
   if (event.key === "Backspace") {
-    userInput.value = userInput.value.slice(0, -1);
+    userResponse.value = userResponse.value.slice(0, -1);
   } else if (event.key === "Enter" || event.key === " ") {
-    emits("evaluate", userInput.value);
+    emits("evaluateInput", userResponse.value);
   } else if (
     /^[a-zA-Z0-9]$/.test(event.key) &&
-    userInput.value.length < props.stimuliLength
+    userResponse.value.length < props.numberOfStimuli
   ) {
-    userInput.value += props.isKorean
+    userResponse.value += props.usingKoreanCharacters
       ? convertToKorean(event.key.toUpperCase())
       : event.key.toUpperCase();
   }
 };
 
-const getPaddedInput = computed((): string => {
-  const spacesNeeded = props.stimuliLength - userInput.value.length;
-  const spaces = props.isKorean
+const paddedUserResponse = computed((): string => {
+  const spacesNeeded = props.numberOfStimuli - userResponse.value.length;
+  const spaces = props.usingKoreanCharacters
     ? "　".repeat(spacesNeeded)
     : " ".repeat(spacesNeeded);
-  return userInput.value + spaces;
+  return userResponse.value + spaces;
 });
 
 onMounted(() => {
@@ -73,13 +80,13 @@ onUnmounted(() => {
 <template class="flex flex-col items-center space-y-16">
   <div class="w-full">
     <div class="text-main">
-      <span class="block w-full whitespace-pre">{{ getPaddedInput }}</span>
+      <span class="block w-full whitespace-pre">{{ paddedUserResponse }}</span>
     </div>
   </div>
 
   <div class="w-full">
-    <div class="text-main" :class="{ invisible: props.hidePrompt }">
-      {{ props.prompt }}
+    <div class="text-main" :class="{ invisible: props.hidePromptText }">
+      {{ props.stimulusPrompt }}
     </div>
   </div>
 </template>

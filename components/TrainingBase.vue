@@ -10,16 +10,18 @@
       class="absolute top-0 left-0 right-0 text-lg p-10 flex justify-center text-white text-3xl"
     >
       <div :style="{ whiteSpace: 'pre-line' }" class="text-center">
-        {{ props.top }}
+        {{ props.instructionText }}
       </div>
     </div>
 
     <!-- Bottom right timer -->
     <div
       class="absolute bottom-0 right-0 text-lg p-4 px-8"
-      :style="{ color: timer > props.trainingTime ? 'yellow' : 'white' }"
+      :style="{
+        color: elapsedSeconds > props.totalTrainingTime ? 'yellow' : 'white',
+      }"
     >
-      {{ formattedTime }}
+      {{ formattedElapsedTime }}
     </div>
   </div>
 </template>
@@ -28,50 +30,50 @@
 import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 
 interface Props {
-  trainingTime: number;
-  top: string;
+  totalTrainingTime: number;
+  instructionText: string;
 }
 
 const props = defineProps<Props>();
 const model = defineModel<number>();
 
 const startTime = ref<number | null>(null);
-const timer = ref(0);
-let timerInterval: number | null = null;
+const elapsedSeconds = ref(0);
+let intervalId: number | null = null;
 
-const formattedTime = computed(() => {
-  const minutes = Math.floor(timer.value / 60);
-  const seconds = (timer.value % 60).toString().padStart(2, "0");
+const formattedElapsedTime = computed(() => {
+  const minutes = Math.floor(elapsedSeconds.value / 60);
+  const seconds = (elapsedSeconds.value % 60).toString().padStart(2, "0");
   return `${minutes}:${seconds}`;
 });
 
-// Watch for changes in the timer to update the model
-watch(timer, (newVal) => {
+// Watch for changes in the elapsed time to update the model
+watch(elapsedSeconds, (newVal) => {
   model.value = newVal;
 });
 
-// Watch for changes in trainingTime to adjust the timer if needed
+// Watch for changes in total training time to adjust the elapsed time if needed
 watch(
-  () => props.trainingTime,
+  () => props.totalTrainingTime,
   (newVal) => {
-    if (timer.value > newVal) {
-      timer.value = newVal;
+    if (elapsedSeconds.value > newVal) {
+      elapsedSeconds.value = newVal;
     }
   }
 );
 
 onMounted(() => {
   startTime.value = Date.now();
-  timerInterval = window.setInterval(() => {
+  intervalId = window.setInterval(() => {
     if (startTime.value !== null) {
-      timer.value = Math.floor((Date.now() - startTime.value) / 1000);
+      elapsedSeconds.value = Math.floor((Date.now() - startTime.value) / 1000);
     }
   }, 1000);
 });
 
 onUnmounted(() => {
-  if (timerInterval !== null) {
-    clearInterval(timerInterval);
+  if (intervalId !== null) {
+    clearInterval(intervalId);
   }
 });
 </script>
