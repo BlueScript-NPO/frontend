@@ -170,45 +170,29 @@ onMounted(() => {
 
   <TrainingBase :trainingTime="trainingTime" :top="instruction">
     <div class="flex flex-col justify-center items-center h-full space-y-10">
-      <!-- display the center text -->
-      <div
+      <!-- center text -->
+      <TitleHud
+        :title="centerText"
+        :subtitle="centeTextSub"
         v-if="trainingStep === 1"
-        class="flex flex-col items-center space-y-8"
-      >
-        <div class="text-6xl font-light text-center text-white font-mono">
-          {{ centerText }}
-        </div>
-        <div class="text-xl font-light text-center text-white font-mono">
-          {{ centeTextSub }}
-        </div>
-      </div>
+      />
 
       <!-- display the prompt -->
-      <div class="text-main" v-if="trainingStep === 2">
-        {{ prompt }}
-      </div>
+      <CenterPrompt v-if="trainingStep === 2" :prompt="prompt" />
 
       <!-- display the distractor -->
       <BouncingChars v-if="trainingStep === 3" :charCount="stimuliLength * 2" />
 
       <!-- display the user input handler -->
-      <div class="flex flex-col items-center space-y-16">
-        <div class="w-full">
-          <UserInputHandler
-            v-if="trainingStep >= 4"
-            :allowInput="trainingStep === 4"
-            :stimuliLength="stimuliLength"
-            :charUpper="charUpper"
-            @evaluate="evaluateInput"
-          />
-        </div>
-
-        <div class="w-full">
-          <div class="text-main" :class="{ invisible: trainingStep !== 5 }">
-            {{ prompt }}
-          </div>
-        </div>
-      </div>
+      <UserInputHandler
+        v-if="trainingStep >= 4"
+        :allowInput="trainingStep === 4"
+        :stimuliLength="stimuliLength"
+        :charUpper="charUpper"
+        :prompt="prompt"
+        :hidePrompt="trainingStep !== 5"
+        @evaluate="evaluateInput"
+      />
     </div>
   </TrainingBase>
 </template>

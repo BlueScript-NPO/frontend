@@ -14,6 +14,14 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  hidePrompt: {
+    type: Boolean,
+    default: false,
+  },
+  prompt: {
+    type: String,
+    required: true,
+  },
 });
 
 const emits = defineEmits(["evaluate"]);
@@ -50,9 +58,17 @@ onMounted(() => {
 });
 </script>
 
-<template>
-  <div class="text-main">
-    <span class="block w-full whitespace-pre">{{ getPaddedInput() }}</span>
+<template class="flex flex-col items-center space-y-16">
+  <div class="w-full">
+    <div class="text-main">
+      <span class="block w-full whitespace-pre">{{ getPaddedInput() }}</span>
+    </div>
+  </div>
+
+  <div class="w-full">
+    <div class="text-main" :class="{ invisible: props.hidePrompt }">
+      {{ props.prompt }}
+    </div>
   </div>
 </template>
 
