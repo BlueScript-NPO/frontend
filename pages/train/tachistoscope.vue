@@ -138,7 +138,7 @@ const evaluateUserInput = async (input: string) => {
 
   pauseTimer.value = true;
 
-  await waitForMilliseconds(1000);
+  await waitForMilliseconds(700);
 
   const handleKeydown = (event: KeyboardEvent) => {
     if (["Enter", " "].includes(event.key)) {

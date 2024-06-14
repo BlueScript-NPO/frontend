@@ -1,9 +1,9 @@
 <template>
-  <div class="fixed inset-0 bg-black h-screen w-screen overflow-hidden">
+  <div class="fixed inset-0 h-screen w-screen overflow-hidden">
     <div
       v-for="char in chars"
       :key="char.id"
-      class="bouncing-char text-red-500 text-8xl font-mono"
+      class="bouncing-char text-zinc-900 text-8xl font-mono"
       :style="char.style"
     >
       {{ char.value }}
@@ -21,10 +21,16 @@ const props = defineProps({
   },
 });
 
+const charSet = ["■", "▼", "◆", "●", "○", "★", "☆", "▲", "▽", "◂", "◃"];
+
+const getRandomChar = () => {
+  return charSet[Math.floor(Math.random() * charSet.length)];
+};
+
 const chars = ref(
   Array.from({ length: props.charCount }, () => ({
     id: Math.random().toString(36).substr(2, 9),
-    value: String.fromCharCode(65 + Math.floor(Math.random() * 26)), // Random uppercase letter
+    value: getRandomChar(), // Random character from the set
     style: {
       top: `${Math.random() * 80}%`,
       left: `${Math.random() * 80}%`,
@@ -49,6 +55,10 @@ const updatePosition = (charId: string) => {
 };
 
 onMounted(() => {
+  // Trigger initial position update for all characters immediately
+  chars.value.forEach((char) => updatePosition(char.id));
+
+  // Set interval for continuous movement
   chars.value.forEach((char) => {
     setInterval(() => updatePosition(char.id), 500 + Math.random() * 1500);
   });
@@ -59,7 +69,7 @@ watch(
   (newCount) => {
     chars.value = Array.from({ length: newCount }, () => ({
       id: Math.random().toString(36).substr(2, 9),
-      value: String.fromCharCode(65 + Math.floor(Math.random() * 26)), // Random uppercase letter
+      value: getRandomChar(), // Random character from the set
       style: {
         top: `${Math.random() * 80}%`,
         left: `${Math.random() * 80}%`,

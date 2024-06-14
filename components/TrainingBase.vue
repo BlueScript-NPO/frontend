@@ -18,7 +18,7 @@
     <div
       class="absolute bottom-0 right-0 text-lg p-4 px-8"
       :class="
-        elapsedSeconds > props.totalTrainingTime
+        elapsedSeconds >= props.totalTrainingTime
           ? 'text-yellow-600'
           : 'text-zinc-900'
       "

@@ -62,6 +62,8 @@ const handleFormSubmit = async () => {
   );
 
   if (formData) {
+    console.log("Starting procedure, " + selectedTrainingProcedure.value?.name);
+
     const jsonString = JSON.stringify(formData);
     const routeName =
       selectedTrainingProcedure.value?.name.toLowerCase().replace(/ /g, "-") ||

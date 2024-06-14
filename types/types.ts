@@ -18,18 +18,6 @@ export class StimuliTypeParameter implements Parameter {
   }
 }
 
-export class StimuliSizeParameter implements Parameter {
-  type = "select";
-  value = "Small";
-  options = ["Small", "Medium", "Large"];
-
-  static fromJSON(json: any): StimuliSizeParameter {
-    const param = new StimuliSizeParameter();
-    param.value = json.value;
-    return param;
-  }
-}
-
 export class ArrayCharCountParameter implements Parameter {
   type = "number";
   value = 50;
@@ -128,11 +116,6 @@ export class TachistoscopeProcedure extends BaseProcedure {
         parameter: new StimuliTypeParameter(),
       },
       {
-        key: "stimuliSize",
-        label: "Stimuli Size",
-        parameter: new StimuliSizeParameter(),
-      },
-      {
         key: "presentationTime",
         label: "Presentation Time (seconds)",
         parameter: new NumParameter(0.1, 5.0, 0.05),
@@ -160,11 +143,6 @@ export class VisualSpanProcedure extends BaseProcedure {
         parameter: new StimuliTypeParameter(),
       },
       {
-        key: "stimuliSize",
-        label: "Stimuli Size",
-        parameter: new StimuliSizeParameter(),
-      },
-      {
         key: "delayTime",
         label: "Delay Time (seconds)",
         parameter: new NumParameter(0, 10, 1),
@@ -177,7 +155,7 @@ export class VisualSpanProcedure extends BaseProcedure {
       {
         key: "trainingTime",
         label: "Training Time (seconds)",
-        parameter: new NumParameter(60, 600, 10),
+        parameter: new NumParameter(10, 600, 10),
       },
     ]);
   }
