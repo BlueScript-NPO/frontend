@@ -7,7 +7,7 @@
 
 /* Define your global styles here */
 .text-main {
-  @apply text-8xl font-light text-center text-red-500 w-full;
+  @apply text-8xl font-light text-center text-zinc-900 w-full;
   letter-spacing: 0.5em;
   margin-right: -0.5em;
   font-family: "Nanum Gothic Coding", monospace;

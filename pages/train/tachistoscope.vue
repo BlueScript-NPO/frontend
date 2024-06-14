@@ -14,6 +14,7 @@ const router = useRouter();
 const trainingData = ref<Record<string, any>>({});
 const isTrainingDataValid = ref(true);
 const totalTrainingTime = ref(0);
+const pauseTimer = ref(true);
 const characterPool = ref("");
 const numberOfStimuli = ref(0);
 const stimulusPresentationTime = ref(0);
@@ -109,8 +110,12 @@ const startTraining = async () => {
   }
 
   currentTrialCount.value += 1;
+
+  pauseTimer.value = false;
+
   displayReadyMessage();
   await waitForMilliseconds(1500);
+  currentTrainingStep.value = 0;
   await waitForMilliseconds(1000); // Blank screen duration
   generateStimulusPrompt();
   await waitForMilliseconds(stimulusPresentationTime.value);
@@ -130,6 +135,8 @@ const evaluateUserInput = async (input: string) => {
     : "Incorrect!\n(Press Enter or space to continue)";
 
   console.log("Current accuracy:", `${trainingAccuracy.value}%`);
+
+  pauseTimer.value = true;
 
   await waitForMilliseconds(1000);
 
@@ -156,6 +163,12 @@ const saveTrainingResults = () => {
 
   const resultJson = result.toJSON();
   console.log(resultJson); // Replace with actual save logic
+
+  // Do not stringify resultJson again as it is already a JSON string
+  router.push({
+    name: "result",
+    query: { data: encodeURIComponent(resultJson) },
+  });
 };
 
 // Lifecycle Hook: On Component Mounted
@@ -173,6 +186,7 @@ onMounted(() => {
   <TrainingBase
     :totalTrainingTime="totalTrainingTime"
     :instructionText="userInstruction"
+    :pauseTimer="pauseTimer"
     v-model="totalElapsedTime"
   >
     <div class="flex flex-col justify-center items-center h-full space-y-10">

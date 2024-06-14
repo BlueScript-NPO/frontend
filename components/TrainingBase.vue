@@ -1,13 +1,13 @@
 <template>
   <div
-    class="fixed inset-0 bg-black h-screen w-screen overflow-hidden"
+    class="fixed inset-0 bg-zinc-50 h-screen w-screen overflow-hidden"
     @click.right.stop.prevent
   >
     <slot></slot>
 
     <!-- Top center instruction -->
     <div
-      class="absolute top-0 left-0 right-0 text-lg p-10 flex justify-center text-white text-3xl"
+      class="absolute top-0 left-0 right-0 text-lg p-10 flex justify-center text-zinc-900 text-3xl"
     >
       <div :style="{ whiteSpace: 'pre-line' }" class="text-center">
         {{ props.instructionText }}
@@ -17,9 +17,11 @@
     <!-- Bottom right timer -->
     <div
       class="absolute bottom-0 right-0 text-lg p-4 px-8"
-      :style="{
-        color: elapsedSeconds > props.totalTrainingTime ? 'yellow' : 'white',
-      }"
+      :class="
+        elapsedSeconds > props.totalTrainingTime
+          ? 'text-yellow-600'
+          : 'text-zinc-900'
+      "
     >
       {{ formattedElapsedTime }}
     </div>
@@ -32,6 +34,7 @@ import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 interface Props {
   totalTrainingTime: number;
   instructionText: string;
+  pauseTimer: boolean;
 }
 
 const props = defineProps<Props>();
@@ -62,13 +65,40 @@ watch(
   }
 );
 
-onMounted(() => {
-  startTime.value = Date.now();
+// Watch for changes in pauseTimer to pause/resume the timer
+watch(
+  () => props.pauseTimer,
+  (pause) => {
+    if (pause) {
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    } else {
+      startTimer();
+    }
+  },
+  { immediate: true }
+);
+
+const startTimer = () => {
+  if (startTime.value === null) {
+    startTime.value = Date.now();
+  } else {
+    startTime.value = Date.now() - elapsedSeconds.value * 1000;
+  }
+
   intervalId = window.setInterval(() => {
     if (startTime.value !== null) {
       elapsedSeconds.value = Math.floor((Date.now() - startTime.value) / 1000);
     }
   }, 1000);
+};
+
+onMounted(() => {
+  if (!props.pauseTimer) {
+    startTimer();
+  }
 });
 
 onUnmounted(() => {

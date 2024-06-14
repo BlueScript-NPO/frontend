@@ -304,9 +304,15 @@ abstract class BaseTrainingResult implements TrainingResult {
     json: any,
     trainingResultType: typeof BaseTrainingResult
   ): TrainingResult {
-    const resultData = json.result;
+    const resultData = json?.result;
+    if (!resultData) {
+      throw new Error("Invalid JSON structure: 'result' field is missing.");
+    }
+    const parsedProcedureParameters = JSON.parse(
+      resultData.procedureParameters
+    );
     const procedureParameters = BaseProcedure.fromJSON(
-      resultData.procedureParameters,
+      parsedProcedureParameters,
       TachistoscopeProcedure
     );
     return trainingResultType.createInstance(
@@ -356,6 +362,9 @@ export class TachistoscopeTrainingResult extends BaseTrainingResult {
     procedureResults: any
   ): TachistoscopeTrainingResult {
     const resultData = procedureResults.result;
+    if (!resultData) {
+      throw new Error("Invalid JSON structure: 'result' field is missing.");
+    }
     return new TachistoscopeTrainingResult(
       date,
       duration,
@@ -367,7 +376,13 @@ export class TachistoscopeTrainingResult extends BaseTrainingResult {
   }
 
   static fromJSON(json: any): TachistoscopeTrainingResult {
-    const resultData = json.result;
+    const resultData = json?.result;
+    if (!resultData) {
+      throw new Error("Invalid JSON structure: 'result' field is missing.");
+    }
+    const parsedProcedureParameters = JSON.parse(
+      resultData.procedureParameters
+    );
     return new TachistoscopeTrainingResult(
       new Date(resultData.date),
       resultData.duration,
