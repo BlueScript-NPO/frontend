@@ -101,9 +101,7 @@ const router = useRouter();
   <TopMenu />
   <UCard class="mx-auto mt-8 max-w-md">
     <template #header>
-      <h2 class="text-lg font-semibold text-gray-900 dark:text-white pb-2">
-        Configure Training
-      </h2>
+      <h2 class="text-lg font-semibold pb-2">Configure Training</h2>
       <USelect
         v-model="selectedProcedureName"
         :options="trainingProcedures.map((p) => p.name)"
