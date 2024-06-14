@@ -10,13 +10,7 @@ export interface Parameter {
 export class StimuliTypeParameter implements Parameter {
   type = "select";
   value = "Numbers";
-  options = [
-    "Numbers",
-    "Alphabet",
-    "Korean Alphabet",
-    "Codes (Alphanumeric)",
-    "Codes (Korean)",
-  ];
+  options = ["Numbers", "Alphabet", "Codes (Alphanumeric)", "Korean Alphabet"];
   static fromJSON(json: any): StimuliTypeParameter {
     const param = new StimuliTypeParameter();
     param.value = json.value;

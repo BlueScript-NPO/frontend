@@ -10,7 +10,7 @@
       class="absolute top-0 left-0 right-0 text-lg p-10 flex justify-center text-white text-3xl"
     >
       <div :style="{ whiteSpace: 'pre-line' }" class="text-center">
-        {{ top }}
+        {{ props.top }}
       </div>
     </div>
 
@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch, computed } from "vue";
+import { ref, onMounted, onUnmounted, computed, watch } from "vue";
 
 interface Props {
   trainingTime: number;
@@ -33,7 +33,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const model = defineModel();
+const model = defineModel<number>();
 
 const startTime = ref<number | null>(null);
 const timer = ref(0);
@@ -45,10 +45,20 @@ const formattedTime = computed(() => {
   return `${minutes}:${seconds}`;
 });
 
-// each time a second increments, update the model
+// Watch for changes in the timer to update the model
 watch(timer, (newVal) => {
   model.value = newVal;
 });
+
+// Watch for changes in trainingTime to adjust the timer if needed
+watch(
+  () => props.trainingTime,
+  (newVal) => {
+    if (timer.value > newVal) {
+      timer.value = newVal;
+    }
+  }
+);
 
 onMounted(() => {
   startTime.value = Date.now();
@@ -64,15 +74,6 @@ onUnmounted(() => {
     clearInterval(timerInterval);
   }
 });
-
-watch(
-  () => props.trainingTime,
-  (newVal) => {
-    if (timer.value > newVal) {
-      timer.value = newVal;
-    }
-  }
-);
 </script>
 
 <style scoped>

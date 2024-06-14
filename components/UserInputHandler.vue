@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, defineProps, defineEmits } from "vue";
+import { ref, onMounted, onUnmounted, defineProps, defineEmits } from "vue";
 
 const props = defineProps({
   stimuliLength: {
@@ -24,62 +24,56 @@ const props = defineProps({
   },
 });
 
+const emits = defineEmits(["evaluate"]);
+const userInput = ref<string>("");
+
+const englishCodes = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const koreanCodes =
+  "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ0123456789";
+
 const convertToKorean = (char: string): string => {
-  const englishCodes = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  const koreanCodes =
-    "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ0123456789";
   const index = englishCodes.indexOf(char.toUpperCase());
-  if (index !== -1) {
-    return koreanCodes[index];
-  }
-  return char;
+  return index !== -1 ? koreanCodes[index] : char;
 };
 
-const emits = defineEmits(["evaluate"]);
-
-const userInput = ref("");
 const handleKeydown = (event: KeyboardEvent) => {
   if (!props.allowInput) return;
-
-  const isAlphaNumeric = /^[a-zA-Z0-9]$/.test(event.key);
 
   if (event.key === "Backspace") {
     userInput.value = userInput.value.slice(0, -1);
   } else if (event.key === "Enter" || event.key === " ") {
     emits("evaluate", userInput.value);
-  } else if (isAlphaNumeric && userInput.value.length < props.stimuliLength) {
-    if (props.isKorean) {
-      userInput.value += convertToKorean(event.key.toUpperCase());
-    } else {
-      userInput.value += event.key.toUpperCase();
-    }
+  } else if (
+    /^[a-zA-Z0-9]$/.test(event.key) &&
+    userInput.value.length < props.stimuliLength
+  ) {
+    userInput.value += props.isKorean
+      ? convertToKorean(event.key.toUpperCase())
+      : event.key.toUpperCase();
   }
 };
 
-const getPaddedInput = (): string => {
-  const totalLength = props.stimuliLength;
-  const inputLength = userInput.value.length;
-  const spacesNeeded = totalLength - inputLength;
-  let spaces = "";
-
-  if (props.isKorean) {
-    spaces = "　".repeat(spacesNeeded);
-  } else {
-    spaces = " ".repeat(spacesNeeded);
-  }
-
+const getPaddedInput = computed((): string => {
+  const spacesNeeded = props.stimuliLength - userInput.value.length;
+  const spaces = props.isKorean
+    ? "　".repeat(spacesNeeded)
+    : " ".repeat(spacesNeeded);
   return userInput.value + spaces;
-};
+});
 
 onMounted(() => {
   window.addEventListener("keydown", handleKeydown);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("keydown", handleKeydown);
 });
 </script>
 
 <template class="flex flex-col items-center space-y-16">
   <div class="w-full">
     <div class="text-main">
-      <span class="block w-full whitespace-pre">{{ getPaddedInput() }}</span>
+      <span class="block w-full whitespace-pre">{{ getPaddedInput }}</span>
     </div>
   </div>
 

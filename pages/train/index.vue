@@ -7,7 +7,7 @@ import {
   VisualScanProcedure,
 } from "~/types/types";
 import type { Parameter } from "~/types/types";
-import type { FormError, FormErrorEvent, FormSubmitEvent } from "#ui/types";
+import type { FormError, FormErrorEvent } from "#ui/types";
 
 const procedures = [
   new TachistoscopeProcedure(),
@@ -15,15 +15,13 @@ const procedures = [
   new VisualScanProcedure(),
 ];
 
-// first procedure is selected by default
-const selectedProcedureName = ref<string>(procedures[0].name);
-const selectedProcedure = computed(() => {
-  return (
+const selectedProcedureName = ref(procedures[0].name);
+const selectedProcedure = computed(
+  () =>
     procedures.find(
       (procedure) => procedure.name === selectedProcedureName.value
     ) || null
-  );
-});
+);
 
 const validate = (state: any): FormError[] => {
   const errors: FormError[] = [];
@@ -33,16 +31,16 @@ const validate = (state: any): FormError[] => {
         errors.push({ path: label, message: "Required" });
       }
       if (parameter.type === "number") {
-        if (parameter.value === null || parameter.value === undefined) {
+        if (parameter.value == null) {
           errors.push({ path: label, message: "Required" });
         }
-        if (hasRange(parameter) && parameter.value < parameter.min!) {
+        if (hasRange(parameter) && parameter.value < parameter.min) {
           errors.push({
             path: label,
             message: `Value must be at least ${parameter.min}`,
           });
         }
-        if (hasRange(parameter) && parameter.value > parameter.max!) {
+        if (hasRange(parameter) && parameter.value > parameter.max) {
           errors.push({
             path: label,
             message: `Value must be at most ${parameter.max}`,
@@ -54,7 +52,7 @@ const validate = (state: any): FormError[] => {
   return errors;
 };
 
-async function onSubmit(event: FormSubmitEvent<any>) {
+const onSubmit = async () => {
   const data = selectedProcedure.value?.parameters.reduce(
     (acc, { key, parameter }) => {
       acc[key] = parameter.value;
@@ -62,39 +60,35 @@ async function onSubmit(event: FormSubmitEvent<any>) {
     },
     {} as Record<string, any>
   );
-  const jsonString = JSON.stringify(data);
-  console.log(jsonString);
 
-  // Navigate to the specific procedure page with state
-  const routeName =
-    selectedProcedure.value?.name.toLowerCase().replace(/ /g, "-") || "train";
-  router.push({
-    name: `train-${routeName}`,
-    query: { data: encodeURIComponent(jsonString) },
-  });
-}
+  if (data) {
+    const jsonString = JSON.stringify(data);
+    const routeName =
+      selectedProcedure.value?.name.toLowerCase().replace(/ /g, "-") || "train";
+    router.push({
+      name: `train-${routeName}`,
+      query: { data: encodeURIComponent(jsonString) },
+    });
+  }
+};
 
-async function onError(event: FormErrorEvent) {
+const onError = async (event: FormErrorEvent) => {
   const element = document.getElementById(event.errors[0].id);
   element?.focus();
   element?.scrollIntoView({ behavior: "smooth", block: "center" });
-}
+};
 
-function hasOptions(
+const hasOptions = (
   param: Parameter
-): param is Parameter & { options: string[] } {
-  return (param as any).options !== undefined;
-}
+): param is Parameter & { options: string[] } => "options" in param;
 
-function hasRange(
+const hasRange = (
   param: Parameter
-): param is Parameter & { min: number; max: number } {
-  return (param as any).min !== undefined && (param as any).max !== undefined;
-}
+): param is Parameter & { min: number; max: number } =>
+  "min" in param && "max" in param;
 
-function hasStep(param: Parameter): param is Parameter & { step: number } {
-  return (param as any).step !== undefined;
-}
+const hasStep = (param: Parameter): param is Parameter & { step: number } =>
+  "step" in param;
 
 const router = useRouter();
 </script>

@@ -6,9 +6,12 @@ import {
   TachistoscopeTrainingResult,
 } from "~/types/types";
 
+// Vue Router
 const route = useRoute();
 const router = useRouter();
-const trainingPreset = ref({});
+
+// Ref Variables
+const trainingPreset = ref<Record<string, any>>({});
 const isValid = ref(true);
 const trainingTime = ref(0);
 const charPool = ref("");
@@ -22,48 +25,47 @@ const centeTextSub = ref("");
 const stimuliType = ref("");
 const isKorean = ref(false);
 const elapsedTime = ref(0);
+const trialCount = ref(0);
+const trialData = ref<Record<number, boolean>>({});
 
+// Character Sets
 const charSets: Record<string, string> = {
   Numbers: "0123456789",
   Alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   "Korean Alphabet": "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ",
   "Codes (Alphanumeric)": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-  "Codes (Korean)":
-    "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ0123456789",
 };
 
-const trialCount = ref(0);
-// boolean array represents the trial number and the user's response is correct or not
-const trialData: Record<number, boolean> = {};
-
-// computed property, percentage of correct responses
+// Computed Property for Accuracy
 const accuracy = computed(() => {
-  const correct = Object.values(trialData).filter((value) => value).length;
+  const correct = Object.values(trialData.value).filter(Boolean).length;
   return Number(((correct / trialCount.value) * 100).toFixed(2));
 });
 
+// Utility Function: Wait for specified milliseconds
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// Function: Parse Data from Route Query
 const parseData = () => {
   try {
-    if (route.query.data) {
-      const data = JSON.parse(decodeURIComponent(route.query.data as string));
+    const data = route.query.data
+      ? JSON.parse(decodeURIComponent(route.query.data as string))
+      : null;
+    if (data) {
       const procedure = new TachistoscopeProcedure();
       isValid.value = procedure.validateParameters(data);
+
       if (isValid.value) {
         trainingPreset.value = data;
-        trainingTime.value = data.trainingTime; // trainingTime is already in seconds, no need to multiply by 1000
+        trainingTime.value = data.trainingTime; // trainingTime is already in seconds
         presentationTime.value = data.presentationTime * 1000; // convert to milliseconds
         stimuliLength.value = data.stimuliLength;
         stimuliType.value = data.stimuliType;
-        charPool.value = charSets[stimuliType.value];
+        charPool.value = charSets[stimuliType.value] || "";
 
-        if (
-          stimuliType.value === "Korean Alphabet" ||
-          stimuliType.value === "Codes (Korean)"
-        ) {
-          isKorean.value = true;
-        }
+        isKorean.value = ["Korean Alphabet", "Codes (Korean)"].includes(
+          stimuliType.value
+        );
       } else {
         router.push("/train");
       }
@@ -76,81 +78,55 @@ const parseData = () => {
   }
 };
 
+// Function: Generate Prompt
 const generatePrompt = () => {
-  let chars = [];
-  for (let i = 0; i < stimuliLength.value; i++) {
-    chars.push(
-      charPool.value.charAt(Math.floor(Math.random() * charPool.value.length))
-    );
-  }
-  prompt.value = chars.join("");
+  prompt.value = Array.from({ length: stimuliLength.value }, () =>
+    charPool.value.charAt(Math.floor(Math.random() * charPool.value.length))
+  ).join("");
   trainingStep.value = 2;
 };
 
-const askForInput = () => {
-  instruction.value =
-    "Please type the characters you saw\n (Press Enter or space to submit)";
-  trainingStep.value = 3;
-};
-
-const redyMessage = () => {
+// Function: Display Ready Message
+const displayReadyMessage = () => {
   centerText.value = "Get Ready!";
-  centeTextSub.value =
-    "Trial #" + trialCount.value + " | Elapsed Time: " + elapsedTime.value;
+  centeTextSub.value = `Trial #${trialCount.value} | Elapsed Time: ${elapsedTime.value}`;
   trainingStep.value = 1;
 };
 
-const reset = () => {
-  trainingStep.value = 0;
-  prompt.value = "";
-  instruction.value = "";
-  centerText.value = "";
-};
-
-const showBlankScreen = async (time: number) => {
-  trainingStep.value = 0;
-  await wait(time);
-};
-
+// Function: Train Process
 const train = async () => {
-  // check if training time is up
   if (elapsedTime.value >= trainingTime.value) {
     saveResult();
     return;
   }
 
-  reset();
   trialCount.value += 1;
-  redyMessage();
+  displayReadyMessage();
   await wait(1500);
-
-  await showBlankScreen(1000);
-
+  await wait(1000); // Blank screen duration
   generatePrompt();
   await wait(presentationTime.value);
-  askForInput();
+  instruction.value =
+    "Please type the characters you saw\n(Press Enter or space to submit)";
+  trainingStep.value = 3;
 };
 
+// Function: Evaluate User Input
 const evaluateInput = async (input: string) => {
   console.log("User input:", input);
   trainingStep.value = 4;
 
-  if (input === prompt.value) {
-    instruction.value = "Correct!\n(Press Enter or space to continue)";
-    trialData[trialCount.value] = true;
-  } else {
-    instruction.value = "Incorrect!\n(Press Enter or space to continue)";
-    trialData[trialCount.value] = false;
-  }
+  trialData.value[trialCount.value] = input === prompt.value;
+  instruction.value = trialData.value[trialCount.value]
+    ? "Correct!\n(Press Enter or space to continue)"
+    : "Incorrect!\n(Press Enter or space to continue)";
 
-  console.log("Current accuracy:", accuracy.value + "%");
+  console.log("Current accuracy:", `${accuracy.value}%`);
 
-  // Wait for the user to release the enter or space key
   await wait(1000);
 
-  // Add a single event listener for keydown
   const handleKeydown = (event: KeyboardEvent) => {
-    if (event.key === "Enter" || event.key === " ") {
+    if (["Enter", " "].includes(event.key)) {
       window.removeEventListener("keydown", handleKeydown);
       train();
     }
@@ -159,6 +135,7 @@ const evaluateInput = async (input: string) => {
   window.addEventListener("keydown", handleKeydown);
 };
 
+// Function: Save Training Result
 const saveResult = () => {
   const result = new TachistoscopeTrainingResult(
     new Date(),
@@ -170,9 +147,10 @@ const saveResult = () => {
   );
 
   const resultJson = result.toJSON();
-  console.log(resultJson); // Example of handling, replace with actual save logic
+  console.log(resultJson); // Replace with actual save logic
 };
 
+// Lifecycle Hook: On Component Mounted
 onMounted(() => {
   parseData();
   train();
@@ -190,17 +168,12 @@ onMounted(() => {
     v-model="elapsedTime"
   >
     <div class="flex flex-col justify-center items-center h-full space-y-10">
-      <!-- center text -->
       <TitleHud
         :title="centerText"
         :subtitle="centeTextSub"
         v-if="trainingStep === 1"
       />
-
-      <!-- display the prompt -->
       <CenterPrompt v-if="trainingStep === 2" :prompt="prompt" />
-
-      <!-- display the user input handler -->
       <UserInputHandler
         v-if="trainingStep >= 3"
         :allowInput="trainingStep === 3"
@@ -215,5 +188,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Add */
+/* Add any component-specific styles here */
 </style>
