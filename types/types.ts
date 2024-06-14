@@ -139,8 +139,8 @@ export class TachistoscopeProcedure extends BaseProcedure {
         parameter: new NumParameter(0.1, 5.0, 0.05),
       },
       {
-        key: "delayTime",
-        label: "Delay Time (seconds)",
+        key: "distractionTime",
+        label: "Distraction Time (seconds)",
         parameter: new NumParameter(0, 10, 1),
       },
       {
@@ -151,7 +151,7 @@ export class TachistoscopeProcedure extends BaseProcedure {
       {
         key: "trainingTime",
         label: "Training Time (seconds)",
-        parameter: new NumParameter(60, 600, 10),
+        parameter: new NumParameter(10, 600, 10),
       },
     ]);
   }

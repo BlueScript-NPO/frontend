@@ -1,0 +1,17 @@
+/* assets/globals.css */
+
+/* Import Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define your global styles here */
+.text-main {
+  @apply text-8xl font-light text-center text-red-500 font-mono w-full;
+  letter-spacing: 0.5em;
+  margin-right: -0.5em;
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}

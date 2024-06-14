@@ -6,7 +6,7 @@ import {
   VisualSpanProcedure,
   VisualScanProcedure,
 } from "~/types/types";
-import type { Procedure, Parameter } from "~/types/types";
+import type { Parameter } from "~/types/types";
 import type { FormError, FormErrorEvent, FormSubmitEvent } from "#ui/types";
 
 const procedures = [
