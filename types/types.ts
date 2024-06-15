@@ -58,7 +58,7 @@ export class StimuliTypeParameter extends BaseParameter {
 
 export class ArrayCharCountParameter extends BaseParameter {
   constructor(value: number = 50) {
-    super("number", value, [50, 75, 100, 140, 175, 200, 250, 275, 300]);
+    super("select", value, [50, 75, 100, 140, 175, 200, 250, 275, 300]);
   }
 }
 
@@ -189,6 +189,33 @@ export class VisualSpanProcedure extends BaseProcedure {
         key: "stimuliLength",
         label: "Stimuli Length",
         parameter: new NumParameter(1, 6, 1),
+      },
+      {
+        key: "trainingTime",
+        label: "Training Time (seconds)",
+        parameter: new NumParameter(10, 600, 10),
+      },
+    ]);
+  }
+}
+
+export class VisualScanProcedure extends BaseProcedure {
+  constructor() {
+    super("Visual Scan", [
+      {
+        key: "stimuliType",
+        label: "Stimuli Type",
+        parameter: new StimuliTypeParameter(),
+      },
+      {
+        key: "targetCount",
+        label: "Target Count",
+        parameter: new NumParameter(5, 25, 1),
+      },
+      {
+        key: "arraySize",
+        label: "Array Size",
+        parameter: new ArrayCharCountParameter(),
       },
       {
         key: "trainingTime",

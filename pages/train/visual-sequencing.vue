@@ -1,3 +1,7 @@
 <script setup></script>
 
-<template></template>
+<template>
+  <Head>
+    <Title>Training - Visual Sequencing</Title>
+  </Head>
+</template>
