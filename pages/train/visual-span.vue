@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { VisualSpanProcedure } from "~/types/types";
+import { VisualSpanProcedure, VisualSpanTrainingResult } from "~/types/types";
 
-// Vue Router
 const route = useRoute();
 const router = useRouter();
 
-// Ref Variables
+const procedure = new VisualSpanProcedure();
 const trainingData = ref<Record<string, any>>({});
-const isTrainingDataValid = ref(true);
 const totalTrainingTime = ref(0);
 const pauseTimer = ref(true);
 const characterPool = ref("");
@@ -27,7 +25,6 @@ const totalElapsedTime = ref(0);
 const currentTrialCount = ref(0);
 const trialResults = ref<Record<number, boolean>>({});
 
-// Character Sets
 const characterSets: Record<string, string> = {
   Numbers: "0123456789",
   Alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -35,7 +32,6 @@ const characterSets: Record<string, string> = {
   "Codes (Alphanumeric)": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
 };
 
-// Computed Property for Accuracy
 const trainingAccuracy = computed(() => {
   const correctResponses = Object.values(trialResults.value).filter(
     Boolean
@@ -45,35 +41,25 @@ const trainingAccuracy = computed(() => {
   );
 });
 
-// Utility Function: Wait for specified milliseconds
 const waitForMilliseconds = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
-// Function: Parse Data from Route Query
 const parseRouteData = () => {
   try {
     const data = route.query.data
       ? JSON.parse(decodeURIComponent(route.query.data as string))
       : null;
     if (data) {
-      const procedure = new VisualSpanProcedure();
-      isTrainingDataValid.value = procedure.validateParameters(data);
+      trainingData.value = data;
+      totalTrainingTime.value = data.trainingTime;
+      numberOfStimuli.value = data.stimuliLength;
+      stimulusType.value = data.stimuliType;
+      characterPool.value = characterSets[stimulusType.value] || "";
+      distractionTime.value = data.delayTime * 1000;
 
-      if (isTrainingDataValid.value) {
-        trainingData.value = data;
-        totalTrainingTime.value = data.trainingTime; // totalTrainingTime is already in seconds
-        numberOfStimuli.value = data.stimuliLength;
-        stimulusType.value = data.stimuliType;
-        characterPool.value = characterSets[stimulusType.value] || "";
-        distractionTime.value = data.delayTime * 1000; // convert to milliseconds
-
-        isUsingKoreanChars.value = [
-          "Korean Alphabet",
-          "Codes (Korean)",
-        ].includes(stimulusType.value);
-      } else {
-        router.push("/train");
-      }
+      isUsingKoreanChars.value = ["Korean Alphabet", "Codes (Korean)"].includes(
+        stimulusType.value
+      );
     } else {
       router.push("/train");
     }
@@ -83,7 +69,6 @@ const parseRouteData = () => {
   }
 };
 
-// Function: Generate Prompt
 const generateStimulusPrompt = () => {
   generatedPrompt.value = Array.from({ length: numberOfStimuli.value }, () =>
     characterPool.value.charAt(
@@ -93,16 +78,15 @@ const generateStimulusPrompt = () => {
   currentTrainingStep.value = 2;
 };
 
-// Function: Display Ready Message
 const displayReadyMessage = () => {
   mainText.value = "Get Ready!";
   subText.value = `Trial #${currentTrialCount.value} | Elapsed Time: ${totalElapsedTime.value}`;
   currentTrainingStep.value = 1;
 };
 
-// Function: Training Process
 const startTraining = async () => {
   if (totalElapsedTime.value >= totalTrainingTime.value) {
+    saveTrainingResults();
     return;
   }
 
@@ -113,7 +97,7 @@ const startTraining = async () => {
   await displayReadyMessage();
   await waitForMilliseconds(1500);
   currentTrainingStep.value = 0;
-  await waitForMilliseconds(1000); // Blank screen duration
+  await waitForMilliseconds(1000);
   generateStimulusPrompt();
 
   for (let i = 0; i < numberOfStimuli.value; i++) {
@@ -133,7 +117,6 @@ const startTraining = async () => {
   currentTrainingStep.value = 4;
 };
 
-// Function: Evaluate User Input
 const evaluateUserInput = async (input: string) => {
   console.log("User input:", input);
   currentTrainingStep.value = 5;
@@ -159,7 +142,26 @@ const evaluateUserInput = async (input: string) => {
   window.addEventListener("keydown", handleKeydown);
 };
 
-// Lifecycle Hook: On Component Mounted
+const saveTrainingResults = () => {
+  const result = new VisualSpanTrainingResult(
+    new Date(),
+    totalElapsedTime.value,
+    "0",
+    "0",
+    trainingAccuracy.value,
+    currentTrialCount.value,
+    procedure
+  );
+
+  const resultJson = JSON.stringify(result.toJSON());
+  console.log(resultJson);
+
+  router.push({
+    name: "result",
+    query: { data: encodeURIComponent(resultJson) },
+  });
+};
+
 onMounted(() => {
   parseRouteData();
   startTraining();
@@ -200,7 +202,3 @@ onMounted(() => {
     </div>
   </TrainingBase>
 </template>
-
-<style scoped>
-/* Add any component-specific styles here */
-</style>

@@ -11,6 +11,7 @@ const route = useRoute();
 const router = useRouter();
 
 // Ref Variables
+const procedure = new TachistoscopeProcedure();
 const trainingData = ref<Record<string, any>>({});
 const isTrainingDataValid = ref(true);
 const totalTrainingTime = ref(0);
@@ -158,7 +159,8 @@ const saveTrainingResults = () => {
     "0",
     "0",
     trainingAccuracy.value,
-    currentTrialCount.value
+    currentTrialCount.value,
+    procedure
   );
 
   const resultJson = JSON.stringify(result.toJSON());

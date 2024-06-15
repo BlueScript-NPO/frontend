@@ -1,18 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
-import {
-  TachistoscopeProcedure,
-  VisualSpanProcedure,
-  VisualScanProcedure,
-} from "~/types/types";
+import { TachistoscopeProcedure, VisualSpanProcedure } from "~/types/types";
 import type { Parameter } from "~/types/types";
 import type { FormError, FormErrorEvent } from "#ui/types";
 
 const trainingProcedures = [
   new TachistoscopeProcedure(),
   new VisualSpanProcedure(),
-  new VisualScanProcedure(),
 ];
 
 const selectedProcedureName = ref(trainingProcedures[0].name);

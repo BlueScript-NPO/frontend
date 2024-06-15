@@ -199,38 +199,6 @@ export class VisualSpanProcedure extends BaseProcedure {
   }
 }
 
-export class VisualScanProcedure extends BaseProcedure {
-  constructor() {
-    super("Visual Scan", [
-      {
-        key: "targetCount",
-        label: "Target Count",
-        parameter: new NumParameter(5, 25, 1),
-      },
-      {
-        key: "trainingTime",
-        label: "Training Time (seconds)",
-        parameter: new NumParameter(60, 600, 10),
-      },
-      {
-        key: "arrayCharCount",
-        label: "Array Character Count",
-        parameter: new ArrayCharCountParameter(),
-      },
-      {
-        key: "targetType",
-        label: "Target Type",
-        parameter: new StimuliTypeParameter(),
-      },
-      {
-        key: "arrayType",
-        label: "Array Type",
-        parameter: new StimuliTypeParameter(),
-      },
-    ]);
-  }
-}
-
 export interface TrainingResult {
   date: Date;
   duration: number;
@@ -303,9 +271,10 @@ abstract class BaseTrainingResult implements TrainingResult {
     json: any,
     trainingResultType: typeof BaseTrainingResult
   ): TrainingResult {
+    const procedureType = getProcedureType(json.procedureName); // Dynamically get the procedure type
     const procedureParameters = BaseProcedure.fromJSON(
       json.procedureParameters,
-      TachistoscopeProcedure // Replace this with a dynamic way to choose the right procedure type
+      procedureType
     );
     return trainingResultType.createInstance(
       new Date(json.date),
@@ -328,12 +297,14 @@ export class TachistoscopeTrainingResult extends BaseTrainingResult {
     patientId: string,
     doctorId: string,
     accuracy: number,
-    trialCount: number
+    trialCount: number,
+    procedureParameters: TachistoscopeProcedure
   ) {
     super(TachistoscopeProcedure, date, duration, patientId, doctorId);
     this.accuracy = accuracy;
     this.trialCount = trialCount;
     this.procedureResults = { accuracy, trialCount };
+    this.procedureParameters = procedureParameters;
   }
 
   static createInstance(
@@ -350,7 +321,8 @@ export class TachistoscopeTrainingResult extends BaseTrainingResult {
       patientId,
       doctorId,
       procedureResults.accuracy,
-      procedureResults.trialCount
+      procedureResults.trialCount,
+      procedureParameters as TachistoscopeProcedure
     );
   }
 
@@ -365,7 +337,8 @@ export class TachistoscopeTrainingResult extends BaseTrainingResult {
       json.patientId,
       json.doctorId,
       json.result.accuracy,
-      json.result.trialCount
+      json.result.trialCount,
+      procedureParameters as TachistoscopeProcedure
     );
   }
 }
@@ -380,12 +353,14 @@ export class VisualSpanTrainingResult extends BaseTrainingResult {
     patientId: string,
     doctorId: string,
     accuracy: number,
-    trialCount: number
+    trialCount: number,
+    procedureParameters: VisualSpanProcedure
   ) {
     super(VisualSpanProcedure, date, duration, patientId, doctorId);
     this.accuracy = accuracy;
     this.trialCount = trialCount;
     this.procedureResults = { accuracy, trialCount };
+    this.procedureParameters = procedureParameters;
   }
 
   static createInstance(
@@ -402,7 +377,8 @@ export class VisualSpanTrainingResult extends BaseTrainingResult {
       patientId,
       doctorId,
       procedureResults.accuracy,
-      procedureResults.trialCount
+      procedureResults.trialCount,
+      procedureParameters
     );
   }
 
@@ -417,7 +393,20 @@ export class VisualSpanTrainingResult extends BaseTrainingResult {
       json.patientId,
       json.doctorId,
       json.result.accuracy,
-      json.result.trialCount
+      json.result.trialCount,
+      procedureParameters
     );
+  }
+}
+
+// Utility function to get the procedure type dynamically
+function getProcedureType(procedureName: string): new () => Procedure {
+  switch (procedureName) {
+    case "Tachistoscope":
+      return TachistoscopeProcedure;
+    case "Visual Span":
+      return VisualSpanProcedure;
+    default:
+      throw new Error(`Unknown procedure name: ${procedureName}`);
   }
 }
