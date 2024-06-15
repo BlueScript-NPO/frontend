@@ -7,45 +7,71 @@ export interface Parameter {
   step?: number;
 }
 
-export class StimuliTypeParameter implements Parameter {
-  type = "select";
-  value = "Numbers";
-  options = ["Numbers", "Alphabet", "Codes (Alphanumeric)", "Korean Alphabet"];
-  static fromJSON(json: any): StimuliTypeParameter {
-    const param = new StimuliTypeParameter();
-    param.value = json.value;
-    return param;
-  }
-}
+export abstract class BaseParameter implements Parameter {
+  type: string;
+  value: any;
+  options?: any[];
+  min?: number;
+  max?: number;
+  step?: number;
 
-export class ArrayCharCountParameter implements Parameter {
-  type = "number";
-  value = 50;
-  options = [50, 75, 100, 140, 175, 200, 250, 275, 300];
-
-  static fromJSON(json: any): ArrayCharCountParameter {
-    const param = new ArrayCharCountParameter();
-    param.value = json.value;
-    return param;
-  }
-}
-
-export class NumParameter implements Parameter {
-  type = "number";
-  value: number;
-  min: number;
-  max: number;
-  step: number;
-
-  constructor(min: number, max: number, step: number, defaultValue?: number) {
-    this.value = defaultValue !== undefined ? defaultValue : min;
+  protected constructor(
+    type: string,
+    value: any,
+    options?: any[],
+    min?: number,
+    max?: number,
+    step?: number
+  ) {
+    this.type = type;
+    this.value = value;
+    this.options = options;
     this.min = min;
     this.max = max;
     this.step = step;
   }
 
-  static fromJSON(json: any): NumParameter {
-    return new NumParameter(json.min, json.max, json.step, json.value);
+  static fromJSON(json: any): Parameter {
+    switch (json.type) {
+      case "select":
+        return new StimuliTypeParameter(json.value);
+      case "number":
+        return json.options
+          ? new ArrayCharCountParameter(json.value)
+          : new NumParameter(json.min, json.max, json.step, json.value);
+      default:
+        throw new Error(`Unknown parameter type: ${json.type}`);
+    }
+  }
+}
+
+export class StimuliTypeParameter extends BaseParameter {
+  constructor(value: string = "Numbers") {
+    super("select", value, [
+      "Numbers",
+      "Alphabet",
+      "Codes (Alphanumeric)",
+      "Korean Alphabet",
+    ]);
+  }
+}
+
+export class ArrayCharCountParameter extends BaseParameter {
+  constructor(value: number = 50) {
+    super("number", value, [50, 75, 100, 140, 175, 200, 250, 275, 300]);
+  }
+}
+
+export class NumParameter extends BaseParameter {
+  constructor(min: number, max: number, step: number, value?: number) {
+    super(
+      "number",
+      value !== undefined ? value : min,
+      undefined,
+      min,
+      max,
+      step
+    );
   }
 }
 
@@ -53,7 +79,8 @@ export interface Procedure {
   name: string;
   parameters: { key: string; label: string; parameter: Parameter }[];
   validateParameters(data: any): boolean;
-  toJSON(): string;
+  toJSON(): any;
+  getMetadata(): any;
 }
 
 abstract class BaseProcedure implements Procedure {
@@ -70,11 +97,11 @@ abstract class BaseProcedure implements Procedure {
 
   validateParameters(data: any): boolean {
     for (const param of this.parameters) {
-      if (param.parameter.type === "select" && !data[param.key]) {
+      const value = data[param.key];
+      if (param.parameter.type === "select" && !value) {
         return false;
       }
       if (param.parameter.type === "number") {
-        const value = data[param.key];
         if (
           value === null ||
           value === undefined ||
@@ -88,21 +115,32 @@ abstract class BaseProcedure implements Procedure {
     return true;
   }
 
-  toJSON(): string {
-    const data = this.parameters.reduce((acc, { key, parameter }) => {
+  toJSON(): any {
+    return this.parameters.reduce((acc, { key, parameter }) => {
       acc[key] = parameter.value;
       return acc;
     }, {} as Record<string, any>);
-    return JSON.stringify(data);
+  }
+
+  getMetadata(): any {
+    return this.parameters.reduce((acc, { key, label, parameter }) => {
+      acc[key] = { label, ...parameter };
+      return acc;
+    }, {} as Record<string, any>);
   }
 
   static fromJSON(json: any, procedureType: new () => Procedure): Procedure {
     const procedure = new procedureType();
-    procedure.parameters = json.parameters.map((param: any) => ({
-      key: param.key,
-      label: param.label,
-      parameter: convertParameterFromJSON(param.parameter),
-    }));
+    procedure.parameters = Object.entries(json).map(
+      ([key, value]: [string, any]) => ({
+        key,
+        label: key.charAt(0).toUpperCase() + key.slice(1),
+        parameter: BaseParameter.fromJSON({
+          type: typeof value === "string" ? "select" : "number",
+          value,
+        }),
+      })
+    );
     return procedure;
   }
 }
@@ -193,45 +231,23 @@ export class VisualScanProcedure extends BaseProcedure {
   }
 }
 
-function convertParameterFromJSON(json: any): Parameter {
-  switch (json.type) {
-    case "select":
-      if (json.options.includes("Numbers")) {
-        return StimuliTypeParameter.fromJSON(json);
-      } else if (json.options.includes("Small")) {
-        return StimuliSizeParameter.fromJSON(json);
-      }
-      return json; // fallback if necessary
-    case "number":
-      if (json.options) {
-        return ArrayCharCountParameter.fromJSON(json);
-      } else {
-        return NumParameter.fromJSON(json);
-      }
-    default:
-      throw new Error(`Unknown parameter type: ${json.type}`);
-  }
-}
-
 export interface TrainingResult {
   date: Date;
   duration: number;
-  paitientId: string;
+  patientId: string;
   doctorId: string;
-
   procedureParameters: Procedure;
   procedureResults: any;
-
   validateParameters(data: any): boolean;
-  toJSON(): string;
+  toJSON(): any;
+  getMetadata(): any;
 }
 
 abstract class BaseTrainingResult implements TrainingResult {
   date: Date;
   duration: number;
-  paitientId: string;
+  patientId: string;
   doctorId: string;
-
   procedureParameters: Procedure;
   procedureResults: any;
 
@@ -239,13 +255,13 @@ abstract class BaseTrainingResult implements TrainingResult {
     procedureType: new () => Procedure,
     date: Date,
     duration: number,
-    paitientId: string,
+    patientId: string,
     doctorId: string
   ) {
     this.procedureParameters = new procedureType();
     this.date = date;
     this.duration = duration;
-    this.paitientId = paitientId;
+    this.patientId = patientId;
     this.doctorId = doctorId;
   }
 
@@ -253,24 +269,29 @@ abstract class BaseTrainingResult implements TrainingResult {
     return this.procedureParameters.validateParameters(data);
   }
 
-  toJSON(): string {
-    const data = {
-      result: {
-        date: this.date,
-        duration: this.duration,
-        paitientId: this.paitientId,
-        doctorId: this.doctorId,
-        procedureParameters: this.procedureParameters.toJSON(),
-        procedureResults: this.procedureResults,
-      },
+  toJSON(): any {
+    return {
+      procedureName: this.procedureParameters.name,
+      date: this.date,
+      duration: this.duration,
+      patientId: this.patientId,
+      doctorId: this.doctorId,
+      result: this.procedureResults,
+      procedureParameters: this.procedureParameters.toJSON(),
     };
-    return JSON.stringify(data);
+  }
+
+  getMetadata(): any {
+    return {
+      procedureName: this.procedureParameters.name,
+      parameters: this.procedureParameters.getMetadata(),
+    };
   }
 
   static createInstance(
     date: Date,
     duration: number,
-    paitientId: string,
+    patientId: string,
     doctorId: string,
     procedureParameters: Procedure,
     procedureResults: any
@@ -282,92 +303,121 @@ abstract class BaseTrainingResult implements TrainingResult {
     json: any,
     trainingResultType: typeof BaseTrainingResult
   ): TrainingResult {
-    const resultData = json?.result;
-    if (!resultData) {
-      throw new Error("Invalid JSON structure: 'result' field is missing.");
-    }
-    const parsedProcedureParameters = JSON.parse(
-      resultData.procedureParameters
-    );
     const procedureParameters = BaseProcedure.fromJSON(
-      parsedProcedureParameters,
-      TachistoscopeProcedure
+      json.procedureParameters,
+      TachistoscopeProcedure // Replace this with a dynamic way to choose the right procedure type
     );
     return trainingResultType.createInstance(
-      new Date(resultData.date),
-      resultData.duration,
-      resultData.paitientId,
-      resultData.doctorId,
+      new Date(json.date),
+      json.duration,
+      json.patientId,
+      json.doctorId,
       procedureParameters,
-      resultData.procedureResults
+      json.result
     );
   }
 }
 
 export class TachistoscopeTrainingResult extends BaseTrainingResult {
-  accurecy: number;
+  accuracy: number;
   trialCount: number;
-  procedureName = "Tachistoscope";
 
   constructor(
     date: Date,
     duration: number,
-    paitientId: string,
+    patientId: string,
     doctorId: string,
-    accurecy: number,
+    accuracy: number,
     trialCount: number
   ) {
-    super(TachistoscopeProcedure, date, duration, paitientId, doctorId);
-    this.accurecy = accurecy;
+    super(TachistoscopeProcedure, date, duration, patientId, doctorId);
+    this.accuracy = accuracy;
     this.trialCount = trialCount;
-  }
-
-  toJSON(): string {
-    const baseData = JSON.parse(super.toJSON());
-    baseData.result.parameter = this.procedureParameters.toJSON();
-    baseData.result.accurecy = this.accurecy;
-    baseData.result.trialCount = this.trialCount;
-    baseData.result.procedureName = this.procedureName;
-    return JSON.stringify(baseData);
+    this.procedureResults = { accuracy, trialCount };
   }
 
   static createInstance(
     date: Date,
     duration: number,
-    paitientId: string,
+    patientId: string,
     doctorId: string,
     procedureParameters: Procedure,
     procedureResults: any
   ): TachistoscopeTrainingResult {
-    const resultData = procedureResults.result;
-    if (!resultData) {
-      throw new Error("Invalid JSON structure: 'result' field is missing.");
-    }
     return new TachistoscopeTrainingResult(
       date,
       duration,
-      paitientId,
+      patientId,
       doctorId,
-      resultData.accurecy,
-      resultData.trialCount
+      procedureResults.accuracy,
+      procedureResults.trialCount
     );
   }
 
   static fromJSON(json: any): TachistoscopeTrainingResult {
-    const resultData = json?.result;
-    if (!resultData) {
-      throw new Error("Invalid JSON structure: 'result' field is missing.");
-    }
-    const parsedProcedureParameters = JSON.parse(
-      resultData.procedureParameters
+    const procedureParameters = BaseProcedure.fromJSON(
+      json.procedureParameters,
+      TachistoscopeProcedure
     );
     return new TachistoscopeTrainingResult(
-      new Date(resultData.date),
-      resultData.duration,
-      resultData.paitientId,
-      resultData.doctorId,
-      resultData.accurecy,
-      resultData.trialCount
+      new Date(json.date),
+      json.duration,
+      json.patientId,
+      json.doctorId,
+      json.result.accuracy,
+      json.result.trialCount
+    );
+  }
+}
+
+export class VisualSpanTrainingResult extends BaseTrainingResult {
+  accuracy: number;
+  trialCount: number;
+
+  constructor(
+    date: Date,
+    duration: number,
+    patientId: string,
+    doctorId: string,
+    accuracy: number,
+    trialCount: number
+  ) {
+    super(VisualSpanProcedure, date, duration, patientId, doctorId);
+    this.accuracy = accuracy;
+    this.trialCount = trialCount;
+    this.procedureResults = { accuracy, trialCount };
+  }
+
+  static createInstance(
+    date: Date,
+    duration: number,
+    patientId: string,
+    doctorId: string,
+    procedureParameters: Procedure,
+    procedureResults: any
+  ): VisualSpanTrainingResult {
+    return new VisualSpanTrainingResult(
+      date,
+      duration,
+      patientId,
+      doctorId,
+      procedureResults.accuracy,
+      procedureResults.trialCount
+    );
+  }
+
+  static fromJSON(json: any): VisualSpanTrainingResult {
+    const procedureParameters = BaseProcedure.fromJSON(
+      json.procedureParameters,
+      VisualSpanProcedure
+    );
+    return new VisualSpanTrainingResult(
+      new Date(json.date),
+      json.duration,
+      json.patientId,
+      json.doctorId,
+      json.result.accuracy,
+      json.result.trialCount
     );
   }
 }

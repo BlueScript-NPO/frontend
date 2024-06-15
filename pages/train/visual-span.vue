@@ -107,9 +107,7 @@ const startTraining = async () => {
   }
 
   userInstruction.value = "";
-
   currentTrialCount.value += 1;
-
   pauseTimer.value = false;
 
   await displayReadyMessage();

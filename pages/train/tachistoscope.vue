@@ -110,7 +110,7 @@ const startTraining = async () => {
   }
 
   currentTrialCount.value += 1;
-
+  userInstruction.value = "";
   pauseTimer.value = false;
 
   displayReadyMessage();
@@ -161,10 +161,9 @@ const saveTrainingResults = () => {
     currentTrialCount.value
   );
 
-  const resultJson = result.toJSON();
+  const resultJson = JSON.stringify(result.toJSON());
   console.log(resultJson); // Replace with actual save logic
 
-  // Do not stringify resultJson again as it is already a JSON string
   router.push({
     name: "result",
     query: { data: encodeURIComponent(resultJson) },

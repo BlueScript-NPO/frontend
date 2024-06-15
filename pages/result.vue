@@ -16,23 +16,29 @@ const parseRouteData = () => {
     let data = route.query.data
       ? decodeURIComponent(route.query.data as string)
       : null;
-
-    console.log("Data:", data);
-
     data = data ? JSON.parse(data) : null;
-
-    console.log("Parsed Data:", data);
 
     if (data) {
       const result = TachistoscopeTrainingResult.fromJSON(data);
-      console.log("Training data:", result);
       trainingData.value = result;
       processingData.value = false;
-    } else {
-      console.error("No training data found in route query.");
+
+      console.log(trainingData);
+
+      const minifiedJSON = JSON.stringify(result.toJSON());
+      console.log("Minified JSON:", minifiedJSON);
+
+      // Save JSON file
+      const blob = new Blob([minifiedJSON], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "result.json";
+      link.click();
+      URL.revokeObjectURL(url);
     }
   } catch (error) {
-    console.error("Error parsing JSON:", error);
+    console.error("Error parsing route data:", error);
   }
 };
 
@@ -53,7 +59,7 @@ onMounted(() => {
         Training Results
 
         <UBadge color="white" variant="solid">
-          {{ trainingData.procedureName }}
+          {{ trainingData.procedureParameters.name }}
         </UBadge>
       </h2>
     </template>
@@ -62,10 +68,10 @@ onMounted(() => {
       <USkeleton class="h-6 w-full" />
     </div>
     <h3 class="h-10 w-full text-md font-semibold" v-else>
-      Accuracy: {{ trainingData.accurecy }}%
+      Accuracy: {{ trainingData.accuracy }}%
     </h3>
 
-    <UMeter size="md" :value="trainingData.accurecy" class="pb-4" />
+    <UMeter size="md" :value="trainingData.accuracy" class="pb-4" />
 
     <div v-if="processingData" class="h-8 w-full">
       <USkeleton class="h-6 w-full" />
