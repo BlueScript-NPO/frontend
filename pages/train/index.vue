@@ -1,73 +1,64 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
-import {
-  TachistoscopeProcedure,
-  VisualSpanProcedure,
-  VisualScanProcedure,
-} from "~/types/types";
-import type { Parameter } from "~/types/types";
+import { TachistoscopeProcedure, VisualSpanProcedure } from "~/types/procedure";
+import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
 import type { FormError, FormErrorEvent } from "#ui/types";
 
+// Initialize procedures
 const trainingProcedures = [
   new TachistoscopeProcedure(),
   new VisualSpanProcedure(),
-  new VisualScanProcedure(),
 ];
 
+// Track selected procedure name
 const selectedProcedureName = ref(trainingProcedures[0].name);
-const selectedTrainingProcedure = computed(
-  () =>
-    trainingProcedures.find(
-      (procedure) => procedure.name === selectedProcedureName.value
-    ) || null
+
+// Compute selected training procedure
+const selectedTrainingProcedure = computed(() =>
+  trainingProcedures.find(
+    (procedure) => procedure.name === selectedProcedureName.value
+  )
 );
 
+// Validate form data
 const validateForm = (state: any): FormError[] => {
   const errors: FormError[] = [];
-  state.parameters.forEach(
-    ({ label, parameter }: { label: string; parameter: any }) => {
-      if (parameter.type === "select" && !parameter.value) {
-        errors.push({ path: label, message: "Required" });
+  state.parameters.forEach((parameter: any) => {
+    if (parameter instanceof Parameter) {
+      if (parameter instanceof SelectParameter && !parameter.selected) {
+        errors.push({ path: parameter.displayName, message: "Required" });
       }
-      if (parameter.type === "number") {
+      if (parameter instanceof NumParameter) {
         if (parameter.value == null) {
-          errors.push({ path: label, message: "Required" });
+          errors.push({ path: parameter.displayName, message: "Required" });
         }
-        if (hasRange(parameter) && parameter.value < parameter.min) {
+        if (parameter.min !== undefined && parameter.value < parameter.min) {
           errors.push({
-            path: label,
+            path: parameter.displayName,
             message: `Value must be at least ${parameter.min}`,
           });
         }
-        if (hasRange(parameter) && parameter.value > parameter.max) {
+        if (parameter.max !== undefined && parameter.value > parameter.max) {
           errors.push({
-            path: label,
+            path: parameter.displayName,
             message: `Value must be at most ${parameter.max}`,
           });
         }
       }
     }
-  );
+  });
   return errors;
 };
 
+// Handle form submission
 const handleFormSubmit = async () => {
-  const formData = selectedTrainingProcedure.value?.parameters.reduce(
-    (acc, { key, parameter }) => {
-      acc[key] = parameter.value;
-      return acc;
-    },
-    {} as Record<string, any>
-  );
-
-  if (formData) {
-    console.log("Starting procedure, " + selectedTrainingProcedure.value?.name);
-
-    const jsonString = JSON.stringify(formData);
-    const routeName =
-      selectedTrainingProcedure.value?.name.toLowerCase().replace(/ /g, "-") ||
-      "train";
+  if (selectedTrainingProcedure.value) {
+    const jsonString = JSON.stringify(selectedTrainingProcedure.value.toJson());
+    console.log("Starting training with data:", jsonString);
+    const routeName = selectedTrainingProcedure.value.name
+      .toLowerCase()
+      .replace(/ /g, "-");
     router.push({
       name: `train-${routeName}`,
       query: { data: encodeURIComponent(jsonString) },
@@ -75,23 +66,12 @@ const handleFormSubmit = async () => {
   }
 };
 
+// Handle form errors
 const handleFormError = async (event: FormErrorEvent) => {
   const element = document.getElementById(event.errors[0].id);
   element?.focus();
   element?.scrollIntoView({ behavior: "smooth", block: "center" });
 };
-
-const hasOptions = (
-  param: Parameter
-): param is Parameter & { options: string[] } => "options" in param;
-
-const hasRange = (
-  param: Parameter
-): param is Parameter & { min: number; max: number } =>
-  "min" in param && "max" in param;
-
-const hasStep = (param: Parameter): param is Parameter & { step: number } =>
-  "step" in param;
 
 const router = useRouter();
 </script>
@@ -112,7 +92,7 @@ const router = useRouter();
     </template>
 
     <UForm
-      v-if="selectedTrainingProcedure"
+      v-if="selectedTrainingProcedure && selectedTrainingProcedure"
       :validate="validateForm"
       :state="selectedTrainingProcedure"
       class="space-y-4"
@@ -120,21 +100,24 @@ const router = useRouter();
       @error="handleFormError"
     >
       <div
-        v-for="{ label, parameter } in selectedTrainingProcedure.parameters"
-        :key="label"
+        v-for="parameter in selectedTrainingProcedure.parameters"
+        :key="parameter.displayName"
       >
-        <UFormGroup :label="label" :name="label">
+        <UFormGroup
+          :label="parameter.displayName"
+          :name="parameter.displayName"
+        >
           <UInput
-            v-if="parameter.type === 'number'"
+            v-if="parameter instanceof NumParameter"
             v-model="parameter.value"
             type="number"
-            :min="hasRange(parameter) ? parameter.min : undefined"
-            :max="hasRange(parameter) ? parameter.max : undefined"
-            :step="hasStep(parameter) ? parameter.step : 0.1"
+            :min="parameter.min"
+            :max="parameter.max"
+            :step="parameter.step"
           />
           <USelect
-            v-else-if="parameter.type === 'select' && hasOptions(parameter)"
-            v-model="parameter.value"
+            v-else-if="parameter instanceof SelectParameter"
+            v-model="parameter.selected"
             :options="parameter.options"
           />
         </UFormGroup>

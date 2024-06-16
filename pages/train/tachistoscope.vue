@@ -1,19 +1,16 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import {
-  TachistoscopeProcedure,
-  TachistoscopeTrainingResult,
-} from "~/types/types";
+import { jsonToProcedure, TachistoscopeProcedure } from "~/types/procedure";
+import { stimuliCharactorSets } from "~/types/util";
 
 // Vue Router
 const route = useRoute();
 const router = useRouter();
 
 // Ref Variables
-const procedure = new TachistoscopeProcedure();
+const procedure = ref<TachistoscopeProcedure | null>(null);
 const trainingData = ref<Record<string, any>>({});
-const isTrainingDataValid = ref(true);
 const totalTrainingTime = ref(0);
 const pauseTimer = ref(true);
 const characterPool = ref("");
@@ -29,14 +26,6 @@ const isUsingKoreanChars = ref(false);
 const totalElapsedTime = ref(0);
 const currentTrialCount = ref(0);
 const trialResults = ref<Record<number, boolean>>({});
-
-// Character Sets
-const characterSets: Record<string, string> = {
-  Numbers: "0123456789",
-  Alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  "Korean Alphabet": "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ",
-  "Codes (Alphanumeric)": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-};
 
 // Computed Property for Accuracy
 const trainingAccuracy = computed(() => {
@@ -59,24 +48,16 @@ const parseRouteData = () => {
       ? JSON.parse(decodeURIComponent(route.query.data as string))
       : null;
     if (data) {
-      const procedure = new TachistoscopeProcedure();
-      isTrainingDataValid.value = procedure.validateParameters(data);
+      procedure.value = jsonToProcedure(data);
 
-      if (isTrainingDataValid.value) {
-        trainingData.value = data;
-        totalTrainingTime.value = data.trainingTime; // totalTrainingTime is already in seconds
-        stimulusPresentationTime.value = data.presentationTime * 1000; // convert to milliseconds
-        numberOfStimuli.value = data.stimuliLength;
-        stimulusType.value = data.stimuliType;
-        characterPool.value = characterSets[stimulusType.value] || "";
+      trainingData.value = data.parameters;
+      totalTrainingTime.value = data.parameters.duration; // totalTrainingTime is already in seconds
+      stimulusPresentationTime.value = data.parameters.presentationTime * 1000; // convert to milliseconds
+      numberOfStimuli.value = data.parameters.stimuliLength;
+      stimulusType.value = data.parameters.stimuliType;
+      characterPool.value = stimuliCharactorSets[stimulusType.value] || "";
 
-        isUsingKoreanChars.value = [
-          "Korean Alphabet",
-          "Codes (Korean)",
-        ].includes(stimulusType.value);
-      } else {
-        router.push("/train");
-      }
+      isUsingKoreanChars.value = ["Korean"].includes(stimulusType.value);
     } else {
       router.push("/train");
     }
@@ -153,17 +134,15 @@ const evaluateUserInput = async (input: string) => {
 
 // Function: Save Training Result
 const saveTrainingResults = () => {
-  const result = new TachistoscopeTrainingResult(
-    new Date(),
-    totalElapsedTime.value,
-    "0",
-    "0",
-    trainingAccuracy.value,
-    currentTrialCount.value,
-    procedure
-  );
+  const result = {
+    date: new Date(),
+    elapsedTime: totalElapsedTime.value,
+    trainingAccuracy: trainingAccuracy.value,
+    trialCount: currentTrialCount.value,
+    procedure: procedure.value ? procedure.value.toJson() : null,
+  };
 
-  const resultJson = JSON.stringify(result.toJSON());
+  const resultJson = JSON.stringify(result);
   console.log(resultJson); // Replace with actual save logic
 
   router.push({

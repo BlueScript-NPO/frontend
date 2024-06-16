@@ -29,13 +29,13 @@ const parseRouteData = () => {
       console.log("Minified JSON:", minifiedJSON);
 
       // Save JSON file
-      const blob = new Blob([minifiedJSON], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "result.json";
-      link.click();
-      URL.revokeObjectURL(url);
+      // const blob = new Blob([minifiedJSON], { type: "application/json" });
+      // const url = URL.createObjectURL(blob);
+      // const link = document.createElement("a");
+      // link.href = url;
+      // link.download = "result.json";
+      // link.click();
+      // URL.revokeObjectURL(url);
     }
   } catch (error) {
     console.error("Error parsing route data:", error);

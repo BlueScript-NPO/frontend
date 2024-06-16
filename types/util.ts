@@ -1,10 +1,9 @@
-// enums
-export enum stimuliCharactorSets {
-  Numbers = "0123456789",
-  Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  Alphanumeric = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-  Korean = "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ",
-}
+export const stimuliCharactorSets: Record<string, string> = {
+  Numbers: "0123456789",
+  Alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  Korean: "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ",
+  Alphanumeric: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+};
 
 // utility functions
 
