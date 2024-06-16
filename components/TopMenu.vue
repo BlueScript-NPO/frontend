@@ -45,7 +45,9 @@ const items = [
 
 <template>
   <UHeader :links="links">
-    <template #logo> Logo </template>
+    <template #logo>
+      <img src="~/assets/logo.png" alt="Logo" class="h-8" />
+    </template>
 
     <template #right>
       <UColorModeButton />
