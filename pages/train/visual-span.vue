@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { VisualSpanProcedure, VisualSpanTrainingResult } from "~/types/types";
+import { jsonToProcedure, VisualSpanProcedure } from "~/types/procedure";
+import { stimuliCharactorSets } from "~/types/util";
 
 const route = useRoute();
 const router = useRouter();
 
-const procedure = new VisualSpanProcedure();
-const trainingData = ref<Record<string, any>>({});
+const procedure = ref<VisualSpanProcedure | null>(null);
 const totalTrainingTime = ref(0);
 const pauseTimer = ref(true);
 const characterPool = ref("");
 const numberOfStimuli = ref(0);
 const currentTrainingStep = ref(0);
 const generatedPrompt = ref("");
-const shwonPromptChar = ref("");
+const shownPromptChar = ref("");
 const distractionTime = ref(0);
 const userInstruction = ref("");
 const mainText = ref("");
@@ -25,13 +25,7 @@ const totalElapsedTime = ref(0);
 const currentTrialCount = ref(0);
 const trialResults = ref<Record<number, boolean>>({});
 
-const characterSets: Record<string, string> = {
-  Numbers: "0123456789",
-  Alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  "Korean Alphabet": "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ",
-  "Codes (Alphanumeric)": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-};
-
+// Computed Property for Accuracy
 const trainingAccuracy = computed(() => {
   const correctResponses = Object.values(trialResults.value).filter(
     Boolean
@@ -41,23 +35,26 @@ const trainingAccuracy = computed(() => {
   );
 });
 
+// Utility Function: Wait for specified milliseconds
 const waitForMilliseconds = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
+// Function: Parse Data from Route Query
 const parseRouteData = () => {
   try {
     const data = route.query.data
       ? JSON.parse(decodeURIComponent(route.query.data as string))
       : null;
     if (data) {
-      trainingData.value = data;
-      totalTrainingTime.value = data.trainingTime;
-      numberOfStimuli.value = data.stimuliLength;
-      stimulusType.value = data.stimuliType;
-      characterPool.value = characterSets[stimulusType.value] || "";
-      distractionTime.value = data.delayTime * 1000;
+      procedure.value = jsonToProcedure(data) as VisualSpanProcedure;
 
-      isUsingKoreanChars.value = ["Korean Alphabet", "Codes (Korean)"].includes(
+      totalTrainingTime.value = data.parameters.duration; // totalTrainingTime is already in seconds
+      distractionTime.value = data.parameters.delayTime * 1000; // convert to milliseconds
+      numberOfStimuli.value = data.parameters.stimuliLength;
+      stimulusType.value = data.parameters.stimuliType;
+      characterPool.value = stimuliCharactorSets[stimulusType.value] || "";
+
+      isUsingKoreanChars.value = ["Korean Alphabet"].includes(
         stimulusType.value
       );
     } else {
@@ -69,6 +66,7 @@ const parseRouteData = () => {
   }
 };
 
+// Function: Generate Prompt
 const generateStimulusPrompt = () => {
   generatedPrompt.value = Array.from({ length: numberOfStimuli.value }, () =>
     characterPool.value.charAt(
@@ -78,12 +76,14 @@ const generateStimulusPrompt = () => {
   currentTrainingStep.value = 2;
 };
 
+// Function: Display Ready Message
 const displayReadyMessage = () => {
   mainText.value = "Get Ready!";
   subText.value = `Trial #${currentTrialCount.value} | Elapsed Time: ${totalElapsedTime.value}`;
   currentTrainingStep.value = 1;
 };
 
+// Function: Training Process
 const startTraining = async () => {
   if (totalElapsedTime.value >= totalTrainingTime.value) {
     saveTrainingResults();
@@ -94,16 +94,16 @@ const startTraining = async () => {
   currentTrialCount.value += 1;
   pauseTimer.value = false;
 
-  await displayReadyMessage();
+  displayReadyMessage();
   await waitForMilliseconds(1500);
   currentTrainingStep.value = 0;
   await waitForMilliseconds(1000);
   generateStimulusPrompt();
 
   for (let i = 0; i < numberOfStimuli.value; i++) {
-    shwonPromptChar.value = generatedPrompt.value[i];
+    shownPromptChar.value = generatedPrompt.value[i];
     await waitForMilliseconds(500);
-    shwonPromptChar.value = "";
+    shownPromptChar.value = "";
     await waitForMilliseconds(700);
   }
 
@@ -117,6 +117,7 @@ const startTraining = async () => {
   currentTrainingStep.value = 4;
 };
 
+// Function: Evaluate User Input
 const evaluateUserInput = async (input: string) => {
   console.log("User input:", input);
   currentTrainingStep.value = 5;
@@ -142,19 +143,20 @@ const evaluateUserInput = async (input: string) => {
   window.addEventListener("keydown", handleKeydown);
 };
 
+// Function: Save Training Result
 const saveTrainingResults = () => {
-  const result = new VisualSpanTrainingResult(
-    new Date(),
-    totalElapsedTime.value,
-    "0",
-    "0",
-    trainingAccuracy.value,
-    currentTrialCount.value,
-    procedure
-  );
+  const result = {
+    date: new Date(),
+    elapsedTime: totalElapsedTime.value,
+    trainingAccuracy: trainingAccuracy.value,
+    trialCount: currentTrialCount.value,
+    procedure: procedure.value ? procedure.value.toJson() : null,
+  };
 
-  const resultJson = JSON.stringify(result.toJSON());
-  console.log(resultJson);
+  const resultJson = JSON.stringify(result);
+  console.log(resultJson); // Replace with actual save logic
+
+  console.log("Training data:", result);
 
   router.push({
     name: "result",
@@ -162,6 +164,7 @@ const saveTrainingResults = () => {
   });
 };
 
+// Lifecycle Hook: On Component Mounted
 onMounted(() => {
   parseRouteData();
   startTraining();
@@ -170,7 +173,7 @@ onMounted(() => {
 
 <template>
   <Head>
-    <Title>Training - Tachistoscope</Title>
+    <Title>Training - Visual Span</Title>
   </Head>
 
   <TrainingBase
@@ -187,7 +190,7 @@ onMounted(() => {
       />
       <CenterPrompt
         v-if="currentTrainingStep === 2"
-        :prompt="shwonPromptChar"
+        :prompt="shownPromptChar"
       />
       <BouncingChars v-if="currentTrainingStep === 3" :char-count="5" />
       <UserInputHandler
@@ -202,3 +205,7 @@ onMounted(() => {
     </div>
   </TrainingBase>
 </template>
+
+<style scoped>
+/* Add any component-specific styles here */
+</style>

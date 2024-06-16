@@ -10,7 +10,6 @@ const router = useRouter();
 
 // Ref Variables
 const procedure = ref<TachistoscopeProcedure | null>(null);
-const trainingData = ref<Record<string, any>>({});
 const totalTrainingTime = ref(0);
 const pauseTimer = ref(true);
 const characterPool = ref("");
@@ -48,9 +47,8 @@ const parseRouteData = () => {
       ? JSON.parse(decodeURIComponent(route.query.data as string))
       : null;
     if (data) {
-      procedure.value = jsonToProcedure(data);
+      procedure.value = jsonToProcedure(data) as TachistoscopeProcedure;
 
-      trainingData.value = data.parameters;
       totalTrainingTime.value = data.parameters.duration; // totalTrainingTime is already in seconds
       stimulusPresentationTime.value = data.parameters.presentationTime * 1000; // convert to milliseconds
       numberOfStimuli.value = data.parameters.stimuliLength;
@@ -144,6 +142,8 @@ const saveTrainingResults = () => {
 
   const resultJson = JSON.stringify(result);
   console.log(resultJson); // Replace with actual save logic
+
+  console.log("Training data:", result);
 
   router.push({
     name: "result",

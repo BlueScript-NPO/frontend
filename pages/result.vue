@@ -23,10 +23,7 @@ const parseRouteData = () => {
       trainingData.value = result;
       processingData.value = false;
 
-      console.log(trainingData);
-
       const minifiedJSON = JSON.stringify(result.toJSON());
-      console.log("Minified JSON:", minifiedJSON);
 
       // Save JSON file
       // const blob = new Blob([minifiedJSON], { type: "application/json" });
