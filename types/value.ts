@@ -34,7 +34,7 @@ export class ElepsedTime extends Value {
   value: number;
 
   constructor(value: number) {
-    super("Elepsed Time", "elepsedTime", "Time spent on training");
+    super("Elepsed Time", "elepsedTime", "Actual time spent on training");
     this.value = value;
   }
 

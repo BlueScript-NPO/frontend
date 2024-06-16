@@ -1,15 +1,31 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { TachistoscopeTrainingResult } from "~/types/types";
+import {
+  jsonToTrainingResult,
+  TrainingResult,
+  TachistoscopeTrainingResult,
+} from "~/types/result";
 
 // Vue Router
 const route = useRoute();
 const router = useRouter();
 
 // Ref Variables
-const trainingData = ref<Record<string, any>>({});
+const trainingData = ref<TrainingResult | null>(null);
 const processingData = ref(true);
+
+// Compute the accordion items
+const accordionItems = computed(() => {
+  if (!trainingData.value) return [];
+
+  return trainingData.value.procedure.parameters.map((param) => ({
+    label: param.displayName,
+    description: param.getValue().toString(),
+    icon: "i-heroicons-light-bulb",
+    defaultOpen: false,
+  }));
+});
 
 const parseRouteData = () => {
   try {
@@ -19,20 +35,9 @@ const parseRouteData = () => {
     data = data ? JSON.parse(data) : null;
 
     if (data) {
-      const result = TachistoscopeTrainingResult.fromJSON(data);
+      const result = jsonToTrainingResult(data);
       trainingData.value = result;
       processingData.value = false;
-
-      const minifiedJSON = JSON.stringify(result.toJSON());
-
-      // Save JSON file
-      // const blob = new Blob([minifiedJSON], { type: "application/json" });
-      // const url = URL.createObjectURL(blob);
-      // const link = document.createElement("a");
-      // link.href = url;
-      // link.download = "result.json";
-      // link.click();
-      // URL.revokeObjectURL(url);
     }
   } catch (error) {
     console.error("Error parsing route data:", error);
@@ -54,9 +59,8 @@ onMounted(() => {
       <USkeleton class="h-8 w-full" v-if="processingData" />
       <h2 class="text-lg font-semibold h-8" v-else>
         Training Results
-
         <UBadge color="white" variant="solid">
-          {{ trainingData.procedureParameters.name }}
+          {{ trainingData?.procedure.name }}
         </UBadge>
       </h2>
     </template>
@@ -65,23 +69,97 @@ onMounted(() => {
       <USkeleton class="h-6 w-full" />
     </div>
     <h3 class="h-10 w-full text-md font-semibold" v-else>
-      Accuracy: {{ trainingData.accuracy }}%
+      <span>
+        Accuracy:
+        {{ (trainingData as TachistoscopeTrainingResult)?.accuracy.value }}%
+        <UTooltip
+          v-if="(trainingData as TachistoscopeTrainingResult)?.accuracy.description"
+        >
+          <template #text>
+            <span>{{
+              (trainingData as TachistoscopeTrainingResult)?.accuracy
+                .description
+            }}</span>
+          </template>
+          <UIcon name="i-heroicons-light-bulb" />
+        </UTooltip>
+      </span>
     </h3>
 
-    <UMeter size="md" :value="trainingData.accuracy" class="pb-4" />
+    <UMeter
+      size="md"
+      :value="(trainingData as TachistoscopeTrainingResult)?.accuracy.value"
+      class="pb-4"
+    />
 
     <div v-if="processingData" class="h-8 w-full">
       <USkeleton class="h-6 w-full" />
     </div>
     <h3 class="h-8 w-full text-md font-semibold" v-else>
-      Trials: {{ trainingData.trialCount }}
+      <span>
+        Trials:
+        {{ (trainingData as TachistoscopeTrainingResult)?.trialCount.value }}
+        <UTooltip
+          v-if="(trainingData as TachistoscopeTrainingResult)?.trialCount.description"
+        >
+          <template #text>
+            <span>{{
+              (trainingData as TachistoscopeTrainingResult)?.trialCount
+                .description
+            }}</span>
+          </template>
+          <UIcon name="i-heroicons-light-bulb" />
+        </UTooltip>
+      </span>
     </h3>
+
     <div v-if="processingData" class="h-8 w-full">
       <USkeleton class="h-6 w-full" />
     </div>
     <h3 class="h-8 w-full text-md font-semibold" v-else>
-      Time: {{ trainingData.duration }}s
+      <span>
+        Time:
+        {{ (trainingData as TachistoscopeTrainingResult)?.elepsedTime.value }}s
+        <UTooltip
+          v-if="(trainingData as TachistoscopeTrainingResult)?.elepsedTime.description"
+        >
+          <template #text>
+            <span>{{
+              (trainingData as TachistoscopeTrainingResult)?.elepsedTime
+                .description
+            }}</span>
+          </template>
+          <UIcon name="i-heroicons-light-bulb" />
+        </UTooltip>
+      </span>
     </h3>
+
+    <UAccordion
+      class="pt-4"
+      :items="[
+        {
+          label: 'Training Parameters',
+
+          icon: 'i-heroicons-wrench-screwdriver',
+          defaultOpen: false,
+        },
+      ]"
+      color="white"
+      variant="outline"
+    >
+      <template #item>
+        <div class="px-4">
+          <ul>
+            <li
+              v-for="param in trainingData?.procedure.parameters"
+              :key="param.jsonKey"
+            >
+              {{ param.displayName }}: {{ param.getValue() }}
+            </li>
+          </ul>
+        </div>
+      </template>
+    </UAccordion>
 
     <template #footer>
       <div class="flex justify-center space-x-4">
@@ -89,8 +167,15 @@ onMounted(() => {
       </div>
     </template>
   </UCard>
+
+  <!-- Accordion for training parameters -->
+  <div class="mt-8"></div>
 </template>
 
 <style scoped>
-/* Write */
+/* Write your styles here */
+</style>
+
+<style scoped>
+/* Write your styles here */
 </style>

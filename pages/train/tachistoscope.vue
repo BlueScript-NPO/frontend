@@ -3,13 +3,16 @@ import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { jsonToProcedure, TachistoscopeProcedure } from "~/types/procedure";
 import { stimuliCharactorSets } from "~/types/util";
+import { TachistoscopeTrainingResult } from "~/types/result";
 
 // Vue Router
 const route = useRoute();
 const router = useRouter();
 
 // Ref Variables
-const procedure = ref<TachistoscopeProcedure | null>(null);
+const trainingParameter = ref<TachistoscopeProcedure>(
+  new TachistoscopeProcedure()
+);
 const totalTrainingTime = ref(0);
 const pauseTimer = ref(true);
 const characterPool = ref("");
@@ -47,7 +50,7 @@ const parseRouteData = () => {
       ? JSON.parse(decodeURIComponent(route.query.data as string))
       : null;
     if (data) {
-      procedure.value = jsonToProcedure(data) as TachistoscopeProcedure;
+      trainingParameter.value = jsonToProcedure(data) as TachistoscopeProcedure;
 
       totalTrainingTime.value = data.parameters.duration; // totalTrainingTime is already in seconds
       stimulusPresentationTime.value = data.parameters.presentationTime * 1000; // convert to milliseconds
@@ -132,22 +135,22 @@ const evaluateUserInput = async (input: string) => {
 
 // Function: Save Training Result
 const saveTrainingResults = () => {
-  const result = {
-    date: new Date(),
-    elapsedTime: totalElapsedTime.value,
-    trainingAccuracy: trainingAccuracy.value,
-    trialCount: currentTrialCount.value,
-    procedure: procedure.value ? procedure.value.toJson() : null,
-  };
+  const result = new TachistoscopeTrainingResult(
+    trainingAccuracy.value,
+    totalElapsedTime.value,
+    currentTrialCount.value,
+    "DOCTOR",
+    "PATIENT",
+    "Example Note",
+    undefined,
+    trainingParameter.value
+  );
 
-  const resultJson = JSON.stringify(result);
-  console.log(resultJson); // Replace with actual save logic
-
-  console.log("Training data:", result);
-
+  const jsonString = JSON.stringify(result.toJson());
+  console.log("Training Result:", jsonString);
   router.push({
     name: "result",
-    query: { data: encodeURIComponent(resultJson) },
+    query: { data: encodeURIComponent(jsonString) },
   });
 };
 

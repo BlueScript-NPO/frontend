@@ -3,6 +3,7 @@ import {
   Procedure,
   TachistoscopeProcedure,
   VisualSpanProcedure,
+  jsonToProcedure,
 } from "./procedure";
 
 export abstract class TrainingResult {
@@ -36,7 +37,7 @@ export abstract class TrainingResult {
       patientID: this.patientID,
       date: this.date,
       notes: this.notes,
-      reult: valuesJson,
+      result: valuesJson,
       parameter: this.procedure.toJson(),
     };
   }
@@ -91,5 +92,33 @@ export class VisualSpanTrainingResult extends TrainingResult {
     this.values.push(this.trialCount);
     this.values.push(this.elepsedTime);
     this.values.push(this.accuracy);
+  }
+}
+
+export function jsonToTrainingResult(json: any): TrainingResult {
+  if (json.parameter.procedure === "Tachistoscope") {
+    return new TachistoscopeTrainingResult(
+      json.result.accuracy,
+      json.result.elepsedTime,
+      json.result.trialCount,
+      json.doctorID,
+      json.patientID,
+      json.notes,
+      json.date,
+      jsonToProcedure(json.parameter) as TachistoscopeProcedure
+    );
+  } else if (json.parameter.procedure === "Visual Span") {
+    return new VisualSpanTrainingResult(
+      json.result.accuracy,
+      json.result.elepsedTime,
+      json.result.trialCount,
+      json.doctorID,
+      json.patientID,
+      json.notes,
+      json.date,
+      jsonToProcedure(json.parameter) as VisualSpanProcedure
+    );
+  } else {
+    throw new Error("Invalid procedure type");
   }
 }

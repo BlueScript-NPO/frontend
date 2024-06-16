@@ -13,7 +13,7 @@ export abstract class Procedure {
   constructor(name: string, duration: number = 10) {
     this.name = name;
     this.duration = new NumParameter(
-      "Duration (s)",
+      "Duration (seconds)",
       "duration",
       duration,
       10,
@@ -59,7 +59,7 @@ export class TachistoscopeProcedure extends Procedure {
     this.stimuliType = new StimuliTypeParameter(stimuliType);
     this.stimuliLength = new StimuliLengthParameter(stimuliLength);
     this.presentationTime = new NumParameter(
-      "Presentation Time (s)",
+      "Presentation Time (seconds)",
       "presentationTime",
       presentationTime,
       0.05,
@@ -86,7 +86,7 @@ export class VisualSpanProcedure extends Procedure {
   ) {
     super("Visual Span", duration);
     this.delayTime = new NumParameter(
-      "delay Time (s)",
+      "Delay Time (seconds)",
       "delayTime",
       delayTime,
       0,

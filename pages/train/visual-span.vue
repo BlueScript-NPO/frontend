@@ -2,12 +2,13 @@
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { jsonToProcedure, VisualSpanProcedure } from "~/types/procedure";
+import { VisualSpanTrainingResult } from "~/types/result";
 import { stimuliCharactorSets } from "~/types/util";
 
 const route = useRoute();
 const router = useRouter();
 
-const procedure = ref<VisualSpanProcedure | null>(null);
+const trainingParameter = ref<VisualSpanProcedure>(new VisualSpanProcedure());
 const totalTrainingTime = ref(0);
 const pauseTimer = ref(true);
 const characterPool = ref("");
@@ -46,7 +47,7 @@ const parseRouteData = () => {
       ? JSON.parse(decodeURIComponent(route.query.data as string))
       : null;
     if (data) {
-      procedure.value = jsonToProcedure(data) as VisualSpanProcedure;
+      trainingParameter.value = jsonToProcedure(data) as VisualSpanProcedure;
 
       totalTrainingTime.value = data.parameters.duration; // totalTrainingTime is already in seconds
       distractionTime.value = data.parameters.delayTime * 1000; // convert to milliseconds
@@ -54,9 +55,7 @@ const parseRouteData = () => {
       stimulusType.value = data.parameters.stimuliType;
       characterPool.value = stimuliCharactorSets[stimulusType.value] || "";
 
-      isUsingKoreanChars.value = ["Korean Alphabet"].includes(
-        stimulusType.value
-      );
+      isUsingKoreanChars.value = ["Korean"].includes(stimulusType.value);
     } else {
       router.push("/train");
     }
@@ -145,22 +144,22 @@ const evaluateUserInput = async (input: string) => {
 
 // Function: Save Training Result
 const saveTrainingResults = () => {
-  const result = {
-    date: new Date(),
-    elapsedTime: totalElapsedTime.value,
-    trainingAccuracy: trainingAccuracy.value,
-    trialCount: currentTrialCount.value,
-    procedure: procedure.value ? procedure.value.toJson() : null,
-  };
+  const result = new VisualSpanTrainingResult(
+    trainingAccuracy.value,
+    totalElapsedTime.value,
+    currentTrialCount.value,
+    "DOCTOR",
+    "PATIENT",
+    "Example Note",
+    undefined,
+    trainingParameter.value
+  );
 
-  const resultJson = JSON.stringify(result);
-  console.log(resultJson); // Replace with actual save logic
-
-  console.log("Training data:", result);
-
+  const jsonString = JSON.stringify(result.toJson());
+  console.log("Training Result:", jsonString);
   router.push({
     name: "result",
-    query: { data: encodeURIComponent(resultJson) },
+    query: { data: encodeURIComponent(jsonString) },
   });
 };
 
