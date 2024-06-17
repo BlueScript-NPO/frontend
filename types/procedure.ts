@@ -80,7 +80,7 @@ export class VisualSpanProcedure extends Procedure {
 
   constructor(
     duration?: number,
-    delayTime: number = 1,
+    delayTime: number = 0,
     stimuliType?: string,
     stimuliLength: number = 1
   ) {

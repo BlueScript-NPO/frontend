@@ -81,24 +81,24 @@ const router = useRouter();
     <Title>Training</Title>
   </Head>
   <TopMenu />
-  <UCard class="mx-auto mt-8 max-w-md">
-    <template #header>
-      <h2 class="text-lg font-semibold pb-2">Configure Training</h2>
-      <USelect
-        v-model="selectedProcedureName"
-        :options="trainingProcedures.map((p) => p.name)"
-        label="Procedure"
-      />
-    </template>
+  <UForm
+    v-if="selectedTrainingProcedure && selectedTrainingProcedure"
+    :validate="validateForm"
+    :state="selectedTrainingProcedure"
+    class="space-y-4"
+    @submit="handleFormSubmit"
+    @error="handleFormError"
+  >
+    <UCard class="mx-auto mt-8 max-w-md">
+      <template #header>
+        <h2 class="text-lg font-semibold pb-2">Configure Training</h2>
+        <USelect
+          v-model="selectedProcedureName"
+          :options="trainingProcedures.map((p) => p.name)"
+          label="Procedure"
+        />
+      </template>
 
-    <UForm
-      v-if="selectedTrainingProcedure && selectedTrainingProcedure"
-      :validate="validateForm"
-      :state="selectedTrainingProcedure"
-      class="space-y-4"
-      @submit="handleFormSubmit"
-      @error="handleFormError"
-    >
       <div
         v-for="parameter in selectedTrainingProcedure.parameters"
         :key="parameter.displayName"
@@ -122,9 +122,12 @@ const router = useRouter();
           />
         </UFormGroup>
       </div>
-      <div class="flex justify-center">
-        <UButton type="submit">Start Training</UButton>
-      </div>
-    </UForm>
-  </UCard>
+
+      <template #footer>
+        <div class="flex justify-center space-x-4">
+          <UButton type="submit">Start Training</UButton>
+        </div>
+      </template>
+    </UCard>
+  </UForm>
 </template>

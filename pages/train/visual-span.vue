@@ -77,6 +77,7 @@ const generateStimulusPrompt = () => {
 
 // Function: Display Ready Message
 const displayReadyMessage = () => {
+  playSound("ready");
   mainText.value = "Get Ready!";
   subText.value = `Trial #${currentTrialCount.value} | Elapsed Time: ${totalElapsedTime.value}`;
   currentTrainingStep.value = 1;
@@ -118,15 +119,16 @@ const startTraining = async () => {
 
 // Function: Evaluate User Input
 const evaluateUserInput = async (input: string) => {
-  console.log("User input:", input);
   currentTrainingStep.value = 5;
 
   trialResults.value[currentTrialCount.value] = input === generatedPrompt.value;
-  userInstruction.value = trialResults.value[currentTrialCount.value]
-    ? "Correct!\n(Press Enter or space to continue)"
-    : "Incorrect!\n(Press Enter or space to continue)";
-
-  console.log("Current accuracy:", `${trainingAccuracy.value}%`);
+  if (trialResults.value[currentTrialCount.value]) {
+    playSound("correct");
+    userInstruction.value = "Correct!\n(Press Enter or space to continue)";
+  } else {
+    playSound("incorrect");
+    userInstruction.value = "Incorrect!\n(Press Enter or space to continue)";
+  }
 
   pauseTimer.value = true;
 
