@@ -1,22 +1,26 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { jsonToProcedure, VisualSpanProcedure } from "~/types/procedure";
-import { VisualSpanTrainingResult } from "~/types/result";
+import { jsonToProcedure, RapidVisualPerception } from "~/types/procedure";
 import { stimuliCharactorSets } from "~/types/util";
+import { RapidVisualPerceptionResult } from "~/types/result";
+import { playSound } from "~/utils/playSound";
 
+// Vue Router
 const route = useRoute();
 const router = useRouter();
 
-const trainingParameter = ref<VisualSpanProcedure>(new VisualSpanProcedure());
+// Ref Variables
+const trainingParameter = ref<RapidVisualPerception>(
+  new RapidVisualPerception()
+);
 const totalTrainingTime = ref(0);
 const pauseTimer = ref(true);
 const characterPool = ref("");
 const numberOfStimuli = ref(0);
+const stimulusPresentationTime = ref(0);
 const currentTrainingStep = ref(0);
 const generatedPrompt = ref("");
-const shownPromptChar = ref("");
-const distractionTime = ref(0);
 const userInstruction = ref("");
 const mainText = ref("");
 const subText = ref("");
@@ -47,10 +51,10 @@ const parseRouteData = () => {
       ? JSON.parse(decodeURIComponent(route.query.data as string))
       : null;
     if (data) {
-      trainingParameter.value = jsonToProcedure(data) as VisualSpanProcedure;
+      trainingParameter.value = jsonToProcedure(data) as RapidVisualPerception;
 
-      totalTrainingTime.value = data.parameters.duration; // totalTrainingTime is already in seconds
-      distractionTime.value = data.parameters.delayTime * 1000; // convert to milliseconds
+      totalTrainingTime.value = data.parameters.duration * 60; // totalTrainingTime is already in seconds
+      stimulusPresentationTime.value = data.parameters.presentationTime * 1000; // convert to milliseconds
       numberOfStimuli.value = data.parameters.stimuliLength;
       stimulusType.value = data.parameters.stimuliType;
       characterPool.value = stimuliCharactorSets[stimulusType.value] || "";
@@ -90,36 +94,24 @@ const startTraining = async () => {
     return;
   }
 
-  userInstruction.value = "";
   currentTrialCount.value += 1;
+  userInstruction.value = "";
   pauseTimer.value = false;
 
   displayReadyMessage();
   await waitForMilliseconds(1500);
   currentTrainingStep.value = 0;
-  await waitForMilliseconds(1000);
+  await waitForMilliseconds(1000); // Blank screen duration
   generateStimulusPrompt();
-
-  for (let i = 0; i < numberOfStimuli.value; i++) {
-    shownPromptChar.value = generatedPrompt.value[i];
-    await waitForMilliseconds(500);
-    shownPromptChar.value = "";
-    await waitForMilliseconds(700);
-  }
-
-  if (distractionTime.value > 0) {
-    currentTrainingStep.value = 3;
-    await waitForMilliseconds(distractionTime.value);
-  }
-
+  await waitForMilliseconds(stimulusPresentationTime.value);
   userInstruction.value =
     "Please type the characters you saw\n(Press Enter or space to submit)";
-  currentTrainingStep.value = 4;
+  currentTrainingStep.value = 3;
 };
 
 // Function: Evaluate User Input
 const evaluateUserInput = async (input: string) => {
-  currentTrainingStep.value = 5;
+  currentTrainingStep.value = 4;
 
   trialResults.value[currentTrialCount.value] = input === generatedPrompt.value;
   if (trialResults.value[currentTrialCount.value]) {
@@ -146,7 +138,7 @@ const evaluateUserInput = async (input: string) => {
 
 // Function: Save Training Result
 const saveTrainingResults = () => {
-  const result = new VisualSpanTrainingResult(
+  const result = new RapidVisualPerceptionResult(
     trainingAccuracy.value,
     totalElapsedTime.value,
     currentTrialCount.value,
@@ -174,7 +166,7 @@ onMounted(() => {
 
 <template>
   <Head>
-    <Title>Training - Visual Span</Title>
+    <Title>Training - Quick Visual Perception</Title>
   </Head>
 
   <TrainingBase
@@ -191,14 +183,13 @@ onMounted(() => {
       />
       <CenterPrompt
         v-if="currentTrainingStep === 2"
-        :prompt="shownPromptChar"
+        :prompt="generatedPrompt"
       />
-      <BouncingChars v-if="currentTrainingStep === 3" :char-count="5" />
       <UserInputHandler
-        v-if="currentTrainingStep >= 4"
+        v-if="currentTrainingStep >= 3"
         :numberOfStimuli="numberOfStimuli"
-        :inputEnabled="currentTrainingStep === 4"
-        :hidePromptText="currentTrainingStep !== 5"
+        :inputEnabled="currentTrainingStep === 3"
+        :hidePromptText="currentTrainingStep !== 4"
         :usingKoreanCharacters="isUsingKoreanChars"
         :stimulusPrompt="generatedPrompt"
         @evaluateInput="evaluateUserInput"

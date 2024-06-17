@@ -63,11 +63,6 @@ export class NumParameter extends Parameter {
     if (min !== undefined && value < min) {
       throw new Error("value cannot be less than min");
     }
-    if (step !== undefined && min !== undefined && max !== undefined) {
-      if ((value - min) % step !== 0) {
-        throw new Error("value must be in the step");
-      }
-    }
 
     super(displayName, jsonKey);
     this.value = value;
@@ -95,9 +90,9 @@ export class BoolParameter extends Parameter {
 }
 
 export class StimuliTypeParameter extends SelectParameter<string> {
-  constructor(selected?: string) {
+  constructor(selected: string = "Alphanumeric") {
     const stimuli: string[] = ["Numbers", "Alphabet", "Alphanumeric", "Korean"];
-    if (selected && !stimuli.includes(selected)) {
+    if (!stimuli.includes(selected)) {
       throw new Error("Invalid stimuli type");
     }
     super(
@@ -111,6 +106,6 @@ export class StimuliTypeParameter extends SelectParameter<string> {
 
 export class StimuliLengthParameter extends NumParameter {
   constructor(value: number = 1) {
-    super("Stimuli Length", "stimuliLength", value, 1, 6, 1);
+    super("Stimuli Length", "stimuliLength", value, 1, 10, 1);
   }
 }

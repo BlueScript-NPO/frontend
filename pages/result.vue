@@ -4,7 +4,7 @@ import { useRoute, useRouter } from "vue-router";
 import {
   jsonToTrainingResult,
   TrainingResult,
-  TachistoscopeTrainingResult,
+  RapidVisualPerceptionResult,
 } from "~/types/result";
 
 // Vue Router
@@ -71,13 +71,13 @@ onMounted(() => {
     <h3 class="h-10 w-full text-md font-semibold" v-else>
       <span>
         Accuracy:
-        {{ (trainingData as TachistoscopeTrainingResult)?.accuracy.value }}%
+        {{ (trainingData as RapidVisualPerceptionResult)?.accuracy.value }}%
         <UTooltip
-          v-if="(trainingData as TachistoscopeTrainingResult)?.accuracy.description"
+          v-if="(trainingData as RapidVisualPerceptionResult)?.accuracy.description"
         >
           <template #text>
             <span>{{
-              (trainingData as TachistoscopeTrainingResult)?.accuracy
+              (trainingData as RapidVisualPerceptionResult)?.accuracy
                 .description
             }}</span>
           </template>
@@ -88,7 +88,7 @@ onMounted(() => {
 
     <UMeter
       size="md"
-      :value="(trainingData as TachistoscopeTrainingResult)?.accuracy.value"
+      :value="(trainingData as RapidVisualPerceptionResult)?.accuracy.value"
       class="pb-4"
     />
 
@@ -98,13 +98,13 @@ onMounted(() => {
     <h3 class="h-8 w-full text-md font-semibold" v-else>
       <span>
         Trials:
-        {{ (trainingData as TachistoscopeTrainingResult)?.trialCount.value }}
+        {{ (trainingData as RapidVisualPerceptionResult)?.trialCount.value }}
         <UTooltip
-          v-if="(trainingData as TachistoscopeTrainingResult)?.trialCount.description"
+          v-if="(trainingData as RapidVisualPerceptionResult)?.trialCount.description"
         >
           <template #text>
             <span>{{
-              (trainingData as TachistoscopeTrainingResult)?.trialCount
+              (trainingData as RapidVisualPerceptionResult)?.trialCount
                 .description
             }}</span>
           </template>
@@ -119,13 +119,13 @@ onMounted(() => {
     <h3 class="h-8 w-full text-md font-semibold" v-else>
       <span>
         Time:
-        {{ (trainingData as TachistoscopeTrainingResult)?.elepsedTime.value }}s
+        {{ (trainingData as RapidVisualPerceptionResult)?.elepsedTime.value }}s
         <UTooltip
-          v-if="(trainingData as TachistoscopeTrainingResult)?.elepsedTime.description"
+          v-if="(trainingData as RapidVisualPerceptionResult)?.elepsedTime.description"
         >
           <template #text>
             <span>{{
-              (trainingData as TachistoscopeTrainingResult)?.elepsedTime
+              (trainingData as RapidVisualPerceptionResult)?.elepsedTime
                 .description
             }}</span>
           </template>

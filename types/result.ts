@@ -1,8 +1,8 @@
 import { Value, AccuracyValue, ElepsedTime, TrialCount } from "./value";
 import {
   Procedure,
-  TachistoscopeProcedure,
-  VisualSpanProcedure,
+  RapidVisualPerception,
+  SequentialVisualMemoryProcedure,
   jsonToProcedure,
 } from "./procedure";
 
@@ -43,7 +43,7 @@ export abstract class TrainingResult {
   }
 }
 
-export class TachistoscopeTrainingResult extends TrainingResult {
+export class RapidVisualPerceptionResult extends TrainingResult {
   accuracy: AccuracyValue;
   elepsedTime: ElepsedTime;
   trialCount: TrialCount;
@@ -56,7 +56,7 @@ export class TachistoscopeTrainingResult extends TrainingResult {
     patientID: string,
     notes: string = "",
     date: Date = new Date(),
-    parameter: TachistoscopeProcedure
+    parameter: RapidVisualPerception
   ) {
     super(doctorID, patientID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
@@ -69,7 +69,7 @@ export class TachistoscopeTrainingResult extends TrainingResult {
   }
 }
 
-export class VisualSpanTrainingResult extends TrainingResult {
+export class SequentialVisualMemoryResult extends TrainingResult {
   trialCount: TrialCount;
   elepsedTime: ElepsedTime;
   accuracy: AccuracyValue;
@@ -82,7 +82,7 @@ export class VisualSpanTrainingResult extends TrainingResult {
     patientID: string,
     notes: string,
     date: Date = new Date(),
-    parameter: VisualSpanProcedure
+    parameter: SequentialVisualMemoryProcedure
   ) {
     super(doctorID, patientID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
@@ -96,8 +96,8 @@ export class VisualSpanTrainingResult extends TrainingResult {
 }
 
 export function jsonToTrainingResult(json: any): TrainingResult {
-  if (json.parameter.procedure === "Tachistoscope") {
-    return new TachistoscopeTrainingResult(
+  if (json.parameter.procedure === "Quick Visual Perception") {
+    return new RapidVisualPerceptionResult(
       json.result.accuracy,
       json.result.elepsedTime,
       json.result.trialCount,
@@ -105,10 +105,10 @@ export function jsonToTrainingResult(json: any): TrainingResult {
       json.patientID,
       json.notes,
       json.date,
-      jsonToProcedure(json.parameter) as TachistoscopeProcedure
+      jsonToProcedure(json.parameter) as RapidVisualPerception
     );
-  } else if (json.parameter.procedure === "Visual Span") {
-    return new VisualSpanTrainingResult(
+  } else if (json.parameter.procedure === "Sequential Visual Memory") {
+    return new SequentialVisualMemoryResult(
       json.result.accuracy,
       json.result.elepsedTime,
       json.result.trialCount,
@@ -116,7 +116,7 @@ export function jsonToTrainingResult(json: any): TrainingResult {
       json.patientID,
       json.notes,
       json.date,
-      jsonToProcedure(json.parameter) as VisualSpanProcedure
+      jsonToProcedure(json.parameter) as SequentialVisualMemoryProcedure
     );
   } else {
     throw new Error("Invalid procedure type");

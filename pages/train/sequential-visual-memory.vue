@@ -1,26 +1,27 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { jsonToProcedure, TachistoscopeProcedure } from "~/types/procedure";
+import {
+  jsonToProcedure,
+  SequentialVisualMemoryProcedure,
+} from "~/types/procedure";
+import { SequentialVisualMemoryResult } from "~/types/result";
 import { stimuliCharactorSets } from "~/types/util";
-import { TachistoscopeTrainingResult } from "~/types/result";
-import { playSound } from "~/utils/playSound";
 
-// Vue Router
 const route = useRoute();
 const router = useRouter();
 
-// Ref Variables
-const trainingParameter = ref<TachistoscopeProcedure>(
-  new TachistoscopeProcedure()
+const trainingParameter = ref<SequentialVisualMemoryProcedure>(
+  new SequentialVisualMemoryProcedure()
 );
 const totalTrainingTime = ref(0);
 const pauseTimer = ref(true);
 const characterPool = ref("");
 const numberOfStimuli = ref(0);
-const stimulusPresentationTime = ref(0);
 const currentTrainingStep = ref(0);
 const generatedPrompt = ref("");
+const shownPromptChar = ref("");
+const distractionTime = ref(0);
 const userInstruction = ref("");
 const mainText = ref("");
 const subText = ref("");
@@ -51,10 +52,12 @@ const parseRouteData = () => {
       ? JSON.parse(decodeURIComponent(route.query.data as string))
       : null;
     if (data) {
-      trainingParameter.value = jsonToProcedure(data) as TachistoscopeProcedure;
+      trainingParameter.value = jsonToProcedure(
+        data
+      ) as SequentialVisualMemoryProcedure;
 
-      totalTrainingTime.value = data.parameters.duration; // totalTrainingTime is already in seconds
-      stimulusPresentationTime.value = data.parameters.presentationTime * 1000; // convert to milliseconds
+      totalTrainingTime.value = data.parameters.duration * 60; // totalTrainingTime is already in seconds
+      distractionTime.value = data.parameters.delayTime * 1000; // convert to milliseconds
       numberOfStimuli.value = data.parameters.stimuliLength;
       stimulusType.value = data.parameters.stimuliType;
       characterPool.value = stimuliCharactorSets[stimulusType.value] || "";
@@ -94,24 +97,36 @@ const startTraining = async () => {
     return;
   }
 
-  currentTrialCount.value += 1;
   userInstruction.value = "";
+  currentTrialCount.value += 1;
   pauseTimer.value = false;
 
   displayReadyMessage();
   await waitForMilliseconds(1500);
   currentTrainingStep.value = 0;
-  await waitForMilliseconds(1000); // Blank screen duration
+  await waitForMilliseconds(1000);
   generateStimulusPrompt();
-  await waitForMilliseconds(stimulusPresentationTime.value);
+
+  for (let i = 0; i < numberOfStimuli.value; i++) {
+    shownPromptChar.value = generatedPrompt.value[i];
+    await waitForMilliseconds(500);
+    shownPromptChar.value = "";
+    await waitForMilliseconds(700);
+  }
+
+  if (distractionTime.value > 0) {
+    currentTrainingStep.value = 3;
+    await waitForMilliseconds(distractionTime.value);
+  }
+
   userInstruction.value =
     "Please type the characters you saw\n(Press Enter or space to submit)";
-  currentTrainingStep.value = 3;
+  currentTrainingStep.value = 4;
 };
 
 // Function: Evaluate User Input
 const evaluateUserInput = async (input: string) => {
-  currentTrainingStep.value = 4;
+  currentTrainingStep.value = 5;
 
   trialResults.value[currentTrialCount.value] = input === generatedPrompt.value;
   if (trialResults.value[currentTrialCount.value]) {
@@ -138,7 +153,7 @@ const evaluateUserInput = async (input: string) => {
 
 // Function: Save Training Result
 const saveTrainingResults = () => {
-  const result = new TachistoscopeTrainingResult(
+  const result = new SequentialVisualMemoryResult(
     trainingAccuracy.value,
     totalElapsedTime.value,
     currentTrialCount.value,
@@ -166,7 +181,7 @@ onMounted(() => {
 
 <template>
   <Head>
-    <Title>Training - Tachistoscope</Title>
+    <Title>Training - Rapid Visual Perception</Title>
   </Head>
 
   <TrainingBase
@@ -183,13 +198,14 @@ onMounted(() => {
       />
       <CenterPrompt
         v-if="currentTrainingStep === 2"
-        :prompt="generatedPrompt"
+        :prompt="shownPromptChar"
       />
+      <BouncingChars v-if="currentTrainingStep === 3" :char-count="5" />
       <UserInputHandler
-        v-if="currentTrainingStep >= 3"
+        v-if="currentTrainingStep >= 4"
         :numberOfStimuli="numberOfStimuli"
-        :inputEnabled="currentTrainingStep === 3"
-        :hidePromptText="currentTrainingStep !== 4"
+        :inputEnabled="currentTrainingStep === 4"
+        :hidePromptText="currentTrainingStep !== 5"
         :usingKoreanCharacters="isUsingKoreanChars"
         :stimulusPrompt="generatedPrompt"
         @evaluateInput="evaluateUserInput"

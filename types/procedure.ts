@@ -10,15 +10,15 @@ export abstract class Procedure {
   duration: NumParameter;
   parameters: Parameter[] = [];
 
-  constructor(name: string, duration: number = 10) {
+  constructor(name: string, duration: number = 5) {
     this.name = name;
     this.duration = new NumParameter(
-      "Duration (seconds)",
+      "Duration (minute)",
       "duration",
       duration,
-      10,
-      3600,
-      10
+      1,
+      15,
+      1
     );
     this.parameters.push(this.duration);
   }
@@ -44,7 +44,7 @@ export abstract class Procedure {
   }
 }
 
-export class TachistoscopeProcedure extends Procedure {
+export class RapidVisualPerception extends Procedure {
   stimuliType: StimuliTypeParameter;
   stimuliLength: StimuliLengthParameter;
   presentationTime: NumParameter;
@@ -55,7 +55,7 @@ export class TachistoscopeProcedure extends Procedure {
     stimuliLength: number = 1,
     presentationTime: number = 0.25
   ) {
-    super("Tachistoscope", duration);
+    super("Rapid Visual Perception", duration);
     this.stimuliType = new StimuliTypeParameter(stimuliType);
     this.stimuliLength = new StimuliLengthParameter(stimuliLength);
     this.presentationTime = new NumParameter(
@@ -73,24 +73,24 @@ export class TachistoscopeProcedure extends Procedure {
   }
 }
 
-export class VisualSpanProcedure extends Procedure {
+export class SequentialVisualMemoryProcedure extends Procedure {
   delayTime: NumParameter;
   stimuliType: StimuliTypeParameter;
   stimuliLength: StimuliLengthParameter;
 
   constructor(
     duration?: number,
-    delayTime: number = 0,
+    delayTime: number = 10,
     stimuliType?: string,
     stimuliLength: number = 1
   ) {
-    super("Visual Span", duration);
+    super("Sequential Visual Memory", duration);
     this.delayTime = new NumParameter(
-      "Delay Time (seconds)",
+      "Delay Time (seconds)", // will change to minute
       "delayTime",
       delayTime,
-      0,
-      10,
+      1,
+      25,
       1
     );
 
@@ -105,15 +105,15 @@ export class VisualSpanProcedure extends Procedure {
 
 // function to convert json procedure to Procedure object
 export function jsonToProcedure(json: any): Procedure {
-  if (json.procedure === "Tachistoscope") {
-    return new TachistoscopeProcedure(
+  if (json.procedure === "Rapid Visual Perception") {
+    return new RapidVisualPerception(
       json.parameters.duration,
       json.parameters.stimuliType,
       json.parameters.stimuliLength,
       json.parameters.presentationTime
     );
-  } else if (json.procedure === "Visual Span") {
-    return new VisualSpanProcedure(
+  } else if (json.procedure === "Sequential Visual Memory") {
+    return new SequentialVisualMemoryProcedure(
       json.parameters.duration,
       json.parameters.delayTime,
       json.parameters.stimuliType,

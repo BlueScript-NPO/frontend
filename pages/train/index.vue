@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
-import { TachistoscopeProcedure, VisualSpanProcedure } from "~/types/procedure";
+import {
+  RapidVisualPerception,
+  SequentialVisualMemoryProcedure,
+} from "~/types/procedure";
 import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
 import type { FormError, FormErrorEvent } from "#ui/types";
 
 // Initialize procedures
 const trainingProcedures = [
-  new TachistoscopeProcedure(),
-  new VisualSpanProcedure(),
+  new RapidVisualPerception(),
+  new SequentialVisualMemoryProcedure(),
 ];
 
 // Track selected procedure name

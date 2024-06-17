@@ -7,7 +7,7 @@
 
     <!-- Top center instruction -->
     <div
-      class="absolute top-0 left-0 right-0 text-lg p-10 flex justify-center text-zinc-900 text-3xl"
+      class="absolute top-0 left-0 right-0 p-10 flex justify-center text-zinc-900 text-3xl"
     >
       <div :style="{ whiteSpace: 'pre-line' }" class="text-center">
         {{ props.instructionText }}
