@@ -6,6 +6,16 @@ const links = [
   },
 ];
 
+const colorMode = useColorMode();
+const isDark = computed({
+  get() {
+    return colorMode.value === "dark";
+  },
+  set() {
+    colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
+  },
+});
+
 const items = [
   [
     {
@@ -46,7 +56,18 @@ const items = [
 <template>
   <UHeader :links="links">
     <template #logo>
-      <img src="~/assets/logo.png" alt="Logo" class="h-8" />
+      <img
+        src="~/assets/logo-dark.png"
+        alt="BlueScript darkmode logo"
+        class="h-8 hover:opacity-90"
+        v-if="isDark"
+      />
+      <img
+        src="~/assets/logo.png"
+        alt="BlueScript logo"
+        class="h-8 hover:opacity-90"
+        v-else
+      />
     </template>
 
     <template #right>
