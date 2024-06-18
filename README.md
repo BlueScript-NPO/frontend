@@ -1,8 +1,10 @@
-```
-🚧 This project is under heavy develpment. We'll be accepting contribution after the minimal foundation is built.
-```
+<p align="center">
+  <img src="docs/banner.png" width="100%" />
+</p>
 
-# BlueScript front-end
+_🚧 This project is under heavy develpment. We'll be accepting contribution after the minimal foundation is built._
+
+# BlueScript Front End
 
 BlueScript is a Non Profit Organization creating open source software to aid people who suffer dylexia.
 
