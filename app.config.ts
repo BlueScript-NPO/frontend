@@ -7,15 +7,13 @@ export default defineAppConfig({
       // rounded: "rounded-lg",
     },
 
-    variables: {
-      light: {
-        // background: "zinc-50",
-        // foreground: "zinc-700",
-      },
-      dark: {
-        // background: "zinc-950",
-        // foreground: "zinc-950",
-      },
+    card: {
+      base: "",
+      background: "bg-white dark:bg-zinc-900",
+      divide: "divide-y divide-gray-500",
+      ring: "ring-1 ring-gray-500",
+      rounded: "rounded-lg",
+      shadow: "shadow",
     },
   },
 });

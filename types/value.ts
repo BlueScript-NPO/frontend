@@ -55,3 +55,16 @@ export class TrialCount extends Value {
     return this.value;
   }
 }
+
+export class CorrectCount extends Value {
+  value: number;
+
+  constructor(value: number) {
+    super("Correct Count", "correctCount", "Number of correct responses");
+    this.value = value;
+  }
+
+  getValue(): number {
+    return this.value;
+  }
+}

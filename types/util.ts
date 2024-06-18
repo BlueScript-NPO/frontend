@@ -1,7 +1,7 @@
 export const stimuliCharactorSets: Record<string, string> = {
   Numbers: "0123456789",
   Alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  Korean: "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ",
+  Korean: "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣㅐㅔ",
   Alphanumeric: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
 };
 

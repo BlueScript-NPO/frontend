@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { playSound } from "~/utils/playSound";
+import { KeyboardUtil } from "~/types/util";
 
 const props = defineProps({
   numberOfStimuli: {
@@ -26,16 +27,8 @@ const props = defineProps({
 });
 
 const emits = defineEmits(["evaluateInput"]);
+const keyboard = new KeyboardUtil();
 const userResponse = ref<string>("");
-
-const englishCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-const koreanCharacters =
-  "ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅋㅛㅋ0123456789";
-
-const convertToKorean = (char: string): string => {
-  const index = englishCharacters.indexOf(char.toUpperCase());
-  return index !== -1 ? koreanCharacters[index] : char;
-};
 
 const handleKeydown = (event: KeyboardEvent) => {
   if (!props.inputEnabled) return;
@@ -51,7 +44,7 @@ const handleKeydown = (event: KeyboardEvent) => {
   ) {
     playSound("click", 30);
     userResponse.value += props.usingKoreanCharacters
-      ? convertToKorean(event.key.toUpperCase())
+      ? keyboard.strokeToKorean(event.key.toUpperCase())
       : event.key.toUpperCase();
   }
 };

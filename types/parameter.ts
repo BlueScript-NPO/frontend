@@ -104,6 +104,27 @@ export class StimuliTypeParameter extends SelectParameter<string> {
   }
 }
 
+export class PromptTypeParamter extends SelectParameter<string> {
+  constructor(selected: string = "Sequential") {
+    const prompts: string[] = ["Sequential", "Random"];
+    if (!prompts.includes(selected)) {
+      throw new Error("Invalid prompt type");
+    }
+    super(
+      "Prompt Type",
+      "promptType",
+      prompts,
+      selected ? prompts.indexOf(selected) : undefined
+    );
+  }
+}
+
+export class PromptLengthParameter extends NumParameter {
+  constructor(value: number = 1) {
+    super("Prompt Length", "promptLength", value, 1, 26, 1);
+  }
+}
+
 export class StimuliLengthParameter extends NumParameter {
   constructor(value: number = 1) {
     super("Stimuli Length", "stimuliLength", value, 1, 10, 1);

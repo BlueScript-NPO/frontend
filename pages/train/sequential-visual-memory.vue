@@ -29,6 +29,7 @@ const stimulusType = ref("");
 const isUsingKoreanChars = ref(false);
 const totalElapsedTime = ref(0);
 const currentTrialCount = ref(0);
+const correctCount = ref(0);
 const trialResults = ref<Record<number, boolean>>({});
 
 // Computed Property for Accuracy
@@ -56,7 +57,7 @@ const parseRouteData = () => {
         data
       ) as SequentialVisualMemoryProcedure;
 
-      totalTrainingTime.value = data.parameters.duration * 60; // totalTrainingTime is already in seconds
+      totalTrainingTime.value = data.parameters.duration * 60;
       distractionTime.value = data.parameters.delayTime * 1000; // convert to milliseconds
       numberOfStimuli.value = data.parameters.stimuliLength;
       stimulusType.value = data.parameters.stimuliType;
@@ -98,7 +99,7 @@ const startTraining = async () => {
   }
 
   userInstruction.value = "";
-  currentTrialCount.value += 1;
+  currentTrialCount.value++;
   pauseTimer.value = false;
 
   displayReadyMessage();
@@ -132,6 +133,7 @@ const evaluateUserInput = async (input: string) => {
   if (trialResults.value[currentTrialCount.value]) {
     playSound("correct");
     userInstruction.value = "Correct!\n(Press Enter or space to continue)";
+    correctCount.value++;
   } else {
     playSound("incorrect");
     userInstruction.value = "Incorrect!\n(Press Enter or space to continue)";
@@ -157,6 +159,7 @@ const saveTrainingResults = () => {
     trainingAccuracy.value,
     totalElapsedTime.value,
     currentTrialCount.value,
+    correctCount.value,
     "DOCTOR",
     "PATIENT",
     "Example Note",

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { useRouter } from "vue-router";
 import {
   RapidVisualPerception,
   SequentialVisualMemoryProcedure,
+  CharactorSequenceingProcedure,
 } from "~/types/procedure";
 import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
 import type { FormError, FormErrorEvent } from "#ui/types";
@@ -12,10 +13,14 @@ import type { FormError, FormErrorEvent } from "#ui/types";
 const trainingProcedures = [
   new RapidVisualPerception(),
   new SequentialVisualMemoryProcedure(),
+  new CharactorSequenceingProcedure(),
 ];
 
 // Track selected procedure name
 const selectedProcedureName = ref(trainingProcedures[0].name);
+
+// Track selected training procedure parameters
+const selectedTrainingParameters = ref(trainingProcedures[0].parameters);
 
 // Compute selected training procedure
 const selectedTrainingProcedure = computed(() =>
@@ -23,6 +28,16 @@ const selectedTrainingProcedure = computed(() =>
     (procedure) => procedure.name === selectedProcedureName.value
   )
 );
+
+// Watch for changes in selectedProcedureName to update parameters
+watch(selectedProcedureName, (newProcedureName) => {
+  const procedure = trainingProcedures.find(
+    (procedure) => procedure.name === newProcedureName
+  );
+  if (procedure) {
+    selectedTrainingParameters.value = procedure.parameters;
+  }
+});
 
 // Validate form data
 const validateForm = (state: any): FormError[] => {
@@ -87,7 +102,7 @@ const router = useRouter();
   <UForm
     v-if="selectedTrainingProcedure && selectedTrainingProcedure"
     :validate="validateForm"
-    :state="selectedTrainingProcedure"
+    :state="{ parameters: selectedTrainingParameters }"
     class="space-y-4"
     @submit="handleFormSubmit"
     @error="handleFormError"
@@ -103,7 +118,7 @@ const router = useRouter();
       </template>
 
       <div
-        v-for="parameter in selectedTrainingProcedure.parameters"
+        v-for="parameter in selectedTrainingParameters"
         :key="parameter.displayName"
       >
         <UFormGroup

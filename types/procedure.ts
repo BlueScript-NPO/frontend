@@ -3,6 +3,8 @@ import {
   NumParameter,
   StimuliLengthParameter,
   StimuliTypeParameter,
+  PromptTypeParamter,
+  PromptLengthParameter,
 } from "./parameter";
 
 export abstract class Procedure {
@@ -103,6 +105,28 @@ export class SequentialVisualMemoryProcedure extends Procedure {
   }
 }
 
+export class CharactorSequenceingProcedure extends Procedure {
+  stimuliType: StimuliTypeParameter;
+  promptType: PromptTypeParamter;
+  promptLength: PromptLengthParameter;
+
+  constructor(
+    duration?: number,
+    stimuliType?: string,
+    promptType?: string,
+    promptLength: number = 16
+  ) {
+    super("Charactor Sequenceing", duration);
+    this.stimuliType = new StimuliTypeParameter(stimuliType);
+    this.promptType = new PromptTypeParamter(promptType);
+    this.promptLength = new PromptLengthParameter(promptLength);
+
+    this.parameters.push(this.stimuliType);
+    this.parameters.push(this.promptType);
+    this.parameters.push(this.promptLength);
+  }
+}
+
 // function to convert json procedure to Procedure object
 export function jsonToProcedure(json: any): Procedure {
   if (json.procedure === "Rapid Visual Perception") {
@@ -118,6 +142,13 @@ export function jsonToProcedure(json: any): Procedure {
       json.parameters.delayTime,
       json.parameters.stimuliType,
       json.parameters.stimuliLength
+    );
+  } else if (json.procedure === "Charactor Sequenceing") {
+    return new CharactorSequenceingProcedure(
+      json.parameters.duration,
+      json.parameters.stimuliType,
+      json.parameters.promptType,
+      json.parameters.promptLength
     );
   } else {
     throw new Error("Invalid procedure type");

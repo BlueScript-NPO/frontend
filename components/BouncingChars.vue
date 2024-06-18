@@ -3,7 +3,7 @@
     <div
       v-for="char in chars"
       :key="char.id"
-      class="bouncing-char text-zinc-900 text-8xl font-mono"
+      class="bouncing-char text-8xl font-mono training-text"
       :style="char.style"
     >
       {{ char.value }}

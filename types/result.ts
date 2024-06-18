@@ -1,4 +1,10 @@
-import { Value, AccuracyValue, ElepsedTime, TrialCount } from "./value";
+import {
+  Value,
+  AccuracyValue,
+  ElepsedTime,
+  TrialCount,
+  CorrectCount,
+} from "./value";
 import {
   Procedure,
   RapidVisualPerception,
@@ -47,11 +53,13 @@ export class RapidVisualPerceptionResult extends TrainingResult {
   accuracy: AccuracyValue;
   elepsedTime: ElepsedTime;
   trialCount: TrialCount;
+  correctCount: CorrectCount;
 
   constructor(
     accuracy: number,
     elepsedTime: number,
     trialCount: number,
+    correctCount: number,
     doctorID: string,
     patientID: string,
     notes: string = "",
@@ -60,10 +68,12 @@ export class RapidVisualPerceptionResult extends TrainingResult {
   ) {
     super(doctorID, patientID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
+    this.correctCount = new CorrectCount(correctCount);
     this.elepsedTime = new ElepsedTime(elepsedTime);
     this.accuracy = new AccuracyValue(accuracy);
 
     this.values.push(this.trialCount);
+    this.values.push(this.correctCount);
     this.values.push(this.elepsedTime);
     this.values.push(this.accuracy);
   }
@@ -73,11 +83,13 @@ export class SequentialVisualMemoryResult extends TrainingResult {
   trialCount: TrialCount;
   elepsedTime: ElepsedTime;
   accuracy: AccuracyValue;
+  correctCount: CorrectCount;
 
   constructor(
     accuracy: number,
     elepsedTime: number,
     trialCount: number,
+    correctCount: number,
     doctorID: string,
     patientID: string,
     notes: string,
@@ -86,10 +98,12 @@ export class SequentialVisualMemoryResult extends TrainingResult {
   ) {
     super(doctorID, patientID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
+    this.correctCount = new CorrectCount(correctCount);
     this.elepsedTime = new ElepsedTime(elepsedTime);
     this.accuracy = new AccuracyValue(accuracy);
 
     this.values.push(this.trialCount);
+    this.values.push(this.correctCount);
     this.values.push(this.elepsedTime);
     this.values.push(this.accuracy);
   }
@@ -101,6 +115,7 @@ export function jsonToTrainingResult(json: any): TrainingResult {
       json.result.accuracy,
       json.result.elepsedTime,
       json.result.trialCount,
+      json.result.correctCount,
       json.doctorID,
       json.patientID,
       json.notes,
@@ -112,6 +127,7 @@ export function jsonToTrainingResult(json: any): TrainingResult {
       json.result.accuracy,
       json.result.elepsedTime,
       json.result.trialCount,
+      json.result.correctCount,
       json.doctorID,
       json.patientID,
       json.notes,

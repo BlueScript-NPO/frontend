@@ -56,18 +56,20 @@ const items = [
 <template>
   <UHeader :links="links">
     <template #logo>
-      <img
-        src="~/assets/logo-dark.png"
-        alt="BlueScript darkmode logo"
-        class="h-8 hover:opacity-90"
-        v-if="isDark"
-      />
-      <img
-        src="~/assets/logo.png"
-        alt="BlueScript logo"
-        class="h-8 hover:opacity-90"
-        v-else
-      />
+      <ClientOnly>
+        <img
+          src="~/assets/logo-dark.png"
+          alt="BlueScript darkmode logo"
+          class="h-8 hover:opacity-90"
+          v-if="isDark"
+        />
+        <img
+          src="~/assets/logo.png"
+          alt="BlueScript logo"
+          class="h-8 hover:opacity-90"
+          v-else
+        />
+      </ClientOnly>
     </template>
 
     <template #right>

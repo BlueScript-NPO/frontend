@@ -38,6 +38,8 @@ const parseRouteData = () => {
       const result = jsonToTrainingResult(data);
       trainingData.value = result;
       processingData.value = false;
+
+      console.log("Parsed training data:", trainingData.value);
     }
   } catch (error) {
     console.error("Error parsing route data:", error);
@@ -98,7 +100,8 @@ onMounted(() => {
     <h3 class="h-8 w-full text-md font-semibold" v-else>
       <span>
         Trials:
-        {{ (trainingData as RapidVisualPerceptionResult)?.trialCount.value }}
+        {{ (trainingData as RapidVisualPerceptionResult)?.correctCount.value }}
+        / {{ (trainingData as RapidVisualPerceptionResult)?.trialCount.value }}
         <UTooltip
           v-if="(trainingData as RapidVisualPerceptionResult)?.trialCount.description"
         >
