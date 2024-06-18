@@ -89,7 +89,7 @@ export class SequentialVisualMemoryProcedure extends Procedure {
       "Delay Time (seconds)", // will change to minute
       "delayTime",
       delayTime,
-      1,
+      0,
       25,
       1
     );

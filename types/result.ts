@@ -96,7 +96,7 @@ export class SequentialVisualMemoryResult extends TrainingResult {
 }
 
 export function jsonToTrainingResult(json: any): TrainingResult {
-  if (json.parameter.procedure === "Quick Visual Perception") {
+  if (json.parameter.procedure === "Rapid Visual Perception") {
     return new RapidVisualPerceptionResult(
       json.result.accuracy,
       json.result.elepsedTime,
