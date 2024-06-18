@@ -1,15 +1,18 @@
 <template>
   <div
-    class="fixed inset-0 bg-zinc-50 h-screen w-screen overflow-hidden"
+    class="fixed inset-0 h-screen w-screen overflow-hidden bg-zinc-50 dark:bg-zinc-950"
     @click.right.stop.prevent
   >
     <slot></slot>
 
     <!-- Top center instruction -->
     <div
-      class="absolute top-0 left-0 right-0 p-10 flex justify-center text-zinc-900 text-3xl"
+      class="absolute top-0 left-0 right-0 p-10 flex justify-center text-2xl training-text"
     >
-      <div :style="{ whiteSpace: 'pre-line' }" class="text-center">
+      <div
+        :style="{ whiteSpace: 'pre-line' }"
+        class="text-center font-light tracking-wide leading-relaxed"
+      >
         {{ props.instructionText }}
       </div>
     </div>
@@ -19,12 +22,17 @@
       class="absolute bottom-0 right-0 text-lg p-4 px-8"
       :class="
         elapsedSeconds >= props.totalTrainingTime
-          ? 'text-yellow-600'
-          : 'text-zinc-900'
+          ? 'text-yellow-600 dark:text-yellow-400'
+          : 'training-text'
       "
     >
       {{ formattedElapsedTime }}
     </div>
+  </div>
+
+  <!-- Top right toggle theme button -->
+  <div class="fixed top-0 right-0 p-4 cursor-pointer">
+    <UColorModeButton />
   </div>
 </template>
 

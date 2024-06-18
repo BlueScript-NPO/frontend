@@ -56,12 +56,13 @@ const handleKeydown = (event: KeyboardEvent) => {
   }
 };
 
-const paddedUserResponse = computed((): string => {
+const paddedUserResponse = computed((): string[] => {
   const spacesNeeded = props.numberOfStimuli - userResponse.value.length;
-  const spaces = props.usingKoreanCharacters
-    ? "　".repeat(spacesNeeded)
-    : " ".repeat(spacesNeeded);
-  return userResponse.value + spaces;
+  const responseArray = userResponse.value.split("");
+  for (let i = 0; i < spacesNeeded; i++) {
+    responseArray.push(props.usingKoreanCharacters ? "　" : " ");
+  }
+  return responseArray;
 });
 
 onMounted(() => {
@@ -74,7 +75,7 @@ onUnmounted(() => {
 
 const textColor = computed(() => {
   if (props.inputEnabled) {
-    return "";
+    return "training-text";
   }
   if (userResponse.value === props.stimulusPrompt) {
     return "text-green-500";
@@ -85,17 +86,22 @@ const textColor = computed(() => {
 </script>
 
 <template class="flex flex-col items-center space-y-16">
-  <div class="w-full">
-    <div class="text-main">
-      <span class="block w-full whitespace-pre" :class="textColor">{{
-        paddedUserResponse
-      }}</span>
+  <div class="w-full flex justify-center">
+    <div class="flex">
+      <span
+        v-for="(char, index) in paddedUserResponse"
+        :key="index"
+        class="block w-28 text-center text-8xl"
+        :class="textColor"
+      >
+        {{ char }}
+      </span>
     </div>
   </div>
 
-  <div class="w-full">
-    <div class="text-main" :class="{ invisible: props.hidePromptText }">
-      {{ props.stimulusPrompt }}
+  <div class="w-full flex justify-center">
+    <div class="flex" :class="{ invisible: props.hidePromptText }">
+      <CenterPrompt :prompt="props.stimulusPrompt" />
     </div>
   </div>
 </template>

@@ -8,5 +8,13 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="text-main">{{ props.prompt }}</div>
+  <div class="flex">
+    <span
+      v-for="(char, index) in props.prompt.split('')"
+      :key="index"
+      class="block w-28 text-center text-8xl training-text"
+    >
+      {{ char }}
+    </span>
+  </div>
 </template>

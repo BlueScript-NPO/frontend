@@ -12,10 +12,10 @@ const props = defineProps({
 </script>
 
 <template class="flex flex-col items-center space-y-8">
-  <div class="text-6xl font-semibold text-center text-zinc-900">
+  <div class="text-6xl text-center training-text">
     {{ props.title }}
   </div>
-  <div class="text-xl font-normal text-center text-zinc-900">
+  <div class="text-xl font-light text-center training-text">
     {{ props.subtitle }}
   </div>
 </template>

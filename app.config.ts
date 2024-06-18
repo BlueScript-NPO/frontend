@@ -1,6 +1,7 @@
 export default defineAppConfig({
   ui: {
     primary: "blueScriptBlue",
+    gray: "zinc",
 
     button: {
       // rounded: "rounded-lg",
@@ -8,12 +9,12 @@ export default defineAppConfig({
 
     variables: {
       light: {
-        background: "255 255 255",
-        foreground: "var(--color-gray-700)",
+        // background: "zinc-50",
+        // foreground: "zinc-700",
       },
       dark: {
-        background: "var(--color-gray-900)",
-        foreground: "var(--color-gray-100)",
+        // background: "zinc-950",
+        // foreground: "zinc-950",
       },
     },
   },

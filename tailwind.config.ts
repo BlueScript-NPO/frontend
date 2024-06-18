@@ -19,5 +19,8 @@ export default <Partial<Config>>{
         },
       },
     },
+    fontFamily: {
+      sans: ["ui-NanumBarunGothic", "sans-serif"],
+    },
   },
 };
