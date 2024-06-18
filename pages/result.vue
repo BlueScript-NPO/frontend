@@ -13,7 +13,6 @@ const router = useRouter();
 
 // Ref Variables
 const trainingData = ref<TrainingResult | null>(null);
-const processingData = ref(true);
 
 // Compute the accordion items
 const accordionItems = computed(() => {
@@ -37,7 +36,6 @@ const parseRouteData = () => {
     if (data) {
       const result = jsonToTrainingResult(data);
       trainingData.value = result;
-      processingData.value = false;
 
       console.log("Parsed training data:", trainingData.value);
     }
@@ -58,22 +56,26 @@ onMounted(() => {
   <TopMenu />
   <UCard class="mx-auto mt-8 max-w-md">
     <template #header>
-      <USkeleton class="h-8 w-full" v-if="processingData" />
-      <h2 class="text-lg font-semibold h-8" v-else>
+      <h2 class="text-lg h-8 flex items-center">
         Training Results
-        <UBadge color="white" variant="solid">
+        <UBadge color="primary" variant="outline" class="ml-2">
           {{ trainingData?.procedure.name }}
         </UBadge>
       </h2>
     </template>
 
-    <div v-if="processingData" class="h-10 w-full">
-      <USkeleton class="h-6 w-full" />
-    </div>
-    <h3 class="h-10 w-full text-md font-semibold" v-else>
+    <h3 class="h-10 w-full text-md">
       <span>
         Accuracy:
         {{ (trainingData as RapidVisualPerceptionResult)?.accuracy.value }}%
+        <span class="font-light">
+          ({{
+            (trainingData as RapidVisualPerceptionResult)?.correctCount.value
+          }}/{{
+            (trainingData as RapidVisualPerceptionResult)?.trialCount.value
+          }})
+        </span>
+
         <UTooltip
           v-if="(trainingData as RapidVisualPerceptionResult)?.accuracy.description"
         >
@@ -94,14 +96,10 @@ onMounted(() => {
       class="pb-4"
     />
 
-    <div v-if="processingData" class="h-8 w-full">
-      <USkeleton class="h-6 w-full" />
-    </div>
-    <h3 class="h-8 w-full text-md font-semibold" v-else>
+    <h3 class="h-8 w-full text-md">
       <span>
         Trials:
-        {{ (trainingData as RapidVisualPerceptionResult)?.correctCount.value }}
-        / {{ (trainingData as RapidVisualPerceptionResult)?.trialCount.value }}
+        {{ (trainingData as RapidVisualPerceptionResult)?.trialCount.value }}
         <UTooltip
           v-if="(trainingData as RapidVisualPerceptionResult)?.trialCount.description"
         >
@@ -116,10 +114,7 @@ onMounted(() => {
       </span>
     </h3>
 
-    <div v-if="processingData" class="h-8 w-full">
-      <USkeleton class="h-6 w-full" />
-    </div>
-    <h3 class="h-8 w-full text-md font-semibold" v-else>
+    <h3 class="h-8 w-full text-md">
       <span>
         Time:
         {{ (trainingData as RapidVisualPerceptionResult)?.elepsedTime.value }}s
@@ -147,8 +142,6 @@ onMounted(() => {
           defaultOpen: false,
         },
       ]"
-      color="white"
-      variant="outline"
     >
       <template #item>
         <div class="px-4">

@@ -120,6 +120,7 @@ const router = useRouter();
       <div
         v-for="parameter in selectedTrainingParameters"
         :key="parameter.displayName"
+        class="py-2"
       >
         <UFormGroup
           :label="parameter.displayName"
