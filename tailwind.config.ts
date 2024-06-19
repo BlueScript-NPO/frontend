@@ -18,6 +18,10 @@ export default <Partial<Config>>{
           950: "#050513",
         },
       },
+      gridTemplateColumns: {
+        "16": "repeat(16, minmax(0, 1fr))",
+        "20": "repeat(20, minmax(0, 1fr))",
+      },
     },
     fontFamily: {
       sans: ["ui-NanumBarunGothic", "sans-serif"],
