@@ -23,9 +23,14 @@ const userInstruction = ref("");
 const totalElapsedTime = ref(0);
 const promptLength = ref(0);
 const isPromptsequential = ref(false);
+const currentTrialCount = ref(0);
+const textRows = ref(0);
 
+const mainText = ref("");
+const subText = ref("");
 const prompt = ref("");
-const cursorIndex = ref(1);
+const cursorIndex = ref(0);
+const currentTrainingStep = ref(0);
 
 // Function: Parse Data from Route Query
 const parseRouteData = () => {
@@ -43,6 +48,7 @@ const parseRouteData = () => {
       characterPool.value = stimuliCharactorSets[stimulusType.value] || "";
       isPromptsequential.value = data.parameters.promptType === "Sequential";
       promptLength.value = data.parameters.promptLength;
+      textRows.value = 16 * Math.ceil(promptLength.value / 3);
     } else {
       router.push("/train");
     }
@@ -51,6 +57,10 @@ const parseRouteData = () => {
     router.push("/train");
   }
 };
+
+// Utility Function: Wait for specified milliseconds
+const waitForMilliseconds = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
 
 // Function: gemerate a prompt
 const generatePrompt = () => {
@@ -92,8 +102,46 @@ const handleKeydown = (event: KeyboardEvent) => {
   }
 };
 
+// Function: Display Ready Message
+const displayReadyMessage = () => {
+  playSound("ready");
+  currentTrialCount.value++;
+
+  mainText.value = "준비하세요!";
+  subText.value = `라운드 ${currentTrialCount.value} | 훈련 시간: ${totalElapsedTime.value}`;
+  currentTrainingStep.value = 1;
+
+  cursorIndex.value = 1;
+};
+
+const countDown = async () => {
+  subText.value = "초 후에 시작합니다!";
+  for (let i = 3; i > 0; i--) {
+    mainText.value = i.toString();
+    playSound("countdown");
+    await waitForMilliseconds(1000);
+  }
+
+  playSound("start");
+};
+
+// Function: Training Process
+const startTraining = async () => {
+  currentTrainingStep.value = 0;
+
+  displayReadyMessage();
+  await waitForMilliseconds(1500);
+
+  await countDown();
+  userInstruction.value =
+    "오른쪽 화살표를 눌러 커서를 이동하세요\n(Enter 또는 스페이스바를 눌러 입력하세요)";
+  currentTrainingStep.value = 2;
+  pauseTimer.value = false;
+};
+
 onMounted(() => {
   window.addEventListener("keydown", handleKeydown);
+  startTraining();
 });
 
 onUnmounted(() => {
@@ -111,7 +159,17 @@ onUnmounted(() => {
     :instruction-text="userInstruction"
     v-model="totalElapsedTime"
   >
-    <div class="flex flex-col justify-center items-center h-full training-text">
+    <div
+      class="flex flex-col justify-center items-center h-full space-y-10"
+      v-if="currentTrainingStep === 1"
+    >
+      <TitleHud :title="mainText" :subtitle="subText" />
+    </div>
+
+    <div
+      class="flex flex-col justify-center items-center h-full training-text"
+      v-if="currentTrainingStep === 2"
+    >
       <div class="flex">
         <div
           class="flex justify-center w-8"
@@ -129,7 +187,7 @@ onUnmounted(() => {
       <div class="flex justify-center">
         <div class="grid grid-cols-16">
           <div
-            v-for="i in 160"
+            v-for="i in textRows"
             :class="[
               'w-14 h-16 rounded-md flex justify-center items-center',
               {
@@ -137,7 +195,7 @@ onUnmounted(() => {
               },
             ]"
           >
-            <span class="block text-center text-5xl w-full"> W </span>
+            <span class="block text-center text-5xl w-full"> ㄱ </span>
           </div>
         </div>
       </div>
