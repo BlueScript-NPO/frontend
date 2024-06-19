@@ -6,9 +6,7 @@ _🚧 This project is under heavy develpment. We'll be accepting contribution af
 
 # BlueScript Front End
 
-BlueScript is a Non Profit Organization creating open source software to aid people who suffer dylexia.
-
-## Getting Started
+BlueScript is a Non Profit Organization creating open source software to aid people who suffer dylexia.## Getting Started
 
 If you want to contribute to this project, you can clone this repository and start working on it. After cloning the repository, you run the following commands to start the project:
 
@@ -17,7 +15,7 @@ npm install
 npm run dev
 ```
 
-This project uses Nuxt UI pro and license is needed to build the project. You can get a license from [Nuxt UI Pro](https://ui.nuxt.com/pro/pricing).
+This project uses Nuxt UI pro and license is needed to build the project. You can get a license from [Nuxt UI Pro](https://ui.nuxt.com/pro/pricing). (Backend code can be found at [Backend](https://github.com/BlueScript-NPO/backend) repository.)
 
 ## Json API Structure Example
 
