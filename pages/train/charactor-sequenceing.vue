@@ -24,13 +24,20 @@ const totalElapsedTime = ref(0);
 const promptLength = ref(0);
 const isPromptsequential = ref(false);
 const currentTrialCount = ref(0);
-const textRows = ref(0);
+const answerChoiceCount = ref(0);
 
 const mainText = ref("");
 const subText = ref("");
 const prompt = ref("");
-const cursorIndex = ref(0);
 const currentTrainingStep = ref(0);
+
+const cursorIndex = ref(0);
+const answerChoices = ref<string[]>([]);
+const correctIndices = ref<number[]>([]);
+const selectedIndices = ref<Set<number>>(new Set());
+const missedIndices = ref<Set<number>>(new Set());
+const trialStartTime = ref<number>(0);
+const trialEndTime = ref<number>(0);
 
 // Function: Parse Data from Route Query
 const parseRouteData = () => {
@@ -48,7 +55,7 @@ const parseRouteData = () => {
       characterPool.value = stimuliCharactorSets[stimulusType.value] || "";
       isPromptsequential.value = data.parameters.promptType === "Sequential";
       promptLength.value = data.parameters.promptLength;
-      textRows.value = 16 * Math.ceil(promptLength.value / 3);
+      answerChoiceCount.value = 16 * Math.ceil(promptLength.value / 3);
     } else {
       router.push("/train");
     }
@@ -62,7 +69,7 @@ const parseRouteData = () => {
 const waitForMilliseconds = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
-// Function: gemerate a prompt
+// Function: generate a prompt
 const generatePrompt = () => {
   const temp = [];
 
@@ -95,10 +102,35 @@ onMounted(() => {
 
 // Function: Handle Keydown Event
 const handleKeydown = (event: KeyboardEvent) => {
-  // when pressing right arrow, incroment the cursor index
-  if (event.key === "ArrowRight") {
-    playSound("click", 30);
-    cursorIndex.value++;
+  if (currentTrainingStep.value == 2) {
+    if (event.key === "ArrowRight") {
+      checkForMissed();
+      playSound("click", 30);
+      cursorIndex.value = (cursorIndex.value + 1) % answerChoiceCount.value;
+      if (cursorIndex.value === 0) {
+        endTrial();
+      }
+    } else if (event.key === "Enter" || event.key === " ") {
+      handleSelection(cursorIndex.value);
+    }
+  } else if (currentTrainingStep.value == 3) {
+    if (event.key === "Enter" || event.key === " ") {
+      startTraining();
+    }
+  }
+};
+
+// Function to check for missed correct characters
+const checkForMissed = () => {
+  if (
+    correctIndices.value.includes(cursorIndex.value) &&
+    !selectedIndices.value.has(cursorIndex.value)
+  ) {
+    playSound("incorrect");
+    missedIndices.value.add(cursorIndex.value);
+    document
+      .getElementById(`choice-${cursorIndex.value}`)
+      ?.classList.add("text-blue-500");
   }
 };
 
@@ -110,8 +142,91 @@ const displayReadyMessage = () => {
   mainText.value = "준비하세요!";
   subText.value = `라운드 ${currentTrialCount.value} | 훈련 시간: ${totalElapsedTime.value}`;
   currentTrainingStep.value = 1;
+};
 
-  cursorIndex.value = 1;
+// Function: Reset the training trial
+const resetTrial = () => {
+  userInstruction.value = "";
+  prompt.value = generatePrompt();
+  cursorIndex.value = 0;
+  selectedIndices.value.clear();
+  missedIndices.value.clear();
+
+  const promptLen = prompt.value.length;
+  const indices: number[] = [];
+  const usedIndices = new Set<number>();
+
+  // Generate unique indices for prompt characters
+  while (indices.length < promptLen) {
+    const index = Math.floor(Math.random() * answerChoiceCount.value);
+    if (!usedIndices.has(index)) {
+      usedIndices.add(index);
+      indices.push(index);
+    }
+  }
+
+  indices.sort((a, b) => a - b);
+  answerChoices.value = Array(answerChoiceCount.value).fill(" ");
+
+  indices.forEach((index, i) => {
+    answerChoices.value[index] = prompt.value[i];
+  });
+
+  // Fill in the empty spaces with random characters
+  for (let i = 0; i < answerChoices.value.length; i++) {
+    if (answerChoices.value[i] === " ") {
+      const nextPromptChar =
+        indices.find((idx) => idx > i) !== undefined
+          ? prompt.value[indices.findIndex((idx) => idx > i)]
+          : null;
+      answerChoices.value[i] = getRandomCharacter(nextPromptChar);
+    }
+  }
+
+  correctIndices.value = indices;
+
+  console.log("Answer Choices:", answerChoices.value);
+  console.log("Correct Indices:", correctIndices.value);
+};
+
+const getRandomCharacter = (excludeChar: string | null) => {
+  let char;
+  do {
+    char = characterPool.value.charAt(
+      Math.floor(Math.random() * characterPool.value.length)
+    );
+  } while (char === excludeChar);
+  return char;
+};
+
+// Function to handle user selection
+const handleSelection = (index: number) => {
+  if (correctIndices.value.includes(index)) {
+    playSound("correct");
+    selectedIndices.value.add(index);
+    document.getElementById(`choice-${index}`)?.classList.add("text-green-500");
+  } else {
+    playSound("incorrect");
+    selectedIndices.value.add(index);
+    document.getElementById(`choice-${index}`)?.classList.add("text-red-500");
+  }
+};
+
+// Function to end the trial
+const endTrial = () => {
+  trialEndTime.value = Date.now();
+  const trialDuration = (trialEndTime.value - trialStartTime.value) / 1000;
+  const correctCount = selectedIndices.value.size;
+  const totalInteractions =
+    selectedIndices.value.size + missedIndices.value.size;
+
+  pauseTimer.value = true;
+  playSound("finish");
+  mainText.value = "완료!";
+  subText.value = `소요 시간: ${trialDuration}초 | 정답 개수: ${correctCount} / ${totalInteractions}`;
+  userInstruction.value = "계속하려면 스페이스바나 엔터 키를 누르세요";
+
+  currentTrainingStep.value = 3;
 };
 
 const countDown = async () => {
@@ -123,11 +238,13 @@ const countDown = async () => {
   }
 
   playSound("start");
+  trialStartTime.value = Date.now();
 };
 
 // Function: Training Process
 const startTraining = async () => {
   currentTrainingStep.value = 0;
+  resetTrial();
 
   displayReadyMessage();
   await waitForMilliseconds(1500);
@@ -187,20 +304,34 @@ onUnmounted(() => {
       <div class="flex justify-center">
         <div class="grid grid-cols-16">
           <div
-            v-for="i in textRows"
+            v-for="(char, i) in answerChoiceCount"
+            :id="'choice-' + i"
             :class="[
               'w-14 h-16 rounded-md flex justify-center items-center',
               {
-                'outline-yellow-500 outline outline-2': i === cursorIndex,
+                'outline-blueScriptBlue-500 dark:outline-blueScriptBlue-400 outline outline-2':
+                  i === cursorIndex,
+                'text-green-500 dark:text-green-400':
+                  selectedIndices.has(i) && correctIndices.includes(i),
+                'text-red-500 dark:text-red-400':
+                  selectedIndices.has(i) && !correctIndices.includes(i),
+                ' text-yellow-500 dark:text-yellow-400': missedIndices.has(i),
               },
             ]"
           >
-            <span class="block text-center text-5xl w-full"> ㄱ </span>
+            <span class="block text-center text-5xl w-full">
+              {{ answerChoices[i] }}
+            </span>
           </div>
         </div>
       </div>
     </div>
+
+    <div
+      class="flex flex-col justify-center items-center h-full space-y-10"
+      v-if="currentTrainingStep === 3"
+    >
+      <TitleHud :title="mainText" :subtitle="subText" />
+    </div>
   </TrainingBase>
 </template>
-
-<style></style>
