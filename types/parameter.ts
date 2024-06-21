@@ -125,6 +125,18 @@ export class PromptLengthParameter extends NumParameter {
   }
 }
 
+export class TargetLengthParameter extends NumParameter {
+  constructor(value: number = 2) {
+    super("Target Length", "targetLength", value, 2, 10, 1);
+  }
+}
+
+export class TargetCountParameter extends NumParameter {
+  constructor(value: number = 15) {
+    super("Number of target", "targetCount", value, 15, 140, 1);
+  }
+}
+
 export class StimuliLengthParameter extends NumParameter {
   constructor(value: number = 1) {
     super("Stimuli Length", "stimuliLength", value, 1, 10, 1);

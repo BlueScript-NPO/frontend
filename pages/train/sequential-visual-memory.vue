@@ -6,7 +6,7 @@ import {
   SequentialVisualMemoryProcedure,
 } from "~/types/procedure";
 import { SequentialVisualMemoryResult } from "~/types/result";
-import { stimuliCharactorSets } from "~/types/util";
+import { stimuliCharactorSets } from "~/utils/util";
 import { playSound } from "~/utils/playSound";
 
 // Vue Router

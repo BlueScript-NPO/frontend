@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted, computed } from "vue";
-import { stimuliCharactorSets } from "~/types/util";
+import { stimuliCharactorSets } from "~/utils/util";
 import { playSound } from "~/utils/playSound";
 import {
   jsonToProcedure,
@@ -262,7 +262,6 @@ const startTraining = async () => {
 
 onMounted(() => {
   parseRouteData();
-  prompt.value = generatePrompt();
   window.addEventListener("keydown", handleKeydown);
   startTraining();
 });

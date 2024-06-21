@@ -2,7 +2,7 @@
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { jsonToProcedure, RapidVisualPerception } from "~/types/procedure";
-import { stimuliCharactorSets } from "~/types/util";
+import { stimuliCharactorSets } from "~/utils/util";
 import { RapidVisualPerceptionResult } from "~/types/result";
 import { playSound } from "~/utils/playSound";
 

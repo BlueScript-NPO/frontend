@@ -5,6 +5,8 @@ import {
   StimuliTypeParameter,
   PromptTypeParamter,
   PromptLengthParameter,
+  TargetLengthParameter,
+  TargetCountParameter,
 } from "./parameter";
 
 export abstract class Procedure {
@@ -127,6 +129,28 @@ export class CharactorSequenceingProcedure extends Procedure {
   }
 }
 
+export class CharactorMatchingProcedure extends Procedure {
+  stimuliType: StimuliTypeParameter;
+  targetLength: TargetLengthParameter;
+  targetCount: TargetCountParameter;
+
+  constructor(
+    duration?: number,
+    stimuliType?: string,
+    targetLength: number = 2,
+    targetCount: number = 15
+  ) {
+    super("Charactor Matching", duration);
+    this.stimuliType = new StimuliTypeParameter(stimuliType);
+    this.targetLength = new TargetLengthParameter(targetLength);
+    this.targetCount = new TargetCountParameter(targetCount);
+
+    this.parameters.push(this.stimuliType);
+    this.parameters.push(this.targetLength);
+    this.parameters.push(this.targetCount);
+  }
+}
+
 // function to convert json procedure to Procedure object
 export function jsonToProcedure(json: any): Procedure {
   if (json.procedure === "Rapid Visual Perception") {
@@ -149,6 +173,13 @@ export function jsonToProcedure(json: any): Procedure {
       json.parameters.stimuliType,
       json.parameters.promptType,
       json.parameters.promptLength
+    );
+  } else if (json.procedure === "Charactor Matching") {
+    return new CharactorMatchingProcedure(
+      json.parameters.duration,
+      json.parameters.stimuliType,
+      json.parameters.targetLength,
+      json.parameters.targetCount
     );
   } else {
     throw new Error("Invalid procedure type");
