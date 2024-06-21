@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import { stimuliCharactorSets } from "~/types/util";
 import { playSound } from "~/utils/playSound";
 import {
@@ -15,23 +15,23 @@ const router = useRouter();
 const trainingParameter = ref<CharactorSequenceingProcedure>(
   new CharactorSequenceingProcedure()
 );
-const totalTrainingTime = ref(0);
-const pauseTimer = ref(true);
-const stimulusType = ref("");
-const characterPool = ref("");
-const userInstruction = ref("");
-const totalElapsedTime = ref(0);
-const promptLength = ref(0);
-const isPromptsequential = ref(false);
-const currentTrialCount = ref(0);
-const answerChoiceCount = ref(0);
+const totalTrainingTime = ref<number>(0);
+const pauseTimer = ref<boolean>(true);
+const stimulusType = ref<string>("");
+const characterPool = ref<string>("");
+const userInstruction = ref<string>("");
+const totalElapsedTime = ref<number>(0);
+const promptLength = ref<number>(0);
+const isPromptsequential = ref<boolean>(false);
+const currentTrialCount = ref<number>(0);
+const answerChoiceCount = ref<number>(0);
 
-const mainText = ref("");
-const subText = ref("");
-const prompt = ref("");
-const currentTrainingStep = ref(0);
+const mainText = ref<string>("");
+const subText = ref<string>("");
+const prompt = ref<string>("");
+const currentTrainingStep = ref<number>(0);
 
-const cursorIndex = ref(0);
+const cursorIndex = ref<number>(0);
 const answerChoices = ref<string[]>([]);
 const correctIndices = ref<number[]>([]);
 const selectedIndices = ref<Set<number>>(new Set());
@@ -39,8 +39,14 @@ const missedIndices = ref<Set<number>>(new Set());
 const trialStartTime = ref<number>(0);
 const trialEndTime = ref<number>(0);
 
-const missedCount = ref(0);
-const correctCount = ref(0);
+const missedCount = ref<number>(0);
+const correctCount = ref<number>(0);
+
+// Computed properties
+const accuracy = computed(() => {
+  const totalInteractions = prompt.value.length + missedCount.value;
+  return (correctCount.value / totalInteractions) * 100;
+});
 
 // Function: Parse Data from Route Query
 const parseRouteData = () => {
@@ -75,7 +81,6 @@ const waitForMilliseconds = (ms: number) =>
 // Function: generate a prompt
 const generatePrompt = () => {
   const temp = [];
-
   if (isPromptsequential.value) {
     const startIndex = Math.floor(Math.random() * (26 - promptLength.value));
     const endIndex = startIndex + promptLength.value;
@@ -84,7 +89,6 @@ const generatePrompt = () => {
       temp.push(characterPool.value[i]);
     }
   } else {
-    // random
     for (let i = 0; i < promptLength.value; i++) {
       const randomIndex = Math.floor(
         Math.random() * characterPool.value.length
@@ -95,17 +99,9 @@ const generatePrompt = () => {
   return temp.join("");
 };
 
-onMounted(() => {
-  parseRouteData();
-
-  prompt.value = generatePrompt();
-
-  console.log("Prompt:", prompt.value);
-});
-
 // Function: Handle Keydown Event
 const handleKeydown = (event: KeyboardEvent) => {
-  if (currentTrainingStep.value == 2) {
+  if (currentTrainingStep.value === 2) {
     if (event.key === "ArrowRight") {
       checkForMissed();
       playSound("click", 30);
@@ -113,10 +109,11 @@ const handleKeydown = (event: KeyboardEvent) => {
     } else if (event.key === "Enter" || event.key === " ") {
       handleSelection(cursorIndex.value);
     }
-  } else if (currentTrainingStep.value == 3) {
-    if (event.key === "Enter" || event.key === " ") {
-      startTraining();
-    }
+  } else if (
+    currentTrainingStep.value === 3 &&
+    (event.key === "Enter" || event.key === " ")
+  ) {
+    startTraining();
   }
 };
 
@@ -165,7 +162,6 @@ const resetTrial = () => {
   const indices: number[] = [];
   const usedIndices = new Set<number>();
 
-  // Generate unique indices for prompt characters
   while (indices.length < promptLen) {
     const index = Math.floor(Math.random() * answerChoiceCount.value);
     if (!usedIndices.has(index)) {
@@ -181,7 +177,6 @@ const resetTrial = () => {
     answerChoices.value[index] = prompt.value[i];
   });
 
-  // Fill in the empty spaces with random characters
   for (let i = 0; i < answerChoices.value.length; i++) {
     if (answerChoices.value[i] === " ") {
       const nextPromptChar =
@@ -193,9 +188,6 @@ const resetTrial = () => {
   }
 
   correctIndices.value = indices;
-
-  console.log("Answer Choices:", answerChoices.value);
-  console.log("Correct Indices:", correctIndices.value);
 };
 
 const getRandomCharacter = (excludeChar: string | null) => {
@@ -215,38 +207,34 @@ const handleSelection = (index: number) => {
     selectedIndices.value.add(index);
     document.getElementById(`choice-${index}`)?.classList.add("text-green-500");
     correctCount.value++;
-    moveCursor();
   } else {
     playSound("incorrect");
     selectedIndices.value.add(index);
     document.getElementById(`choice-${index}`)?.classList.add("text-red-500");
     missedCount.value++;
-    moveCursor();
   }
+  moveCursor();
 };
 
 // Function to end the trial
 const endTrial = () => {
   trialEndTime.value = Date.now();
   const trialDuration = (trialEndTime.value - trialStartTime.value) / 1000;
-  const totalInteractions = prompt.value.length + missedCount.value;
 
   pauseTimer.value = true;
   playSound("finish");
 
-  const accuracy = (correctCount.value / totalInteractions) * 100;
-
   mainText.value = "Finish!";
   subText.value = `Time: ${trialDuration.toFixed(
     2
-  )}s | Accuracy: ${accuracy.toFixed(2)}%`;
+  )}s | Accuracy: ${accuracy.value.toFixed(2)}%`;
   userInstruction.value = "Press spacebar or enter to continue";
 
   currentTrainingStep.value = 3;
 };
 
 const countDown = async () => {
-  subText.value = "초 후에 시작합니다!";
+  subText.value = "";
   for (let i = 3; i > 0; i--) {
     mainText.value = i.toString();
     playSound("countdown");
@@ -273,6 +261,8 @@ const startTraining = async () => {
 };
 
 onMounted(() => {
+  parseRouteData();
+  prompt.value = generatePrompt();
   window.addEventListener("keydown", handleKeydown);
   startTraining();
 });
@@ -320,7 +310,8 @@ onUnmounted(() => {
       <div class="flex justify-center">
         <div class="grid grid-cols-16">
           <div
-            v-for="(char, i) in answerChoiceCount"
+            v-for="(char, i) in answerChoices"
+            :key="i"
             :id="'choice-' + i"
             :class="[
               'w-14 h-16 rounded-md flex justify-center items-center',
@@ -336,7 +327,7 @@ onUnmounted(() => {
             ]"
           >
             <span class="block text-center text-5xl w-full">
-              {{ answerChoices[i] }}
+              {{ char }}
             </span>
           </div>
         </div>
