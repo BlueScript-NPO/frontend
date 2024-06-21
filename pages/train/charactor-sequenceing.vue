@@ -39,6 +39,9 @@ const missedIndices = ref<Set<number>>(new Set());
 const trialStartTime = ref<number>(0);
 const trialEndTime = ref<number>(0);
 
+const missedCount = ref(0);
+const correctCount = ref(0);
+
 // Function: Parse Data from Route Query
 const parseRouteData = () => {
   try {
@@ -106,10 +109,7 @@ const handleKeydown = (event: KeyboardEvent) => {
     if (event.key === "ArrowRight") {
       checkForMissed();
       playSound("click", 30);
-      cursorIndex.value = (cursorIndex.value + 1) % answerChoiceCount.value;
-      if (cursorIndex.value === 0) {
-        endTrial();
-      }
+      moveCursor();
     } else if (event.key === "Enter" || event.key === " ") {
       handleSelection(cursorIndex.value);
     }
@@ -117,6 +117,13 @@ const handleKeydown = (event: KeyboardEvent) => {
     if (event.key === "Enter" || event.key === " ") {
       startTraining();
     }
+  }
+};
+
+const moveCursor = () => {
+  cursorIndex.value = (cursorIndex.value + 1) % answerChoiceCount.value;
+  if (cursorIndex.value === 0) {
+    endTrial();
   }
 };
 
@@ -139,8 +146,8 @@ const displayReadyMessage = () => {
   playSound("ready");
   currentTrialCount.value++;
 
-  mainText.value = "준비하세요!";
-  subText.value = `라운드 ${currentTrialCount.value} | 훈련 시간: ${totalElapsedTime.value}`;
+  mainText.value = "Get Ready!";
+  subText.value = `Trial #${currentTrialCount.value} | Elapsed Time: ${totalElapsedTime.value}`;
   currentTrainingStep.value = 1;
 };
 
@@ -149,6 +156,8 @@ const resetTrial = () => {
   userInstruction.value = "";
   prompt.value = generatePrompt();
   cursorIndex.value = 0;
+  missedCount.value = 0;
+  correctCount.value = 0;
   selectedIndices.value.clear();
   missedIndices.value.clear();
 
@@ -205,10 +214,14 @@ const handleSelection = (index: number) => {
     playSound("correct");
     selectedIndices.value.add(index);
     document.getElementById(`choice-${index}`)?.classList.add("text-green-500");
+    correctCount.value++;
+    moveCursor();
   } else {
     playSound("incorrect");
     selectedIndices.value.add(index);
     document.getElementById(`choice-${index}`)?.classList.add("text-red-500");
+    missedCount.value++;
+    moveCursor();
   }
 };
 
@@ -216,15 +229,18 @@ const handleSelection = (index: number) => {
 const endTrial = () => {
   trialEndTime.value = Date.now();
   const trialDuration = (trialEndTime.value - trialStartTime.value) / 1000;
-  const correctCount = selectedIndices.value.size;
-  const totalInteractions =
-    selectedIndices.value.size + missedIndices.value.size;
+  const totalInteractions = prompt.value.length + missedCount.value;
 
   pauseTimer.value = true;
   playSound("finish");
-  mainText.value = "완료!";
-  subText.value = `소요 시간: ${trialDuration}초 | 정답 개수: ${correctCount} / ${totalInteractions}`;
-  userInstruction.value = "계속하려면 스페이스바나 엔터 키를 누르세요";
+
+  const accuracy = (correctCount.value / totalInteractions) * 100;
+
+  mainText.value = "Finish!";
+  subText.value = `Time: ${trialDuration.toFixed(
+    2
+  )}s | Accuracy: ${accuracy.toFixed(2)}%`;
+  userInstruction.value = "Press spacebar or enter to continue";
 
   currentTrainingStep.value = 3;
 };
@@ -251,7 +267,7 @@ const startTraining = async () => {
 
   await countDown();
   userInstruction.value =
-    "오른쪽 화살표를 눌러 커서를 이동하세요\n(Enter 또는 스페이스바를 눌러 입력하세요)";
+    "Press the right arrow to move the cursor\n(press Enter or spacebar to select)";
   currentTrainingStep.value = 2;
   pauseTimer.value = false;
 };
