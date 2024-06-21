@@ -1,43 +1,37 @@
-<template>
-  <div class="fixed inset-0 h-screen w-screen overflow-hidden">
-    <div
-      v-for="char in chars"
-      :key="char.id"
-      class="bouncing-char text-8xl font-mono training-text"
-      :style="char.style"
-    >
-      {{ char.value }}
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref, onMounted, watch } from "vue";
 
-const props = defineProps({
-  charCount: {
-    type: Number,
-    required: true,
-  },
-});
+interface Char {
+  id: string;
+  value: string;
+  style: {
+    top: string;
+    left: string;
+    animationDuration: string;
+  };
+}
+
+const props = defineProps<{
+  charCount: number;
+}>();
 
 const charSet = ["■", "▼", "◆", "●", "○", "★", "☆", "▲", "▽", "◂", "◃"];
 
-const getRandomChar = () => {
+const getRandomChar = (): string => {
   return charSet[Math.floor(Math.random() * charSet.length)];
 };
 
-const chars = ref(
-  Array.from({ length: props.charCount }, () => ({
-    id: Math.random().toString(36).substr(2, 9),
-    value: getRandomChar(), // Random character from the set
-    style: {
-      top: `${Math.random() * 80}%`,
-      left: `${Math.random() * 80}%`,
-      animationDuration: `${2 + Math.random() * 3}s`,
-    },
-  }))
-);
+const createChar = (): Char => ({
+  id: Math.random().toString(36).substr(2, 9),
+  value: getRandomChar(),
+  style: {
+    top: `${Math.random() * 80}%`,
+    left: `${Math.random() * 80}%`,
+    animationDuration: `${2 + Math.random() * 3}s`,
+  },
+});
+
+const chars = ref<Char[]>(Array.from({ length: props.charCount }, createChar));
 
 const updatePosition = (charId: string) => {
   chars.value = chars.value.map((char) =>
@@ -67,18 +61,23 @@ onMounted(() => {
 watch(
   () => props.charCount,
   (newCount) => {
-    chars.value = Array.from({ length: newCount }, () => ({
-      id: Math.random().toString(36).substr(2, 9),
-      value: getRandomChar(), // Random character from the set
-      style: {
-        top: `${Math.random() * 80}%`,
-        left: `${Math.random() * 80}%`,
-        animationDuration: `${2 + Math.random() * 3}s`,
-      },
-    }));
+    chars.value = Array.from({ length: newCount }, createChar);
   }
 );
 </script>
+
+<template>
+  <div class="fixed inset-0 h-screen w-screen overflow-hidden">
+    <div
+      v-for="char in chars"
+      :key="char.id"
+      class="bouncing-char text-8xl font-mono training-text"
+      :style="char.style"
+    >
+      {{ char.value }}
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .bouncing-char {

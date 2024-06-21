@@ -14,25 +14,25 @@ const router = useRouter();
 const trainingParameter = ref<RapidVisualPerception>(
   new RapidVisualPerception()
 );
-const totalTrainingTime = ref(0);
-const pauseTimer = ref(true);
-const characterPool = ref("");
-const numberOfStimuli = ref(0);
-const stimulusPresentationTime = ref(0);
-const currentTrainingStep = ref(0);
-const generatedPrompt = ref("");
-const userInstruction = ref("");
-const mainText = ref("");
-const subText = ref("");
-const stimulusType = ref("");
-const isUsingKoreanChars = ref(false);
-const totalElapsedTime = ref(0);
-const currentTrialCount = ref(0);
-const correctCount = ref(0);
+const totalTrainingTime = ref<number>(0);
+const pauseTimer = ref<boolean>(true);
+const characterPool = ref<string>("");
+const numberOfStimuli = ref<number>(0);
+const stimulusPresentationTime = ref<number>(0);
+const currentTrainingStep = ref<number>(0);
+const generatedPrompt = ref<string>("");
+const userInstruction = ref<string>("");
+const mainText = ref<string>("");
+const subText = ref<string>("");
+const stimulusType = ref<string>("");
+const isUsingKoreanChars = ref<boolean>(false);
+const totalElapsedTime = ref<number>(0);
+const currentTrialCount = ref<number>(0);
+const correctCount = ref<number>(0);
 const trialResults = ref<Record<number, boolean>>({});
 
 // Computed Property for Accuracy
-const trainingAccuracy = computed(() => {
+const trainingAccuracy = computed<number>(() => {
   const correctResponses = Object.values(trialResults.value).filter(
     Boolean
   ).length;
@@ -42,7 +42,7 @@ const trainingAccuracy = computed(() => {
 });
 
 // Utility Function: Wait for specified milliseconds
-const waitForMilliseconds = (ms: number) =>
+const waitForMilliseconds = (ms: number): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
 // Function: Parse Data from Route Query

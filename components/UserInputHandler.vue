@@ -3,30 +3,18 @@ import { ref, onMounted, onUnmounted, computed } from "vue";
 import { playSound } from "~/utils/playSound";
 import { KeyboardUtil } from "~/types/util";
 
-const props = defineProps({
-  numberOfStimuli: {
-    type: Number,
-    required: true,
-  },
-  inputEnabled: {
-    type: Boolean,
-    required: true,
-  },
-  hidePromptText: {
-    type: Boolean,
-    required: true,
-  },
-  usingKoreanCharacters: {
-    type: Boolean,
-    required: true,
-  },
-  stimulusPrompt: {
-    type: String,
-    required: true,
-  },
-});
+interface Props {
+  numberOfStimuli: number;
+  inputEnabled: boolean;
+  hidePromptText: boolean;
+  usingKoreanCharacters: boolean;
+  stimulusPrompt: string;
+}
 
-const emits = defineEmits(["evaluateInput"]);
+const props = defineProps<Props>();
+const emits = defineEmits<{
+  (event: "evaluateInput", userResponse: string): void;
+}>();
 const keyboard = new KeyboardUtil();
 const userResponse = ref<string>("");
 
@@ -49,7 +37,7 @@ const handleKeydown = (event: KeyboardEvent) => {
   }
 };
 
-const paddedUserResponse = computed((): string[] => {
+const paddedUserResponse = computed<string[]>(() => {
   const spacesNeeded = props.numberOfStimuli - userResponse.value.length;
   const responseArray = userResponse.value.split("");
   for (let i = 0; i < spacesNeeded; i++) {
@@ -66,7 +54,7 @@ onUnmounted(() => {
   window.removeEventListener("keydown", handleKeydown);
 });
 
-const textColor = computed(() => {
+const textColor = computed<string>(() => {
   if (props.inputEnabled) {
     return "training-text";
   }

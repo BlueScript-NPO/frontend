@@ -5,25 +5,28 @@ import {
   RapidVisualPerception,
   SequentialVisualMemoryProcedure,
   CharactorSequenceingProcedure,
+  Procedure,
 } from "~/types/procedure";
 import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
 import type { FormError, FormErrorEvent } from "#ui/types";
 
 // Initialize procedures
-const trainingProcedures = [
+const trainingProcedures: Procedure[] = [
   new RapidVisualPerception(),
   new SequentialVisualMemoryProcedure(),
   new CharactorSequenceingProcedure(),
 ];
 
 // Track selected procedure name
-const selectedProcedureName = ref(trainingProcedures[0].name);
+const selectedProcedureName = ref<string>(trainingProcedures[0].name);
 
 // Track selected training procedure parameters
-const selectedTrainingParameters = ref(trainingProcedures[0].parameters);
+const selectedTrainingParameters = ref<Parameter[]>(
+  trainingProcedures[0].parameters
+);
 
 // Compute selected training procedure
-const selectedTrainingProcedure = computed(() =>
+const selectedTrainingProcedure = computed<Procedure | undefined>(() =>
   trainingProcedures.find(
     (procedure) => procedure.name === selectedProcedureName.value
   )
@@ -40,29 +43,27 @@ watch(selectedProcedureName, (newProcedureName) => {
 });
 
 // Validate form data
-const validateForm = (state: any): FormError[] => {
+const validateForm = (state: { parameters: Parameter[] }): FormError[] => {
   const errors: FormError[] = [];
-  state.parameters.forEach((parameter: any) => {
-    if (parameter instanceof Parameter) {
-      if (parameter instanceof SelectParameter && !parameter.selected) {
+  state.parameters.forEach((parameter) => {
+    if (parameter instanceof SelectParameter && !parameter.selected) {
+      errors.push({ path: parameter.displayName, message: "Required" });
+    }
+    if (parameter instanceof NumParameter) {
+      if (parameter.value == null) {
         errors.push({ path: parameter.displayName, message: "Required" });
       }
-      if (parameter instanceof NumParameter) {
-        if (parameter.value == null) {
-          errors.push({ path: parameter.displayName, message: "Required" });
-        }
-        if (parameter.min !== undefined && parameter.value < parameter.min) {
-          errors.push({
-            path: parameter.displayName,
-            message: `Value must be at least ${parameter.min}`,
-          });
-        }
-        if (parameter.max !== undefined && parameter.value > parameter.max) {
-          errors.push({
-            path: parameter.displayName,
-            message: `Value must be at most ${parameter.max}`,
-          });
-        }
+      if (parameter.min !== undefined && parameter.value < parameter.min) {
+        errors.push({
+          path: parameter.displayName,
+          message: `Value must be at least ${parameter.min}`,
+        });
+      }
+      if (parameter.max !== undefined && parameter.value > parameter.max) {
+        errors.push({
+          path: parameter.displayName,
+          message: `Value must be at most ${parameter.max}`,
+        });
       }
     }
   });
@@ -100,7 +101,7 @@ const router = useRouter();
   </Head>
   <TopMenu />
   <UForm
-    v-if="selectedTrainingProcedure && selectedTrainingProcedure"
+    v-if="selectedTrainingProcedure"
     :validate="validateForm"
     :state="{ parameters: selectedTrainingParameters }"
     class="space-y-4"

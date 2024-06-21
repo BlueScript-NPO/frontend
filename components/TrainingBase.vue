@@ -13,7 +13,7 @@
         :style="{ whiteSpace: 'pre-line' }"
         class="text-center font-light tracking-wide leading-relaxed"
       >
-        {{ props.instructionText }}
+        {{ instructionText }}
       </div>
     </div>
 
@@ -21,7 +21,7 @@
     <div
       class="absolute bottom-0 right-0 text-lg p-4 px-8"
       :class="
-        elapsedSeconds >= props.totalTrainingTime
+        elapsedSeconds >= totalTrainingTime
           ? 'text-yellow-600 dark:text-yellow-400'
           : 'training-text'
       "
@@ -49,10 +49,10 @@ const props = defineProps<Props>();
 const model = defineModel<number>();
 
 const startTime = ref<number | null>(null);
-const elapsedSeconds = ref(0);
+const elapsedSeconds = ref<number>(0);
 let intervalId: number | null = null;
 
-const formattedElapsedTime = computed(() => {
+const formattedElapsedTime = computed<string>(() => {
   const minutes = Math.floor(elapsedSeconds.value / 60);
   const seconds = (elapsedSeconds.value % 60).toString().padStart(2, "0");
   return `${minutes}:${seconds}`;
