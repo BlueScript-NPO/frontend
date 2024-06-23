@@ -283,7 +283,7 @@ onUnmounted(() => {
   >
     <div
       class="flex flex-col justify-center items-center h-full space-y-10"
-      v-if="currentTrainingStep === 1"
+      v-if="currentTrainingStep === 1 || currentTrainingStep === 3"
     >
       <TitleHud :title="mainText" :subtitle="subText" />
     </div>
@@ -331,13 +331,6 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-    </div>
-
-    <div
-      class="flex flex-col justify-center items-center h-full space-y-10"
-      v-if="currentTrainingStep === 3"
-    >
-      <TitleHud :title="mainText" :subtitle="subText" />
     </div>
   </TrainingBase>
 </template>

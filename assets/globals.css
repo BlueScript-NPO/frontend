@@ -7,7 +7,7 @@
 
 /* Define your global styles here */
 .text-main {
-  @apply text-8xl font-light text-center text-zinc-900 w-full;
+  @apply text-8xl font-light text-center text-zinc-900 dark:text-zinc-100 w-full;
   letter-spacing: 0.5em;
   padding-left: 0.5em;
 

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import { stimuliCharactorSets } from "~/utils/util";
 import { playSound } from "~/utils/playSound";
 import { jsonToProcedure, CharactorMatchingProcedure } from "~/types/procedure";
@@ -31,6 +31,10 @@ const currentTrialCount = ref<number>(0);
 const currentPrompt = ref<string>("");
 const currentTargets = ref<string[]>([]);
 const isTargetCorrect = ref<boolean[]>([]);
+const targetClicked = ref<boolean[]>([]);
+const answerRemaining = ref<number>(0);
+const trialStartTime = ref<number>(0);
+const trialEndTime = ref<number>(0);
 
 // Function: Parse Data from Route Query
 const parseRouteData = () => {
@@ -81,6 +85,10 @@ const generateTargets = (correctCount: number) => {
     temp.push(i < correctCount);
   }
 
+  for (let i = temp.length; i < targetCount.value; i++) {
+    temp.push(false);
+  }
+
   // shuffle the array using the Fisher-Yates algorithm
   for (let i = temp.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -107,12 +115,15 @@ const generateTargets = (correctCount: number) => {
   }
 
   currentTargets.value = targets;
+  answerRemaining.value = correctCount;
 };
 
 const resetTrial = () => {
   currentPrompt.value = "";
+  answerRemaining.value = 0;
   currentTargets.value = [];
   isTargetCorrect.value = [];
+  targetClicked.value = [];
 };
 
 // Function: Display Ready Message
@@ -125,14 +136,58 @@ const displayReadyMessage = () => {
   currentTrainingStep.value = 1;
 };
 
+const countDown = async () => {
+  subText.value = "";
+  for (let i = 3; i > 0; i--) {
+    mainText.value = i.toString();
+    playSound("countdown");
+    await waitForMilliseconds(1000);
+  }
+
+  playSound("start");
+  trialStartTime.value = Date.now();
+};
+
+const handleTargetClick = (index: number) => {
+  targetClicked.value[index] = true;
+  if (isTargetCorrect.value[index]) {
+    answerRemaining.value--;
+    playSound("correct");
+
+    if (answerRemaining.value === 0) {
+      endTrial();
+    }
+  } else {
+    playSound("incorrect");
+  }
+};
+
+const endTrial = () => {
+  trialEndTime.value = Date.now();
+  const trialDuration = (trialEndTime.value - trialStartTime.value) / 1000;
+
+  pauseTimer.value = true;
+  playSound("finish");
+
+  mainText.value = "Finish!";
+  subText.value = `Time: ${trialDuration.toFixed(2)}s`;
+  userInstruction.value = "Press spacebar or enter to continue";
+
+  currentTrainingStep.value = 3;
+};
+
 // Utility Function: Wait for specified milliseconds
 const waitForMilliseconds = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
 const startTraining = async () => {
-  currentTrainingStep.value = 1;
+  currentTrainingStep.value = 0;
+  resetTrial();
+
   displayReadyMessage();
   await waitForMilliseconds(1500);
+
+  await countDown();
 
   currentPrompt.value = generatePrompt();
   userInstruction.value = "Find all the matching characters";
@@ -141,11 +196,27 @@ const startTraining = async () => {
   console.log(currentTargets.value);
 
   currentTrainingStep.value = 2;
+  pauseTimer.value = false;
+};
+
+// Function: Handle Keydown Event
+const handleKeydown = (event: KeyboardEvent) => {
+  if (
+    currentTrainingStep.value === 3 &&
+    (event.key === "Enter" || event.key === " ")
+  ) {
+    startTraining();
+  }
 };
 
 onMounted(() => {
+  window.addEventListener("keydown", handleKeydown);
   parseRouteData();
   startTraining();
+});
+
+onUnmounted(() => {
+  window.removeEventListener("keydown", handleKeydown);
 });
 </script>
 
@@ -161,7 +232,7 @@ onMounted(() => {
   >
     <div
       class="flex flex-col justify-center items-center h-full space-y-10"
-      v-if="currentTrainingStep === 1"
+      v-if="currentTrainingStep === 1 || currentTrainingStep === 3"
     >
       <TitleHud :title="mainText" :subtitle="subText" />
     </div>
@@ -188,21 +259,32 @@ onMounted(() => {
           <div
             v-for="(char, index) in currentTargets"
             :key="index"
-            class="flex justify-center w-52"
+            class="w-52 h-10"
           >
             <div
-              v-for="(c, i) in char"
-              :key="i"
-              class="flex justify-center w-8"
+              v-if="!targetClicked[index]"
+              @click="handleTargetClick(index)"
+              class="flex justify-center hover:bg-zinc-900 dark:hover:bg-zinc-100 hover:text-zinc-100 dark:hover:text-zinc-900 rounded-md cursor-pointer"
             >
-              <span class="block text center text-4xl">{{ c }}</span>
+              <div
+                v-for="(c, i) in char"
+                :key="i"
+                class="flex justify-center w-8"
+              >
+                <span class="block text center text-4xl">{{ c }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="pt-6 flex justify-center">
+        <p class="text-xl">{{ answerRemaining }} remaining</p>
+      </div>
     </div>
   </TrainingBase>
 </template>
+
 <style>
 /*  */
 </style>
