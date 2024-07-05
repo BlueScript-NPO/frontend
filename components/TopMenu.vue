@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const links = [
   {
+    label: "Home",
+    to: "/",
+  },
+  {
     label: "Training",
     to: "/train",
   },
@@ -54,7 +58,7 @@ const items = [
 </script>
 
 <template>
-  <UHeader :links="links">
+  <UHeader>
     <template #logo>
       <ClientOnly>
         <img
@@ -72,8 +76,16 @@ const items = [
       </ClientOnly>
     </template>
 
+    <template #center>
+      <UHeaderLinks :links="links" class="hidden sm:flex" />
+    </template>
+
     <template #right>
       <UColorModeButton />
+    </template>
+
+    <template #panel>
+      <UAsideLinks :links="links" class="px-2" />
     </template>
   </UHeader>
 </template>
