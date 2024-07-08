@@ -23,11 +23,5 @@ const actionLinks = ref([
     to: "/train",
     size: "xl",
   },
-  {
-    label: "Source Code",
-    icon: "i-heroicons-cube-transparent",
-    to: "https://github.com/BlueScript-NPO",
-    size: "xl",
-  },
 ]);
 </script>

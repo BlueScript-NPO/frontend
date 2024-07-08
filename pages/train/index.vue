@@ -11,6 +11,8 @@ import {
 import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
 import type { FormError, FormErrorEvent } from "#ui/types";
 
+const router = useRouter();
+
 // Initialize procedures
 const trainingProcedures: Procedure[] = [
   new RapidVisualPerception(),
@@ -93,8 +95,6 @@ const handleFormError = async (event: FormErrorEvent) => {
   element?.focus();
   element?.scrollIntoView({ behavior: "smooth", block: "center" });
 };
-
-const router = useRouter();
 </script>
 
 <template>
@@ -146,9 +146,18 @@ const router = useRouter();
       </div>
 
       <template #footer>
-        <div class="flex justify-center space-x-4">
-          <UButton type="submit">Start Training</UButton>
+        <div class="flex justify-center space-x-4 pb-4">
+          <UButton color="primary" type="submit">Start Training</UButton>
         </div>
+        <UAlert
+          icon="i-heroicons-shield-exclamation"
+          color="red"
+          variant="subtle"
+          title="Heads up!"
+          description="You are training as a
+        guest. Make sure to record you results separately. Sign in to save your
+        progress."
+        />
       </template>
     </UCard>
   </UForm>
