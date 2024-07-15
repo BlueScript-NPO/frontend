@@ -35,7 +35,6 @@ const cursorIndex = ref<number>(0);
 const answerChoices = ref<string[]>([]);
 const correctIndices = ref<number[]>([]);
 const selectedIndices = ref<Set<number>>(new Set());
-const missedIndices = ref<Set<number>>(new Set());
 const trialStartTime = ref<number>(0);
 const trialEndTime = ref<number>(0);
 
@@ -104,8 +103,6 @@ const handleKeydown = (event: KeyboardEvent) => {
   if (currentTrainingStep.value === 2) {
     if (event.key === "ArrowRight") {
       checkForMissed();
-      playSound("click", 30);
-      moveCursor();
     } else if (event.key === "Enter" || event.key === " ") {
       handleSelection(cursorIndex.value);
     }
@@ -124,6 +121,16 @@ const moveCursor = () => {
   }
 };
 
+// function to return the cursor to the last correct character (back to start if no correct character)
+const returnCursor = () => {
+  if (correctCount.value == 0) {
+    console.log("No correct character");
+    cursorIndex.value = 0;
+  } else {
+    cursorIndex.value = correctIndices.value[correctCount.value - 1];
+  }
+};
+
 // Function to check for missed correct characters
 const checkForMissed = () => {
   if (
@@ -131,10 +138,10 @@ const checkForMissed = () => {
     !selectedIndices.value.has(cursorIndex.value)
   ) {
     playSound("incorrect");
-    missedIndices.value.add(cursorIndex.value);
-    document
-      .getElementById(`choice-${cursorIndex.value}`)
-      ?.classList.add("text-blue-500");
+    returnCursor();
+  } else {
+    playSound("click", 30);
+    moveCursor();
   }
 };
 
@@ -156,7 +163,6 @@ const resetTrial = () => {
   missedCount.value = 0;
   correctCount.value = 0;
   selectedIndices.value.clear();
-  missedIndices.value.clear();
 
   const promptLen = prompt.value.length;
   const indices: number[] = [];
@@ -205,12 +211,9 @@ const handleSelection = (index: number) => {
   if (correctIndices.value.includes(index)) {
     playSound("correct");
     selectedIndices.value.add(index);
-    document.getElementById(`choice-${index}`)?.classList.add("text-green-500");
     correctCount.value++;
   } else {
     playSound("incorrect");
-    selectedIndices.value.add(index);
-    document.getElementById(`choice-${index}`)?.classList.add("text-red-500");
     missedCount.value++;
   }
   moveCursor();
@@ -317,11 +320,7 @@ onUnmounted(() => {
               {
                 'outline-blueScriptBlue-500 dark:outline-blueScriptBlue-400 outline outline-2':
                   i === cursorIndex,
-                'text-green-500 dark:text-green-400':
-                  selectedIndices.has(i) && correctIndices.includes(i),
-                'text-red-500 dark:text-red-400':
-                  selectedIndices.has(i) && !correctIndices.includes(i),
-                ' text-yellow-500 dark:text-yellow-400': missedIndices.has(i),
+                'text-green-500 dark:text-green-400': selectedIndices.has(i),
               },
             ]"
           >
