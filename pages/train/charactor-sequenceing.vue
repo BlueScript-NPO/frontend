@@ -120,8 +120,12 @@ const moveCursor = () => {
 
 // Function to return the cursor to the last correct character (back to start if no correct character)
 const returnCursor = () => {
-  cursorIndex.value =
-    correctCount.value === 0 ? 0 : correctIndices.value[correctCount.value - 1];
+  if (correctCount.value === 0) {
+    cursorIndex.value = 0;
+  } else {
+    cursorIndex.value =
+      correctIndices.value[correctCount.value - 1] % answerChoiceCount.value;
+  }
 };
 
 // Function to check for missed correct characters
