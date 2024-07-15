@@ -22,7 +22,7 @@ const characterPool = ref<string>("");
 const userInstruction = ref<string>("");
 const totalElapsedTime = ref<number>(0);
 const promptLength = ref<number>(0);
-const isPromptsequential = ref<boolean>(false);
+const isPromptSequential = ref<boolean>(false);
 const currentTrialCount = ref<number>(0);
 const answerChoiceCount = ref<number>(0);
 
@@ -57,11 +57,10 @@ const parseRouteData = () => {
       trainingParameter.value = jsonToProcedure(
         data
       ) as CharactorSequenceingProcedure;
-
       totalTrainingTime.value = data.parameters.duration * 60;
       stimulusType.value = data.parameters.stimuliType;
       characterPool.value = stimuliCharactorSets[stimulusType.value] || "";
-      isPromptsequential.value = data.parameters.promptType === "Sequential";
+      isPromptSequential.value = data.parameters.promptType === "Sequential";
       promptLength.value = data.parameters.promptLength;
       answerChoiceCount.value = 16 * Math.ceil(promptLength.value / 3);
     } else {
@@ -80,11 +79,9 @@ const waitForMilliseconds = (ms: number) =>
 // Function: generate a prompt
 const generatePrompt = () => {
   const temp = [];
-  if (isPromptsequential.value) {
+  if (isPromptSequential.value) {
     const startIndex = Math.floor(Math.random() * (26 - promptLength.value));
-    const endIndex = startIndex + promptLength.value;
-
-    for (let i = startIndex; i < endIndex; i++) {
+    for (let i = startIndex; i < startIndex + promptLength.value; i++) {
       temp.push(characterPool.value[i]);
     }
   } else {
@@ -121,14 +118,10 @@ const moveCursor = () => {
   }
 };
 
-// function to return the cursor to the last correct character (back to start if no correct character)
+// Function to return the cursor to the last correct character (back to start if no correct character)
 const returnCursor = () => {
-  if (correctCount.value == 0) {
-    console.log("No correct character");
-    cursorIndex.value = 0;
-  } else {
-    cursorIndex.value = correctIndices.value[correctCount.value - 1];
-  }
+  cursorIndex.value =
+    correctCount.value === 0 ? 0 : correctIndices.value[correctCount.value - 1];
 };
 
 // Function to check for missed correct characters
@@ -149,7 +142,6 @@ const checkForMissed = () => {
 const displayReadyMessage = () => {
   playSound("ready");
   currentTrialCount.value++;
-
   mainText.value = "Get Ready!";
   subText.value = `Trial #${currentTrialCount.value} | Elapsed Time: ${totalElapsedTime.value}`;
   currentTrainingStep.value = 1;
@@ -223,7 +215,6 @@ const handleSelection = (index: number) => {
 const endTrial = () => {
   trialEndTime.value = Date.now();
   const trialDuration = (trialEndTime.value - trialStartTime.value) / 1000;
-
   pauseTimer.value = true;
   playSound("finish");
 
@@ -232,10 +223,10 @@ const endTrial = () => {
     2
   )}s | Accuracy: ${accuracy.value.toFixed(2)}%`;
   userInstruction.value = "Press spacebar or enter to continue";
-
   currentTrainingStep.value = 3;
 };
 
+// Function to handle countdown before trial starts
 const countDown = async () => {
   subText.value = "";
   for (let i = 3; i > 0; i--) {
@@ -243,7 +234,6 @@ const countDown = async () => {
     playSound("countdown");
     await waitForMilliseconds(1000);
   }
-
   playSound("start");
   trialStartTime.value = Date.now();
 };
@@ -252,11 +242,10 @@ const countDown = async () => {
 const startTraining = async () => {
   currentTrainingStep.value = 0;
   resetTrial();
-
   displayReadyMessage();
   await waitForMilliseconds(1500);
-
   await countDown();
+
   userInstruction.value =
     "Press the right arrow to move the cursor\n(press Enter or spacebar to select)";
   currentTrainingStep.value = 2;
