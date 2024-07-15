@@ -107,9 +107,18 @@ const generateTargets = (correctCount: number) => {
       // "Fake" target is only one character (any character) different from the prompt.
       const temp = currentPrompt.value.split("");
       const randomIndex = Math.floor(Math.random() * temp.length);
-      temp[randomIndex] = characterPool.value.charAt(
+
+      // Ensure the new character is different from the original character at randomIndex
+      let newChar = characterPool.value.charAt(
         Math.floor(Math.random() * characterPool.value.length)
       );
+      while (newChar === temp[randomIndex]) {
+        newChar = characterPool.value.charAt(
+          Math.floor(Math.random() * characterPool.value.length)
+        );
+      }
+
+      temp[randomIndex] = newChar;
       targets.push(temp.join(""));
     }
   }
@@ -149,8 +158,8 @@ const countDown = async () => {
 };
 
 const handleTargetClick = (index: number) => {
-  targetClicked.value[index] = true;
   if (isTargetCorrect.value[index]) {
+    targetClicked.value[index] = true;
     answerRemaining.value--;
     playSound("correct");
 
@@ -191,9 +200,8 @@ const startTraining = async () => {
 
   currentPrompt.value = generatePrompt();
   userInstruction.value = "Find all the matching characters";
-  generateTargets(5); // WILL BE CHANGED SOON (JUST FOR TSSTING)
-
-  console.log(currentTargets.value);
+  // 30% of the targets (rounded up) will be correct
+  generateTargets(Math.ceil(targetCount.value * 0.3));
 
   currentTrainingStep.value = 2;
   pauseTimer.value = false;

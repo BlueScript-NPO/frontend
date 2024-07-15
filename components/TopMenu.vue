@@ -82,7 +82,7 @@ const items = [
 
     <template #right>
       <UColorModeButton />
-      <UButton variant="ghost" to="auth/"
+      <UButton variant="ghost" to="/auth"
         >Sign in
         <template #trailing>
           <UIcon name="i-heroicons-arrow-right-20-solid" class="w-5 h-5" />
