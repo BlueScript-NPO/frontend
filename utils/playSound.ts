@@ -1,8 +1,20 @@
-const audioContext = new (window.AudioContext ||
-  (window as any).webkitAudioContext)();
+let audioContext: AudioContext | null = null;
 const audioBufferCache: { [key: string]: AudioBuffer } = {};
 
+if (
+  typeof window !== "undefined" &&
+  (window.AudioContext || (window as any).webkitAudioContext)
+) {
+  audioContext = new (window.AudioContext ||
+    (window as any).webkitAudioContext)();
+}
+
 export async function playSound(filename: string, volume = 100) {
+  if (!audioContext) {
+    console.error("AudioContext is not supported or not available.");
+    return;
+  }
+
   try {
     if (!audioBufferCache[filename]) {
       const response = await fetch(`/audio/${filename}.wav`);

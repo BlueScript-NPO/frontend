@@ -131,6 +131,7 @@ const checkForMissed = () => {
     !selectedIndices.value.has(cursorIndex.value)
   ) {
     playSound("incorrect");
+    missedCount.value++;
     returnCursor();
   } else {
     playSound("click", 30);
@@ -207,6 +208,7 @@ const handleSelection = (index: number) => {
   } else {
     playSound("incorrect");
     missedCount.value++;
+    returnCursor();
   }
   moveCursor();
 };
