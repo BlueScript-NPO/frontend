@@ -1,24 +1,28 @@
-// utils/playSound.ts
-export function playSound(filename: string, volume = 100) {
-  const audioContext = new (window.AudioContext ||
-    (window as any).webkitAudioContext)();
+const audioContext = new (window.AudioContext ||
+  (window as any).webkitAudioContext)();
+const audioBufferCache: { [key: string]: AudioBuffer } = {};
 
-  fetch(`/audio/${filename}.wav`)
-    .then((response) => response.arrayBuffer())
-    .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
-    .then((audioBuffer) => {
-      const source = audioContext.createBufferSource();
-      source.buffer = audioBuffer;
+export async function playSound(filename: string, volume = 100) {
+  try {
+    if (!audioBufferCache[filename]) {
+      const response = await fetch(`/audio/${filename}.wav`);
+      const arrayBuffer = await response.arrayBuffer();
+      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+      audioBufferCache[filename] = audioBuffer;
+    }
 
-      const gainNode = audioContext.createGain();
-      gainNode.gain.value = volume / 100;
+    const audioBuffer = audioBufferCache[filename];
+    const source = audioContext.createBufferSource();
+    source.buffer = audioBuffer;
 
-      source.connect(gainNode);
-      gainNode.connect(audioContext.destination);
+    const gainNode = audioContext.createGain();
+    gainNode.gain.value = volume / 100;
 
-      source.start();
-    })
-    .catch((error) => {
-      console.error("Error playing sound:", error);
-    });
+    source.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    source.start();
+  } catch (error) {
+    console.error("Error playing sound:", error);
+  }
 }
