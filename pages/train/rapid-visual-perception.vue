@@ -102,8 +102,8 @@ const startTraining = async () => {
   displayReadyMessage();
   await waitForMilliseconds(1500);
   currentTrainingStep.value = 0;
-  await waitForMilliseconds(1000); // Blank screen duration
   generateStimulusPrompt();
+  await waitForMilliseconds(1000); // Blank screen duration
   await waitForMilliseconds(stimulusPresentationTime.value);
   userInstruction.value =
     "Please type the characters you saw\n(Press Enter or space to submit)";
