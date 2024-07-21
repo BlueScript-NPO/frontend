@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { KeyboardUtil } from "~/utils/util";
 import {
   jsonToProcedure,
   CharactorGuesstimateProcedure,
@@ -11,6 +12,8 @@ import { playSound } from "~/utils/playSound";
 // Vue Router
 const route = useRoute();
 const router = useRouter();
+
+const keyboard = new KeyboardUtil();
 
 const waitForMilliseconds = (ms: number): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, ms));
@@ -36,24 +39,52 @@ const chunkSizeMap: Record<string, number> = {
   Medium: 15,
   Large: 10,
 }; // number is the number of columns/rows
+const revealSpeed = ref<number>(100); // in milliseconds
 
 // Training Execution Variables
 const currentTrainingStep = ref<number>(0);
 const currentCharactor = ref<string>("");
 const currentTrialCount = ref<number>(0);
-// 2d array of boolean determining if the chunk is masked or not
-const chunkMask = ref<boolean[][]>([]);
+const chunkMask = ref<boolean[]>([]);
+const chunkIndices = ref<number[]>([]);
 
 const mainText = ref<string>("");
 const subText = ref<string>("");
 
-// function: Initialize the chunk mask (fill with true)
+const handleKeydown = (event: KeyboardEvent) => {
+  if (currentTrainingStep.value == 2) {
+    if (/^[a-zA-Z0-9]$/.test(event.key)) {
+      pauseTimer.value = true;
+      if (isUsingKoreanChars.value) {
+        evaluateAnswer(keyboard.strokeToKorean(event.key.toUpperCase()));
+      } else {
+        evaluateAnswer(event.key.toUpperCase());
+      }
+      currentTrainingStep.value = 3;
+    }
+  } else if (currentTrainingStep.value == 3) {
+    if (event.key === "Enter" || event.key === " ") {
+      startTraining();
+    }
+  }
+};
+
+// function: evaluate user input
+const evaluateAnswer = (userResponse: string) => {
+  if (userResponse === currentCharactor.value) {
+    playSound("correct");
+    userInstruction.value = "Correct!\nPress spacebar or enter to continue";
+  } else {
+    playSound("incorrect");
+    userInstruction.value = "Incorrect!\nPress spacebar or enter to continue";
+  }
+};
+
+// Function: Initialize the chunk mask (fill with true)
 const initializeChunkMask = () => {
-  // create a 2d array of boolean
-  const mask = Array(chunkSize.value)
-    .fill(null)
-    .map(() => Array(chunkSize.value).fill(true));
-  chunkMask.value = mask;
+  const totalChunks = chunkSize.value * chunkSize.value;
+  chunkMask.value = Array(totalChunks).fill(true);
+  chunkIndices.value = Array.from({ length: totalChunks }, (_, i) => i);
 };
 
 // Function: Parse Data from Route Query
@@ -102,7 +133,7 @@ const displayReadyMessage = () => {
 // Function: Training Process
 const startTraining = async () => {
   if (totalElapsedTime.value >= totalTrainingTime.value) {
-    // saveTrainingResults();
+    // logic to save training results
     return;
   }
 
@@ -118,18 +149,29 @@ const startTraining = async () => {
   currentTrainingStep.value = 0;
   await waitForMilliseconds(1000); // Blank screen duration
 
+  userInstruction.value =
+    "Press the key that matches the character getting revealed";
   currentTrainingStep.value = 2;
   revealCharacterGradually();
 };
 
+// Function: Shuffle array
+const shuffleArray = (array: number[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+};
+
 // Function: Gradually Reveal Character
 const revealCharacterGradually = async () => {
-  const revealSpeed = 100; // milliseconds between reveals
-  for (let i = 0; i < chunkSize.value; i++) {
-    for (let j = 0; j < chunkSize.value; j++) {
-      await waitForMilliseconds(revealSpeed);
-      chunkMask.value[i][j] = false;
+  shuffleArray(chunkIndices.value);
+  for (const index of chunkIndices.value) {
+    if (currentTrainingStep.value !== 2) {
+      return;
     }
+    await waitForMilliseconds(revealSpeed.value);
+    chunkMask.value[index] = false;
   }
 };
 
@@ -137,6 +179,11 @@ const revealCharacterGradually = async () => {
 onMounted(() => {
   parseRouteData();
   startTraining();
+  window.addEventListener("keydown", handleKeydown);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("keydown", handleKeydown);
 });
 </script>
 
@@ -161,7 +208,7 @@ onMounted(() => {
       <!-- Container for the training -->
       <div
         class="w-[50vw] h-[50vw] bg-zinc-100 dark:bg-zinc-800 rounded-lg relative overflow-hidden"
-        v-if="currentTrainingStep === 2"
+        v-if="currentTrainingStep >= 2"
       >
         <!-- Masked character -->
         <div class="absolute inset-0 flex justify-center items-center z-0">
@@ -171,28 +218,21 @@ onMounted(() => {
         </div>
         <!-- Chunked mask -->
         <div
+          v-if="currentTrainingStep === 2"
           class="w-full h-full grid absolute inset-0 z-10"
           :style="{
-            gridTemplateColumns: `repeat(${chunkSize.value}, 1fr)`,
-            gridTemplateRows: `repeat(${chunkSize.value}, 1fr)`,
+            display: 'grid',
+            gridTemplateColumns: `repeat(${chunkSize}, minmax(0, 1fr))`,
           }"
         >
           <div
-            v-for="(row, rowIndex) in chunkMask"
-            :key="rowIndex"
-            class="flex"
-            :style="{ height: `${100 / chunkSize.value}%` }"
-          >
-            <div
-              v-for="(masked, colIndex) in row"
-              :key="colIndex"
-              class="flex-1"
-              :class="{
-                'bg-blueScriptBlue-600 dark:bg-blueScriptBlue-500': masked,
-                'bg-transparent': !masked,
-              }"
-            ></div>
-          </div>
+            v-for="(masked, index) in chunkMask"
+            :key="index"
+            :class="{
+              'bg-zinc-100 dark:bg-zinc-800': masked,
+              'bg-transparent': !masked,
+            }"
+          ></div>
         </div>
       </div>
     </div>
