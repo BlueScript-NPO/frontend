@@ -104,6 +104,21 @@ export class StimuliTypeParameter extends SelectParameter<string> {
   }
 }
 
+export class ChunkSizeParameter extends SelectParameter<string> {
+  constructor(selected: string = "Small") {
+    const chunks: string[] = ["Small", "Medium", "Large"];
+    if (!chunks.includes(selected)) {
+      throw new Error("Invalid chunk size");
+    }
+    super(
+      "Chunk Size",
+      "chunkSize",
+      chunks,
+      selected ? chunks.indexOf(selected) : undefined
+    );
+  }
+}
+
 export class PromptTypeParamter extends SelectParameter<string> {
   constructor(selected: string = "Sequential") {
     const prompts: string[] = ["Sequential", "Random"];

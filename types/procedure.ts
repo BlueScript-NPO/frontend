@@ -7,6 +7,7 @@ import {
   PromptLengthParameter,
   TargetLengthParameter,
   TargetCountParameter,
+  ChunkSizeParameter,
 } from "./parameter";
 
 export abstract class Procedure {
@@ -151,6 +152,20 @@ export class CharactorMatchingProcedure extends Procedure {
   }
 }
 
+export class CharactorGuesstimateProcedure extends Procedure {
+  stimuliType: StimuliTypeParameter;
+  chunkSize: ChunkSizeParameter;
+
+  constructor(duration?: number, stimuliType?: string, chunkSize?: string) {
+    super("Charactor Guesstimate", duration);
+    this.stimuliType = new StimuliTypeParameter(stimuliType);
+    this.chunkSize = new ChunkSizeParameter(chunkSize);
+
+    this.parameters.push(this.stimuliType);
+    this.parameters.push(this.chunkSize);
+  }
+}
+
 // function to convert json procedure to Procedure object
 export function jsonToProcedure(json: any): Procedure {
   if (json.procedure === "Rapid Visual Perception") {
@@ -180,6 +195,12 @@ export function jsonToProcedure(json: any): Procedure {
       json.parameters.stimuliType,
       json.parameters.targetLength,
       json.parameters.targetCount
+    );
+  } else if (json.procedure === "Charactor Guesstimate") {
+    return new CharactorGuesstimateProcedure(
+      json.parameters.duration,
+      json.parameters.stimuliType,
+      json.parameters.chunkSize
     );
   } else {
     throw new Error("Invalid procedure type");

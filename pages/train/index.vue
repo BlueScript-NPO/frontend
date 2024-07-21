@@ -6,6 +6,7 @@ import {
   SequentialVisualMemoryProcedure,
   CharactorSequenceingProcedure,
   CharactorMatchingProcedure,
+  CharactorGuesstimateProcedure,
   Procedure,
 } from "~/types/procedure";
 import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
@@ -19,6 +20,7 @@ const trainingProcedures: Procedure[] = [
   new SequentialVisualMemoryProcedure(),
   new CharactorSequenceingProcedure(),
   new CharactorMatchingProcedure(),
+  new CharactorGuesstimateProcedure(),
 ];
 
 // Track selected procedure name
