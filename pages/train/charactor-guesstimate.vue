@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import {
   jsonToProcedure,
@@ -35,7 +35,7 @@ const chunkSizeMap: Record<string, number> = {
   Small: 20,
   Medium: 15,
   Large: 10,
-}; // number is the number of colum/row
+}; // number is the number of columns/rows
 
 // Training Execution Variables
 const currentTrainingStep = ref<number>(0);
@@ -112,11 +112,25 @@ const startTraining = async () => {
 
   displayReadyMessage();
   await waitForMilliseconds(1500);
+
+  initializeChunkMask();
   selectCharactor();
   currentTrainingStep.value = 0;
   await waitForMilliseconds(1000); // Blank screen duration
 
   currentTrainingStep.value = 2;
+  revealCharacterGradually();
+};
+
+// Function: Gradually Reveal Character
+const revealCharacterGradually = async () => {
+  const revealSpeed = 100; // milliseconds between reveals
+  for (let i = 0; i < chunkSize.value; i++) {
+    for (let j = 0; j < chunkSize.value; j++) {
+      await waitForMilliseconds(revealSpeed);
+      chunkMask.value[i][j] = false;
+    }
+  }
 };
 
 // Lifecycle Hook: On Component Mounted
@@ -146,44 +160,41 @@ onMounted(() => {
 
       <!-- Container for the training -->
       <div
-        class="w-[50vw] h-[50vw] bg-gray-300 relative"
+        class="w-[50vw] h-[50vw] bg-zinc-100 dark:bg-zinc-800 rounded-lg relative overflow-hidden"
         v-if="currentTrainingStep === 2"
       >
+        <!-- Masked character -->
+        <div class="absolute inset-0 flex justify-center items-center z-0">
+          <div class="text-[50vw]">
+            {{ currentCharactor }}
+          </div>
+        </div>
         <!-- Chunked mask -->
         <div
-          class="w-full h-max grid"
+          class="w-full h-full grid absolute inset-0 z-10"
           :style="{
-            gridTemplateColumns: `repeat(${chunkSize}, 1fr)`,
-            gridTemplateRows: `repeat(${chunkSize}, 1fr)`,
+            gridTemplateColumns: `repeat(${chunkSize.value}, 1fr)`,
+            gridTemplateRows: `repeat(${chunkSize.value}, 1fr)`,
           }"
         >
           <div
             v-for="(row, rowIndex) in chunkMask"
             :key="rowIndex"
             class="flex"
-            :style="{ height: `${100 / chunkSize}%` }"
+            :style="{ height: `${100 / chunkSize.value}%` }"
           >
             <div
               v-for="(masked, colIndex) in row"
               :key="colIndex"
               class="flex-1"
               :class="{
-                'bg-black outline-1 outline-yellow-500': masked,
+                'bg-blueScriptBlue-600 dark:bg-blueScriptBlue-500': masked,
                 'bg-transparent': !masked,
               }"
             ></div>
-          </div>
-        </div>
-
-        <!-- Masked character -->
-        <div class="absolute inset-0 flex justify-center items-center">
-          <div class="text-[min(50vw,50vh)]">
-            {{ currentCharactor }}
           </div>
         </div>
       </div>
     </div>
   </TrainingBase>
 </template>
-
-<style scoped></style>
