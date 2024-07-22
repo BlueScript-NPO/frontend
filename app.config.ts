@@ -11,6 +11,10 @@ export default defineAppConfig({
       },
     },
 
+    buttonGroup: {
+      rounded: "rounded-full",
+    },
+
     input: {
       rounded: "rounded-full",
       default: {

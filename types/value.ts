@@ -1,8 +1,8 @@
 // value class
 export abstract class Value {
   displayName: string;
-  jsonKey: string;
   description?: string;
+  jsonKey: string;
 
   constructor(displayName: string, jsonKey: string, description?: string) {
     this.displayName = displayName;
