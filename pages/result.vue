@@ -11,20 +11,15 @@ import {
 const route = useRoute();
 const router = useRouter();
 
+// computed formatted date
+const formattedDate = computed(() => {
+  return trainingData.value?.date
+    ? new Date(trainingData.value.date).toLocaleString()
+    : "";
+});
+
 // Ref Variables
 const trainingData = ref<TrainingResult | null>(null);
-
-// Compute the accordion items
-const accordionItems = computed(() => {
-  if (!trainingData.value) return [];
-
-  return trainingData.value.procedure.parameters.map((param) => ({
-    label: param.displayName,
-    description: param.getValue().toString(),
-    icon: "i-heroicons-light-bulb",
-    defaultOpen: false,
-  }));
-});
 
 const parseRouteData = () => {
   try {
@@ -42,6 +37,14 @@ const parseRouteData = () => {
   } catch (error) {
     console.error("Error parsing route data:", error);
   }
+};
+
+const loadResultPrompt = () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.onchange = loadResult;
+  input.click();
 };
 
 const loadResult = () => {
@@ -110,9 +113,15 @@ onMounted(() => {
             size="sm"
             square
             variant="ghost"
-            @click="loadResult"
+            @click="loadResultPrompt"
           />
         </div>
+      </div>
+
+      <div class="py-2">
+        <p class="font-light">Date: {{ formattedDate }}</p>
+        <p class="font-light text-xs">Doctor: {{ trainingData?.doctorID }}</p>
+        <p class="font-light text-xs">Patient: {{ trainingData?.patientID }}</p>
       </div>
     </template>
 
@@ -134,7 +143,6 @@ onMounted(() => {
       :items="[
         {
           label: 'Training Parameters',
-
           icon: 'i-heroicons-wrench-screwdriver',
           defaultOpen: false,
         },
@@ -154,10 +162,19 @@ onMounted(() => {
       </template>
     </UAccordion>
 
+    <UTextarea
+      class="pt-4"
+      autoresize
+      placeholder="Write your notes here..."
+      v-model="trainingData.notes"
+    />
+
     <template #footer>
       <div class="flex justify-center space-x-4">
         <UButton color="gray" @click="saveResult"> Download Result </UButton>
-        <UButton color="primary" @click="router.push('/train')">Back</UButton>
+        <UButton color="primary" @click="router.push('/train')"
+          >Go Training
+        </UButton>
       </div>
     </template>
   </UCard>

@@ -8,6 +8,10 @@ const links = [
     label: "Training",
     to: "/train",
   },
+  {
+    label: "Results",
+    to: "/result",
+  },
 ];
 
 const colorMode = useColorMode();
