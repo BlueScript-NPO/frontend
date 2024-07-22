@@ -3,11 +3,18 @@ export abstract class Value {
   displayName: string;
   description?: string;
   jsonKey: string;
+  type: string;
 
-  constructor(displayName: string, jsonKey: string, description?: string) {
+  constructor(
+    displayName: string,
+    jsonKey: string,
+    description?: string,
+    type: string = "value"
+  ) {
     this.displayName = displayName;
     this.jsonKey = jsonKey;
     this.description = description;
+    this.type = type;
   }
 
   toJson(): any {
@@ -17,11 +24,70 @@ export abstract class Value {
   abstract getValue(): any;
 }
 
+export class TableValue extends Value {
+  value: any[];
+
+  constructor(
+    displayName: string,
+    jsonKey: string,
+    description?: string,
+    value: any[] = []
+  ) {
+    super(displayName, jsonKey, description, "table");
+    this.value = value;
+  }
+
+  getValue(): any {
+    return this.value;
+  }
+}
+
+export class CharactorSequenceingTrials extends TableValue {
+  constructor(value: any[]) {
+    super("Trials", "trials", "Trials", value);
+    this.value = value;
+  }
+}
+
 export class AccuracyValue extends Value {
   value: number;
 
   constructor(value: number) {
     super("Accuracy", "accuracy", "Percentage of correct responses");
+    this.value = value;
+  }
+
+  getValue(): number {
+    return this.value;
+  }
+}
+
+export class AvrageAccuracyValue extends Value {
+  value: number;
+
+  constructor(value: number) {
+    super(
+      "Avrage Accuracy",
+      "avrageAccuracy",
+      "Average accuracy of all trials"
+    );
+    this.value = value;
+  }
+
+  getValue(): number {
+    return this.value;
+  }
+}
+
+export class AvrageTrialTime extends Value {
+  value: number;
+
+  constructor(value: number) {
+    super(
+      "Avrage Trial Time",
+      "avrageTrialTime",
+      "Average time spent on each trial"
+    );
     this.value = value;
   }
 

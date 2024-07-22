@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { TableValue } from "~/types/value";
 import {
   jsonToTrainingResult,
   TrainingResult,
@@ -33,6 +34,7 @@ const parseRouteData = () => {
       trainingData.value = result;
 
       console.log("Parsed training data:", trainingData.value);
+      console.log("Parsed training data:", trainingData.value?.toJson());
     }
   } catch (error) {
     console.error("Error parsing route data:", error);
@@ -126,14 +128,35 @@ onMounted(() => {
     </template>
 
     <div v-for="value in trainingData?.values" class="px-1 py-1">
-      <span class="font-semibold"> {{ value.displayName }} </span>:
-      {{ value.getValue() }}
-      <UTooltip>
-        <template #text>
-          <span>{{ value.description }}</span>
-        </template>
-        <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
-      </UTooltip>
+      <!-- check if the value is instance of TableValue -->
+
+      <div v-if="value.type === 'table'">
+        <UCard class="mt-4">
+          <div class="flex justify-center items-center -mt-3">
+            <div class="font-semibold">
+              {{ value.displayName }}
+
+              <UTooltip>
+                <template #text>
+                  <span>{{ value.description }}</span>
+                </template>
+                <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
+              </UTooltip>
+            </div>
+          </div>
+          <UTable class="-mb-4" :rows="value.getValue()"> </UTable>
+        </UCard>
+      </div>
+      <div v-else>
+        <span class="font-semibold"> {{ value.displayName }} </span>:
+        {{ value.getValue() }}
+        <UTooltip>
+          <template #text>
+            <span>{{ value.description }}</span>
+          </template>
+          <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
+        </UTooltip>
+      </div>
     </div>
 
     <UAccordion

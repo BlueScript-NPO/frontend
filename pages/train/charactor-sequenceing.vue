@@ -6,6 +6,7 @@ import {
   jsonToProcedure,
   CharactorSequenceingProcedure,
 } from "~/types/procedure";
+import { CharactorSequenceingResult } from "~/types/result";
 
 // Vue Router
 const route = useRoute();
@@ -40,6 +41,10 @@ const trialEndTime = ref<number>(0);
 
 const missedCount = ref<number>(0);
 const correctCount = ref<number>(0);
+
+// result variables
+const accuracies = ref<number[]>([]);
+const timeTaken = ref<number[]>([]);
 
 // Computed properties
 const accuracy = computed(() => {
@@ -112,10 +117,11 @@ const handleKeydown = (event: KeyboardEvent) => {
 };
 
 const moveCursor = () => {
-  cursorIndex.value = (cursorIndex.value + 1) % answerChoiceCount.value;
-  if (cursorIndex.value === 0) {
+  if (cursorIndex.value === answerChoiceCount.value - 1) {
     endTrial();
+    return;
   }
+  cursorIndex.value++;
 };
 
 // Function to return the cursor to the last correct character (back to start if no correct character)
@@ -123,8 +129,7 @@ const returnCursor = () => {
   if (correctCount.value === 0) {
     cursorIndex.value = 0;
   } else {
-    cursorIndex.value =
-      correctIndices.value[correctCount.value - 1] % answerChoiceCount.value;
+    cursorIndex.value = correctIndices.value[correctCount.value - 1] + 1;
   }
 };
 
@@ -209,12 +214,12 @@ const handleSelection = (index: number) => {
     playSound("correct");
     selectedIndices.value.add(index);
     correctCount.value++;
+    moveCursor();
   } else {
     playSound("incorrect");
     missedCount.value++;
     returnCursor();
   }
-  moveCursor();
 };
 
 // Function to end the trial
@@ -230,6 +235,10 @@ const endTrial = () => {
   )}s | Accuracy: ${accuracy.value.toFixed(2)}%`;
   userInstruction.value = "Press spacebar or enter to continue";
   currentTrainingStep.value = 3;
+
+  // record result
+  accuracies.value.push(accuracy.value);
+  timeTaken.value.push(trialDuration);
 };
 
 // Function to handle countdown before trial starts
@@ -244,8 +253,52 @@ const countDown = async () => {
   trialStartTime.value = Date.now();
 };
 
+// Function: Save Training Result
+const saveTrainingResults = (): void => {
+  const sumValues = (acc: number, val: number): number => acc + val;
+
+  const averageAccuracy: number = parseFloat(
+    (accuracies.value.reduce(sumValues, 0) / accuracies.value.length).toFixed(2)
+  );
+  const avrgTrialTime: number = parseFloat(
+    (timeTaken.value.reduce(sumValues, 0) / timeTaken.value.length).toFixed(2)
+  );
+
+  const trialData: { Trial: number; Accuracy: number; Time: number }[] =
+    accuracies.value.map((accuracy, index) => ({
+      Trial: index + 1,
+      Accuracy: parseFloat(accuracy.toFixed(2)),
+      Time: parseFloat(timeTaken.value[index].toFixed(2)),
+    }));
+
+  const result = new CharactorSequenceingResult(
+    averageAccuracy,
+    avrgTrialTime,
+    currentTrialCount.value,
+    trialData,
+    totalElapsedTime.value,
+    "DOCTOR",
+    "PATIENT",
+    "", // This is for notes (intentionally left blank)
+    undefined,
+    trainingParameter.value
+  );
+
+  const jsonString: string = JSON.stringify(result.toJson());
+  console.log("Training Result:", jsonString);
+  router.push({
+    name: "result",
+    query: { data: encodeURIComponent(jsonString) },
+  });
+};
+
 // Function: Training Process
 const startTraining = async () => {
+  if (totalElapsedTime.value >= totalTrainingTime.value) {
+    saveTrainingResults();
+    return;
+  }
+
   currentTrainingStep.value = 0;
   resetTrial();
   displayReadyMessage();

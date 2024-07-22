@@ -15,6 +15,28 @@ export default defineAppConfig({
       rounded: "rounded-full",
     },
 
+    table: {
+      tr: {
+        base: "",
+        selected: "bg-gray-50 dark:bg-gray-800/50",
+        active: "hover:bg-gray-50 dark:hover:bg-gray-800/50 cursor-pointer",
+      },
+      th: {
+        base: "text-left rtl:text-right",
+        padding: "px-4 py-2",
+        color: "text-gray-900 dark:text-white",
+        font: "font-normal",
+        size: "text-sm",
+      },
+      td: {
+        base: "whitespace-nowrap",
+        padding: "px-4 py-2",
+        color: "text-gray-600 dark:text-gray-300",
+        font: "font-normal",
+        size: "text-sm",
+      },
+    },
+
     input: {
       rounded: "rounded-full",
       default: {
