@@ -47,6 +47,8 @@ const currentCharactor = ref<string>("");
 const currentTrialCount = ref<number>(0);
 const chunkMask = ref<boolean[]>([]);
 const chunkIndices = ref<number[]>([]);
+const shownChunks = ref<number>(0);
+const answerCorrect = ref<boolean>(false);
 
 const mainText = ref<string>("");
 const subText = ref<string>("");
@@ -72,9 +74,11 @@ const handleKeydown = (event: KeyboardEvent) => {
 // function: evaluate user input
 const evaluateAnswer = (userResponse: string) => {
   if (userResponse === currentCharactor.value) {
+    answerCorrect.value = true;
     playSound("correct");
     userInstruction.value = "Correct!\nPress spacebar or enter to continue";
   } else {
+    answerCorrect.value = false;
     playSound("incorrect");
     userInstruction.value = "Incorrect!\nPress spacebar or enter to continue";
   }
@@ -85,6 +89,7 @@ const initializeChunkMask = () => {
   const totalChunks = chunkSize.value * chunkSize.value;
   chunkMask.value = Array(totalChunks).fill(true);
   chunkIndices.value = Array.from({ length: totalChunks }, (_, i) => i);
+  shownChunks.value = 0;
 };
 
 // Function: Parse Data from Route Query
@@ -102,6 +107,8 @@ const parseRouteData = () => {
         trainingParameter.value.duration.getValue() * 60;
       chunkSize.value =
         chunkSizeMap[trainingParameter.value.chunkSize.getValue()];
+
+      console.log(chunkSize.value);
       stimulusType.value = trainingParameter.value.stimuliType.getValue();
       charactorPool.value = stimuliCharactorSets[stimulusType.value] || "";
 
@@ -172,6 +179,7 @@ const revealCharacterGradually = async () => {
     }
     await waitForMilliseconds(revealSpeed.value);
     chunkMask.value[index] = false;
+    shownChunks.value++;
   }
 };
 
@@ -207,12 +215,18 @@ onUnmounted(() => {
 
       <!-- Container for the training -->
       <div
-        class="w-[50vw] h-[50vw] bg-zinc-100 dark:bg-zinc-800 rounded-lg relative overflow-hidden"
+        class="w-[60vh] h-[60vh] bg-zinc-100 dark:bg-zinc-800 rounded-lg relative overflow-hidden"
         v-if="currentTrainingStep >= 2"
       >
         <!-- Masked character -->
         <div class="absolute inset-0 flex justify-center items-center z-0">
-          <div class="text-[50vw]">
+          <div
+            class="text-[60vh]"
+            :class="{
+              'text-green-500': currentTrainingStep === 3 && answerCorrect,
+              'text-red-500': currentTrainingStep === 3 && !answerCorrect,
+            }"
+          >
             {{ currentCharactor }}
           </div>
         </div>
@@ -231,6 +245,19 @@ onUnmounted(() => {
             :class="{
               'bg-zinc-100 dark:bg-zinc-800': masked,
               'bg-transparent': !masked,
+            }"
+          ></div>
+        </div>
+        <!-- Percentage of character revealed -->
+        <div
+          v-if="currentTrainingStep === 2"
+          class="absolute bottom-0 left-0 right-0 z-20 bg-zinc-100 dark:bg-zinc-800"
+        >
+          <div
+            class="h-1 bg-primary"
+            :style="{
+              width: `${(shownChunks / (chunkSize * chunkSize)) * 100}%`,
+              transition: 'width 100ms',
             }"
           ></div>
         </div>
