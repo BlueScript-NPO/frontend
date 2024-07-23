@@ -1,9 +1,7 @@
 import {
   Value,
-  AccuracyValue,
   ElepsedTime,
   TrialCount,
-  CorrectCount,
   AvrageAccuracyValue,
   AvrageTrialTime,
   TrialsTableValue,
