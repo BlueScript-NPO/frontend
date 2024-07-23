@@ -121,7 +121,7 @@ export class TableValue extends Value {
   }
 }
 
-export class CharactorSequenceingTrials extends TableValue {
+export class TrialsTableValue extends TableValue {
   constructor(value: any[]) {
     super("Trials", "trials", "Record of all trials performed", value);
     this.value = value;

@@ -6,7 +6,7 @@ import {
   CorrectCount,
   AvrageAccuracyValue,
   AvrageTrialTime,
-  CharactorSequenceingTrials,
+  TrialsTableValue,
   PercentAccuracyValue,
 } from "./value";
 import {
@@ -15,6 +15,7 @@ import {
   SequentialVisualMemoryProcedure,
   CharactorSequenceingProcedure,
   jsonToProcedure,
+  CharactorMatchingProcedure,
 } from "./procedure";
 
 export abstract class TrainingResult {
@@ -111,7 +112,7 @@ export class CharactorSequenceingResult extends TrainingResult {
   elepsedTime: ElepsedTime;
   avrageAccuracy: AvrageAccuracyValue;
   avrageTrialTime: AvrageTrialTime;
-  trialData: CharactorSequenceingTrials;
+  trialData: TrialsTableValue;
 
   constructor(
     avrageAccuracy: number,
@@ -130,7 +131,42 @@ export class CharactorSequenceingResult extends TrainingResult {
     this.elepsedTime = new ElepsedTime(elepsedTime);
     this.avrageAccuracy = new AvrageAccuracyValue(avrageAccuracy);
     this.avrageTrialTime = new AvrageTrialTime(avrageTrialTime);
-    this.trialData = new CharactorSequenceingTrials(trialData);
+    this.trialData = new TrialsTableValue(trialData);
+
+    this.values.push(this.avrageAccuracy);
+    this.values.push(this.trialCount);
+    this.values.push(this.elepsedTime);
+
+    this.values.push(this.avrageTrialTime);
+    this.values.push(this.trialData);
+  }
+}
+
+export class CharactorMatchingResult extends TrainingResult {
+  trialCount: TrialCount;
+  elepsedTime: ElepsedTime;
+  avrageAccuracy: AvrageAccuracyValue;
+  avrageTrialTime: AvrageTrialTime;
+  trialData: TrialsTableValue;
+
+  constructor(
+    avrageAccuracy: number,
+    avrageTrialTime: number,
+    trialCount: number,
+    trialData: any[],
+    elepsedTime: number,
+    doctorID: string,
+    patientID: string,
+    notes: string,
+    date: Date = new Date(),
+    parameter: CharactorMatchingProcedure
+  ) {
+    super(doctorID, patientID, notes, date, parameter);
+    this.trialCount = new TrialCount(trialCount);
+    this.elepsedTime = new ElepsedTime(elepsedTime);
+    this.avrageAccuracy = new AvrageAccuracyValue(avrageAccuracy);
+    this.avrageTrialTime = new AvrageTrialTime(avrageTrialTime);
+    this.trialData = new TrialsTableValue(trialData);
 
     this.values.push(this.avrageAccuracy);
     this.values.push(this.trialCount);
@@ -176,6 +212,19 @@ export function jsonToTrainingResult(json: any): TrainingResult {
       json.notes,
       json.date,
       jsonToProcedure(json.parameter) as CharactorSequenceingProcedure
+    );
+  } else if (json.parameter.procedure === "Charactor Matching") {
+    return new CharactorMatchingResult(
+      json.result.avrageAccuracy,
+      json.result.avrageTrialTime,
+      json.result.trialCount,
+      json.result.trials,
+      json.result.elepsedTime,
+      json.doctorID,
+      json.patientID,
+      json.notes,
+      json.date,
+      jsonToProcedure(json.parameter) as CharactorMatchingProcedure
     );
   } else {
     throw new Error("Invalid procedure type");

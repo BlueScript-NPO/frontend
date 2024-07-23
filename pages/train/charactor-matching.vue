@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted, computed } from "vue";
 import { stimuliCharactorSets } from "~/utils/util";
 import { playSound } from "~/utils/playSound";
 import { jsonToProcedure, CharactorMatchingProcedure } from "~/types/procedure";
+import { CharactorMatchingResult } from "~/types/result";
 
 // Vue Router
 const route = useRoute();
@@ -36,6 +37,21 @@ const answerRemaining = ref<number>(0);
 const trialStartTime = ref<number>(0);
 const trialEndTime = ref<number>(0);
 
+const missedCount = ref<number>(0);
+const correctCount = ref<number>(0);
+
+// Computed properties
+const accuracy = computed(() => {
+  if (missedCount.value + correctCount.value === 0) {
+    return 0;
+  }
+  return (correctCount.value / (missedCount.value + correctCount.value)) * 100;
+});
+
+// result variables
+const accuracies = ref<number[]>([]);
+const timeTaken = ref<number[]>([]);
+
 // Function: Parse Data from Route Query
 const parseRouteData = () => {
   try {
@@ -60,6 +76,45 @@ const parseRouteData = () => {
     console.error("Error parsing JSON:", error);
     router.push("/train");
   }
+};
+
+// Function: Save Training Result
+const saveTrainingResults = (): void => {
+  const sumValues = (acc: number, val: number): number => acc + val;
+
+  const averageAccuracy: number = parseFloat(
+    (accuracies.value.reduce(sumValues, 0) / accuracies.value.length).toFixed(2)
+  );
+  const avrgTrialTime: number = parseFloat(
+    (timeTaken.value.reduce(sumValues, 0) / timeTaken.value.length).toFixed(2)
+  );
+
+  const trialData: { Trial: number; Accuracy: number; Time: number }[] =
+    accuracies.value.map((accuracy, index) => ({
+      Trial: index + 1,
+      Accuracy: parseFloat(accuracy.toFixed(2)),
+      Time: parseFloat(timeTaken.value[index].toFixed(2)),
+    }));
+
+  const result = new CharactorMatchingResult(
+    averageAccuracy,
+    avrgTrialTime,
+    currentTrialCount.value,
+    trialData,
+    totalElapsedTime.value,
+    "DOCTOR",
+    "PATIENT",
+    "", // This is for notes (intentionally left blank)
+    undefined,
+    trainingParameter.value
+  );
+
+  const jsonString: string = JSON.stringify(result.toJson());
+  console.log("Training Result:", jsonString);
+  router.push({
+    name: "result",
+    query: { data: encodeURIComponent(jsonString) },
+  });
 };
 
 const generatePrompt = () => {
@@ -129,10 +184,14 @@ const generateTargets = (correctCount: number) => {
 
 const resetTrial = () => {
   currentPrompt.value = "";
+  userInstruction.value = "";
   answerRemaining.value = 0;
   currentTargets.value = [];
   isTargetCorrect.value = [];
   targetClicked.value = [];
+
+  missedCount.value = 0;
+  correctCount.value = 0;
 };
 
 // Function: Display Ready Message
@@ -161,12 +220,14 @@ const handleTargetClick = (index: number) => {
   if (isTargetCorrect.value[index]) {
     targetClicked.value[index] = true;
     answerRemaining.value--;
+    correctCount.value++;
     playSound("correct");
 
     if (answerRemaining.value === 0) {
       endTrial();
     }
   } else {
+    missedCount.value++;
     playSound("incorrect");
   }
 };
@@ -183,6 +244,10 @@ const endTrial = () => {
   userInstruction.value = "Press spacebar or enter to continue";
 
   currentTrainingStep.value = 3;
+
+  // record the results
+  accuracies.value.push(accuracy.value);
+  timeTaken.value.push(trialDuration);
 };
 
 // Utility Function: Wait for specified milliseconds
@@ -190,9 +255,13 @@ const waitForMilliseconds = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
 const startTraining = async () => {
+  if (totalElapsedTime.value >= totalTrainingTime.value) {
+    saveTrainingResults();
+    return;
+  }
+
   currentTrainingStep.value = 0;
   resetTrial();
-
   displayReadyMessage();
   await waitForMilliseconds(1500);
 
