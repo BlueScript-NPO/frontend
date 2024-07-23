@@ -21,11 +21,20 @@ export default defineI18nConfig(() => ({
       training: {
         ready: "Get Ready!",
         trial: "Trial",
+        timeSpent: "Time Spent:",
+        accuracy: "Accuracy:",
         elapsed: "Elapsed Time:",
         typeAnswer:
           "Please type the characters you saw\n(Press Enter or space to submit)",
         correct: "Correct!\n(Press Enter or space to continue)",
         incorrect: "Incorrect!\n(Press Enter or space to continue)",
+        sequencingInstruction:
+          "Press the right arrow to move the cursor\n(press Enter or spacebar to select)",
+        finish: "Finish!",
+        continue: "Press spacebar or enter to continue",
+        findMatch: "Find the matching character",
+        remaining: " remaining",
+        guess: "Press the key that matches the character getting revealed",
       },
 
       parameter: {
@@ -76,9 +85,18 @@ export default defineI18nConfig(() => ({
         ready: "준비하세요!",
         trial: "시도",
         elapsed: "경과 시간:",
+        timeSpent: "소요 시간:",
+        accuracy: "정확도:",
         typeAnswer: "보았던 문자를 입력해주세요\n(엔터나 스페이스를 눌러 제출)",
         correct: "정답입니다!\n(엔터나 스페이스를 눌러 계속)",
         incorrect: "오답입니다!\n(엔터나 스페이스를 눌러 계속)",
+        sequencingInstruction:
+          "오른쪽 화살표를 눌러 커서를 이동하세요\n(엔터나 스페이스를 눌러 선택)",
+        finish: "완료!",
+        continue: "계속하려면 스페이스나 엔터를 눌러주세요",
+        findMatch: "보기와 일치하는 문자를 찾으세요",
+        remaining: "개 남음",
+        guess: "서서히 보야지는 문자와 일치하는 키를 눌러주세요",
       },
       parameter: {
         durationMin: "시간 (분)",

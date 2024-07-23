@@ -9,6 +9,8 @@ import { CharactorMatchingResult } from "~/types/result";
 const route = useRoute();
 const router = useRouter();
 
+const { t } = useI18n();
+
 // training parameters
 const trainingParameter = ref<CharactorMatchingProcedure>(
   new CharactorMatchingProcedure()
@@ -199,8 +201,10 @@ const displayReadyMessage = () => {
   playSound("ready");
   currentTrialCount.value++;
 
-  mainText.value = "Get Ready!";
-  subText.value = `Trial #${currentTrialCount.value} | Elapsed Time: ${totalElapsedTime.value}`;
+  mainText.value = t("training.ready");
+  subText.value = `${t("training.trial")} #${currentTrialCount.value} | ${t(
+    "training.elapsed"
+  )} ${totalElapsedTime.value}${t("unit.sec")}`;
   currentTrainingStep.value = 1;
 };
 
@@ -227,9 +231,16 @@ const endTrial = () => {
   pauseTimer.value = true;
   playSound("finish");
 
-  mainText.value = "Finish!";
-  subText.value = `Time: ${trialDuration.toFixed(2)}s`;
-  userInstruction.value = "Press spacebar or enter to continue";
+  mainText.value = t("training.finish");
+  subText.value = `Time: ${trialDuration.toFixed(
+    2
+  )}s | Accuracy: ${accuracy.value.toFixed(2)}%`;
+
+  subText.value = `${t("training.timeSpent")} ${trialDuration.toFixed(2)} ${t(
+    "unit.sec"
+  )} | ${t("training.accuracy")} ${accuracy.value.toFixed(2)}%`;
+
+  userInstruction.value = t("training.continue");
 
   currentTrainingStep.value = 3;
 
@@ -255,7 +266,7 @@ const startTraining = async () => {
 
   trialStartTime.value = Date.now();
   currentPrompt.value = generatePrompt();
-  userInstruction.value = "Find all the matching characters";
+  userInstruction.value = t("training.findMatch");
   // 30% of the targets (rounded up) will be correct
   generateTargets(Math.ceil(targetCount.value * 0.3));
 
@@ -343,7 +354,9 @@ onUnmounted(() => {
       </div>
 
       <div class="pt-6 flex justify-center">
-        <p class="text-xl">{{ answerRemaining }} remaining</p>
+        <p class="text-xl">
+          {{ answerRemaining + $t("training.remaining") }}
+        </p>
       </div>
     </div>
   </TrainingBase>

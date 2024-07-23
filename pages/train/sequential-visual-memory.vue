@@ -9,6 +9,8 @@ import { SequentialVisualMemoryResult } from "~/types/result";
 import { stimuliCharactorSets } from "~/utils/util";
 import { playSound } from "~/utils/playSound";
 
+const { t } = useI18n();
+
 // Vue Router
 const route = useRoute();
 const router = useRouter();
@@ -89,8 +91,10 @@ const generateStimulusPrompt = () => {
 // Function: Display Ready Message
 const displayReadyMessage = () => {
   playSound("ready");
-  mainText.value = "Get Ready!";
-  subText.value = `Trial #${currentTrialCount.value} | Elapsed Time: ${totalElapsedTime.value}`;
+  mainText.value = t("training.ready");
+  subText.value = `${t("training.trial")} #${currentTrialCount.value} | ${t(
+    "training.elapsed"
+  )} ${totalElapsedTime.value}${t("unit.sec")}`;
   currentTrainingStep.value = 1;
 };
 
@@ -123,8 +127,7 @@ const startTraining = async () => {
     await waitForMilliseconds(distractionTime.value);
   }
 
-  userInstruction.value =
-    "Please type the characters you saw\n(Press Enter or space to submit)";
+  userInstruction.value = t("training.typeAnswer");
   currentTrainingStep.value = 4;
 };
 
@@ -135,11 +138,11 @@ const evaluateUserInput = async (input: string) => {
   trialResults.value[currentTrialCount.value] = input === generatedPrompt.value;
   if (trialResults.value[currentTrialCount.value]) {
     playSound("correct");
-    userInstruction.value = "Correct!\n(Press Enter or space to continue)";
+    userInstruction.value = t("training.correct");
     correctCount.value++;
   } else {
     playSound("incorrect");
-    userInstruction.value = "Incorrect!\n(Press Enter or space to continue)";
+    userInstruction.value = t("training.incorrect");
   }
 
   pauseTimer.value = true;

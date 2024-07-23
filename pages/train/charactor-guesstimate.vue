@@ -10,6 +10,8 @@ import { CharactorGuesstimateResult } from "~/types/result";
 import { stimuliCharactorSets } from "~/utils/util";
 import { playSound } from "~/utils/playSound";
 
+const { t } = useI18n();
+
 // Vue Router
 const route = useRoute();
 const router = useRouter();
@@ -140,11 +142,11 @@ const evaluateAnswer = (userResponse: string) => {
   if (userResponse === currentCharactor.value) {
     answerCorrect.value = true;
     playSound("correct");
-    userInstruction.value = "Correct!\nPress spacebar or enter to continue";
+    userInstruction.value = t("training.correct");
   } else {
     answerCorrect.value = false;
     playSound("incorrect");
-    userInstruction.value = "Incorrect!\nPress spacebar or enter to continue";
+    userInstruction.value = t("training.incorrect");
     incorrectCount.value++;
   }
 
@@ -204,8 +206,10 @@ const selectCharactor = () => {
 // Function: Display Ready Message
 const displayReadyMessage = () => {
   playSound("ready");
-  mainText.value = "Get Ready!";
-  subText.value = `Trial #${currentTrialCount.value} | Elapsed Time: ${totalElapsedTime.value}`;
+  mainText.value = t("training.ready");
+  subText.value = `${t("training.trial")} #${currentTrialCount.value} | ${t(
+    "training.elapsed"
+  )} ${totalElapsedTime.value}${t("unit.sec")}`;
   currentTrainingStep.value = 1;
 };
 
@@ -230,8 +234,7 @@ const startTraining = async () => {
 
   trialStartTime.value = Date.now();
 
-  userInstruction.value =
-    "Press the key that matches the character getting revealed";
+  userInstruction.value = t("training.guess");
   currentTrainingStep.value = 2;
   revealCharacterGradually();
 };

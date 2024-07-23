@@ -5,11 +5,12 @@ import { jsonToProcedure, RapidVisualPerception } from "~/types/procedure";
 import { stimuliCharactorSets } from "~/utils/util";
 import { RapidVisualPerceptionResult } from "~/types/result";
 import { playSound } from "~/utils/playSound";
-const { t } = useI18n();
 
 // Vue Router
 const route = useRoute();
 const router = useRouter();
+
+const { t } = useI18n();
 
 // Ref Variables
 const trainingParameter = ref<RapidVisualPerception>(
@@ -79,7 +80,6 @@ const displayReadyMessage = () => {
     "training.elapsed"
   )} ${totalElapsedTime.value}${t("unit.sec")}`;
 
-  // subText.value = `Trial #${currentTrialCount.value} | Elapsed Time: ${totalElapsedTime.value}`;
   currentTrainingStep.value = 1;
 };
 
