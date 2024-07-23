@@ -5,6 +5,7 @@ import { jsonToProcedure, RapidVisualPerception } from "~/types/procedure";
 import { stimuliCharactorSets } from "~/utils/util";
 import { RapidVisualPerceptionResult } from "~/types/result";
 import { playSound } from "~/utils/playSound";
+import { TrialCount } from "~/types/value";
 
 // Vue Router
 const route = useRoute();
@@ -102,8 +103,8 @@ const startTraining = async () => {
   displayReadyMessage();
   await waitForMilliseconds(1500);
   currentTrainingStep.value = 0;
-  generateStimulusPrompt();
   await waitForMilliseconds(1000); // Blank screen duration
+  generateStimulusPrompt();
   await waitForMilliseconds(stimulusPresentationTime.value);
   userInstruction.value =
     "Please type the characters you saw\n(Press Enter or space to submit)";
@@ -141,13 +142,15 @@ const evaluateUserInput = async (input: string) => {
 // Function: Save Training Result
 const saveTrainingResults = () => {
   const result = new RapidVisualPerceptionResult(
-    trainingAccuracy.value,
+    {
+      total: currentTrialCount.value,
+      counted: correctCount.value,
+    },
     totalElapsedTime.value,
     currentTrialCount.value,
-    correctCount.value,
     "DOCTOR",
     "PATIENT",
-    "Example Note",
+    "",
     undefined,
     trainingParameter.value
   );

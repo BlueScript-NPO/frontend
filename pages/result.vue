@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { TableValue } from "~/types/value";
-import {
-  jsonToTrainingResult,
-  TrainingResult,
-  RapidVisualPerceptionResult,
-} from "~/types/result";
+import { PercentAccuracyValue } from "~/types/value";
+import { jsonToTrainingResult, TrainingResult } from "~/types/result";
 
 // Vue Router
 const route = useRoute();
@@ -141,7 +137,7 @@ onMounted(() => {
       </div>
       <div v-else-if="value.type === 'percentage'">
         <UCard class="mb-4">
-          <p class="font-semibold m-0">
+          <p class="font-semibold m-0 -mt-1">
             {{ value.displayName }}
             <UTooltip>
               <template #text>
@@ -152,6 +148,46 @@ onMounted(() => {
           </p>
           <UMeter :value="value.getValue()" indicator> </UMeter>
         </UCard>
+      </div>
+
+      <div v-else-if="value.type === 'ComputedPercentage'">
+        <UCard class="mb-4">
+          <div class="flex justify-between -mt-1">
+            <div>
+              <p class="font-semibold m-0">
+                {{ value.displayName }}
+                <UTooltip>
+                  <template #text>
+                    <span>{{ value.description }}</span>
+                  </template>
+                  <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
+                </UTooltip>
+              </p>
+            </div>
+            <div>
+              {{ (value as PercentAccuracyValue).getCounted() }}
+              /
+              {{ (value as PercentAccuracyValue).getTotal() }}
+            </div>
+          </div>
+
+          <UMeter
+            :value="(value as PercentAccuracyValue).getPercetage()"
+            indicator
+          >
+          </UMeter>
+        </UCard>
+      </div>
+
+      <div v-else-if="value.type === 'time'" class="px-4">
+        <span class="font-semibold"> {{ value.displayName }} </span>:
+        {{ Math.floor(value.getValue() / 60) }}m {{ value.getValue() % 60 }}s
+        <UTooltip>
+          <template #text>
+            <span>{{ value.description }}</span>
+          </template>
+          <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
+        </UTooltip>
       </div>
 
       <div v-else class="px-4">
@@ -185,9 +221,8 @@ onMounted(() => {
               v-for="param in trainingData?.procedure.parameters"
               :key="param.jsonKey"
             >
-              <span class="font-semibold">
-                {{ param.displayName }} </span
-              >: {{ param.getValue() }}
+              <span class="font-semibold"> {{ param.displayName }} </span>:
+              {{ param.getValue() }}
             </li>
           </ul>
         </div>

@@ -60,19 +60,34 @@ export class ComputedPercentageValue extends Value {
     this.value = Math.round((counted / total) * 100 * 100) / 100;
   }
 
-  getValue(): number {
+  getValue(): any {
+    return {
+      total: this.total,
+      counted: this.counted,
+    };
+  }
+
+  getPercetage(): number {
     return this.value;
+  }
+
+  getTotal(): number {
+    return this.total;
+  }
+
+  getCounted(): number {
+    return this.counted;
   }
 }
 
 export class PercentAccuracyValue extends ComputedPercentageValue {
-  constructor(total: number, counted: number) {
+  constructor(value: { total: number; counted: number }) {
     super(
       "Accuracy",
       "accuracy",
       "Percentage of correct responses",
-      total,
-      counted
+      value.total,
+      value.counted
     );
   }
 }
@@ -147,7 +162,12 @@ export class ElepsedTime extends Value {
   value: number;
 
   constructor(value: number) {
-    super("Elepsed Time", "elepsedTime", "Actual time spent on training");
+    super(
+      "Elepsed Time",
+      "elepsedTime",
+      "Actual time spent on training",
+      "time"
+    );
     this.value = value;
   }
 

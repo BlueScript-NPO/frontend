@@ -7,6 +7,7 @@ import {
   AvrageAccuracyValue,
   AvrageTrialTime,
   CharactorSequenceingTrials,
+  PercentAccuracyValue,
 } from "./value";
 import {
   Procedure,
@@ -54,16 +55,14 @@ export abstract class TrainingResult {
 }
 
 export class RapidVisualPerceptionResult extends TrainingResult {
-  accuracy: AccuracyValue;
+  accuracy: PercentAccuracyValue;
   elepsedTime: ElepsedTime;
   trialCount: TrialCount;
-  correctCount: CorrectCount;
 
   constructor(
-    accuracy: number,
+    accuracy: { total: number; counted: number },
     elepsedTime: number,
     trialCount: number,
-    correctCount: number,
     doctorID: string,
     patientID: string,
     notes: string = "",
@@ -72,14 +71,12 @@ export class RapidVisualPerceptionResult extends TrainingResult {
   ) {
     super(doctorID, patientID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
-    this.correctCount = new CorrectCount(correctCount);
     this.elepsedTime = new ElepsedTime(elepsedTime);
-    this.accuracy = new AccuracyValue(accuracy);
+    this.accuracy = new PercentAccuracyValue(accuracy);
 
-    this.values.push(this.trialCount);
-    this.values.push(this.correctCount);
-    this.values.push(this.elepsedTime);
     this.values.push(this.accuracy);
+    this.values.push(this.trialCount);
+    this.values.push(this.elepsedTime);
   }
 }
 
@@ -154,7 +151,6 @@ export function jsonToTrainingResult(json: any): TrainingResult {
       json.result.accuracy,
       json.result.elepsedTime,
       json.result.trialCount,
-      json.result.correctCount,
       json.doctorID,
       json.patientID,
       json.notes,
