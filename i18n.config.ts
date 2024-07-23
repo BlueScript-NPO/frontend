@@ -1,0 +1,113 @@
+export default defineI18nConfig(() => ({
+  legacy: false,
+  locale: "en",
+  fallbackLocale: "en",
+
+  messages: {
+    en: {
+      nav: {
+        home: "Home",
+        train: "Training",
+        result: "Result",
+      },
+      unit: {
+        sec: "s",
+        min: "m",
+      },
+      train: {
+        title: "Configure Training",
+        start: "Start Training",
+      },
+      training: {
+        ready: "Get Ready!",
+        trial: "Trial",
+        elapsed: "Elapsed Time:",
+        typeAnswer:
+          "Please type the characters you saw\n(Press Enter or space to submit)",
+        correct: "Correct!\n(Press Enter or space to continue)",
+        incorrect: "Incorrect!\n(Press Enter or space to continue)",
+      },
+
+      parameter: {
+        durationMin: "Duration (min)",
+        stimuliType: "Stimuli Type",
+        stimuliLength: "Stimuli Length",
+        presentationTime: "Presentation Time (s)",
+        delayTime: "Delay Time (s)",
+        promptType: "Prompt Type",
+        promptLength: "Prompt Length",
+        targetLength: "Target Length",
+        targetCount: "Target Count",
+        chunkSize: "Chunk Size",
+        Numbers: "Numbers",
+        Alphabet: "Alphabet",
+        Alphanumeric: "Alphanumeric",
+        Korean: "Korean",
+        Sequential: "Sequential",
+        Random: "Random",
+        Small: "Small",
+        Medium: "Medium",
+        Large: "Large",
+      },
+
+      procedure: {
+        "Rapid Visual Perception": "Rapid Visual Perception",
+        "Sequential Visual Memory": "Sequential Visual Memory",
+        "Charactor Sequenceing": "Charactor Sequenceing",
+        "Charactor Matching": "Charactor Matching",
+        "Charactor Guesstimate": "Charactor Guesstimate",
+      },
+    },
+    ko: {
+      unit: {
+        sec: "초",
+        min: "분",
+      },
+      nav: {
+        home: "홈",
+        train: "훈련",
+        result: "결과",
+      },
+      train: {
+        title: "훈련 설정",
+        start: "훈련 시작",
+      },
+      training: {
+        ready: "준비하세요!",
+        trial: "시도",
+        elapsed: "경과 시간:",
+        typeAnswer: "보았던 문자를 입력해주세요\n(엔터나 스페이스를 눌러 제출)",
+        correct: "정답입니다!\n(엔터나 스페이스를 눌러 계속)",
+        incorrect: "오답입니다!\n(엔터나 스페이스를 눌러 계속)",
+      },
+      parameter: {
+        durationMin: "시간 (분)",
+        stimuliType: "문자 종류",
+        stimuliLength: "문자 길이",
+        presentationTime: "표시 시간 (초)",
+        delayTime: "지연 시간 (초)",
+        promptType: "프롬프트 종류",
+        promptLength: "프롬프트 길이",
+        targetLength: "정답 길이",
+        targetCount: "정답 개수",
+        chunkSize: "블록 크기",
+        Numbers: "숫자",
+        Alphabet: "알파벳",
+        Alphanumeric: "아파벳 + 숫자",
+        Korean: "한글",
+        Sequential: "순차적",
+        Random: "임의",
+        Small: "소",
+        Medium: "중",
+        Large: "대",
+      },
+      procedure: {
+        "Rapid Visual Perception": "빠른 시각 인지",
+        "Sequential Visual Memory": "순차적 시각 기억",
+        "Charactor Sequenceing": "문자 시퀀싱",
+        "Charactor Matching": "문자 매칭",
+        "Charactor Guesstimate": "문자 추정",
+      },
+    },
+  },
+}));
