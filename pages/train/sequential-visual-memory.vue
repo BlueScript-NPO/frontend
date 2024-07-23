@@ -159,13 +159,15 @@ const evaluateUserInput = async (input: string) => {
 // Function: Save Training Result
 const saveTrainingResults = () => {
   const result = new SequentialVisualMemoryResult(
-    trainingAccuracy.value,
+    {
+      total: currentTrialCount.value,
+      counted: correctCount.value,
+    },
     totalElapsedTime.value,
     currentTrialCount.value,
-    correctCount.value,
     "DOCTOR",
     "PATIENT",
-    "Example Note",
+    "",
     undefined,
     trainingParameter.value
   );
