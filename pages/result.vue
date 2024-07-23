@@ -129,25 +129,32 @@ onMounted(() => {
 
     <div v-for="value in trainingData?.values" class="px-1 py-1">
       <!-- check if the value is instance of TableValue -->
-
       <div v-if="value.type === 'table'">
         <UCard class="mt-4">
           <div class="flex justify-center items-center -mt-3">
             <div class="font-semibold">
               {{ value.displayName }}
-
-              <UTooltip>
-                <template #text>
-                  <span>{{ value.description }}</span>
-                </template>
-                <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
-              </UTooltip>
             </div>
           </div>
           <UTable class="-mb-4" :rows="value.getValue()"> </UTable>
         </UCard>
       </div>
-      <div v-else>
+      <div v-else-if="value.type === 'percentage'">
+        <UCard class="mb-4">
+          <p class="font-semibold m-0">
+            {{ value.displayName }}
+            <UTooltip>
+              <template #text>
+                <span>{{ value.description }}</span>
+              </template>
+              <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
+            </UTooltip>
+          </p>
+          <UMeter :value="value.getValue()" indicator> </UMeter>
+        </UCard>
+      </div>
+
+      <div v-else class="px-4">
         <span class="font-semibold"> {{ value.displayName }} </span>:
         {{ value.getValue() }}
         <UTooltip>
@@ -160,8 +167,8 @@ onMounted(() => {
     </div>
 
     <UAccordion
+      variant="outline"
       color="gray"
-      variant="soft"
       class="pt-4"
       :items="[
         {
@@ -178,7 +185,9 @@ onMounted(() => {
               v-for="param in trainingData?.procedure.parameters"
               :key="param.jsonKey"
             >
-              {{ param.displayName }}: {{ param.getValue() }}
+              <span class="font-semibold">
+                {{ param.displayName }} </span
+              >: {{ param.getValue() }}
             </li>
           </ul>
         </div>

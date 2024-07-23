@@ -23,6 +23,70 @@ export abstract class Value {
 
   abstract getValue(): any;
 }
+export class PercentageValue extends Value {
+  value: number;
+
+  constructor(
+    displayName: string,
+    jsonKey: string,
+    description: string,
+    value: number
+  ) {
+    super(displayName, jsonKey, description, "percentage");
+    this.value = value;
+  }
+
+  getValue(): number {
+    return this.value;
+  }
+}
+
+export class ComputedPercentageValue extends Value {
+  value: number;
+  total: number;
+  counted: number;
+
+  constructor(
+    displayName: string,
+    jsonKey: string,
+    description: string,
+    total: number,
+    counted: number
+  ) {
+    super(displayName, jsonKey, description, "ComputedPercentage");
+    this.total = total;
+    this.counted = counted;
+    // round to 2 decimal places
+    this.value = Math.round((counted / total) * 100 * 100) / 100;
+  }
+
+  getValue(): number {
+    return this.value;
+  }
+}
+
+export class PercentAccuracyValue extends ComputedPercentageValue {
+  constructor(total: number, counted: number) {
+    super(
+      "Accuracy",
+      "accuracy",
+      "Percentage of correct responses",
+      total,
+      counted
+    );
+  }
+}
+
+export class AvrageAccuracyValue extends PercentageValue {
+  constructor(value: number) {
+    super(
+      "Avrage Accuracy",
+      "avrageAccuracy",
+      "Average accuracy of all trials",
+      value
+    );
+  }
+}
 
 export class TableValue extends Value {
   value: any[];
@@ -44,7 +108,7 @@ export class TableValue extends Value {
 
 export class CharactorSequenceingTrials extends TableValue {
   constructor(value: any[]) {
-    super("Trials", "trials", "Trials", value);
+    super("Trials", "trials", "Record of all trials performed", value);
     this.value = value;
   }
 }
@@ -54,23 +118,6 @@ export class AccuracyValue extends Value {
 
   constructor(value: number) {
     super("Accuracy", "accuracy", "Percentage of correct responses");
-    this.value = value;
-  }
-
-  getValue(): number {
-    return this.value;
-  }
-}
-
-export class AvrageAccuracyValue extends Value {
-  value: number;
-
-  constructor(value: number) {
-    super(
-      "Avrage Accuracy",
-      "avrageAccuracy",
-      "Average accuracy of all trials"
-    );
     this.value = value;
   }
 

@@ -139,9 +139,10 @@ export class CharactorSequenceingResult extends TrainingResult {
     this.avrageTrialTime = new AvrageTrialTime(avrageTrialTime);
     this.trialData = new CharactorSequenceingTrials(trialData);
 
+    this.values.push(this.avrageAccuracy);
     this.values.push(this.trialCount);
     this.values.push(this.elepsedTime);
-    this.values.push(this.avrageAccuracy);
+
     this.values.push(this.avrageTrialTime);
     this.values.push(this.trialData);
   }
