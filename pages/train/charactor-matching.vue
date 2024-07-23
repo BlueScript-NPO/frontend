@@ -204,18 +204,6 @@ const displayReadyMessage = () => {
   currentTrainingStep.value = 1;
 };
 
-const countDown = async () => {
-  subText.value = "";
-  for (let i = 3; i > 0; i--) {
-    mainText.value = i.toString();
-    playSound("countdown");
-    await waitForMilliseconds(1000);
-  }
-
-  playSound("start");
-  trialStartTime.value = Date.now();
-};
-
 const handleTargetClick = (index: number) => {
   if (isTargetCorrect.value[index]) {
     targetClicked.value[index] = true;
@@ -265,8 +253,7 @@ const startTraining = async () => {
   displayReadyMessage();
   await waitForMilliseconds(1500);
 
-  await countDown();
-
+  trialStartTime.value = Date.now();
   currentPrompt.value = generatePrompt();
   userInstruction.value = "Find all the matching characters";
   // 30% of the targets (rounded up) will be correct
