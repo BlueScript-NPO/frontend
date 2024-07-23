@@ -98,8 +98,8 @@ onMounted(() => {
     <template #header>
       <div class="flex justify-between">
         <div>
-          <h2 class="text-lg h-8 flex items-center">
-            Training Results
+          <h2 class="text-xl h-8 flex items-center align-middle font-semibold">
+            Training Result
             <UBadge color="primary" variant="outline" class="ml-2">
               {{ trainingData?.procedure.name }}
             </UBadge>
@@ -203,9 +203,8 @@ onMounted(() => {
     </div>
 
     <UAccordion
-      variant="outline"
-      color="gray"
-      class="pt-4"
+      variant="ghost"
+      class="mt-4 pt-1.5 rounded-lg ring-1 ring-gray-200 dark:ring-gray-800"
       :items="[
         {
           label: 'Training Parameters',

@@ -51,6 +51,14 @@ export default defineAppConfig({
       },
     },
 
+    textarea: {
+      color: {
+        gray: {
+          outline: "ring-1 ring-gray-200 dark:ring-gray-800",
+        },
+      },
+    },
+
     header: {
       wrapper: "border-none backdrop-blur-lg",
 
