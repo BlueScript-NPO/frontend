@@ -40,7 +40,7 @@ const chunkSizeMap: Record<string, number> = {
   Medium: 15,
   Large: 10,
 }; // number is the number of columns/rows
-const revealSpeed = ref<number>(100); // in milliseconds
+const revealSpeed = ref<number>(300); // in milliseconds
 
 // Training Execution Variables
 const currentTrainingStep = ref<number>(0);
@@ -331,7 +331,6 @@ onUnmounted(() => {
             class="h-1 bg-primary"
             :style="{
               width: `${(shownChunks / (chunkSize * chunkSize)) * 100}%`,
-              transition: 'width 100ms',
             }"
           ></div>
         </div>

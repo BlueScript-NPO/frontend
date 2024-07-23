@@ -12,6 +12,8 @@ import {
 import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
 import type { FormError, FormErrorEvent } from "#ui/types";
 
+const { t } = useI18n();
+
 const router = useRouter();
 
 // Initialize procedures
@@ -114,11 +116,18 @@ const handleFormError = async (event: FormErrorEvent) => {
   >
     <UCard class="mx-auto mt-8 max-w-md">
       <template #header>
-        <h2 class="text-lg font-semibold pb-2">Configure Training</h2>
+        <h2 class="text-lg font-semibold pb-2">
+          {{ $t("train.title") }}
+        </h2>
         <USelect
           v-model="selectedProcedureName"
-          :options="trainingProcedures.map((p) => p.name)"
-          label="Procedure"
+          :options="
+            trainingProcedures.map((p) => ({
+              label: $t('procedure.' + p.name),
+              value: p.name,
+            }))
+          "
+          label="$t('train.procedure')"
         />
       </template>
 
@@ -128,7 +137,7 @@ const handleFormError = async (event: FormErrorEvent) => {
         class="py-2"
       >
         <UFormGroup
-          :label="parameter.displayName"
+          :label="t(parameter.displayName)"
           :name="parameter.displayName"
         >
           <UInput
@@ -142,16 +151,23 @@ const handleFormError = async (event: FormErrorEvent) => {
           <USelect
             v-else-if="parameter instanceof SelectParameter"
             v-model="parameter.selected"
-            :options="parameter.options"
+            :options="
+              parameter.options.map((option) => ({
+                label: $t('parameter.' + option),
+                value: option,
+              }))
+            "
           />
         </UFormGroup>
       </div>
 
       <template #footer>
         <div class="flex justify-center space-x-4 pb-4">
-          <UButton color="primary" type="submit">Start Training</UButton>
+          <UButton color="primary" type="submit">{{
+            $t("train.start")
+          }}</UButton>
         </div>
-        <UAlert
+        <!-- <UAlert
           icon="i-heroicons-shield-exclamation"
           color="red"
           variant="subtle"
@@ -159,7 +175,7 @@ const handleFormError = async (event: FormErrorEvent) => {
           description="You are training as a
         guest. Make sure to record you results separately. Sign in to save your
         progress."
-        />
+        /> -->
       </template>
     </UCard>
   </UForm>

@@ -1,18 +1,21 @@
 <script setup lang="ts">
-const links = [
+const { t } = useI18n();
+const { locales, setLocale } = useI18n();
+
+const links = computed(() => [
   {
-    label: "Home",
+    label: t("nav.home"),
     to: "/",
   },
   {
-    label: "Training",
+    label: t("nav.train"),
     to: "/train",
   },
   {
-    label: "Results",
+    label: t("nav.result"),
     to: "/result",
   },
-];
+]);
 
 const colorMode = useColorMode();
 const isDark = computed({
@@ -24,41 +27,23 @@ const isDark = computed({
   },
 });
 
-const items = [
-  [
-    {
-      label: "ben@example.com",
-      slot: "account",
-      disabled: true,
-    },
-  ],
-  [
-    {
-      label: "Settings",
-      icon: "i-heroicons-cog-8-tooth",
-    },
-  ],
-  [
-    {
-      label: "Documentation",
-      icon: "i-heroicons-book-open",
-    },
-    {
-      label: "Changelog",
-      icon: "i-heroicons-megaphone",
-    },
-    {
-      label: "Status",
-      icon: "i-heroicons-signal",
-    },
-  ],
-  [
-    {
-      label: "Sign out",
-      icon: "i-heroicons-arrow-left-on-rectangle",
-    },
-  ],
-];
+const langItems = computed(() => {
+  const items = [];
+
+  for (let i in locales.value) {
+    items.push([
+      {
+        label: locales.value[i].name,
+        icon: locales.value[i].code,
+        click: () => {
+          setLocale(locales.value[i].code);
+        },
+      },
+    ]);
+  }
+
+  return items;
+});
 </script>
 
 <template>
@@ -85,13 +70,27 @@ const items = [
     </template>
 
     <template #right>
+      <UDropdown :items="langItems" :popper="{ placement: 'bottom-start' }">
+        <UButton variant="ghost" icon="i-heroicons-language" />
+
+        <template #item="{ item }">
+          <img
+            class="h-4 w-auto"
+            :src="'/flags/' + item.icon + '.svg'"
+            loading="lazy"
+            :alt="item.icon"
+          />
+          <span class="truncate">{{ item.label }}</span>
+        </template>
+      </UDropdown>
+
       <UColorModeButton />
-      <UButton variant="ghost" to="/auth"
+      <!-- <UButton variant="ghost" to="/auth"
         >Sign in
         <template #trailing>
           <UIcon name="i-heroicons-arrow-right-20-solid" class="w-5 h-5" />
         </template>
-      </UButton>
+      </UButton> -->
     </template>
 
     <template #panel>

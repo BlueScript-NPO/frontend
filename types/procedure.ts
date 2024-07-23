@@ -18,7 +18,7 @@ export abstract class Procedure {
   constructor(name: string, duration: number = 5) {
     this.name = name;
     this.duration = new NumParameter(
-      "Duration (minute)",
+      "parameter.durationMin",
       "duration",
       duration,
       1,
@@ -64,7 +64,7 @@ export class RapidVisualPerception extends Procedure {
     this.stimuliType = new StimuliTypeParameter(stimuliType);
     this.stimuliLength = new StimuliLengthParameter(stimuliLength);
     this.presentationTime = new NumParameter(
-      "Presentation Time (seconds)",
+      "parameter.presentationTime",
       "presentationTime",
       presentationTime,
       0.05,
@@ -91,7 +91,7 @@ export class SequentialVisualMemoryProcedure extends Procedure {
   ) {
     super("Sequential Visual Memory", duration);
     this.delayTime = new NumParameter(
-      "Delay Time (seconds)", // will change to minute
+      "parameter.delayTime",
       "delayTime",
       delayTime,
       0,

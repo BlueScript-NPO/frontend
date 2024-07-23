@@ -96,7 +96,7 @@ export class StimuliTypeParameter extends SelectParameter<string> {
       throw new Error("Invalid stimuli type");
     }
     super(
-      "Stimuli Type",
+      "parameter.stimuliType",
       "stimuliType",
       stimuli,
       selected ? stimuli.indexOf(selected) : undefined
@@ -111,7 +111,7 @@ export class ChunkSizeParameter extends SelectParameter<string> {
       throw new Error("Invalid chunk size");
     }
     super(
-      "Chunk Size",
+      "parameter.chunkSize",
       "chunkSize",
       chunks,
       selected ? chunks.indexOf(selected) : undefined
@@ -126,7 +126,7 @@ export class PromptTypeParamter extends SelectParameter<string> {
       throw new Error("Invalid prompt type");
     }
     super(
-      "Prompt Type",
+      "parameter.promptType",
       "promptType",
       prompts,
       selected ? prompts.indexOf(selected) : undefined
@@ -136,24 +136,24 @@ export class PromptTypeParamter extends SelectParameter<string> {
 
 export class PromptLengthParameter extends NumParameter {
   constructor(value: number = 1) {
-    super("Prompt Length", "promptLength", value, 1, 26, 1);
+    super("parameter.promptLength", "promptLength", value, 1, 26, 1);
   }
 }
 
 export class TargetLengthParameter extends NumParameter {
   constructor(value: number = 2) {
-    super("Target Length", "targetLength", value, 2, 6, 1);
+    super("parameter.targetLength", "targetLength", value, 2, 6, 1);
   }
 }
 
 export class TargetCountParameter extends NumParameter {
   constructor(value: number = 15) {
-    super("Number of target", "targetCount", value, 15, 60, 1);
+    super("parameter.targetCount", "targetCount", value, 15, 60, 1);
   }
 }
 
 export class StimuliLengthParameter extends NumParameter {
   constructor(value: number = 1) {
-    super("Stimuli Length", "stimuliLength", value, 1, 10, 1);
+    super("parameter.stimuliLength", "stimuliLength", value, 1, 10, 1);
   }
 }
