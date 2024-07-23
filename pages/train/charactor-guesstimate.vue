@@ -6,6 +6,7 @@ import {
   jsonToProcedure,
   CharactorGuesstimateProcedure,
 } from "~/types/procedure";
+import { CharactorGuesstimateResult } from "~/types/result";
 import { stimuliCharactorSets } from "~/utils/util";
 import { playSound } from "~/utils/playSound";
 
@@ -50,8 +51,17 @@ const chunkIndices = ref<number[]>([]);
 const shownChunks = ref<number>(0);
 const answerCorrect = ref<boolean>(false);
 
+const trialStartTime = ref<number>(0);
+const trialEndTime = ref<number>(0);
+
 const mainText = ref<string>("");
 const subText = ref<string>("");
+
+// result variables
+const revealed = ref<number[]>([]);
+const timeTaken = ref<number[]>([]);
+const answerCorrectness = ref<boolean[]>([]);
+const incorrectCount = ref<number>(0);
 
 const handleKeydown = (event: KeyboardEvent) => {
   if (currentTrainingStep.value == 2) {
@@ -71,8 +81,62 @@ const handleKeydown = (event: KeyboardEvent) => {
   }
 };
 
+// Function: Save Training Result
+const saveTrainingResults = (): void => {
+  const sumValues = (acc: number, val: number): number => acc + val;
+
+  const averageRevealed: number = parseFloat(
+    (revealed.value.reduce(sumValues, 0) / revealed.value.length).toFixed(2)
+  );
+  const avrgTrialTime: number = parseFloat(
+    (timeTaken.value.reduce(sumValues, 0) / timeTaken.value.length).toFixed(2)
+  );
+
+  const avrageAccuracy: number = parseFloat(
+    (
+      ((currentTrialCount.value - incorrectCount.value) /
+        currentTrialCount.value) *
+      100
+    ).toFixed(2)
+  );
+
+  const trialData: {
+    Trial: number;
+    Correct: string;
+    Reveald: number;
+    Time: number;
+  }[] = revealed.value.map((reveal, index) => ({
+    Trial: index + 1,
+    Correct: answerCorrectness.value[index] ? "✅" : "❌",
+    Reveald: parseFloat(reveal.toFixed(2)),
+    Time: parseFloat(timeTaken.value[index].toFixed(2)),
+  }));
+
+  const result = new CharactorGuesstimateResult(
+    avrageAccuracy,
+    averageRevealed,
+    avrgTrialTime,
+    currentTrialCount.value,
+    trialData,
+    totalElapsedTime.value,
+    "DOCTOR",
+    "PATIENT",
+    "", // This is for notes (intentionally left blank)
+    undefined,
+    trainingParameter.value
+  );
+
+  const jsonString: string = JSON.stringify(result.toJson());
+  console.log("Training Result:", jsonString);
+  router.push({
+    name: "result",
+    query: { data: encodeURIComponent(jsonString) },
+  });
+};
+
 // function: evaluate user input
 const evaluateAnswer = (userResponse: string) => {
+  trialEndTime.value = Date.now();
   if (userResponse === currentCharactor.value) {
     answerCorrect.value = true;
     playSound("correct");
@@ -81,7 +145,16 @@ const evaluateAnswer = (userResponse: string) => {
     answerCorrect.value = false;
     playSound("incorrect");
     userInstruction.value = "Incorrect!\nPress spacebar or enter to continue";
+    incorrectCount.value++;
   }
+
+  const trialDuration = (trialEndTime.value - trialStartTime.value) / 1000;
+
+  revealed.value.push(
+    (shownChunks.value / (chunkSize.value * chunkSize.value)) * 100
+  );
+  timeTaken.value.push(trialDuration);
+  answerCorrectness.value.push(answerCorrect.value);
 };
 
 // Function: Initialize the chunk mask (fill with true)
@@ -108,7 +181,6 @@ const parseRouteData = () => {
       chunkSize.value =
         chunkSizeMap[trainingParameter.value.chunkSize.getValue()];
 
-      console.log(chunkSize.value);
       stimulusType.value = trainingParameter.value.stimuliType.getValue();
       charactorPool.value = stimuliCharactorSets[stimulusType.value] || "";
 
@@ -140,7 +212,7 @@ const displayReadyMessage = () => {
 // Function: Training Process
 const startTraining = async () => {
   if (totalElapsedTime.value >= totalTrainingTime.value) {
-    // logic to save training results
+    saveTrainingResults();
     return;
   }
 
@@ -155,6 +227,8 @@ const startTraining = async () => {
   selectCharactor();
   currentTrainingStep.value = 0;
   await waitForMilliseconds(1000); // Blank screen duration
+
+  trialStartTime.value = Date.now();
 
   userInstruction.value =
     "Press the key that matches the character getting revealed";

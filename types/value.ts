@@ -80,6 +80,17 @@ export class ComputedPercentageValue extends Value {
   }
 }
 
+export class avrageRevealedValue extends PercentageValue {
+  constructor(value: number) {
+    super(
+      "Avrage Revealed",
+      "avrageRevealed",
+      "Average percentage of revealed chunks of a character",
+      value
+    );
+  }
+}
+
 export class PercentAccuracyValue extends ComputedPercentageValue {
   constructor(value: { total: number; counted: number }) {
     super(
@@ -89,6 +100,12 @@ export class PercentAccuracyValue extends ComputedPercentageValue {
       value.total,
       value.counted
     );
+  }
+}
+
+export class AccuracyValue extends PercentageValue {
+  constructor(value: number) {
+    super("Accuracy", "accuracy", "Percentage of correct responses", value);
   }
 }
 
@@ -122,22 +139,9 @@ export class TableValue extends Value {
 }
 
 export class TrialsTableValue extends TableValue {
-  constructor(value: any[]) {
+  constructor(value: any[], columns?: string[]) {
     super("Trials", "trials", "Record of all trials performed", value);
     this.value = value;
-  }
-}
-
-export class AccuracyValue extends Value {
-  value: number;
-
-  constructor(value: number) {
-    super("Accuracy", "accuracy", "Percentage of correct responses");
-    this.value = value;
-  }
-
-  getValue(): number {
-    return this.value;
   }
 }
 
@@ -148,7 +152,7 @@ export class AvrageTrialTime extends Value {
     super(
       "Avrage Trial Time",
       "avrageTrialTime",
-      "Average time spent on each trial"
+      "Average time spent on each trial (in seconds)"
     );
     this.value = value;
   }

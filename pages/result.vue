@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { PercentAccuracyValue } from "~/types/value";
+import { PercentAccuracyValue, TrialsTableValue } from "~/types/value";
 import { jsonToTrainingResult, TrainingResult } from "~/types/result";
 
 // Vue Router

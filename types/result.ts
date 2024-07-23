@@ -2,10 +2,12 @@ import {
   Value,
   ElepsedTime,
   TrialCount,
+  AccuracyValue,
   AvrageAccuracyValue,
   AvrageTrialTime,
   TrialsTableValue,
   PercentAccuracyValue,
+  avrageRevealedValue,
 } from "./value";
 import {
   Procedure,
@@ -14,6 +16,7 @@ import {
   CharactorSequenceingProcedure,
   jsonToProcedure,
   CharactorMatchingProcedure,
+  CharactorGuesstimateProcedure,
 } from "./procedure";
 
 export abstract class TrainingResult {
@@ -175,6 +178,44 @@ export class CharactorMatchingResult extends TrainingResult {
   }
 }
 
+export class CharactorGuesstimateResult extends TrainingResult {
+  trialCount: TrialCount;
+  elepsedTime: ElepsedTime;
+  accuracy: AccuracyValue;
+  avrageRevealed: avrageRevealedValue;
+  avrageTrialTime: AvrageTrialTime;
+  trialData: TrialsTableValue;
+
+  constructor(
+    accuracy: number,
+    avrageRevealed: number,
+    avrageTrialTime: number,
+    trialCount: number,
+    trialData: any[],
+    elepsedTime: number,
+    doctorID: string,
+    patientID: string,
+    notes: string,
+    date: Date = new Date(),
+    parameter: CharactorGuesstimateProcedure
+  ) {
+    super(doctorID, patientID, notes, date, parameter);
+    this.trialCount = new TrialCount(trialCount);
+    this.elepsedTime = new ElepsedTime(elepsedTime);
+    this.accuracy = new AccuracyValue(accuracy);
+    this.avrageRevealed = new avrageRevealedValue(avrageRevealed);
+    this.avrageTrialTime = new AvrageTrialTime(avrageTrialTime);
+    this.trialData = new TrialsTableValue(trialData);
+
+    this.values.push(this.accuracy);
+    this.values.push(this.avrageRevealed);
+    this.values.push(this.trialCount);
+    this.values.push(this.elepsedTime);
+    this.values.push(this.avrageTrialTime);
+    this.values.push(this.trialData);
+  }
+}
+
 export function jsonToTrainingResult(json: any): TrainingResult {
   if (json.parameter.procedure === "Rapid Visual Perception") {
     return new RapidVisualPerceptionResult(
@@ -224,7 +265,21 @@ export function jsonToTrainingResult(json: any): TrainingResult {
       json.date,
       jsonToProcedure(json.parameter) as CharactorMatchingProcedure
     );
+  } else if (json.parameter.procedure === "Charactor Guesstimate") {
+    return new CharactorGuesstimateResult(
+      json.result.accuracy,
+      json.result.avrageRevealed,
+      json.result.avrageTrialTime,
+      json.result.trialCount,
+      json.result.trials,
+      json.result.elepsedTime,
+      json.doctorID,
+      json.patientID,
+      json.notes,
+      json.date,
+      jsonToProcedure(json.parameter) as CharactorGuesstimateProcedure
+    );
   } else {
-    throw new Error("Invalid procedure type");
+    throw new Error("Invalid result type");
   }
 }
