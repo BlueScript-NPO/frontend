@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   extends: ["@nuxt/ui-pro"],
   modules: ["@nuxtjs/i18n", "@nuxt/ui", "@nuxtjs/i18n"],
+  ui: {
+    icons: ["simple-icons", "heroicons"],
+  },
   i18n: {
     strategy: "no_prefix",
     detectBrowserLanguage: {
@@ -21,6 +24,18 @@ export default defineNuxtConfig({
       {
         code: "ko",
         name: "한국어",
+      },
+      {
+        code: "ja",
+        name: "日本語",
+      },
+      {
+        code: "zh",
+        name: "中文",
+      },
+      {
+        code: "fr",
+        name: "Français",
       },
       {
         code: "es",

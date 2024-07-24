@@ -15,7 +15,6 @@
 
   <ULandingSection
     :title="t('landing.features.title')"
-    :description="t('landing.features.description')"
     :headline="t('landing.features.headline')"
   >
     <UPageGrid
@@ -67,6 +66,12 @@ const actionLinks = computed(() => [
     icon: "i-heroicons-arrow-right-20-solid",
     trailing: true,
     to: "/train",
+    size: "xl",
+  },
+  {
+    label: t("landing.github"),
+    icon: "i-simple-icons-github",
+    to: "https://github.com/BlueScript-NPO/",
     size: "xl",
   },
 ]);
