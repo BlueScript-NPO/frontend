@@ -18,12 +18,24 @@ export default defineNuxtConfig({
     defaultLocale: "en",
     locales: [
       {
+        code: "ko",
+        name: "한국어",
+      },
+      {
         code: "en",
         name: "English",
       },
       {
-        code: "ko",
-        name: "한국어",
+        code: "fr",
+        name: "Français",
+      },
+      {
+        code: "es",
+        name: "Español",
+      },
+      {
+        code: "ru",
+        name: "Русский",
       },
       {
         code: "ja",
@@ -34,12 +46,12 @@ export default defineNuxtConfig({
         name: "中文",
       },
       {
-        code: "fr",
-        name: "Français",
+        code: "ar",
+        name: "العربية",
       },
       {
-        code: "es",
-        name: "Español",
+        code: "hi",
+        name: "हिन्दी",
       },
     ],
   },
