@@ -8,6 +8,11 @@ export default defineNuxtConfig({
   ui: {
     icons: ["simple-icons", "heroicons"],
   },
+  hooks: {
+    "prerender:routes"({ routes }) {
+      routes.clear(); // Do not generate any routes (except the defaults)
+    },
+  },
   i18n: {
     strategy: "no_prefix",
     detectBrowserLanguage: {
