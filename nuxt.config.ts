@@ -22,6 +22,10 @@ export default defineNuxtConfig({
         code: "ko",
         name: "한국어",
       },
+      {
+        code: "es",
+        name: "Español",
+      },
     ],
   },
 });
