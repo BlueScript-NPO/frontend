@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { PercentAccuracyValue, TrialsTableValue } from "~/types/value";
+import { PercentAccuracyValue } from "~/types/value";
 import { jsonToTrainingResult, TrainingResult } from "~/types/result";
+import { SelectParameter } from "~/types/parameter";
 
 // Vue Router
 const route = useRoute();
 const router = useRouter();
+
+const { t } = useI18n();
 
 // computed formatted date
 const formattedDate = computed(() => {
@@ -127,7 +130,11 @@ onMounted(() => {
       </div>
     </template>
 
-    <div v-for="value in trainingData?.values" class="px-1 py-1">
+    <div
+      v-for="value in trainingData?.values"
+      :key="value.jsonKey"
+      class="px-1 py-1"
+    >
       <!-- check if the value is instance of TableValue -->
       <div v-if="value.type === 'table'">
         <UCard class="mt-4">
@@ -228,7 +235,12 @@ onMounted(() => {
               <span class="font-semibold">
                 {{ $t(param.displayName ?? "") }} </span
               >:
-              {{ param.getValue() }}
+              <span v-if="param instanceof SelectParameter">
+                {{ $t("parameter." + param.selected) }}
+              </span>
+              <span v-else>
+                {{ param.getValue() }}
+              </span>
             </li>
           </ul>
         </div>

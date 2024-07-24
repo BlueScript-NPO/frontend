@@ -2,11 +2,11 @@
 import { ref, computed, watch } from "vue";
 import { useRouter } from "vue-router";
 import {
-  RapidVisualPerception,
+  RapidVisualPerceptionProcedure,
   SequentialVisualMemoryProcedure,
-  CharactorSequenceingProcedure,
-  CharactorMatchingProcedure,
-  CharactorGuesstimateProcedure,
+  CharacterSequencingProcedure,
+  CharacterMatchingProcedure,
+  CharacterGuesstimateProcedure,
   Procedure,
 } from "~/types/procedure";
 import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
@@ -18,11 +18,11 @@ const router = useRouter();
 
 // Initialize procedures
 const trainingProcedures: Procedure[] = [
-  new RapidVisualPerception(),
+  new RapidVisualPerceptionProcedure(),
   new SequentialVisualMemoryProcedure(),
-  new CharactorSequenceingProcedure(),
-  new CharactorMatchingProcedure(),
-  new CharactorGuesstimateProcedure(),
+  new CharacterSequencingProcedure(),
+  new CharacterMatchingProcedure(),
+  new CharacterGuesstimateProcedure(),
 ];
 
 // Track selected procedure name

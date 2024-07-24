@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { jsonToProcedure, RapidVisualPerception } from "~/types/procedure";
+import {
+  jsonToProcedure,
+  RapidVisualPerceptionProcedure,
+} from "~/types/procedure";
 import { stimuliCharactorSets } from "~/utils/util";
-import { RapidVisualPerceptionResult } from "~/types/result";
+import { RapidVisualPerceptionProcedureResult } from "~/types/result";
 import { playSound } from "~/utils/playSound";
 
 // Vue Router
@@ -13,8 +16,8 @@ const router = useRouter();
 const { t } = useI18n();
 
 // Ref Variables
-const trainingParameter = ref<RapidVisualPerception>(
-  new RapidVisualPerception()
+const trainingParameter = ref<RapidVisualPerceptionProcedure>(
+  new RapidVisualPerceptionProcedure()
 );
 const totalTrainingTime = ref<number>(0);
 const pauseTimer = ref<boolean>(true);
@@ -44,7 +47,9 @@ const parseRouteData = () => {
       ? JSON.parse(decodeURIComponent(route.query.data as string))
       : null;
     if (data) {
-      trainingParameter.value = jsonToProcedure(data) as RapidVisualPerception;
+      trainingParameter.value = jsonToProcedure(
+        data
+      ) as RapidVisualPerceptionProcedure;
 
       totalTrainingTime.value = data.parameters.duration * 60;
       stimulusPresentationTime.value = data.parameters.presentationTime * 1000; // convert to milliseconds
@@ -135,7 +140,7 @@ const evaluateUserInput = async (input: string) => {
 
 // Function: Save Training Result
 const saveTrainingResults = () => {
-  const result = new RapidVisualPerceptionResult(
+  const result = new RapidVisualPerceptionProcedureResult(
     {
       total: currentTrialCount.value,
       counted: correctCount.value,

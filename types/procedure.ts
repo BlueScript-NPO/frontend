@@ -49,7 +49,7 @@ export abstract class Procedure {
   }
 }
 
-export class RapidVisualPerception extends Procedure {
+export class RapidVisualPerceptionProcedure extends Procedure {
   stimuliType: StimuliTypeParameter;
   stimuliLength: StimuliLengthParameter;
   presentationTime: NumParameter;
@@ -108,7 +108,7 @@ export class SequentialVisualMemoryProcedure extends Procedure {
   }
 }
 
-export class CharactorSequenceingProcedure extends Procedure {
+export class CharacterSequencingProcedure extends Procedure {
   stimuliType: StimuliTypeParameter;
   promptType: PromptTypeParamter;
   promptLength: PromptLengthParameter;
@@ -119,7 +119,7 @@ export class CharactorSequenceingProcedure extends Procedure {
     promptType?: string,
     promptLength: number = 16
   ) {
-    super("Charactor Sequenceing", duration);
+    super("Character Sequencing", duration);
     this.stimuliType = new StimuliTypeParameter(stimuliType);
     this.promptType = new PromptTypeParamter(promptType);
     this.promptLength = new PromptLengthParameter(promptLength);
@@ -130,7 +130,7 @@ export class CharactorSequenceingProcedure extends Procedure {
   }
 }
 
-export class CharactorMatchingProcedure extends Procedure {
+export class CharacterMatchingProcedure extends Procedure {
   stimuliType: StimuliTypeParameter;
   targetLength: TargetLengthParameter;
   targetCount: TargetCountParameter;
@@ -141,7 +141,7 @@ export class CharactorMatchingProcedure extends Procedure {
     targetLength: number = 2,
     targetCount: number = 15
   ) {
-    super("Charactor Matching", duration);
+    super("Character Matching", duration);
     this.stimuliType = new StimuliTypeParameter(stimuliType);
     this.targetLength = new TargetLengthParameter(targetLength);
     this.targetCount = new TargetCountParameter(targetCount);
@@ -152,12 +152,12 @@ export class CharactorMatchingProcedure extends Procedure {
   }
 }
 
-export class CharactorGuesstimateProcedure extends Procedure {
+export class CharacterGuesstimateProcedure extends Procedure {
   stimuliType: StimuliTypeParameter;
   chunkSize: ChunkSizeParameter;
 
   constructor(duration?: number, stimuliType?: string, chunkSize?: string) {
-    super("Charactor Guesstimate", duration);
+    super("Character Guesstimate", duration);
     this.stimuliType = new StimuliTypeParameter(stimuliType);
     this.chunkSize = new ChunkSizeParameter(chunkSize);
 
@@ -169,7 +169,7 @@ export class CharactorGuesstimateProcedure extends Procedure {
 // function to convert json procedure to Procedure object
 export function jsonToProcedure(json: any): Procedure {
   if (json.procedure === "Rapid Visual Perception") {
-    return new RapidVisualPerception(
+    return new RapidVisualPerceptionProcedure(
       json.parameters.duration,
       json.parameters.stimuliType,
       json.parameters.stimuliLength,
@@ -182,22 +182,22 @@ export function jsonToProcedure(json: any): Procedure {
       json.parameters.stimuliType,
       json.parameters.stimuliLength
     );
-  } else if (json.procedure === "Charactor Sequenceing") {
-    return new CharactorSequenceingProcedure(
+  } else if (json.procedure === "Character Sequencing") {
+    return new CharacterSequencingProcedure(
       json.parameters.duration,
       json.parameters.stimuliType,
       json.parameters.promptType,
       json.parameters.promptLength
     );
-  } else if (json.procedure === "Charactor Matching") {
-    return new CharactorMatchingProcedure(
+  } else if (json.procedure === "Character Matching") {
+    return new CharacterMatchingProcedure(
       json.parameters.duration,
       json.parameters.stimuliType,
       json.parameters.targetLength,
       json.parameters.targetCount
     );
-  } else if (json.procedure === "Charactor Guesstimate") {
-    return new CharactorGuesstimateProcedure(
+  } else if (json.procedure === "Character Guesstimate") {
+    return new CharacterGuesstimateProcedure(
       json.parameters.duration,
       json.parameters.stimuliType,
       json.parameters.chunkSize
