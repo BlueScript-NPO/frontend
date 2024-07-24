@@ -40,7 +40,7 @@ onMounted(() => {
   const links = availableLocales.map((l) => ({
     rel: "alternate",
     hreflang: l,
-    href: `http://localhost:3000${route.fullPath.split("?")[0]}?lang=${l}`,
+    href: `http://bluescript.app:3000${route.fullPath.split("?")[0]}?lang=${l}`,
   }));
 
   useHead({
