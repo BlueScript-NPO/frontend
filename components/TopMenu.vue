@@ -51,13 +51,13 @@ const langItems = computed(() => {
     <template #logo>
       <ClientOnly>
         <img
-          src="~/assets/logo-dark.png"
+          src="~/assets/logo-dark.svg"
           alt="BlueScript darkmode logo"
           class="h-8 hover:opacity-90"
           v-if="isDark"
         />
         <img
-          src="~/assets/logo.png"
+          src="~/assets/logo.svg"
           alt="BlueScript logo"
           class="h-8 hover:opacity-90"
           v-else
