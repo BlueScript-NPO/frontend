@@ -331,7 +331,7 @@ onUnmounted(() => {
 
 <template>
   <Head>
-    <Title>Training - Character Sequencing</Title>
+    <Title>{{ t("procedure.Character Sequencing") }}</Title>
   </Head>
   <TrainingBase
     :totalTrainingTime="totalTrainingTime"

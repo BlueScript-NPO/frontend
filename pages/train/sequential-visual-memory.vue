@@ -192,7 +192,7 @@ onMounted(() => {
 
 <template>
   <Head>
-    <Title>Training - Rapid Visual Perception</Title>
+    <Title>{{ t("procedure.Sequential Visual Memory") }}</Title>
   </Head>
 
   <TrainingBase

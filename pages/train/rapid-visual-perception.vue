@@ -171,7 +171,7 @@ onMounted(() => {
 
 <template>
   <Head>
-    <Title>Training - Quick Visual Perception</Title>
+    <Title>{{ t("procedure.Rapid Visual Perception") }}</Title>
   </Head>
 
   <TrainingBase

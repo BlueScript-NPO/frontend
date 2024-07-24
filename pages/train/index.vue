@@ -103,7 +103,7 @@ const handleFormError = async (event: FormErrorEvent) => {
 
 <template>
   <Head>
-    <Title>Training</Title>
+    <Title>{{ t("nav.train") }}</Title>
   </Head>
   <TopMenu />
   <UForm

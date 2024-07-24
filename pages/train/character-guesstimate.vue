@@ -274,7 +274,9 @@ onUnmounted(() => {
 
 <template>
   <Head>
-    <Title>Training - Character Guesstimate</Title>
+    <Title>
+      {{ t("procedure.Character Guesstimate") }}
+    </Title>
   </Head>
 
   <TrainingBase
