@@ -4,7 +4,12 @@
       <div
         class="aspect-w-16 aspect-h-9 rounded-lg relative overflow-hidden border border-dashed border-gray-950/10 dark:border-white/10"
       >
-        <img src="~/assets/hero.png" alt="BlueScript demo hero image" />
+        <img
+          src="~/assets/hero-dark.png"
+          alt="BlueScript demo hero image (dark)"
+          v-if="isDark"
+        />
+        <img src="~/assets/hero.png" alt="BlueScript demo hero image" v-else />
       </div>
     </div>
   </div>
@@ -58,3 +63,15 @@
   inherits: false;
 }
 </style>
+
+<script setup lang="ts">
+const colorMode = useColorMode();
+const isDark = computed({
+  get() {
+    return colorMode.value === "dark";
+  },
+  set() {
+    colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
+  },
+});
+</script>

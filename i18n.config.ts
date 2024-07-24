@@ -5,6 +5,50 @@ export default defineI18nConfig(() => ({
 
   messages: {
     en: {
+      landing: {
+        title: "BlueScript",
+        cta: "Start Training",
+        description:
+          "BlueScript is a non-profit organization that develops free and open-source tools to help dyslexic individuals.",
+        features: {
+          title: "Why Choose BlueScript?",
+          description:
+            "BlueScript is a non-profit organization dedicated to developing free and open-source tools that support individuals with dyslexia.",
+          headline: "Key Features",
+          items: {
+            card1: {
+              title: "User-Friendly",
+              description:
+                "BlueScript is intuitively designed for home use, enabling individuals with dyslexia to benefit without needing professional assistance.",
+            },
+            card2: {
+              title: "Always Free",
+              description:
+                "Committed to accessibility, BlueScript ensures that everyone has free access to essential dyslexia support tools.",
+            },
+            card3: {
+              title: "Open Source",
+              description:
+                "BlueScript welcomes contributions from everyone. Access our source code to modify, enhance, and innovate freely.",
+            },
+            card4: {
+              title: "Privacy First",
+              description:
+                "BlueScript prioritizes your privacy by not collecting any personal information, upholding your fundamental right to privacy.",
+            },
+            card5: {
+              title: "Fully Accessible",
+              description:
+                "Utilizing the latest web technologies, BlueScript is designed to be accessible on all devices, ensuring inclusivity for all users.",
+            },
+            card6: {
+              title: "Scientifically Backed",
+              description:
+                "BlueScript's training methods are developed and validated by experts with over two decades of dyslexia research experience.",
+            },
+          },
+        },
+      },
       nav: {
         home: "Home",
         train: "Training",
@@ -98,6 +142,50 @@ export default defineI18nConfig(() => ({
       },
     },
     ko: {
+      landing: {
+        title: "BlueScript",
+        cta: "훈련 시작",
+        description:
+          "BlueScript는 난독증이 있는 사람들을 돕기 위해 무료 및 오픈 소스 도구를 개발하는 비영리 단체입니다.",
+        features: {
+          title: "BlueScript를 선택하는 이유",
+          description:
+            "BlueScript는 난독증을 겪는 사람들을 지원하기 위해 무료 및 오픈 소스 도구를 개발하는 비영리 단체입니다.",
+          headline: "주요 기능",
+          items: {
+            card1: {
+              title: "사용자 친화적",
+              description:
+                "BlueScript는 가정에서 사용하기 쉽게 설계되어 전문적인 도움 없이도 난독증을 가진 사람들이 혜택을 받을 수 있습니다.",
+            },
+            card2: {
+              title: "항상 무료",
+              description:
+                "접근성을 중요시하는 BlueScript는 모든 사람이 필수 난독증 지원 도구에 무료로 접근할 수 있도록 보장합니다.",
+            },
+            card3: {
+              title: "오픈 소스",
+              description:
+                "BlueScript는 모든 사람의 기여를 환영합니다. 소스 코드를 액세스하여 자유롭게 수정, 개선 및 혁신할 수 있습니다.",
+            },
+            card4: {
+              title: "프라이버시 우선",
+              description:
+                "BlueScript는 개인 정보를 수집하지 않음으로써 프라이버시를 최우선으로 생각하며 기본적인 프라이버시 권리를 보장합니다.",
+            },
+            card5: {
+              title: "완전한 접근성",
+              description:
+                "최신 웹 기술을 활용하여 BlueScript는 모든 기기에서 접근할 수 있도록 설계되어 모든 사용자를 포용합니다.",
+            },
+            card6: {
+              title: "과학적 뒷받침",
+              description:
+                "BlueScript의 훈련 방법은 20년 이상의 난독증 연구 경험을 가진 전문가들에 의해 개발되고 검증되었습니다.",
+            },
+          },
+        },
+      },
       unit: {
         sec: "초",
         min: "분",
@@ -188,6 +276,50 @@ export default defineI18nConfig(() => ({
     },
 
     es: {
+      landing: {
+        title: "BlueScript",
+        cta: "Comenzar Entrenamiento",
+        description:
+          "BlueScript es una organización sin fines de lucro que desarrolla herramientas gratuitas y de código abierto para ayudar a las personas con dislexia.",
+        features: {
+          title: "¿Por Qué Elegir BlueScript?",
+          description:
+            "BlueScript es una organización sin fines de lucro dedicada a desarrollar herramientas gratuitas y de código abierto que apoyan a las personas con dislexia.",
+          headline: "Características Clave",
+          items: {
+            card1: {
+              title: "Fácil de Usar",
+              description:
+                "BlueScript está diseñado de manera intuitiva para el uso doméstico, permitiendo que las personas con dislexia se beneficien sin necesitar asistencia profesional.",
+            },
+            card2: {
+              title: "Siempre Gratis",
+              description:
+                "Comprometido con la accesibilidad, BlueScript asegura que todos tengan acceso gratuito a herramientas esenciales de apoyo para la dislexia.",
+            },
+            card3: {
+              title: "Código Abierto",
+              description:
+                "BlueScript da la bienvenida a contribuciones de todos. Accede a nuestro código fuente para modificar, mejorar e innovar libremente.",
+            },
+            card4: {
+              title: "Privacidad Primero",
+              description:
+                "BlueScript prioriza tu privacidad al no recopilar ninguna información personal, manteniendo tu derecho fundamental a la privacidad.",
+            },
+            card5: {
+              title: "Totalmente Accesible",
+              description:
+                "Utilizando las últimas tecnologías web, BlueScript está diseñado para ser accesible en todos los dispositivos, asegurando inclusión para todos los usuarios.",
+            },
+            card6: {
+              title: "Científicamente Respaldado",
+              description:
+                "Los métodos de entrenamiento de BlueScript son desarrollados y validados por expertos con más de dos décadas de experiencia en investigación sobre dislexia.",
+            },
+          },
+        },
+      },
       nav: {
         home: "Inicio",
         train: "Entrenamiento",

@@ -192,8 +192,13 @@ onMounted(() => {
 
       <div v-else-if="value.type === 'time'" class="px-4">
         <span class="font-semibold"> {{ $t(value.displayName ?? "") }} </span>:
-        {{ Math.floor(value.getValue() / 60) }}{{ $t("unit.min") }}
-        {{ value.getValue() % 60 }}{{ $t("unit.sec") }}
+        <span v-if="value.getValue() < 60">
+          {{ value.getValue() % 60 }}{{ $t("unit.sec") }}
+        </span>
+        <span v-else>
+          {{ Math.floor(value.getValue() / 60) }}{{ $t("unit.min") }}
+          {{ value.getValue() % 60 }}{{ $t("unit.sec") }}
+        </span>
         <UTooltip>
           <template #text>
             <span>{{ $t(value.description ?? "") }}</span>

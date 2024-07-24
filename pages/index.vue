@@ -1,8 +1,8 @@
 <template>
   <TopMenu />
   <ULandingHero
-    title="BlueScript"
-    description="BlueScript is a non-profit organization that develops free and open-source tools to help dyslexic individuals."
+    :title="t('landing.title')"
+    :description="t('landing.description')"
     :links="actionLinks"
   >
   </ULandingHero>
@@ -12,16 +12,69 @@
       <ImagePlaceholder />
     </div>
   </div>
+
+  <ULandingSection
+    :title="t('landing.features.title')"
+    :description="t('landing.features.description')"
+    :headline="t('landing.features.headline')"
+  >
+    <UPageGrid
+      id="features"
+      class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]"
+    >
+      <ULandingCard
+        :title="t(`landing.features.items.card1.title`)"
+        :description="t(`landing.features.items.card1.description`)"
+        icon="i-heroicons-light-bulb"
+      />
+      <ULandingCard
+        :title="t(`landing.features.items.card2.title`)"
+        :description="t(`landing.features.items.card2.description`)"
+        icon="i-heroicons-currency-dollar"
+      />
+      <ULandingCard
+        :title="t(`landing.features.items.card3.title`)"
+        :description="t(`landing.features.items.card3.description`)"
+        icon="i-heroicons-globe-alt"
+      />
+      <ULandingCard
+        :title="t(`landing.features.items.card4.title`)"
+        :description="t(`landing.features.items.card4.description`)"
+        icon="i-heroicons-shield-check"
+      />
+      <ULandingCard
+        :title="t(`landing.features.items.card5.title`)"
+        :description="t(`landing.features.items.card5.description`)"
+        icon="i-heroicons-user-circle"
+      />
+      <ULandingCard
+        :title="t(`landing.features.items.card6.title`)"
+        :description="t(`landing.features.items.card6.description`)"
+        icon="i-heroicons-clipboard-document-check"
+      />
+    </UPageGrid>
+  </ULandingSection>
 </template>
 
 <script setup>
-const actionLinks = ref([
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
+const actionLinks = computed(() => [
   {
-    label: "Get started",
+    label: t("landing.cta"),
     icon: "i-heroicons-arrow-right-20-solid",
     trailing: true,
     to: "/train",
     size: "xl",
   },
 ]);
+
+useSeoMeta({
+  title: t("landing.title"),
+  ogTitle: t("landing.title"),
+  description: t("landing.description"),
+  ogDescription: t("landing.description"),
+});
 </script>

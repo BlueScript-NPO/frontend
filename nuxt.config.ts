@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   ssr: true,
   css: ["@/assets/globals.css"],
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   extends: ["@nuxt/ui-pro"],
   modules: ["@nuxtjs/i18n", "@nuxt/ui", "@nuxtjs/i18n"],
   i18n: {
