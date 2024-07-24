@@ -69,8 +69,8 @@ export default defineI18nConfig(() => ({
 
       result: {
         date: "Date",
-        doctor: "Doctor",
-        patient: "Patient",
+        trainer: "Trainer",
+        trainee: "Trainee",
         trainingParameters: "Training Parameters",
         notesPlaceholder: "Write your notes here...",
         title: "Training Result",
@@ -126,7 +126,7 @@ export default defineI18nConfig(() => ({
         continue: "계속하려면 스페이스나 엔터를 눌러주세요",
         findMatch: "보기와 일치하는 문자를 찾으세요",
         remaining: "개 남음",
-        guess: "서서히 보야지는 문자와 일치하는 키를 눌러주세요",
+        guess: "서서히 보여지는 문자와 일치하는 키를 눌러주세요",
       },
       parameter: {
         durationMin: "시간 (분)",
@@ -159,8 +159,8 @@ export default defineI18nConfig(() => ({
 
       result: {
         date: "날짜",
-        doctor: "의사",
-        patient: "환자",
+        trainer: "트레이너",
+        trainee: "훈련생",
         trainingParameters: "훈련 설정",
         notesPlaceholder: "메모를 입력해주세요",
         title: "훈련 결과",
@@ -250,8 +250,8 @@ export default defineI18nConfig(() => ({
       },
       result: {
         date: "Fecha",
-        doctor: "Doctor",
-        patient: "Paciente",
+        trainer: "Entrenador",
+        trainee: "Entrenado",
         trainingParameters: "Parámetros de Entrenamiento",
         notesPlaceholder: "Escribe tus notas aquí...",
         title: "Resultado del Entrenamiento",

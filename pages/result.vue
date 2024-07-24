@@ -97,7 +97,7 @@ onMounted(() => {
     <Title>{{ $t("result.title") }}</Title>
   </Head>
   <TopMenu />
-  <UCard v-if="trainingData" class="mx-auto mt-8 max-w-md">
+  <UCard v-if="trainingData" class="mx-auto mt-8 max-w-md mb-20">
     <template #header>
       <div class="flex justify-between">
         <div>
@@ -122,10 +122,10 @@ onMounted(() => {
       <div class="py-2">
         <p class="font-light">{{ $t("result.date") }}: {{ formattedDate }}</p>
         <p class="font-light text-xs">
-          {{ $t("result.doctor") }}: {{ trainingData?.doctorID }}
+          {{ $t("result.trainer") }}: {{ trainingData?.trainerID }}
         </p>
         <p class="font-light text-xs">
-          {{ $t("result.patient") }}: {{ trainingData?.patientID }}
+          {{ $t("result.trainee") }}: {{ trainingData?.traineeID }}
         </p>
       </div>
     </template>

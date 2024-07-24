@@ -83,8 +83,8 @@ These endpoints are subject to change will be implemented in the backnd. (This i
 
 ### Common Parameters
 
-- **doctorID**: The ID of the doctor who conducted the test.
-- **patientID**: The ID of the patient who took the test.
+- **trainerID**: The ID of the doctor who conducted the test.
+- **traineeID**: The ID of the patient who took the test.
 - **date**: The date and time when the test was conducted in the format `YYYY-MM-DDTHH:MM:SS.MMMZ`.
 - **notes**: Any additional notes that the doctor wants to add. May be an empty string.
 - **parameter**: The parameters used for the test. (identical to the json structure of the training preset)
@@ -93,8 +93,8 @@ These endpoints are subject to change will be implemented in the backnd. (This i
 
 ```json
 {
-  "doctorID": "DOCTOR",
-  "patientID": "PATIENT",
+  "trainerID": "trainer",
+  "traineeID": "trainee",
   "date": "2024-06-18T08:36:57.032Z",
   "notes": "Example Note",
   "result": {
@@ -118,8 +118,8 @@ These endpoints are subject to change will be implemented in the backnd. (This i
 
 ```json
 {
-  "doctorID": "DOCTOR",
-  "patientID": "PATIENT",
+  "trainerID": "trainer",
+  "traineeID": "trainee",
   "date": "2024-06-18T08:36:57.032Z",
   "notes": "Example Note",
   "result": {

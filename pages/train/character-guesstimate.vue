@@ -121,8 +121,8 @@ const saveTrainingResults = (): void => {
     currentTrialCount.value,
     trialData,
     totalElapsedTime.value,
-    "DOCTOR",
-    "PATIENT",
+    "trainer",
+    "trainee",
     "", // This is for notes (intentionally left blank)
     undefined,
     trainingParameter.value

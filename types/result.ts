@@ -20,22 +20,22 @@ import {
 } from "./procedure";
 
 export abstract class TrainingResult {
-  doctorID: string;
-  patientID: string;
+  trainerID: string;
+  traineeID: string;
   date: Date;
   notes: string;
   values: Value[] = [];
   procedure: Procedure;
 
   constructor(
-    doctorID: string,
-    patientID: string,
+    trainerID: string,
+    traineeID: string,
     notes: string,
     date: Date = new Date(),
     procedure: Procedure
   ) {
-    this.doctorID = doctorID;
-    this.patientID = patientID;
+    this.trainerID = trainerID;
+    this.traineeID = traineeID;
     this.date = date;
     this.notes = notes;
     this.procedure = procedure;
@@ -46,8 +46,8 @@ export abstract class TrainingResult {
       return { ...acc, ...value.toJson() };
     }, {});
     return {
-      doctorID: this.doctorID,
-      patientID: this.patientID,
+      trainerID: this.trainerID,
+      traineeID: this.traineeID,
       date: this.date,
       notes: this.notes,
       result: valuesJson,
@@ -65,13 +65,13 @@ export class RapidVisualPerceptionProcedureResult extends TrainingResult {
     accuracy: { total: number; counted: number },
     elepsedTime: number,
     trialCount: number,
-    doctorID: string,
-    patientID: string,
+    trainerID: string,
+    traineeID: string,
     notes: string = "",
     date: Date = new Date(),
     parameter: RapidVisualPerceptionProcedure
   ) {
-    super(doctorID, patientID, notes, date, parameter);
+    super(trainerID, traineeID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
     this.elepsedTime = new ElapsedTime(elepsedTime);
     this.accuracy = new PercentAccuracyValue(accuracy);
@@ -91,13 +91,13 @@ export class SequentialVisualMemoryResult extends TrainingResult {
     accuracy: { total: number; counted: number },
     elepsedTime: number,
     trialCount: number,
-    doctorID: string,
-    patientID: string,
+    trainerID: string,
+    traineeID: string,
     notes: string = "",
     date: Date = new Date(),
     parameter: SequentialVisualMemoryProcedure
   ) {
-    super(doctorID, patientID, notes, date, parameter);
+    super(trainerID, traineeID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
     this.elepsedTime = new ElapsedTime(elepsedTime);
     this.accuracy = new PercentAccuracyValue(accuracy);
@@ -121,13 +121,13 @@ export class CharactorSequenceingResult extends TrainingResult {
     trialCount: number,
     trialData: any[],
     elepsedTime: number,
-    doctorID: string,
-    patientID: string,
+    trainerID: string,
+    traineeID: string,
     notes: string,
     date: Date = new Date(),
     parameter: CharacterSequencingProcedure
   ) {
-    super(doctorID, patientID, notes, date, parameter);
+    super(trainerID, traineeID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
     this.elepsedTime = new ElapsedTime(elepsedTime);
     this.avrageAccuracy = new AverageAccuracyValue(avrageAccuracy);
@@ -156,13 +156,13 @@ export class CharactorMatchingResult extends TrainingResult {
     trialCount: number,
     trialData: any[],
     elepsedTime: number,
-    doctorID: string,
-    patientID: string,
+    trainerID: string,
+    traineeID: string,
     notes: string,
     date: Date = new Date(),
     parameter: CharacterMatchingProcedure
   ) {
-    super(doctorID, patientID, notes, date, parameter);
+    super(trainerID, traineeID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
     this.elepsedTime = new ElapsedTime(elepsedTime);
     this.avrageAccuracy = new AverageAccuracyValue(avrageAccuracy);
@@ -193,13 +193,13 @@ export class CharactorGuesstimateResult extends TrainingResult {
     trialCount: number,
     trialData: any[],
     elepsedTime: number,
-    doctorID: string,
-    patientID: string,
+    trainerID: string,
+    traineeID: string,
     notes: string,
     date: Date = new Date(),
     parameter: CharacterGuesstimateProcedure
   ) {
-    super(doctorID, patientID, notes, date, parameter);
+    super(trainerID, traineeID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
     this.elepsedTime = new ElapsedTime(elepsedTime);
     this.accuracy = new AccuracyValue(accuracy);
@@ -220,10 +220,10 @@ export function jsonToTrainingResult(json: any): TrainingResult {
   if (json.parameter.procedure === "Rapid Visual Perception") {
     return new RapidVisualPerceptionProcedureResult(
       json.result.accuracy,
-      json.result.elepsedTime,
+      json.result.elapsedTime,
       json.result.trialCount,
-      json.doctorID,
-      json.patientID,
+      json.trainerID,
+      json.traineeID,
       json.notes,
       json.date,
       jsonToProcedure(json.parameter) as RapidVisualPerceptionProcedure
@@ -231,36 +231,36 @@ export function jsonToTrainingResult(json: any): TrainingResult {
   } else if (json.parameter.procedure === "Sequential Visual Memory") {
     return new SequentialVisualMemoryResult(
       json.result.accuracy,
-      json.result.elepsedTime,
+      json.result.elapsedTime,
       json.result.trialCount,
-      json.doctorID,
-      json.patientID,
+      json.trainerID,
+      json.traineeID,
       json.notes,
       json.date,
       jsonToProcedure(json.parameter) as SequentialVisualMemoryProcedure
     );
   } else if (json.parameter.procedure === "Character Sequencing") {
     return new CharactorSequenceingResult(
-      json.result.avrageAccuracy,
-      json.result.avrageTrialTime,
+      json.result.averageAccuracy,
+      json.result.averageTrialTime,
       json.result.trialCount,
       json.result.trials,
-      json.result.elepsedTime,
-      json.doctorID,
-      json.patientID,
+      json.result.elapsedTime,
+      json.trainerID,
+      json.traineeID,
       json.notes,
       json.date,
       jsonToProcedure(json.parameter) as CharacterSequencingProcedure
     );
   } else if (json.parameter.procedure === "Character Matching") {
     return new CharactorMatchingResult(
-      json.result.avrageAccuracy,
-      json.result.avrageTrialTime,
+      json.result.averageAccuracy,
+      json.result.averageTrialTime,
       json.result.trialCount,
       json.result.trials,
-      json.result.elepsedTime,
-      json.doctorID,
-      json.patientID,
+      json.result.elapsedTime,
+      json.trainerID,
+      json.traineeID,
       json.notes,
       json.date,
       jsonToProcedure(json.parameter) as CharacterMatchingProcedure
@@ -268,13 +268,13 @@ export function jsonToTrainingResult(json: any): TrainingResult {
   } else if (json.parameter.procedure === "Character Guesstimate") {
     return new CharactorGuesstimateResult(
       json.result.accuracy,
-      json.result.avrageRevealed,
-      json.result.avrageTrialTime,
+      json.result.averageRevealed,
+      json.result.averageTrialTime,
       json.result.trialCount,
       json.result.trials,
-      json.result.elepsedTime,
-      json.doctorID,
-      json.patientID,
+      json.result.elapsedTime,
+      json.trainerID,
+      json.traineeID,
       json.notes,
       json.date,
       jsonToProcedure(json.parameter) as CharacterGuesstimateProcedure

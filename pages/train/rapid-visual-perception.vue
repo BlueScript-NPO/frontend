@@ -147,8 +147,8 @@ const saveTrainingResults = () => {
     },
     totalElapsedTime.value,
     currentTrialCount.value,
-    "DOCTOR",
-    "PATIENT",
+    "trainer",
+    "trainee",
     "",
     undefined,
     trainingParameter.value
