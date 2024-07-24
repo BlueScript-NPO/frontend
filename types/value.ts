@@ -23,6 +23,7 @@ export abstract class Value {
 
   abstract getValue(): any;
 }
+
 export class PercentageValue extends Value {
   value: number;
 
@@ -67,7 +68,7 @@ export class ComputedPercentageValue extends Value {
     };
   }
 
-  getPercetage(): number {
+  getPercentage(): number {
     return this.value;
   }
 
@@ -80,12 +81,12 @@ export class ComputedPercentageValue extends Value {
   }
 }
 
-export class avrageRevealedValue extends PercentageValue {
+export class AverageRevealedValue extends PercentageValue {
   constructor(value: number) {
     super(
-      "Avrage Revealed",
-      "avrageRevealed",
-      "Average percentage of revealed chunks of a character",
+      "result.averageRevealed",
+      "averageRevealed",
+      "result.averageRevealedDesc",
       value
     );
   }
@@ -94,9 +95,9 @@ export class avrageRevealedValue extends PercentageValue {
 export class PercentAccuracyValue extends ComputedPercentageValue {
   constructor(value: { total: number; counted: number }) {
     super(
-      "Accuracy",
+      "result.accuracy",
       "accuracy",
-      "Percentage of correct responses",
+      "result.accuracyDesc",
       value.total,
       value.counted
     );
@@ -105,16 +106,16 @@ export class PercentAccuracyValue extends ComputedPercentageValue {
 
 export class AccuracyValue extends PercentageValue {
   constructor(value: number) {
-    super("Accuracy", "accuracy", "Percentage of correct responses", value);
+    super("result.accuracy", "accuracy", "result.accuracyDesc", value);
   }
 }
 
-export class AvrageAccuracyValue extends PercentageValue {
+export class AverageAccuracyValue extends PercentageValue {
   constructor(value: number) {
     super(
-      "Avrage Accuracy",
-      "avrageAccuracy",
-      "Average accuracy of all trials",
+      "result.averageAccuracy",
+      "averageAccuracy",
+      "result.averageAccuracyDesc",
       value
     );
   }
@@ -140,19 +141,20 @@ export class TableValue extends Value {
 
 export class TrialsTableValue extends TableValue {
   constructor(value: any[], columns?: string[]) {
-    super("Trials", "trials", "Record of all trials performed", value);
+    super("result.trials", "trials", "result.trialsDesc", value);
     this.value = value;
   }
 }
 
-export class AvrageTrialTime extends Value {
+export class AverageTrialTime extends Value {
   value: number;
 
   constructor(value: number) {
     super(
-      "Avrage Trial Time",
-      "avrageTrialTime",
-      "Average time spent on each trial (in seconds)"
+      "result.averageTrialTime",
+      "averageTrialTime",
+      "result.averageTrialTimeDesc",
+      "time"
     );
     this.value = value;
   }
@@ -162,14 +164,14 @@ export class AvrageTrialTime extends Value {
   }
 }
 
-export class ElepsedTime extends Value {
+export class ElapsedTime extends Value {
   value: number;
 
   constructor(value: number) {
     super(
-      "Elepsed Time",
-      "elepsedTime",
-      "Actual time spent on training",
+      "result.elapsedTime",
+      "elapsedTime",
+      "result.elapsedTimeDesc",
       "time"
     );
     this.value = value;
@@ -184,7 +186,7 @@ export class TrialCount extends Value {
   value: number;
 
   constructor(value: number) {
-    super("Trial Count", "trialCount", "Number of trials performed");
+    super("result.trialCount", "trialCount", "result.trialCountDesc");
     this.value = value;
   }
 
@@ -197,7 +199,7 @@ export class CorrectCount extends Value {
   value: number;
 
   constructor(value: number) {
-    super("Correct Count", "correctCount", "Number of correct responses");
+    super("result.correctCount", "correctCount", "result.correctCountDesc");
     this.value = value;
   }
 

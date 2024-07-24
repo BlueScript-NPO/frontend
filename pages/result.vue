@@ -91,7 +91,7 @@ onMounted(() => {
 
 <template>
   <Head>
-    <Title>Result</Title>
+    <Title>{{ $t("result.title") }}</Title>
   </Head>
   <TopMenu />
   <UCard v-if="trainingData" class="mx-auto mt-8 max-w-md">
@@ -99,9 +99,9 @@ onMounted(() => {
       <div class="flex justify-between">
         <div>
           <h2 class="text-xl h-8 flex items-center align-middle font-semibold">
-            Training Result
+            {{ $t("result.title") }}
             <UBadge color="primary" variant="outline" class="ml-2">
-              {{ trainingData?.procedure.name }}
+              {{ $t("procedure." + (trainingData?.procedure.name ?? "")) }}
             </UBadge>
           </h2>
         </div>
@@ -117,9 +117,13 @@ onMounted(() => {
       </div>
 
       <div class="py-2">
-        <p class="font-light">Date: {{ formattedDate }}</p>
-        <p class="font-light text-xs">Doctor: {{ trainingData?.doctorID }}</p>
-        <p class="font-light text-xs">Patient: {{ trainingData?.patientID }}</p>
+        <p class="font-light">{{ $t("result.date") }}: {{ formattedDate }}</p>
+        <p class="font-light text-xs">
+          {{ $t("result.doctor") }}: {{ trainingData?.doctorID }}
+        </p>
+        <p class="font-light text-xs">
+          {{ $t("result.patient") }}: {{ trainingData?.patientID }}
+        </p>
       </div>
     </template>
 
@@ -129,7 +133,7 @@ onMounted(() => {
         <UCard class="mt-4">
           <div class="flex justify-center items-center -mt-3">
             <div class="font-semibold">
-              {{ value.displayName }}
+              {{ $t(value.displayName ?? "") }}
             </div>
           </div>
           <UTable class="-mb-4" :rows="value.getValue()"> </UTable>
@@ -138,10 +142,10 @@ onMounted(() => {
       <div v-else-if="value.type === 'percentage'">
         <UCard class="mb-4">
           <p class="font-semibold m-0 -mt-1">
-            {{ value.displayName }}
+            {{ $t(value.displayName ?? "") }}
             <UTooltip>
               <template #text>
-                <span>{{ value.description }}</span>
+                <span>{{ $t(value.description ?? "") }}</span>
               </template>
               <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
             </UTooltip>
@@ -155,10 +159,10 @@ onMounted(() => {
           <div class="flex justify-between -mt-1">
             <div>
               <p class="font-semibold m-0">
-                {{ value.displayName }}
+                {{ $t(value.displayName ?? "") }}
                 <UTooltip>
                   <template #text>
-                    <span>{{ value.description }}</span>
+                    <span>{{ $t(value.description ?? "") }}</span>
                   </template>
                   <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
                 </UTooltip>
@@ -172,7 +176,7 @@ onMounted(() => {
           </div>
 
           <UMeter
-            :value="(value as PercentAccuracyValue).getPercetage()"
+            :value="(value as PercentAccuracyValue).getPercentage()"
             indicator
           >
           </UMeter>
@@ -180,22 +184,23 @@ onMounted(() => {
       </div>
 
       <div v-else-if="value.type === 'time'" class="px-4">
-        <span class="font-semibold"> {{ value.displayName }} </span>:
-        {{ Math.floor(value.getValue() / 60) }}m {{ value.getValue() % 60 }}s
+        <span class="font-semibold"> {{ $t(value.displayName ?? "") }} </span>:
+        {{ Math.floor(value.getValue() / 60) }}{{ $t("unit.min") }}
+        {{ value.getValue() % 60 }}{{ $t("unit.sec") }}
         <UTooltip>
           <template #text>
-            <span>{{ value.description }}</span>
+            <span>{{ $t(value.description ?? "") }}</span>
           </template>
           <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
         </UTooltip>
       </div>
 
       <div v-else class="px-4">
-        <span class="font-semibold"> {{ value.displayName }} </span>:
+        <span class="font-semibold"> {{ $t(value.displayName ?? "") }} </span>:
         {{ value.getValue() }}
         <UTooltip>
           <template #text>
-            <span>{{ value.description }}</span>
+            <span>{{ $t(value.description ?? "") }}</span>
           </template>
           <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
         </UTooltip>
@@ -207,7 +212,7 @@ onMounted(() => {
       class="mt-4 pt-1.5 rounded-lg ring-1 ring-gray-200 dark:ring-gray-800"
       :items="[
         {
-          label: 'Training Parameters',
+          label: $t('result.trainingParameters'),
           icon: 'i-heroicons-wrench-screwdriver',
           defaultOpen: false,
         },
@@ -220,7 +225,9 @@ onMounted(() => {
               v-for="param in trainingData?.procedure.parameters"
               :key="param.jsonKey"
             >
-              <span class="font-semibold"> {{ param.displayName }} </span>:
+              <span class="font-semibold">
+                {{ $t(param.displayName ?? "") }} </span
+              >:
               {{ param.getValue() }}
             </li>
           </ul>
@@ -231,15 +238,17 @@ onMounted(() => {
     <UTextarea
       class="pt-4"
       autoresize
-      placeholder="Write your notes here..."
+      :placeholder="$t('result.notesPlaceholder')"
       v-model="trainingData.notes"
     />
 
     <template #footer>
       <div class="flex justify-center space-x-4">
-        <UButton color="gray" @click="saveResult"> Download Result </UButton>
-        <UButton color="primary" @click="router.push('/train')"
-          >Go Training
+        <UButton color="gray" @click="saveResult">
+          {{ $t("result.download") }}
+        </UButton>
+        <UButton color="primary" @click="router.push('/train')">
+          {{ $t("result.goTrain") }}
         </UButton>
       </div>
     </template>
@@ -249,8 +258,12 @@ onMounted(() => {
 
   <UCard v-else class="mx-auto mt-8 max-w-md">
     <template #header>
-      <h2 class="text-lg h-8 flex items-center">No Data Loaded</h2>
-      <p class="font-light">Please load a training result to view it.</p>
+      <h2 class="text-lg h-8 flex items-center">
+        {{ $t("result.noData") }}
+      </h2>
+      <p class="font-light">
+        {{ $t("result.noDataDesc") }}
+      </p>
     </template>
 
     <UInput
@@ -264,13 +277,9 @@ onMounted(() => {
     <template #footer>
       <div class="flex justify-center">
         <UButton color="primary" @click="router.push('/train')">
-          Go Training
+          {{ $t("result.goTrain") }}
         </UButton>
       </div>
     </template>
   </UCard>
 </template>
-
-<style scoped>
-/* Write your styles here */
-</style>

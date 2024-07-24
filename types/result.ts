@@ -1,13 +1,13 @@
 import {
   Value,
-  ElepsedTime,
+  ElapsedTime,
   TrialCount,
   AccuracyValue,
-  AvrageAccuracyValue,
-  AvrageTrialTime,
+  AverageAccuracyValue,
+  AverageTrialTime,
   TrialsTableValue,
   PercentAccuracyValue,
-  avrageRevealedValue,
+  AverageRevealedValue,
 } from "./value";
 import {
   Procedure,
@@ -58,7 +58,7 @@ export abstract class TrainingResult {
 
 export class RapidVisualPerceptionResult extends TrainingResult {
   accuracy: PercentAccuracyValue;
-  elepsedTime: ElepsedTime;
+  elepsedTime: ElapsedTime;
   trialCount: TrialCount;
 
   constructor(
@@ -73,7 +73,7 @@ export class RapidVisualPerceptionResult extends TrainingResult {
   ) {
     super(doctorID, patientID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
-    this.elepsedTime = new ElepsedTime(elepsedTime);
+    this.elepsedTime = new ElapsedTime(elepsedTime);
     this.accuracy = new PercentAccuracyValue(accuracy);
 
     this.values.push(this.accuracy);
@@ -84,7 +84,7 @@ export class RapidVisualPerceptionResult extends TrainingResult {
 
 export class SequentialVisualMemoryResult extends TrainingResult {
   accuracy: PercentAccuracyValue;
-  elepsedTime: ElepsedTime;
+  elepsedTime: ElapsedTime;
   trialCount: TrialCount;
 
   constructor(
@@ -99,7 +99,7 @@ export class SequentialVisualMemoryResult extends TrainingResult {
   ) {
     super(doctorID, patientID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
-    this.elepsedTime = new ElepsedTime(elepsedTime);
+    this.elepsedTime = new ElapsedTime(elepsedTime);
     this.accuracy = new PercentAccuracyValue(accuracy);
 
     this.values.push(this.accuracy);
@@ -110,9 +110,9 @@ export class SequentialVisualMemoryResult extends TrainingResult {
 
 export class CharactorSequenceingResult extends TrainingResult {
   trialCount: TrialCount;
-  elepsedTime: ElepsedTime;
-  avrageAccuracy: AvrageAccuracyValue;
-  avrageTrialTime: AvrageTrialTime;
+  elepsedTime: ElapsedTime;
+  avrageAccuracy: AverageAccuracyValue;
+  avrageTrialTime: AverageTrialTime;
   trialData: TrialsTableValue;
 
   constructor(
@@ -129,9 +129,9 @@ export class CharactorSequenceingResult extends TrainingResult {
   ) {
     super(doctorID, patientID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
-    this.elepsedTime = new ElepsedTime(elepsedTime);
-    this.avrageAccuracy = new AvrageAccuracyValue(avrageAccuracy);
-    this.avrageTrialTime = new AvrageTrialTime(avrageTrialTime);
+    this.elepsedTime = new ElapsedTime(elepsedTime);
+    this.avrageAccuracy = new AverageAccuracyValue(avrageAccuracy);
+    this.avrageTrialTime = new AverageTrialTime(avrageTrialTime);
     this.trialData = new TrialsTableValue(trialData);
 
     this.values.push(this.avrageAccuracy);
@@ -145,9 +145,9 @@ export class CharactorSequenceingResult extends TrainingResult {
 
 export class CharactorMatchingResult extends TrainingResult {
   trialCount: TrialCount;
-  elepsedTime: ElepsedTime;
-  avrageAccuracy: AvrageAccuracyValue;
-  avrageTrialTime: AvrageTrialTime;
+  elepsedTime: ElapsedTime;
+  avrageAccuracy: AverageAccuracyValue;
+  avrageTrialTime: AverageTrialTime;
   trialData: TrialsTableValue;
 
   constructor(
@@ -164,9 +164,9 @@ export class CharactorMatchingResult extends TrainingResult {
   ) {
     super(doctorID, patientID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
-    this.elepsedTime = new ElepsedTime(elepsedTime);
-    this.avrageAccuracy = new AvrageAccuracyValue(avrageAccuracy);
-    this.avrageTrialTime = new AvrageTrialTime(avrageTrialTime);
+    this.elepsedTime = new ElapsedTime(elepsedTime);
+    this.avrageAccuracy = new AverageAccuracyValue(avrageAccuracy);
+    this.avrageTrialTime = new AverageTrialTime(avrageTrialTime);
     this.trialData = new TrialsTableValue(trialData);
 
     this.values.push(this.avrageAccuracy);
@@ -180,10 +180,10 @@ export class CharactorMatchingResult extends TrainingResult {
 
 export class CharactorGuesstimateResult extends TrainingResult {
   trialCount: TrialCount;
-  elepsedTime: ElepsedTime;
+  elepsedTime: ElapsedTime;
   accuracy: AccuracyValue;
-  avrageRevealed: avrageRevealedValue;
-  avrageTrialTime: AvrageTrialTime;
+  avrageRevealed: AverageRevealedValue;
+  avrageTrialTime: AverageTrialTime;
   trialData: TrialsTableValue;
 
   constructor(
@@ -201,10 +201,10 @@ export class CharactorGuesstimateResult extends TrainingResult {
   ) {
     super(doctorID, patientID, notes, date, parameter);
     this.trialCount = new TrialCount(trialCount);
-    this.elepsedTime = new ElepsedTime(elepsedTime);
+    this.elepsedTime = new ElapsedTime(elepsedTime);
     this.accuracy = new AccuracyValue(accuracy);
-    this.avrageRevealed = new avrageRevealedValue(avrageRevealed);
-    this.avrageTrialTime = new AvrageTrialTime(avrageTrialTime);
+    this.avrageRevealed = new AverageRevealedValue(avrageRevealed);
+    this.avrageTrialTime = new AverageTrialTime(avrageTrialTime);
     this.trialData = new TrialsTableValue(trialData);
 
     this.values.push(this.accuracy);
