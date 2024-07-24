@@ -2,7 +2,7 @@
   <img src="docs/banner.png" width="100%" />
 </p>
 
-_🚧 This project is under heavy develpment. We'll be accepting contribution after the minimal foundation is built._
+🚀 BlueScript Just went live! Check out [here](https://bluescript.app)!
 
 # BlueScript Front End
 

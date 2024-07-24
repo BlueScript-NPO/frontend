@@ -13,13 +13,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
-      # Set up environment variables from secrets
       - name: Set up Nuxt UI Pro license
         run: |
           echo "NUXT_UI_PRO_LICENSE=${{ secrets.NUXT_UI_PRO_LICENSE }}" > .env
         env:
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
-      # Pick your own package manager and build script
       - run: npm install
       - run: npx nuxt build --preset github_pages
       - name: Upload artifact
