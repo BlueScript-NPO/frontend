@@ -1,0 +1,127 @@
+{
+  "landing": {
+    "title": "BlueScript",
+    "cta": "トレーニングを開始",
+    "github": "ソースコードを取得",
+    "description": "BlueScript は、失読症の方々を支援するための無料およびオープンソースのツールを開発する非営利団体です。",
+    "features": {
+      "title": "BlueScriptを選ぶ理由",
+      "description": "BlueScript は、失読症の方々を支援するための無料およびオープンソースのツールを開発する非営利団体です。",
+      "headline": "主な特徴",
+      "items": {
+        "card1": {
+          "title": "ユーザーフレンドリー",
+          "description": "BlueScript は個人使用のために直感的に設計されており、最小限の専門的な支援で失読症の方々が恩恵を受けられます。"
+        },
+        "card2": {
+          "title": "常に無料",
+          "description": "アクセシビリティを重視する BlueScript は、誰もが必要な失読症サポートツールに無料でアクセスできることを保証します。"
+        },
+        "card3": {
+          "title": "オープンソース",
+          "description": "BlueScript は、誰でも自由に貢献できるようにしています。ソースコードにアクセスして自由に変更、強化、革新してください。"
+        },
+        "card4": {
+          "title": "プライバシー重視",
+          "description": "BlueScript は個人情報を収集せず、基本的なプライバシーの権利を守ることを最優先にしています。"
+        },
+        "card5": {
+          "title": "完全にアクセス可能",
+          "description": "最新のウェブ技術を利用して、BlueScript はすべてのデバイスでアクセスできるように設計されており、すべてのユーザーに対して包括性を確保します。"
+        },
+        "card6": {
+          "title": "科学的に裏付けられた",
+          "description": "BlueScript のトレーニング方法は、20年以上の失読症研究経験を持つ専門家によって開発および検証されています。"
+        }
+      }
+    }
+  },
+  "nav": {
+    "home": "ホーム",
+    "train": "トレーニング",
+    "result": "結果"
+  },
+  "unit": {
+    "sec": "秒",
+    "min": "分"
+  },
+  "train": {
+    "title": "トレーニングの設定",
+    "start": "トレーニングを開始"
+  },
+  "training": {
+    "ready": "準備完了！",
+    "trial": "試験",
+    "timeSpent": "費やした時間：",
+    "accuracy": "正確さ：",
+    "elapsed": "経過時間：",
+    "typeAnswer": "見た文字を入力してください\n（Enter またはスペースキーを押して送信）",
+    "correct": "正解！\n（Enter またはスペースキーを押して続行）",
+    "incorrect": "不正解！\n（Enter またはスペースキーを押して続行）",
+    "sequencingInstruction": "右矢印キーを押してカーソルを移動\n（Enter またはスペースキーを押して選択）",
+    "finish": "完了！",
+    "continue": "続行するにはスペースキーまたはEnterキーを押してください",
+    "findMatch": "一致する文字を見つける",
+    "remaining": " 残り",
+    "guess": "徐々に明らかになる文字に一致するキーを押してください"
+  },
+
+  "parameter": {
+    "durationMin": "時間（分）",
+    "stimuliType": "刺激タイプ",
+    "stimuliLength": "刺激の長さ",
+    "presentationTime": "提示時間（秒）",
+    "delayTime": "遅延時間（秒）",
+    "promptType": "プロンプトタイプ",
+    "promptLength": "プロンプトの長さ",
+    "targetLength": "ターゲットの長さ",
+    "targetCount": "ターゲット数",
+    "chunkSize": "チャンクサイズ",
+    "Numbers": "数字",
+    "Alphabet": "アルファベット",
+    "Alphanumeric": "英数字",
+    "Korean": "韓国語",
+    "Sequential": "シーケンシャル",
+    "Random": "ランダム",
+    "Small": "小",
+    "Medium": "中",
+    "Large": "大"
+  },
+
+  "procedure": {
+    "Rapid Visual Perception": "迅速な視覚認知",
+    "Sequential Visual Memory": "順次視覚記憶",
+    "Character Sequencing": "文字シーケンス",
+    "Character Matching": "文字一致",
+    "Character Guesstimate": "文字推測"
+  },
+
+  "result": {
+    "date": "日付",
+    "trainer": "トレーナー",
+    "trainee": "トレイニー",
+    "trainingParameters": "トレーニングパラメータ",
+    "notesPlaceholder": "ここにメモを書いてください...",
+    "title": "トレーニング結果",
+    "noData": "データが読み込まれていません",
+    "noDataDesc": "トレーニング結果を読み込むか、新しいトレーニングを開始してください。",
+    "download": "結果をダウンロード",
+    "goTrain": "トレーニングに行く",
+    "averageRevealed": "平均開示",
+    "averageRevealedDesc": "キャラクターのチャンクの平均開示率",
+    "accuracy": "正確さ",
+    "accuracyDesc": "正解率の割合",
+    "averageAccuracy": "平均正確さ",
+    "averageAccuracyDesc": "すべての試行の平均正確さ",
+    "trials": "試行",
+    "trialsDesc": "実施したすべての試行の記録",
+    "averageTrialTime": "平均試行時間",
+    "averageTrialTimeDesc": "各試行に費やした平均時間（秒）",
+    "elapsedTime": "経過時間",
+    "elapsedTimeDesc": "トレーニングに費やした実際の時間",
+    "trialCount": "試行回数",
+    "trialCountDesc": "実施した試行回数",
+    "correctCount": "正解数",
+    "correctCountDesc": "正解の回数"
+  }
+}

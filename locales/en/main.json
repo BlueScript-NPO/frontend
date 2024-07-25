@@ -1,0 +1,127 @@
+{
+  "landing": {
+    "title": "BlueScript",
+    "cta": "Start Training",
+    "github": "Get the source code",
+    "description": "BlueScript is a non-profit organization that develops free and open-source tools to help dyslexic individuals.",
+    "features": {
+      "title": "Why Choose BlueScript?",
+      "description": "BlueScript is a non-profit organization dedicated to developing free and open-source tools that support individuals with dyslexia.",
+      "headline": "Key Features",
+      "items": {
+        "card1": {
+          "title": "User-Friendly",
+          "description": "BlueScript is intuitively designed for individual use, enabling individuals with dyslexia to benefit with minimal professional assistance."
+        },
+        "card2": {
+          "title": "Always Free",
+          "description": "Committed to accessibility, BlueScript ensures that everyone has free access to essential dyslexia support tools."
+        },
+        "card3": {
+          "title": "Open Source",
+          "description": "BlueScript welcomes contributions from everyone. Access our source code to modify, enhance, and innovate freely."
+        },
+        "card4": {
+          "title": "Privacy First",
+          "description": "BlueScript prioritizes your privacy by not collecting any personal information, upholding your fundamental right to privacy."
+        },
+        "card5": {
+          "title": "Fully Accessible",
+          "description": "Utilizing the latest web technologies, BlueScript is designed to be accessible on all devices, ensuring inclusivity for all users."
+        },
+        "card6": {
+          "title": "Scientifically Backed",
+          "description": "BlueScript's training methods are developed and validated by experts with over two decades of dyslexia research experience."
+        }
+      }
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "train": "Training",
+    "result": "Result"
+  },
+  "unit": {
+    "sec": "s",
+    "min": "m"
+  },
+  "train": {
+    "title": "Configure Training",
+    "start": "Start Training"
+  },
+  "training": {
+    "ready": "Get Ready!",
+    "trial": "Trial",
+    "timeSpent": "Time Spent:",
+    "accuracy": "Accuracy:",
+    "elapsed": "Elapsed Time:",
+    "typeAnswer": "Please type the characters you saw\n(Press Enter or space to submit)",
+    "correct": "Correct!\n(Press Enter or space to continue)",
+    "incorrect": "Incorrect!\n(Press Enter or space to continue)",
+    "sequencingInstruction": "Press the right arrow to move the cursor\n(press Enter or spacebar to select)",
+    "finish": "Finish!",
+    "continue": "Press spacebar or enter to continue",
+    "findMatch": "Find the matching character",
+    "remaining": " remaining",
+    "guess": "Press the key that matches the character getting revealed"
+  },
+
+  "parameter": {
+    "durationMin": "Duration (min)",
+    "stimuliType": "Stimuli Type",
+    "stimuliLength": "Stimuli Length",
+    "presentationTime": "Presentation Time (s)",
+    "delayTime": "Delay Time (s)",
+    "promptType": "Prompt Type",
+    "promptLength": "Prompt Length",
+    "targetLength": "Target Length",
+    "targetCount": "Target Count",
+    "chunkSize": "Chunk Size",
+    "Numbers": "Numbers",
+    "Alphabet": "Alphabet",
+    "Alphanumeric": "Alphanumeric",
+    "Korean": "Korean",
+    "Sequential": "Sequential",
+    "Random": "Random",
+    "Small": "Small",
+    "Medium": "Medium",
+    "Large": "Large"
+  },
+
+  "procedure": {
+    "Rapid Visual Perception": "Rapid Visual Perception",
+    "Sequential Visual Memory": "Sequential Visual Memory",
+    "Character Sequencing": "Character Sequencing",
+    "Character Matching": "Character Matching",
+    "Character Guesstimate": "Character Guesstimate"
+  },
+
+  "result": {
+    "date": "Date",
+    "trainer": "Trainer",
+    "trainee": "Trainee",
+    "trainingParameters": "Training Parameters",
+    "notesPlaceholder": "Write your notes here...",
+    "title": "Training Result",
+    "noData": "No Data Loaded",
+    "noDataDesc": "Please load a training result or start a new training.",
+    "download": "Download Result",
+    "goTrain": "Go Training",
+    "averageRevealed": "Average Revealed",
+    "averageRevealedDesc": "Average percentage of revealed chunks of a character",
+    "accuracy": "Accuracy",
+    "accuracyDesc": "Percentage of correct responses",
+    "averageAccuracy": "Average Accuracy",
+    "averageAccuracyDesc": "Average accuracy of all trials",
+    "trials": "Trials",
+    "trialsDesc": "Record of all trials performed",
+    "averageTrialTime": "Average Trial Time",
+    "averageTrialTimeDesc": "Average time spent on each trial (in seconds)",
+    "elapsedTime": "Elapsed Time",
+    "elapsedTimeDesc": "Actual time spent on training",
+    "trialCount": "Trial Count",
+    "trialCountDesc": "Number of trials performed",
+    "correctCount": "Correct Count",
+    "correctCountDesc": "Number of correct responses"
+  }
+}
