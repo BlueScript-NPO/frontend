@@ -2,10 +2,10 @@
   "landing": {
     "title": "BlueScript",
     "cta": "トレーニングを開始",
-    "github": "ソースコードを取得",
+    "github": "ソースコードをダウンロード",
     "description": "BlueScript は、失読症の方々を支援するための無料およびオープンソースのツールを開発する非営利団体です。",
     "features": {
-      "title": "BlueScriptを選ぶ理由",
+      "title": "BlueScriptを選んだ理由",
       "description": "BlueScript は、失読症の方々を支援するための無料およびオープンソースのツールを開発する非営利団体です。",
       "headline": "主な特徴",
       "items": {
@@ -19,7 +19,7 @@
         },
         "card3": {
           "title": "オープンソース",
-          "description": "BlueScript は、誰でも自由に貢献できるようにしています。ソースコードにアクセスして自由に変更、強化、革新してください。"
+          "description": "BlueScript は、誰でも自由に貢献できます。ソースコードにアクセスし、自由に変更、強化、革新してください。"
         },
         "card4": {
           "title": "プライバシー重視",
@@ -30,7 +30,7 @@
           "description": "最新のウェブ技術を利用して、BlueScript はすべてのデバイスでアクセスできるように設計されており、すべてのユーザーに対して包括性を確保します。"
         },
         "card6": {
-          "title": "科学的に裏付けられた",
+          "title": "科学的に証明された",
           "description": "BlueScript のトレーニング方法は、20年以上の失読症研究経験を持つ専門家によって開発および検証されています。"
         }
       }
@@ -52,8 +52,8 @@
   "training": {
     "ready": "準備完了！",
     "trial": "試験",
-    "timeSpent": "費やした時間：",
-    "accuracy": "正確さ：",
+    "timeSpent": "所要時間 :",
+    "accuracy": "正確度：",
     "elapsed": "経過時間：",
     "typeAnswer": "見た文字を入力してください\n（Enter またはスペースキーを押して送信）",
     "correct": "正解！\n（Enter またはスペースキーを押して続行）",
@@ -79,8 +79,8 @@
     "Numbers": "数字",
     "Alphabet": "アルファベット",
     "Alphanumeric": "英数字",
-    "Korean": "韓国語",
-    "Sequential": "シーケンシャル",
+    "Korean": "ハングル",
+    "Sequential": "順次的",
     "Random": "ランダム",
     "Small": "小",
     "Medium": "中",
@@ -103,19 +103,19 @@
     "noData": "データが読み込まれていません",
     "noDataDesc": "トレーニング結果を読み込むか、新しいトレーニングを開始してください。",
     "download": "結果をダウンロード",
-    "goTrain": "トレーニングに行く",
+    "goTrain": "トレーニングを始める",
     "averageRevealed": "平均開示",
     "averageRevealedDesc": "キャラクターのチャンクの平均開示率",
-    "accuracy": "正確さ",
-    "accuracyDesc": "正解率の割合",
-    "averageAccuracy": "平均正確さ",
-    "averageAccuracyDesc": "すべての試行の平均正確さ",
+    "accuracy": "正確度",
+    "accuracyDesc": "正解率",
+    "averageAccuracy": "平均正確度",
+    "averageAccuracyDesc": "すべての試行の平均正確度",
     "trials": "試行",
-    "trialsDesc": "実施したすべての試行の記録",
+    "trialsDesc": "すべての試行記録",
     "averageTrialTime": "平均試行時間",
-    "averageTrialTimeDesc": "各試行に費やした平均時間（秒）",
+    "averageTrialTimeDesc": "各試行の平均所要時間（秒）",
     "elapsedTime": "経過時間",
-    "elapsedTimeDesc": "トレーニングに費やした実際の時間",
+    "elapsedTimeDesc": "トレーニング所要時間",
     "trialCount": "試行回数",
     "trialCountDesc": "実施した試行回数",
     "correctCount": "正解数",
