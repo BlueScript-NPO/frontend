@@ -2,6 +2,8 @@
   <img src="docs/banner.png" width="100%" />
 </p>
 
+**💡 한국어 버전의 README는 [README-ko.md](README-ko.md)에서 확인할 수 있습니다**
+
 **🚀 BlueScript Just went live! Check out [here](https://bluescript.app)!**
 
 # BlueScript Front End
