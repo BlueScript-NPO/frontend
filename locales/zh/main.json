@@ -1,0 +1,124 @@
+{
+  "landing": {
+    "title": "BlueScript",
+    "cta": "开始训练",
+    "github": "获取源代码",
+    "description": "BlueScript 是一个非营利组织，开发免费和开源工具来帮助有阅读障碍的人。",
+    "features": {
+      "title": "为什么选择 BlueScript？",
+      "description": "BlueScript 是一个致力于开发免费和开源工具来支持阅读障碍者的非营利组织。",
+      "headline": "主要特点",
+      "items": {
+        "card1": {
+          "title": "用户友好",
+          "description": "BlueScript 直观设计，个人使用，帮助阅读障碍者在最少的专业协助下受益。"
+        },
+        "card2": {
+          "title": "永远免费",
+          "description": "致力于可访问性，BlueScript 确保每个人都可以免费获得必需的阅读障碍支持工具。"
+        },
+        "card3": {
+          "title": "开源",
+          "description": "BlueScript 欢迎所有人的贡献。访问我们的源代码，自由修改、增强和创新。"
+        },
+        "card4": {
+          "title": "隐私优先",
+          "description": "BlueScript 重视您的隐私，不收集任何个人信息，维护您的基本隐私权。"
+        },
+        "card5": {
+          "title": "完全可访问",
+          "description": "利用最新的网络技术，BlueScript 设计为在所有设备上可访问，确保所有用户的包容性。"
+        },
+        "card6": {
+          "title": "科学支持",
+          "description": "BlueScript 的训练方法由具有超过二十年阅读障碍研究经验的专家开发和验证。"
+        }
+      }
+    }
+  },
+  "nav": {
+    "home": "首页",
+    "train": "训练",
+    "result": "结果"
+  },
+  "unit": {
+    "sec": "秒",
+    "min": "分钟"
+  },
+  "train": {
+    "title": "配置训练",
+    "start": "开始训练"
+  },
+  "training": {
+    "ready": "准备好了！",
+    "trial": "试验",
+    "timeSpent": "花费时间：",
+    "accuracy": "准确度：",
+    "elapsed": "已用时间：",
+    "typeAnswer": "请键入您看到的字符\n（按 Enter 或空格提交）",
+    "correct": "正确！\n（按 Enter 或空格继续）",
+    "incorrect": "错误！\n（按 Enter 或空格继续）",
+    "sequencingInstruction": "按右箭头移动光标\n（按 Enter 或空格选择）",
+    "finish": "完成！",
+    "continue": "按空格或 Enter 继续",
+    "findMatch": "找到匹配的字符",
+    "remaining": " 剩余",
+    "guess": "按下与显示字符匹配的键"
+  },
+  "parameter": {
+    "durationMin": "时长（分钟）",
+    "stimuliType": "刺激类型",
+    "stimuliLength": "刺激长度",
+    "presentationTime": "展示时间（秒）",
+    "delayTime": "延迟时间（秒）",
+    "promptType": "提示类型",
+    "promptLength": "提示长度",
+    "targetLength": "目标长度",
+    "targetCount": "目标数量",
+    "chunkSize": "块大小",
+    "Numbers": "数字",
+    "Alphabet": "字母",
+    "Alphanumeric": "字母数字",
+    "Korean": "韩语",
+    "Sequential": "顺序",
+    "Random": "随机",
+    "Small": "小",
+    "Medium": "中",
+    "Large": "大"
+  },
+  "procedure": {
+    "Rapid Visual Perception": "快速视觉感知",
+    "Sequential Visual Memory": "顺序视觉记忆",
+    "Character Sequencing": "字符排序",
+    "Character Matching": "字符匹配",
+    "Character Guesstimate": "字符猜测"
+  },
+  "result": {
+    "date": "日期",
+    "trainer": "训练师",
+    "trainee": "受训者",
+    "trainingParameters": "训练参数",
+    "notesPlaceholder": "在这里写下您的笔记...",
+    "title": "训练结果",
+    "noData": "未加载数据",
+    "noDataDesc": "请加载训练结果或开始新的训练。",
+    "download": "下载结果",
+    "goTrain": "去训练",
+    "averageRevealed": "平均揭示",
+    "averageRevealedDesc": "字符段平均揭示百分比",
+    "accuracy": "准确度",
+    "accuracyDesc": "正确反应的百分比",
+    "averageAccuracy": "平均准确度",
+    "averageAccuracyDesc": "所有试验的平均准确度",
+    "trials": "试验",
+    "trialsDesc": "所有进行的试验记录",
+    "averageTrialTime": "平均试验时间",
+    "averageTrialTimeDesc": "每次试验花费的平均时间（以秒计）",
+    "elapsedTime": "已用时间",
+    "elapsedTimeDesc": "训练所花费的实际时间",
+    "trialCount": "试验次数",
+    "trialCountDesc": "进行的试验次数",
+    "correctCount": "正确次数",
+    "correctCountDesc": "正确反应的次数"
+  }
+}
