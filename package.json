@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "nuxt generate && npx gh-pages -d dist"
+    "deploy": "nuxt generate && npx gh-pages -d dist",
+    "sync:translations": "node syncTranslations.js"
   },
   "dependencies": {
     "@iconify-json/simple-icons": "^1.1.109",
