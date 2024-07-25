@@ -65,7 +65,6 @@
     "remaining": " 残り",
     "guess": "徐々に明らかになる文字に一致するキーを押してください"
   },
-
   "parameter": {
     "durationMin": "時間（分）",
     "stimuliType": "刺激タイプ",
@@ -87,7 +86,6 @@
     "Medium": "中",
     "Large": "大"
   },
-
   "procedure": {
     "Rapid Visual Perception": "迅速な視覚認知",
     "Sequential Visual Memory": "順次視覚記憶",
@@ -95,7 +93,6 @@
     "Character Matching": "文字一致",
     "Character Guesstimate": "文字推測"
   },
-
   "result": {
     "date": "日付",
     "trainer": "トレーナー",
