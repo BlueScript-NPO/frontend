@@ -65,7 +65,6 @@
     "remaining": " remaining",
     "guess": "Press the key that matches the character getting revealed"
   },
-
   "parameter": {
     "durationMin": "Duration (min)",
     "stimuliType": "Stimuli Type",
@@ -87,7 +86,6 @@
     "Medium": "Medium",
     "Large": "Large"
   },
-
   "procedure": {
     "Rapid Visual Perception": "Rapid Visual Perception",
     "Sequential Visual Memory": "Sequential Visual Memory",
@@ -95,7 +93,6 @@
     "Character Matching": "Character Matching",
     "Character Guesstimate": "Character Guesstimate"
   },
-
   "result": {
     "date": "Date",
     "trainer": "Trainer",
