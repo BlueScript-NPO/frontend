@@ -2,11 +2,17 @@
   <img src="docs/banner.png" width="100%" />
 </p>
 
-🚀 BlueScript Just went live! Check out [here](https://bluescript.app)!
+**🚀 BlueScript Just went live! Check out [here](https://bluescript.app)!**
 
 # BlueScript Front End
 
-BlueScript is a Non Profit Organization creating open source software to aid people who suffer dylexia.## Getting Started
+BlueScript is a Non Profit Organization creating open source software to aid people who suffer dylexia.
+
+## Contributing
+
+Check out our [contributing guide](CONTRIBUTING.md) to get started with contributing to this project.
+
+## Getting Started
 
 If you want to contribute to this project, you can clone this repository and start working on it. After cloning the repository, you run the following commands to start the project:
 
@@ -17,124 +23,30 @@ npm run dev
 
 This project uses Nuxt UI pro and license is needed to build the project. You can get a license from [Nuxt UI Pro](https://ui.nuxt.com/pro/pricing). (Backend code can be found at [Backend](https://github.com/BlueScript-NPO/backend) repository.)
 
-## Json API Structure Example
+## Features
 
-These endpoints are subject to change will be implemented in the backnd. (This is just an reference for the backend developers)
+Below are training modules that are available in the BlueScript webapp:
 
-### User
+1. **Quick Visual Perception module**.
 
-**/api/user/logn** `POST`
+   - Training to identify and type characters that appear on the screen in 250ms or less.
+   - It improves perceptual speed, visual memory, visualization, and temporal visual processing.
 
-```json
-{
-  "id": "jack",
-  "password": "p@ssw0rd"
-}
-```
+2. **Sequential Visual Memory module** (Sequential Visual Perception)
 
-**/api/user/register** `POST`
+   - This module trains you to identify and memorize a series of characters in sequence, and then retype them after a period of time.
+   - It improves visual sequential memory, working memory, perceptual speed, visual motor accuracy, and sequential processing ability.
 
-```json
-{
-  "id": "jack",
-  "password": "p@ssw0rd",
-  "name": "Jack",
-  "email": "Jack@example.com"
-}
-```
+3. **Character Guesstimate module**.
 
-## Training Preset Json Structure Example
+   - This is a training program that shows a part of a character and asks you to identify a character that is not fully shown as quickly as possible.
+   - It improves form, perception, topographic perception, information processing speed and simultaneous processing ability.
 
-### Common Parameters
+4. **Character Match module**.
 
-- **stimuliType**: One of the following string values: `Numbers`, `Alphabet`, `Alphanumeric`, `Korean`
+   - This module trains you to click on a matching string from a set of strings that are visually similar to the prompt.
+   - It improves visual planning, perceptual speed, shape recognition, visual memory, eye movements, directional and temporal visual processing.
 
-- **duration**: Time in minutes for the training session. An integer between 1 and 15.
-
-### Rapid Visual Perception
-
-```json
-{
-  "procedure": "Rapid Visual Perception",
-  "parameters": {
-    "duration": 5,
-    "stimuliType": "Alphanumeric",
-    "stimuliLength": 1, // int between 1 and 10
-    "presentationTime": 0.25 // double between 0.05 and 1
-  }
-}
-```
-
-### Sequential Visual Memory
-
-```json
-{
-  "procedure": "Sequential Visual Memory",
-  "parameters": {
-    "duration": 5,
-    "stimuliType": "Alphanumeric",
-    "stimuliLength": 1, // int between 1 and 10
-    "delayTime": 10 // int between 0 and 25
-  }
-}
-```
-
-## Training Result Json Structure Example
-
-### Common Parameters
-
-- **trainerID**: The ID of the doctor who conducted the test.
-- **traineeID**: The ID of the patient who took the test.
-- **date**: The date and time when the test was conducted in the format `YYYY-MM-DDTHH:MM:SS.MMMZ`.
-- **notes**: Any additional notes that the doctor wants to add. May be an empty string.
-- **parameter**: The parameters used for the test. (identical to the json structure of the training preset)
-
-### Rapid Visual Perception
-
-```json
-{
-  "trainerID": "trainer",
-  "traineeID": "trainee",
-  "date": "2024-06-18T08:36:57.032Z",
-  "notes": "Example Note",
-  "result": {
-    "trialCount": 12, // positive integer
-    "elepsedTime": 63, // positive integer
-    "accuracy": 91.67 // double between 0 and 100
-  },
-  "parameter": {
-    "procedure": "Rapid Visual Perception",
-    "parameters": {
-      "duration": 1,
-      "stimuliType": "Korean",
-      "stimuliLength": 3,
-      "presentationTime": 0.25
-    }
-  }
-}
-```
-
-### Sequential Visual Memory
-
-```json
-{
-  "trainerID": "trainer",
-  "traineeID": "trainee",
-  "date": "2024-06-18T08:36:57.032Z",
-  "notes": "Example Note",
-  "result": {
-    "trialCount": 12, // positive integer
-    "elepsedTime": 63, // positive integer
-    "accuracy": 91.67 // double between 0 and 100
-  },
-  "parameter": {
-    "procedure": "Sequential Visual Memory",
-    "parameters": {
-      "duration": 5,
-      "stimuliType": "Alphanumeric",
-      "stimuliLength": 1,
-      "delayTime": 10
-    }
-  }
-}
-```
+5. **Character Sequencing module**.
+   - Trains students to find prompts in sequence and type characters using the right arrow key and spacebar.
+   - Improves temporal visual processing, visual attention, visual discrimination, visual picture rationale, and visual speed.
