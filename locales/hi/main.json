@@ -65,7 +65,6 @@
     "remaining": " शेष",
     "guess": "प्रकट हो रहे वर्ण से मेल खाने वाली कुंजी दबाएँ"
   },
-
   "parameter": {
     "durationMin": "अवधि (मिनट)",
     "stimuliType": "उत्तेजना प्रकार",
@@ -87,7 +86,6 @@
     "Medium": "मध्यम",
     "Large": "बड़ा"
   },
-
   "procedure": {
     "Rapid Visual Perception": "तेज़ दृश्य धारणा",
     "Sequential Visual Memory": "क्रमबद्ध दृश्य स्मृति",
@@ -95,7 +93,6 @@
     "Character Matching": "वर्ण मिलान",
     "Character Guesstimate": "वर्ण अनुमान"
   },
-
   "result": {
     "date": "तारीख",
     "trainer": "प्रशिक्षक",
