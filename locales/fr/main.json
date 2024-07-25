@@ -1,0 +1,124 @@
+{
+  "landing": {
+    "title": "BlueScript",
+    "cta": "Commencer l'entraînement",
+    "github": "Obtenez le code source",
+    "description": "BlueScript est une organisation à but non lucratif qui développe des outils gratuits et open-source pour aider les personnes dyslexiques.",
+    "features": {
+      "title": "Pourquoi choisir BlueScript ?",
+      "description": "BlueScript est une organisation à but non lucratif dédiée au développement d'outils gratuits et open-source qui soutiennent les personnes dyslexiques.",
+      "headline": "Caractéristiques principales",
+      "items": {
+        "card1": {
+          "title": "Facile à utiliser",
+          "description": "BlueScript est conçu de manière intuitive pour une utilisation individuelle, permettant aux personnes dyslexiques de bénéficier d'une assistance professionnelle minimale."
+        },
+        "card2": {
+          "title": "Toujours gratuit",
+          "description": "Engagé pour l'accessibilité, BlueScript veille à ce que chacun ait un accès gratuit aux outils de soutien essentiels à la dyslexie."
+        },
+        "card3": {
+          "title": "Open Source",
+          "description": "BlueScript accueille les contributions de tous. Accédez à notre code source pour modifier, améliorer et innover librement."
+        },
+        "card4": {
+          "title": "Confidentialité avant tout",
+          "description": "BlueScript priorise votre vie privée en ne collectant aucune information personnelle, respectant ainsi votre droit fondamental à la vie privée."
+        },
+        "card5": {
+          "title": "Entièrement accessible",
+          "description": "En utilisant les dernières technologies web, BlueScript est conçu pour être accessible sur tous les appareils, garantissant l'inclusion de tous les utilisateurs."
+        },
+        "card6": {
+          "title": "Scientifiquement validé",
+          "description": "Les méthodes de formation de BlueScript sont développées et validées par des experts ayant plus de vingt ans d'expérience en recherche sur la dyslexie."
+        }
+      }
+    }
+  },
+  "nav": {
+    "home": "Accueil",
+    "train": "Entraînement",
+    "result": "Résultat"
+  },
+  "unit": {
+    "sec": "s",
+    "min": "m"
+  },
+  "train": {
+    "title": "Configurer l'entraînement",
+    "start": "Commencer l'entraînement"
+  },
+  "training": {
+    "ready": "Prêt ?",
+    "trial": "Essai",
+    "timeSpent": "Temps passé :",
+    "accuracy": "Précision :",
+    "elapsed": "Temps écoulé :",
+    "typeAnswer": "Veuillez taper les caractères que vous avez vus\n(Appuyez sur Entrée ou Espace pour soumettre)",
+    "correct": "Correct !\n(Appuyez sur Entrée ou Espace pour continuer)",
+    "incorrect": "Incorrect !\n(Appuyez sur Entrée ou Espace pour continuer)",
+    "sequencingInstruction": "Appuyez sur la flèche droite pour déplacer le curseur\n(appuyez sur Entrée ou Espace pour sélectionner)",
+    "finish": "Terminé !",
+    "continue": "Appuyez sur Espace ou Entrée pour continuer",
+    "findMatch": "Trouvez le caractère correspondant",
+    "remaining": " restant",
+    "guess": "Appuyez sur la touche correspondant au caractère qui se révèle"
+  },
+  "parameter": {
+    "durationMin": "Durée (min)",
+    "stimuliType": "Type de stimulus",
+    "stimuliLength": "Longueur du stimulus",
+    "presentationTime": "Temps de présentation (s)",
+    "delayTime": "Temps de retard (s)",
+    "promptType": "Type d'invite",
+    "promptLength": "Longueur de l'invite",
+    "targetLength": "Longueur de la cible",
+    "targetCount": "Nombre de cibles",
+    "chunkSize": "Taille du segment",
+    "Numbers": "Nombres",
+    "Alphabet": "Alphabet",
+    "Alphanumeric": "Alphanumérique",
+    "Korean": "Coréen",
+    "Sequential": "Séquentiel",
+    "Random": "Aléatoire",
+    "Small": "Petit",
+    "Medium": "Moyen",
+    "Large": "Grand"
+  },
+  "procedure": {
+    "Rapid Visual Perception": "Perception visuelle rapide",
+    "Sequential Visual Memory": "Mémoire visuelle séquentielle",
+    "Character Sequencing": "Séquençage de caractères",
+    "Character Matching": "Correspondance de caractères",
+    "Character Guesstimate": "Estimation de caractères"
+  },
+  "result": {
+    "date": "Date",
+    "trainer": "Formateur",
+    "trainee": "Apprenant",
+    "trainingParameters": "Paramètres d'entraînement",
+    "notesPlaceholder": "Écrivez vos notes ici...",
+    "title": "Résultat de l'entraînement",
+    "noData": "Aucune donnée chargée",
+    "noDataDesc": "Veuillez charger un résultat d'entraînement ou commencer un nouvel entraînement.",
+    "download": "Télécharger le résultat",
+    "goTrain": "Aller à l'entraînement",
+    "averageRevealed": "Moyenne révélée",
+    "averageRevealedDesc": "Pourcentage moyen de segments révélés d'un caractère",
+    "accuracy": "Précision",
+    "accuracyDesc": "Pourcentage de réponses correctes",
+    "averageAccuracy": "Précision moyenne",
+    "averageAccuracyDesc": "Précision moyenne de tous les essais",
+    "trials": "Essais",
+    "trialsDesc": "Enregistrement de tous les essais effectués",
+    "averageTrialTime": "Temps moyen d'essai",
+    "averageTrialTimeDesc": "Temps moyen passé sur chaque essai (en secondes)",
+    "elapsedTime": "Temps écoulé",
+    "elapsedTimeDesc": "Temps réel passé à l'entraînement",
+    "trialCount": "Nombre d'essais",
+    "trialCountDesc": "Nombre d'essais effectués",
+    "correctCount": "Nombre de réponses correctes",
+    "correctCountDesc": "Nombre de réponses correctes"
+  }
+}
