@@ -1,18 +1,19 @@
 <template>
   <!-- Google Font -->
-  <client-only>
-    <head>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap"
-        rel="stylesheet"
-      />
-      <seo-head />
-    </head>
-  </client-only>
+  <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
+    <client-only>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+    </client-only>
 
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </Html>
 </template>
 
 <script setup lang="ts">
@@ -36,11 +37,17 @@ if (lang.value && availableLocales.includes(lang.value)) {
   router.replace({ query: newQuery });
 }
 
+const head = useLocaleHead({
+  addDirAttribute: true,
+  identifierAttribute: "id",
+  addSeoAttributes: true,
+});
+
 onMounted(() => {
   const links = availableLocales.map((l) => ({
     rel: "alternate",
     hreflang: l,
-    href: `http://bluescript.app:3000${route.fullPath.split("?")[0]}?lang=${l}`,
+    href: `http://bluescript.app${route.fullPath.split("?")[0]}?lang=${l}`,
   }));
 
   useHead({
