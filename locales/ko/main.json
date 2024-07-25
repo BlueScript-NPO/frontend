@@ -6,6 +6,7 @@
     "description": "BlueScript는 난독증이 있는 사람들을 돕기 위한 무료 및 오픈 소스 도구입니다.",
     "features": {
       "title": "BlueScript를 선택하는 이유",
+      "description": "BlueScript는 난독증이 있는 사람들을 돕기 위한 무료 및 오픈 소스 도구입니다.",
       "headline": "주요 기능",
       "items": {
         "card1": {
@@ -35,14 +36,14 @@
       }
     }
   },
-  "unit": {
-    "sec": "초",
-    "min": "분"
-  },
   "nav": {
     "home": "홈",
     "train": "훈련",
     "result": "결과"
+  },
+  "unit": {
+    "sec": "초",
+    "min": "분"
   },
   "train": {
     "title": "훈련 설정",
@@ -51,9 +52,9 @@
   "training": {
     "ready": "준비하세요!",
     "trial": "시도",
-    "elapsed": "경과 시간:",
     "timeSpent": "소요 시간:",
     "accuracy": "정확도:",
+    "elapsed": "경과 시간:",
     "typeAnswer": "보았던 문자를 입력해주세요\n(엔터나 스페이스를 눌러 제출)",
     "correct": "정답입니다!\n(엔터나 스페이스를 눌러 계속)",
     "incorrect": "오답입니다!\n(엔터나 스페이스를 눌러 계속)",
@@ -92,7 +93,6 @@
     "Character Matching": "문자 매칭",
     "Character Guesstimate": "문자 추정"
   },
-
   "result": {
     "date": "날짜",
     "trainer": "트레이너",
@@ -101,8 +101,8 @@
     "notesPlaceholder": "메모를 입력해주세요",
     "title": "훈련 결과",
     "noData": "데이터 없음",
-    "download": "결과 다운로드",
     "noDataDesc": "훈련 결과를 불러오거나 새로운 훈련을 시작해주세요.",
+    "download": "결과 다운로드",
     "goTrain": "훈련 하기",
     "averageRevealed": "평균 드러난 정도",
     "averageRevealedDesc": "문자의 평균 드러난 블록 비율",
