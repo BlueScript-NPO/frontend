@@ -65,7 +65,6 @@
     "remaining": " restant",
     "guess": "Appuyez sur la touche correspondant au caractère qui se révèle"
   },
-
   "parameter": {
     "durationMin": "Durée (min)",
     "stimuliType": "Type de stimulus",
@@ -87,7 +86,6 @@
     "Medium": "Moyen",
     "Large": "Grand"
   },
-
   "procedure": {
     "Rapid Visual Perception": "Perception visuelle rapide",
     "Sequential Visual Memory": "Mémoire visuelle séquentielle",
@@ -95,7 +93,6 @@
     "Character Matching": "Correspondance de caractères",
     "Character Guesstimate": "Estimation de caractères"
   },
-
   "result": {
     "date": "Date",
     "trainer": "Formateur",
