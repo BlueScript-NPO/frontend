@@ -65,7 +65,6 @@
     "remaining": " متبقي",
     "guess": "اضغط على المفتاح الذي يتطابق مع الحرف الذي يظهر"
   },
-
   "parameter": {
     "durationMin": "المدة (دقائق)",
     "stimuliType": "نوع التحفيز",
@@ -87,7 +86,6 @@
     "Medium": "متوسط",
     "Large": "كبير"
   },
-
   "procedure": {
     "Rapid Visual Perception": "الإدراك البصري السريع",
     "Sequential Visual Memory": "الذاكرة البصرية التسلسلية",
@@ -95,7 +93,6 @@
     "Character Matching": "مطابقة الأحرف",
     "Character Guesstimate": "تخمين الأحرف"
   },
-
   "result": {
     "date": "التاريخ",
     "trainer": "المدرب",
