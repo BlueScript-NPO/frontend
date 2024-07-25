@@ -65,7 +65,6 @@
     "remaining": " осталось",
     "guess": "Нажмите клавишу, соответствующую отображаемому символу"
   },
-
   "parameter": {
     "durationMin": "Длительность (мин)",
     "stimuliType": "Тип стимула",
@@ -87,7 +86,6 @@
     "Medium": "Средний",
     "Large": "Большой"
   },
-
   "procedure": {
     "Rapid Visual Perception": "Быстрое визуальное восприятие",
     "Sequential Visual Memory": "Последовательная зрительная память",
@@ -95,7 +93,6 @@
     "Character Matching": "Соответствие символов",
     "Character Guesstimate": "Предположение символов"
   },
-
   "result": {
     "date": "Дата",
     "trainer": "Тренер",
