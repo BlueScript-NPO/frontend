@@ -22,7 +22,7 @@
           "description": "BlueScript は、誰でも自由に貢献できます。ソースコードにアクセスし、自由に変更、強化、革新してください。"
         },
         "card4": {
-          "title": "プライバシー重視",
+          "title": "プライバシー優先",
           "description": "BlueScript は個人情報を収集せず、基本的なプライバシーの権利を守ることを最優先にしています。"
         },
         "card5": {
@@ -55,7 +55,7 @@
     "timeSpent": "所要時間 :",
     "accuracy": "正確度：",
     "elapsed": "経過時間：",
-    "typeAnswer": "見た文字を入力してください\n（Enter またはスペースキーを押して送信）",
+    "typeAnswer": "見えた文字を入力してください\n（Enter またはスペースキーを押して送信）",
     "correct": "正解！\n（Enter またはスペースキーを押して続行）",
     "incorrect": "不正解！\n（Enter またはスペースキーを押して続行）",
     "sequencingInstruction": "右矢印キーを押してカーソルを移動\n（Enter またはスペースキーを押して選択）",
@@ -87,7 +87,7 @@
     "Large": "大"
   },
   "procedure": {
-    "Rapid Visual Perception": "迅速な視覚認知",
+    "Rapid Visual Perception": "即時視覚認知",
     "Sequential Visual Memory": "順次視覚記憶",
     "Character Sequencing": "文字シーケンス",
     "Character Matching": "文字一致",
