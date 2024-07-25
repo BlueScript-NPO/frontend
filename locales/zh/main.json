@@ -65,7 +65,6 @@
     "remaining": " 剩余",
     "guess": "按下与显示字符匹配的键"
   },
-
   "parameter": {
     "durationMin": "时长（分钟）",
     "stimuliType": "刺激类型",
@@ -87,7 +86,6 @@
     "Medium": "中",
     "Large": "大"
   },
-
   "procedure": {
     "Rapid Visual Perception": "快速视觉感知",
     "Sequential Visual Memory": "顺序视觉记忆",
@@ -95,7 +93,6 @@
     "Character Matching": "字符匹配",
     "Character Guesstimate": "字符猜测"
   },
-
   "result": {
     "date": "日期",
     "trainer": "训练师",
