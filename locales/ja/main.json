@@ -1,36 +1,36 @@
 {
   "landing": {
-    "title": "BlueScript",
-    "cta": "トレーニングを開始",
+    "title": "ブルースクリプト",
+    "cta": "トレーニング開始",
     "github": "ソースコードをダウンロード",
-    "description": "BlueScript は、失読症の方々を支援するための無料およびオープンソースのツールを開発する非営利団体です。",
+    "description": "BlueScript とは、難読症（ディスレクシア）で悩んでいる方々を支援するための無料オープンソースツールを開発しておる非営利団体です。",
     "features": {
       "title": "BlueScriptを選んだ理由",
-      "description": "BlueScript は、失読症の方々を支援するための無料およびオープンソースのツールを開発する非営利団体です。",
-      "headline": "主な特徴",
+      "description": "BlueScript とは、難読症（ディスレクシア）で悩んでいる方々を支援するための無料オープンソースツールを開発している非営利団体です。",
+      "headline": "メイン機能",
       "items": {
         "card1": {
           "title": "ユーザーフレンドリー",
-          "description": "BlueScript は個人使用のために直感的に設計されており、最小限の専門的な支援で失読症の方々が恩恵を受けられます。"
+          "description": "BlueScript（ブルースクリプト）は普通の家庭や教室で個人的に使用しやすくため設計されており、専門的な知識が無くても難読症のみんなが利用できます。"
         },
         "card2": {
-          "title": "常に無料",
-          "description": "アクセシビリティを重視する BlueScript は、誰もが必要な失読症サポートツールに無料でアクセスできることを保証します。"
+          "title": "ずっと無料",
+          "description": "BlueScript（ブルースクリプト）はアクセシビリティをもっとも重視しておるため、難読症のみんなが難読症サポートツールを常に無料でアクセスできることを保証します。"
         },
         "card3": {
           "title": "オープンソース",
           "description": "BlueScript は、誰でも自由に貢献できます。ソースコードにアクセスし、自由に変更、強化、革新してください。"
         },
         "card4": {
-          "title": "プライバシー重視",
+          "title": "プライバシー優先",
           "description": "BlueScript は個人情報を収集せず、基本的なプライバシーの権利を守ることを最優先にしています。"
         },
         "card5": {
-          "title": "完全にアクセス可能",
-          "description": "最新のウェブ技術を利用して、BlueScript はすべてのデバイスでアクセスできるように設計されており、すべてのユーザーに対して包括性を確保します。"
+          "title": "完全なアクセシビリティ",
+          "description": "BlueScriptは最新ウェブ技術を活用してどのデバイスでもアクセスできるように設計されており、すべてのユーザーをサポートに含まれます。"
         },
         "card6": {
-          "title": "科学的に証明された",
+          "title": "科学的に証明されたトレーニング方法",
           "description": "BlueScript のトレーニング方法は、20年以上の失読症研究経験を持つ専門家によって開発および検証されています。"
         }
       }
@@ -55,7 +55,7 @@
     "timeSpent": "所要時間 :",
     "accuracy": "正確度：",
     "elapsed": "経過時間：",
-    "typeAnswer": "見た文字を入力してください\n（Enter またはスペースキーを押して送信）",
+    "typeAnswer": "見えた文字を入力してください\n（Enter またはスペースキーを押して送信）",
     "correct": "正解！\n（Enter またはスペースキーを押して続行）",
     "incorrect": "不正解！\n（Enter またはスペースキーを押して続行）",
     "sequencingInstruction": "右矢印キーを押してカーソルを移動\n（Enter またはスペースキーを押して選択）",
@@ -87,7 +87,7 @@
     "Large": "大"
   },
   "procedure": {
-    "Rapid Visual Perception": "迅速な視覚認知",
+    "Rapid Visual Perception": "即時視覚認知",
     "Sequential Visual Memory": "順次視覚記憶",
     "Character Sequencing": "文字シーケンス",
     "Character Matching": "文字一致",
