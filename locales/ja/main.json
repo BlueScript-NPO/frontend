@@ -62,7 +62,7 @@
     "finish": "完了！",
     "continue": "続行するにはスペースキーまたはEnterキーを押してください",
     "findMatch": "一致する文字を見つける",
-    "remaining": " 残り",
+    "remaining": "件残り",
     "guess": "だんだん見える文字と一致する文字のキーを押してください"
   },
   "parameter": {
