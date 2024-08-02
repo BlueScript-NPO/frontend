@@ -11,6 +11,7 @@
     </client-only>
 
     <NuxtLayout>
+      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
   </Html>
