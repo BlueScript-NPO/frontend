@@ -24,32 +24,32 @@
       <ULandingCard
         :title="t(`landing.features.items.card1.title`)"
         :description="t(`landing.features.items.card1.description`)"
-        icon="ph:user-check"
+        icon="i-ph-user-check"
       />
       <ULandingCard
         :title="t(`landing.features.items.card2.title`)"
         :description="t(`landing.features.items.card2.description`)"
-        icon="ph:money"
+        icon="i-ph-money"
       />
       <ULandingCard
         :title="t(`landing.features.items.card3.title`)"
         :description="t(`landing.features.items.card3.description`)"
-        icon="ph:code-block"
+        icon="i-ph-code-block"
       />
       <ULandingCard
         :title="t(`landing.features.items.card4.title`)"
         :description="t(`landing.features.items.card4.description`)"
-        icon="ph:shield-check"
+        icon="i-ph-shield-check"
       />
       <ULandingCard
         :title="t(`landing.features.items.card5.title`)"
         :description="t(`landing.features.items.card5.description`)"
-        icon="ph:person-simple-circle"
+        icon="i-ph-person-simple-circle"
       />
       <ULandingCard
         :title="t(`landing.features.items.card6.title`)"
         :description="t(`landing.features.items.card6.description`)"
-        icon="ph:check-square"
+        icon="i-ph-check-square"
       />
     </UPageGrid>
   </ULandingSection>
@@ -63,7 +63,7 @@ const { t } = useI18n();
 const actionLinks = computed(() => [
   {
     label: t("landing.cta"),
-    icon: "ph:arrow-right",
+    icon: "i-ph-arrow-right",
     trailing: true,
     to: "/train",
     size: "xl",
