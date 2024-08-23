@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   extends: ["@nuxt/ui-pro"],
   modules: ["@nuxtjs/i18n", "@nuxt/ui", "@nuxtjs/i18n"],
+  ui: {
+    icons: ["simple-icons", "heroicons", "phosphor"],
+  },
 
   icon: {
     clientBundle: {
