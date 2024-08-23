@@ -119,7 +119,7 @@ const handleFormError = async (event: FormErrorEvent) => {
         <h2 class="text-lg font-semibold pb-2">
           {{ $t("train.title") }}
         </h2>
-        <USelect
+        <USelectMenu
           v-model="selectedProcedureName"
           :options="
             trainingProcedures.map((p) => ({
@@ -148,7 +148,8 @@ const handleFormError = async (event: FormErrorEvent) => {
             :max="parameter.max"
             :step="parameter.step"
           />
-          <USelect
+
+          <USelectMenu
             v-else-if="parameter instanceof SelectParameter"
             v-model="parameter.selected"
             :options="

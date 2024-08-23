@@ -110,7 +110,7 @@ onMounted(() => {
         </div>
         <div>
           <UButton
-            icon="i-heroicons-arrow-down-on-square"
+            icon="ph-upload"
             size="sm"
             square
             variant="ghost"
@@ -154,7 +154,7 @@ onMounted(() => {
               <template #text>
                 <span>{{ $t(value.description ?? "") }}</span>
               </template>
-              <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
+              <UIcon name="ph-lightbulb" class="mx-1 h-4" />
             </UTooltip>
           </p>
           <UMeter :value="value.getValue()" indicator> </UMeter>
@@ -171,7 +171,7 @@ onMounted(() => {
                   <template #text>
                     <span>{{ $t(value.description ?? "") }}</span>
                   </template>
-                  <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
+                  <UIcon name="ph-lightbulb" class="mx-1 h-4" />
                 </UTooltip>
               </p>
             </div>
@@ -203,7 +203,7 @@ onMounted(() => {
           <template #text>
             <span>{{ $t(value.description ?? "") }}</span>
           </template>
-          <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
+          <UIcon name="ph-lightbulb" class="mx-1 h-4" />
         </UTooltip>
       </div>
 
@@ -214,7 +214,7 @@ onMounted(() => {
           <template #text>
             <span>{{ $t(value.description ?? "") }}</span>
           </template>
-          <UIcon name="i-heroicons-light-bulb" class="mx-1 h-4" />
+          <UIcon name="ph-lightbulb" class="mx-1 h-4" />
         </UTooltip>
       </div>
     </div>
@@ -225,7 +225,7 @@ onMounted(() => {
       :items="[
         {
           label: $t('result.trainingParameters'),
-          icon: 'i-heroicons-wrench-screwdriver',
+          icon: 'ph-wrench',
           defaultOpen: false,
         },
       ]"
@@ -286,7 +286,7 @@ onMounted(() => {
     <UInput
       type="file"
       size="sm"
-      icon="i-heroicons-folder"
+      icon="ph-upload"
       @change="loadResult"
       class="mt-4"
     />

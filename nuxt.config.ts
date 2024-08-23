@@ -6,8 +6,10 @@ export default defineNuxtConfig({
   extends: ["@nuxt/ui-pro"],
   modules: ["@nuxtjs/i18n", "@nuxt/ui", "@nuxtjs/i18n"],
 
-  ui: {
-    icons: ["simple-icons", "heroicons"],
+  icon: {
+    clientBundle: {
+      icons: ["ph:moon", "ph:sun", "ph:caret-down", "ph:check"],
+    },
   },
 
   hooks: {
