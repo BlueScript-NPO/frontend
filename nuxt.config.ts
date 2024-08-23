@@ -4,14 +4,22 @@ export default defineNuxtConfig({
   css: ["@/assets/globals.css"],
   devtools: { enabled: false },
   extends: ["@nuxt/ui-pro"],
-  modules: ["@nuxtjs/i18n", "@nuxt/ui", "@nuxtjs/i18n"],
-  ui: {
-    icons: ["simple-icons", "heroicons", "phosphor"],
-  },
+  modules: ["@nuxtjs/i18n", "@nuxt/ui", "@nuxtjs/i18n", "@nuxt/icon"],
 
   icon: {
+    provider: "jsdelivr",
     clientBundle: {
-      icons: ["ph:moon", "ph:sun", "ph:caret-down", "ph:check"],
+      icons: [
+        "ph:moon",
+        "ph:sun",
+        "ph:caret-down",
+        "ph:check",
+        "ph:list",
+        "ph:x",
+      ],
+    },
+    serverBundle: {
+      collections: ["simple-icons", "ph"],
     },
   },
 

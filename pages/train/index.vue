@@ -127,7 +127,8 @@ const handleFormError = async (event: FormErrorEvent) => {
               value: p.name,
             }))
           "
-          label="$t('train.procedure')"
+          option-attribute="label"
+          value-attribute="value"
         />
       </template>
 
@@ -158,6 +159,8 @@ const handleFormError = async (event: FormErrorEvent) => {
                 value: option,
               }))
             "
+            option-attribute="label"
+            value-attribute="value"
           />
         </UFormGroup>
       </div>

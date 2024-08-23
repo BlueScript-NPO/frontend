@@ -54,7 +54,7 @@ const isDark = computed({
     <template #right>
       <LangSwitcher />
 
-      <UColorModeButton :icon="isDark ? 'ph-moon' : 'ph-sun'" />
+      <UColorModeButton :icon="isDark ? 'ph:moon' : 'ph:sun'" />
     </template>
 
     <template #panel>
