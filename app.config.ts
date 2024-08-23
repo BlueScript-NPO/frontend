@@ -79,6 +79,10 @@ export default defineAppConfig({
 
       button: {
         base: "sm:hidden",
+        icon: {
+          open: "i-ph-list",
+          close: "i-ph-x",
+        },
       },
     },
   },

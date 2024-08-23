@@ -49,11 +49,6 @@ function onSubmit(data: any) {
         :ui="{ base: 'text-center', footer: 'text-center' }"
         @submit="onSubmit"
       >
-        <template #description>
-          Don't have an account?
-          <NuxtLink to="/" class="text-primary font-medium">Sign up</NuxtLink>.
-        </template>
-
         <template #password-hint>
           <NuxtLink to="/" class="text-primary font-medium"
             >Forgot password?</NuxtLink
