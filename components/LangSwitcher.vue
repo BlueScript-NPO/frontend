@@ -5,10 +5,10 @@
     option-attribute="label"
     value-attribute="code"
     variant="none"
-    selected-icon="ph-check"
+    selected-icon="i-ph-check"
   >
     <template #trailing>
-      <UIcon name="ph-caret-down" class="w-5 h-5" />
+      <UIcon name="i-ph-caret-down" class="w-5 h-5" />
     </template>
     <template #leading>
       <span class="mr-2">
