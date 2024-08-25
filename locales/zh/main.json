@@ -39,7 +39,11 @@
   "nav": {
     "home": "首页",
     "train": "训练",
-    "result": "结果"
+    "result": "结果",
+    "docs": "문서"
+  },
+  "search": {
+    "placeholder": "검색"
   },
   "unit": {
     "sec": "秒",
