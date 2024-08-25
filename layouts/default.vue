@@ -6,17 +6,14 @@ const {data: files} = useLazyFetch<ParsedContent[]>('/api/search.json', {default
 
 const links = computed(() => [
   {
-    label: t("nav.home"),
-    to: "/",
+    label: t("nav.docs"),
+    to: "/docs",
   },
   {
     label: t("nav.train"),
     to: "/train",
   },
-  {
-    label: t("nav.docs"),
-    to: "/docs",
-  },
+
   {
     label: t("nav.result"),
     to: "/result",
