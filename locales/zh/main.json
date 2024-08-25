@@ -40,10 +40,10 @@
     "home": "首页",
     "train": "训练",
     "result": "结果",
-    "docs": "문서"
+    "docs": "文件"
   },
   "search": {
-    "placeholder": "검색"
+    "placeholder": "搜索"
   },
   "unit": {
     "sec": "秒",
