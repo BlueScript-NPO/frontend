@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     css: ["@/assets/globals.css"],
     devtools: {enabled: false},
     extends: ["@nuxt/ui-pro"],
-    modules: ["@nuxtjs/i18n", "@nuxt/ui", "@nuxtjs/i18n"],
+    modules: ["@nuxtjs/i18n", "@nuxt/ui", "@nuxtjs/i18n", "@nuxt/content", "@nuxtjs/seo"],
 
     ui: {
         icons: ["simple-icons", "heroicons", "ph"],
@@ -111,6 +111,11 @@ export default defineNuxtConfig({
                 file: "hi/main.json",
             },
         ],
+    },
+
+    routeRules: {
+        '/api/search.json': {prerender: true},
+        '/docs': {redirect: '/docs/getting-started'}
     },
     compatibilityDate: "2024-07-25",
 });
