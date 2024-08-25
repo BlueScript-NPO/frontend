@@ -40,10 +40,10 @@
     "home": "Inicio",
     "train": "Entrenamiento",
     "result": "Resultado",
-    "docs": "문서"
+    "docs": "Documentación"
   },
   "search": {
-    "placeholder": "검색"
+    "placeholder": "Buscar en"
   },
   "unit": {
     "sec": "s",
