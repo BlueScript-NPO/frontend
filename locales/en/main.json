@@ -39,7 +39,11 @@
   "nav": {
     "home": "Home",
     "train": "Training",
-    "result": "Result"
+    "result": "Result",
+    "docs": "Docs"
+  },
+  "search": {
+    "placeholder": "Search..."
   },
   "unit": {
     "sec": "s",

@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { PercentAccuracyValue } from "~/types/value";
-import { jsonToTrainingResult, TrainingResult } from "~/types/result";
-import { SelectParameter } from "~/types/parameter";
+import {ref, onMounted, computed} from "vue";
+import {useRoute, useRouter} from "vue-router";
+import {PercentAccuracyValue} from "~/types/value";
+import {jsonToTrainingResult, TrainingResult} from "~/types/result";
+import {SelectParameter} from "~/types/parameter";
 
 // Vue Router
 const route = useRoute();
 const router = useRouter();
 
-const { t } = useI18n();
+const {t} = useI18n();
 
 // computed formatted date
 const formattedDate = computed(() => {
   return trainingData.value?.date
-    ? new Date(trainingData.value.date).toLocaleString()
-    : "";
+      ? new Date(trainingData.value.date).toLocaleString()
+      : "";
 });
 
 // Ref Variables
@@ -24,8 +24,8 @@ const trainingData = ref<TrainingResult | null>(null);
 const parseRouteData = () => {
   try {
     let data = route.query.data
-      ? decodeURIComponent(route.query.data as string)
-      : null;
+        ? decodeURIComponent(route.query.data as string)
+        : null;
     data = data ? JSON.parse(data) : null;
 
     if (data) {
@@ -72,7 +72,7 @@ const saveResult = () => {
   console.log("Saving result...");
   var json = JSON.stringify(trainingData.value?.toJson());
 
-  var blob = new Blob([json], { type: "application/json" });
+  var blob = new Blob([json], {type: "application/json"});
   var url = URL.createObjectURL(blob);
   var a = document.createElement("a");
   a.href = url;
@@ -96,7 +96,6 @@ onMounted(() => {
   <Head>
     <Title>{{ $t("result.title") }}</Title>
   </Head>
-  <TopMenu />
   <UCard v-if="trainingData" class="mx-auto mt-8 max-w-md mb-20">
     <template #header>
       <div class="flex justify-between">
@@ -110,11 +109,11 @@ onMounted(() => {
         </div>
         <div>
           <UButton
-            icon="i-ph-upload"
-            size="sm"
-            square
-            variant="ghost"
-            @click="loadResultPrompt"
+              icon="i-ph-upload"
+              size="sm"
+              square
+              variant="ghost"
+              @click="loadResultPrompt"
           />
         </div>
       </div>
@@ -131,9 +130,9 @@ onMounted(() => {
     </template>
 
     <div
-      v-for="value in trainingData?.values"
-      :key="value.jsonKey"
-      class="px-1 py-1"
+        v-for="value in trainingData?.values"
+        :key="value.jsonKey"
+        class="px-1 py-1"
     >
       <!-- check if the value is instance of TableValue -->
       <div v-if="value.type === 'table'">
@@ -143,7 +142,7 @@ onMounted(() => {
               {{ $t(value.displayName ?? "") }}
             </div>
           </div>
-          <UTable class="-mb-4" :rows="value.getValue()"> </UTable>
+          <UTable class="-mb-4" :rows="value.getValue()"></UTable>
         </UCard>
       </div>
       <div v-else-if="value.type === 'percentage'">
@@ -154,10 +153,10 @@ onMounted(() => {
               <template #text>
                 <span>{{ $t(value.description ?? "") }}</span>
               </template>
-              <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
+              <UIcon name="i-ph-lightbulb" class="mx-1 h-4"/>
             </UTooltip>
           </p>
-          <UMeter :value="value.getValue()" indicator> </UMeter>
+          <UMeter :value="value.getValue()" indicator></UMeter>
         </UCard>
       </div>
 
@@ -171,7 +170,7 @@ onMounted(() => {
                   <template #text>
                     <span>{{ $t(value.description ?? "") }}</span>
                   </template>
-                  <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
+                  <UIcon name="i-ph-lightbulb" class="mx-1 h-4"/>
                 </UTooltip>
               </p>
             </div>
@@ -183,8 +182,8 @@ onMounted(() => {
           </div>
 
           <UMeter
-            :value="(value as PercentAccuracyValue).getPercentage()"
-            indicator
+              :value="(value as PercentAccuracyValue).getPercentage()"
+              indicator
           >
           </UMeter>
         </UCard>
@@ -203,7 +202,7 @@ onMounted(() => {
           <template #text>
             <span>{{ $t(value.description ?? "") }}</span>
           </template>
-          <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
+          <UIcon name="i-ph-lightbulb" class="mx-1 h-4"/>
         </UTooltip>
       </div>
 
@@ -214,15 +213,15 @@ onMounted(() => {
           <template #text>
             <span>{{ $t(value.description ?? "") }}</span>
           </template>
-          <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
+          <UIcon name="i-ph-lightbulb" class="mx-1 h-4"/>
         </UTooltip>
       </div>
     </div>
 
     <UAccordion
-      variant="ghost"
-      class="mt-4 pt-1.5 rounded-lg ring-1 ring-gray-200 dark:ring-gray-800"
-      :items="[
+        variant="ghost"
+        class="mt-4 pt-1.5 rounded-lg ring-1 ring-gray-200 dark:ring-gray-800"
+        :items="[
         {
           label: $t('result.trainingParameters'),
           icon: 'i-ph-wrench',
@@ -234,8 +233,8 @@ onMounted(() => {
         <div class="px-4">
           <ul>
             <li
-              v-for="param in trainingData?.procedure.parameters"
-              :key="param.jsonKey"
+                v-for="param in trainingData?.procedure.parameters"
+                :key="param.jsonKey"
             >
               <span class="font-semibold">
                 {{ $t(param.displayName ?? "") }} </span
@@ -253,10 +252,10 @@ onMounted(() => {
     </UAccordion>
 
     <UTextarea
-      class="pt-4"
-      autoresize
-      :placeholder="$t('result.notesPlaceholder')"
-      v-model="trainingData.notes"
+        class="pt-4"
+        autoresize
+        :placeholder="$t('result.notesPlaceholder')"
+        v-model="trainingData.notes"
     />
 
     <template #footer>
@@ -284,11 +283,11 @@ onMounted(() => {
     </template>
 
     <UInput
-      type="file"
-      size="sm"
-      icon="i-ph-upload"
-      @change="loadResult"
-      class="mt-4"
+        type="file"
+        size="sm"
+        icon="i-ph-upload"
+        @change="loadResult"
+        class="mt-4"
     />
 
     <template #footer>

@@ -1,25 +1,27 @@
 <script setup lang="ts">
 const {t} = useI18n();
-const {locales, setLocale} = useI18n();
+
+const {data: navigation} = await useAsyncData('navigation', () => fetchContentNavigation())
+const {data: files} = useLazyFetch<ParsedContent[]>('/api/search.json', {default: () => [], server: false})
 
 const links = computed(() => [
-  {
-    label: t("nav.home"),
-    to: "/",
-  },
-  {
-    label: t("nav.train"),
-    to: "/train",
-  },
   {
     label: t("nav.docs"),
     to: "/docs",
   },
   {
+    label: t("nav.train"),
+    to: "/train",
+  },
+
+  {
     label: t("nav.result"),
     to: "/result",
   },
 ]);
+
+provide('navigation', navigation)
+provide('files', files)
 
 const colorMode = useColorMode();
 const isDark = computed({
@@ -65,4 +67,13 @@ const isDark = computed({
       <UAsideLinks :links="links" class="px-2"/>
     </template>
   </UHeader>
+
+  <UMain>
+    <slot/>
+  </UMain>
+
+
+  <ClientOnly>
+    <LazyUContentSearch :files="files" :navigation="navigation" :links="links"/>
+  </ClientOnly>
 </template>
