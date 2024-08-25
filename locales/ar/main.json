@@ -40,10 +40,10 @@
     "home": "الرئيسية",
     "train": "التدريب",
     "result": "النتيجة",
-    "docs": "문서"
+    "docs": "التوثيق"
   },
   "search": {
-    "placeholder": "검색"
+    "placeholder": "بحث"
   },
   "unit": {
     "sec": "ث",
