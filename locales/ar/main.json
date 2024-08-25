@@ -39,7 +39,11 @@
   "nav": {
     "home": "الرئيسية",
     "train": "التدريب",
-    "result": "النتيجة"
+    "result": "النتيجة",
+    "docs": "문서"
+  },
+  "search": {
+    "placeholder": "검색"
   },
   "unit": {
     "sec": "ث",
