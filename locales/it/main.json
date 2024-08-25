@@ -39,7 +39,11 @@
   "nav": {
     "home": "홈",
     "train": "훈련",
-    "result": "결과"
+    "result": "결과",
+    "docs": "문서"
+  },
+  "search": {
+    "placeholder": "검색"
   },
   "unit": {
     "sec": "초",

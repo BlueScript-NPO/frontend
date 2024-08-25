@@ -39,7 +39,11 @@
   "nav": {
     "home": "होम",
     "train": "प्रशिक्षण",
-    "result": "परिणाम"
+    "result": "परिणाम",
+    "docs": "문서"
+  },
+  "search": {
+    "placeholder": "검색"
   },
   "unit": {
     "sec": "सेकंड",

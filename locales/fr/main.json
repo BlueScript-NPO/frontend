@@ -39,7 +39,11 @@
   "nav": {
     "home": "Accueil",
     "train": "Entraînement",
-    "result": "Résultat"
+    "result": "Résultat",
+    "docs": "문서"
+  },
+  "search": {
+    "placeholder": "검색"
   },
   "unit": {
     "sec": "s",
