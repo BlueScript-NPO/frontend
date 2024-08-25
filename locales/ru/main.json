@@ -40,10 +40,10 @@
     "home": "Главная",
     "train": "Тренировка",
     "result": "Результат",
-    "docs": "문서"
+    "docs": "Документация"
   },
   "search": {
-    "placeholder": "검색"
+    "placeholder": "Поиск"
   },
   "unit": {
     "sec": "с",
