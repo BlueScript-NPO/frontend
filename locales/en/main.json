@@ -39,7 +39,11 @@
   "nav": {
     "home": "Home",
     "train": "Training",
-    "result": "Result"
+    "result": "Result",
+    "docs": "문서"
+  },
+  "search": {
+    "placeholder": "검색"
   },
   "unit": {
     "sec": "s",
