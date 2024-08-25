@@ -40,10 +40,10 @@
     "home": "होम",
     "train": "प्रशिक्षण",
     "result": "परिणाम",
-    "docs": "문서"
+    "docs": "दस्तावेज़"
   },
   "search": {
-    "placeholder": "검색"
+    "placeholder": "ढूंढें"
   },
   "unit": {
     "sec": "सेकंड",

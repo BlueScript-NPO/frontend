@@ -1,128 +1,128 @@
 {
   "landing": {
     "title": "BlueScript",
-    "cta": "훈련 시작",
-    "github": "소스코드 받기",
-    "description": "BlueScript는 난독증이 있는 사람들을 돕기 위한 무료 및 오픈 소스 도구입니다.",
+    "cta": "Iniziare la formazione",
+    "github": "Ottenere il codice sorgente",
+    "description": "BlueScript è uno strumento gratuito e open source per aiutare le persone con dislessia.",
     "features": {
-      "title": "BlueScript를 선택하는 이유",
-      "description": "BlueScript는 난독증이 있는 사람들을 돕기 위한 무료 및 오픈 소스 도구입니다.",
-      "headline": "주요 기능",
+      "title": "Perché scegliere BlueScript?",
+      "description": "BlueScript è uno strumento gratuito e open source per aiutare le persone con dislessia.",
+      "headline": "Caratteristiche principali",
       "items": {
         "card1": {
-          "title": "사용자 친화적",
-          "description": "BlueScript는 가정에서 사용하기 쉽게 설계되어 전문적인 도움 없이도 난독증을 가진 사람들이 혜택을 받을 수 있습니다."
+          "title": "Facile da usare",
+          "description": "BlueScript è stato progettato per essere facile da usare a casa, in modo che le persone con dislessia possano trarne beneficio senza dover ricorrere a un aiuto professionale."
         },
         "card2": {
-          "title": "항상 무료",
-          "description": "접근성을 중요시하는 BlueScript는 모든 사람이 필수 난독증 지원 도구에 무료로 접근할 수 있도록 보장합니다."
+          "title": "Sempre libero",
+          "description": "BlueScript si impegna per l'accessibilità, assicurando che gli strumenti di supporto essenziali per la dislessia siano gratuiti e accessibili a tutti."
         },
         "card3": {
-          "title": "오픈 소스",
-          "description": "BlueScript는 모든 사람의 기여를 환영합니다. 소스 코드를 액세스하여 자유롭게 수정, 개선 및 혁신할 수 있습니다."
+          "title": "Fonte aperta",
+          "description": "BlueScript accoglie i contributi di tutti. È possibile accedere al codice sorgente e sentirsi liberi di modificare, migliorare e innovare."
         },
         "card4": {
-          "title": "프라이버시 우선",
-          "description": "BlueScript는 개인 정보를 수집하지 않음으로써 프라이버시를 최우선으로 생각하며 기본적인 프라이버시 권리를 보장합니다."
+          "title": "La privacy prima di tutto",
+          "description": "BlueScript fa della privacy una priorità, non raccogliendo informazioni personali e garantendo il rispetto dei diritti fondamentali dell'utente."
         },
         "card5": {
-          "title": "완전한 접근성",
-          "description": "최신 웹 기술을 활용하여 BlueScript는 모든 기기에서 접근할 수 있도록 설계되어 모든 사용자를 포용합니다."
+          "title": "Completamente accessibile",
+          "description": "Sfruttando le più recenti tecnologie web, BlueScript è stato progettato per essere accessibile su qualsiasi dispositivo, rendendolo inclusivo per tutti gli utenti."
         },
         "card6": {
-          "title": "과학적 뒷받침",
-          "description": "BlueScript의 훈련 방법은 20년 이상의 난독증 연구 경험을 가진 전문가들에 의해 개발되고 검증되었습니다."
+          "title": "Sostenuto dalla scienza",
+          "description": "I metodi di formazione di BlueScript sono stati sviluppati e convalidati da esperti con oltre 20 anni di esperienza nella ricerca sulla dislessia."
         }
       }
     }
   },
   "nav": {
-    "home": "홈",
-    "train": "훈련",
-    "result": "결과",
-    "docs": "문서"
+    "home": "首页",
+    "train": "Formazione",
+    "result": "Risultato",
+    "docs": "Documentazione"
   },
   "search": {
-    "placeholder": "검색"
+    "placeholder": "Ricerca"
   },
   "unit": {
-    "sec": "초",
-    "min": "분"
+    "sec": "secondi",
+    "min": "Verbale"
   },
   "train": {
-    "title": "훈련 설정",
-    "start": "훈련 시작"
+    "title": "Impostazioni di formazione",
+    "start": "Iniziare la formazione"
   },
   "training": {
-    "ready": "준비하세요!",
-    "trial": "시도",
-    "timeSpent": "소요 시간:",
-    "accuracy": "정확도:",
-    "elapsed": "경과 시간:",
-    "typeAnswer": "보았던 문자를 입력해주세요\n(엔터나 스페이스를 눌러 제출)",
-    "correct": "정답입니다!\n(엔터나 스페이스를 눌러 계속)",
-    "incorrect": "오답입니다!\n(엔터나 스페이스를 눌러 계속)",
-    "sequencingInstruction": "오른쪽 화살표를 눌러 커서를 이동하세요\n(엔터나 스페이스를 눌러 선택)",
-    "finish": "완료!",
-    "continue": "계속하려면 스페이스나 엔터를 눌러주세요",
-    "findMatch": "보기와 일치하는 문자를 찾으세요",
-    "remaining": "개 남음",
-    "guess": "서서히 보여지는 문자와 일치하는 키를 눌러주세요"
+    "ready": "Preparatevi!",
+    "trial": "Prova",
+    "timeSpent": "Tempo richiesto:",
+    "accuracy": "Precisione:",
+    "elapsed": "Tempo trascorso:",
+    "typeAnswer": "\nInserisci i caratteri che hai visto (premi invio o spazio per inviare)",
+    "correct": "\nCorretto! (premere invio o spazio per continuare)",
+    "incorrect": "\nErrato! (premere invio o spazio per continuare)",
+    "sequencingInstruction": "\nPremere la freccia destra per spostare il cursore su (premere invio o spazio per selezionare)",
+    "finish": "Fatto!",
+    "continue": "Premere spazio o invio per continuare",
+    "findMatch": "Trova i personaggi che corrispondono al tuo punto di vista",
+    "remaining": "Cani lasciati",
+    "guess": "Premete il tasto corrispondente alla lettera che appare gradualmente."
   },
   "parameter": {
-    "durationMin": "시간 (분)",
-    "stimuliType": "문자 종류",
-    "stimuliLength": "문자 길이",
-    "presentationTime": "표시 시간 (초)",
-    "delayTime": "지연 시간 (초)",
-    "promptType": "프롬프트 종류",
-    "promptLength": "프롬프트 길이",
-    "targetLength": "정답 길이",
-    "targetCount": "정답 개수",
-    "chunkSize": "블록 크기",
-    "Numbers": "숫자",
-    "Alphabet": "알파벳",
-    "Alphanumeric": "알파벳 + 숫자",
-    "Korean": "한글",
-    "Sequential": "순차적",
-    "Random": "임의",
-    "Small": "소",
-    "Medium": "중",
-    "Large": "대"
+    "durationMin": "Tempo (in minuti)",
+    "stimuliType": "Tipi di carattere",
+    "stimuliLength": "Lunghezza dei caratteri",
+    "presentationTime": "Tempo di visualizzazione (secondi)",
+    "delayTime": "Latenza (secondi)",
+    "promptType": "Tipo di prompt",
+    "promptLength": "Lunghezza del prompt",
+    "targetLength": "Lunghezza della risposta",
+    "targetCount": "Numero di risposte corrette",
+    "chunkSize": "Dimensione del blocco",
+    "Numbers": "Numeri",
+    "Alphabet": "Alfabeti",
+    "Alphanumeric": "Alfabeti + numeri",
+    "Korean": "Coreano",
+    "Sequential": "Sequenziale",
+    "Random": "Casuale",
+    "Small": "Bestiame",
+    "Medium": "Medio",
+    "Large": "vs"
   },
   "procedure": {
-    "Rapid Visual Perception": "빠른 시각 인지",
-    "Sequential Visual Memory": "순차적 시각 기억",
-    "Character Sequencing": "문자 시퀀싱",
-    "Character Matching": "문자 매칭",
-    "Character Guesstimate": "문자 추정"
+    "Rapid Visual Perception": "Percezione visiva veloce",
+    "Sequential Visual Memory": "Memoria visiva sequenziale",
+    "Character Sequencing": "Sequenza di personaggi",
+    "Character Matching": "Corrispondenza dei caratteri",
+    "Character Guesstimate": "Stima del carattere"
   },
   "result": {
-    "date": "날짜",
-    "trainer": "트레이너",
-    "trainee": "훈련생",
-    "trainingParameters": "훈련 설정",
-    "notesPlaceholder": "메모를 입력해주세요",
-    "title": "훈련 결과",
-    "noData": "데이터 없음",
-    "noDataDesc": "훈련 결과를 불러오거나 새로운 훈련을 시작해주세요.",
-    "download": "결과 다운로드",
-    "goTrain": "훈련 하기",
-    "averageRevealed": "평균 드러난 정도",
-    "averageRevealedDesc": "문자의 평균 드러난 블록 비율",
-    "accuracy": "정확도",
-    "accuracyDesc": "정답 비율",
-    "averageAccuracy": "평균 정확도",
-    "averageAccuracyDesc": "모든 시도의 평균 정확도",
-    "trials": "시도",
-    "trialsDesc": "모든 시도의 기록",
-    "averageTrialTime": "평균 시도 시간",
-    "averageTrialTimeDesc": "각 시도에 소요된 평균 시간 (초)",
-    "elapsedTime": "경과 시간",
-    "elapsedTimeDesc": "훈련에 소요된 실제 시간",
-    "trialCount": "시도 횟수",
-    "trialCountDesc": "실행된 시도의 수",
-    "correctCount": "정답 수",
-    "correctCountDesc": "정답 응답의 수"
+    "date": "Data",
+    "trainer": "Scarpe da ginnastica",
+    "trainee": "Tirocinanti",
+    "trainingParameters": "Impostazioni di formazione",
+    "notesPlaceholder": "Inserire una nota",
+    "title": "Risultati della formazione",
+    "noData": "Nessun dato",
+    "noDataDesc": "Recuperare i risultati dell'allenamento o iniziare un nuovo allenamento.",
+    "download": "Scarica i risultati",
+    "goTrain": "Formazione",
+    "averageRevealed": "Visibilità media",
+    "averageRevealedDesc": "Percentuale media di blocchi rivelati di caratteri",
+    "accuracy": "Precisione",
+    "accuracyDesc": "Percentuale di risposte corrette",
+    "averageAccuracy": "Accuratezza media",
+    "averageAccuracyDesc": "Accuratezza media su tutti i tentativi",
+    "trials": "Prova",
+    "trialsDesc": "Storia di tutti i tentativi",
+    "averageTrialTime": "Tempo medio di tentativo",
+    "averageTrialTimeDesc": "Tempo medio impiegato per ogni tentativo (in secondi)",
+    "elapsedTime": "Tempo trascorso",
+    "elapsedTimeDesc": "Tempo effettivo trascorso in formazione",
+    "trialCount": "Numero di tentativi",
+    "trialCountDesc": "Numero di tentativi eseguiti",
+    "correctCount": "Numero di risposte corrette",
+    "correctCountDesc": "Numero di risposte corrette"
   }
 }
