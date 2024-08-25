@@ -40,10 +40,10 @@
     "home": "ホーム",
     "train": "トレーニング",
     "result": "結果",
-    "docs": "문서"
+    "docs": "ドキュメント"
   },
   "search": {
-    "placeholder": "검색"
+    "placeholder": "検索"
   },
   "unit": {
     "sec": "秒",
