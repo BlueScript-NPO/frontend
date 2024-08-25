@@ -39,7 +39,11 @@
   "nav": {
     "home": "ホーム",
     "train": "トレーニング",
-    "result": "結果"
+    "result": "結果",
+    "docs": "문서"
+  },
+  "search": {
+    "placeholder": "검색"
   },
   "unit": {
     "sec": "秒",
