@@ -40,10 +40,10 @@
     "home": "Home",
     "train": "Training",
     "result": "Result",
-    "docs": "문서"
+    "docs": "Docs"
   },
   "search": {
-    "placeholder": "검색"
+    "placeholder": "Search..."
   },
   "unit": {
     "sec": "s",
