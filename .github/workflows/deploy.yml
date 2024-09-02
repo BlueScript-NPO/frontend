@@ -1,9 +1,11 @@
-name: Deploy to GitHub Pages
+name: Deploy to Server
+
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,27 +20,28 @@ jobs:
           echo "NUXT_UI_PRO_LICENSE=${{ secrets.NUXT_UI_PRO_LICENSE }}" > .env
         env:
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
-      - run: npm install
-      - run: npx nuxt build --preset github_pages
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./.output/public
-  # Deployment job
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Nuxt.js app
+        run: npm run build
+
   deploy:
-    # Add a dependency to the build job
-    needs: build
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
-    # Deploy to the github_pages environment
-    environment:
-      name: github_pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    # Specify runner + deployment step
     runs-on: ubuntu-latest
+    needs: build
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Copy Files via SCP
+        run: scp -r ./ {{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_DEPLOY_PATH }}
+
+      - name: Restart Docker Compose
+        run: |
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+          cd ${{ secrets.SERVER_DEPLOY_PATH }}
+          sudo docker-compose up -d --build
+          EOF
