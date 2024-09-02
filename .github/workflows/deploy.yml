@@ -27,29 +27,29 @@ jobs:
       - name: Build Nuxt.js app
         run: npm run build
 
-  deploy:
+ deploy:
     runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Add server to known_hosts
-        run: ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
-
-      - name: Compress Files
-        run: tar -czvf deploy.tar.gz --exclude='./node_modules' --exclude='./.git' --warning=no-file-changed .
-
-      - name: Copy Tarball via SCP
-        run: scp deploy.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_DEPLOY_PATH }}
-
-      - name: Extract Tarball on Server
+      - name: Set up SSH key
         run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-          cd ${{ secrets.SERVER_DEPLOY_PATH }}
-          tar -xzf deploy.tar.gz
-          rm deploy.tar.gz
-          sudo docker-compose up -d --build
-          EOF
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ARTIFACT_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+
+      - name: Deploy to server
+        run: |
+          sshpass -p '${{ secrets.PSWD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} << 'ENDSSH'
+          cd ${{ secrets.APP_PATH }}
+          git pull origin main
+          docker stop ${{ secrets.APP_NAME }} || true
+          docker rm ${{ secrets.APP_NAME }} || true
+          docker system prune -f
+          docker build -t ${{ secrets.APP_NAME }} .
+          docker run --name ${{ secrets.APP_NAME }} -d -p ${{ secrets.APP_PORT }}:${{ secrets.APP_PORT }} ${{ secrets.APP_NAME }}
+          ENDSSH
