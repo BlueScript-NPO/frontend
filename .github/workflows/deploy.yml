@@ -7,26 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: corepack enable
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-      - name: Set up Nuxt UI Pro license
-        run: |
-          echo "NUXT_UI_PRO_LICENSE=${{ secrets.NUXT_UI_PRO_LICENSE }}" > .env
-        env:
-          NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Nuxt.js app
-        run: npm run build
-
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -44,11 +24,10 @@ jobs:
       - name: Deploy to server
         run: |
           ssh ${{ secrets.USER }}@${{ secrets.SERVER_IP }} << 'ENDSSH'
-          cd ${{ secrets.APP_PATH }}
+          cd ${{ secrets.SERVER_DEPLOY_PATH }}
           git pull origin main
           docker stop ${{ secrets.APP_NAME }} || true
           docker rm ${{ secrets.APP_NAME }} || true
           docker system prune -f
           docker build -t ${{ secrets.APP_NAME }} .
-          docker run --name ${{ secrets.APP_NAME }} -d -p ${{ secrets.APP_PORT }}:${{ secrets.APP_PORT }} ${{ secrets.APP_NAME }}
           ENDSSH
