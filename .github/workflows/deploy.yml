@@ -40,7 +40,7 @@ jobs:
         run: ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Compress Files
-        run: tar -czf deploy.tar.gz ./*
+        run: tar -czf deploy.tar.gz .
 
       - name: Copy Tarball via SCP
         run: scp deploy.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_DEPLOY_PATH }}
