@@ -33,18 +33,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.ARTIFACT_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p 22 ${{ secrets.HOST }} >> ~/.ssh/known_hosts
-          sudo apt-get update
-          sudo apt-get install -y sshpass
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add server to known_hosts
+        run: ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Deploy to server
         run: |
-          sshpass -p '${{ secrets.PSWD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} << 'ENDSSH'
+          ssh ${{ secrets.USER }}@${{ secrets.SERVER_IP }} << 'ENDSSH'
           cd ${{ secrets.APP_PATH }}
           git pull origin main
           docker stop ${{ secrets.APP_NAME }} || true
