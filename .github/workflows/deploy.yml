@@ -27,7 +27,7 @@ jobs:
       - name: Build Nuxt.js app
         run: npm run build
 
- deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
