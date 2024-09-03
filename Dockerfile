@@ -1,29 +1,44 @@
 ARG NODE_VERSION=22.5.1
 
-FROM node:${NODE_VERSION}-slim AS base
+# Create build stage
+FROM node:${NODE_VERSION}-slim AS build
 
-ARG PORT=3000
+# Enable pnpm
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and pnpm-lock.yaml files to the working directory
+COPY ./package.json /app/
+COPY ./pnpm-lock.yaml /app/
+
+## Install dependencies
+RUN pnpm install --shamefully-hoist
+
+# Copy the rest of the application files to the working directory
+COPY . ./
+
+# Build the application
+RUN pnpm run build
+
+# Create a new stage for the production image
+FROM node:${NODE_VERSION}-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the output from the build stage to the working directory
+COPY --from=build /app/.output ./
+
+# Define environment variables
+ENV HOST=0.0.0.0 NODE_ENV=production
 ENV NODE_ENV=production
 
-WORKDIR /src
+# Expose the port the application will run on
+EXPOSE 3000
 
-# Build
-FROM base AS build
-
-COPY --link package.json package-lock.json ./
-RUN npm install --omit=dev
-
-COPY --link . .
-
-RUN npm run build
-RUN npm prune --production
-
-# Run
-FROM base
-
-ENV PORT=$PORT
-
-COPY --from=build /src/.output /src/.output
-
-CMD [ "node", ".output/server/index.mjs" ]
+# Start the application
+CMD ["node","/app/server/index.mjs"]

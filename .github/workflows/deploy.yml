@@ -28,7 +28,6 @@ jobs:
           git pull origin main
           sudo docker stop ${{ secrets.APP_NAME }} || true
           sudo docker rm ${{ secrets.APP_NAME }} || true
-          sudo docker system prune -f
           sudo docker build -t ${{ secrets.APP_NAME }} .
           sudo docker compose up -d
           ENDSSH
