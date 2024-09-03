@@ -1,4 +1,4 @@
-name: Deploy to Server
+name: Deploy to server
 
 on:
   push:
@@ -26,8 +26,9 @@ jobs:
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'ENDSSH'
           cd ${{ secrets.SERVER_DEPLOY_PATH }}
           git pull origin main
-          docker stop ${{ secrets.APP_NAME }} || true
-          docker rm ${{ secrets.APP_NAME }} || true
-          docker system prune -f
-          docker build -t ${{ secrets.APP_NAME }} .
+          sudo docker stop ${{ secrets.APP_NAME }} || true
+          sudo docker rm ${{ secrets.APP_NAME }} || true
+          sudo docker system prune -f
+          sudo docker build -t ${{ secrets.APP_NAME }} .
+          sudo docker-compose up -d
           ENDSSH
