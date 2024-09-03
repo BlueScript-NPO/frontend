@@ -7,11 +7,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        run: |
+          docker buildx build --platform linux/amd64 -t bluescript:latest .
+
+      - name: Save Docker image as tarball
+        run: |
+          docker save bluescript:latest | gzip > bluescript.tar.gz
 
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.9.0
@@ -21,13 +32,17 @@ jobs:
       - name: Add server to known_hosts
         run: ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Deploy to server
+      - name: Transfer Docker image to server
+        run: |
+          scp bluescript.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.SERVER_DEPLOY_PATH }}
+
+      - name: Deploy Docker container on server
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'ENDSSH'
           cd ${{ secrets.SERVER_DEPLOY_PATH }}
-          git pull origin main
-          sudo docker stop ${{ secrets.APP_NAME }} || true
-          sudo docker rm ${{ secrets.APP_NAME }} || true
-          sudo docker build -t ${{ secrets.APP_NAME }} .
-          sudo docker compose up -d
+          gunzip -c bluescript.tar.gz | sudo docker load
+          sudo docker stop bluescript || true
+          sudo docker rm bluescript || true
+          sudo docker run -d --name bluescript --network web bluescript:latest
+          sudo docker system prune -f --volumes
           ENDSSH
