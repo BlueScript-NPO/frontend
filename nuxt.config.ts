@@ -4,13 +4,7 @@ export default defineNuxtConfig({
   css: ["@/assets/globals.css"],
   devtools: { enabled: false },
   extends: ["@nuxt/ui-pro"],
-  modules: [
-    "@nuxtjs/i18n",
-    "@nuxt/ui",
-    "@nuxtjs/i18n",
-    "@nuxt/content",
-    "@nuxtjs/seo",
-  ],
+  modules: ["@nuxtjs/i18n", "@nuxt/ui", "@nuxt/content", "@nuxtjs/seo"],
 
   icon: {
     provider: "server",
@@ -48,7 +42,8 @@ export default defineNuxtConfig({
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: "i18n_redirected",
-      redirectOn: "root", // recommended
+      redirectOn: "no prefix", // Changed to avoid root-level redirect loops
+      alwaysRedirect: false, // Ensure that redirects only happen when necessary
     },
 
     locales: [
@@ -113,4 +108,10 @@ export default defineNuxtConfig({
     "/docs": { redirect: "/docs/getting-started" },
   },
   compatibilityDate: "2024-07-25",
+
+  server: {
+    host: "0.0.0.0", // Listen on all network interfaces
+    port: 3000, // Ensure this matches Traefik's configuration
+    timing: false, // Disable timing to avoid unnecessary headers
+  },
 });

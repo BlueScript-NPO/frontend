@@ -45,12 +45,10 @@ jobs:
       - name: Add server to known_hosts
         run: ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Deploy Docker container on server
+      - name: Pull and deploy Docker container using Docker Compose
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'ENDSSH'
-          sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/bluescript:latest
-          sudo docker stop bluescript || true
-          sudo docker rm bluescript || true
-          sudo docker run -d --name bluescript --network web -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/bluescript:latest
-          sudo docker system prune -f --volumes
+          cd server/
+          sudo docker compose pull bluescript
+          sudo docker compose up -d bluescript
           ENDSSH
