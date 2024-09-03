@@ -8,6 +8,10 @@ import {
 } from "~/types/procedure";
 import { CharactorSequenceingResult } from "~/types/result";
 
+definePageMeta({
+  layout: "train",
+});
+
 const { t } = useI18n();
 
 // Vue Router

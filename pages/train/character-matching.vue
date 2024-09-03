@@ -5,6 +5,10 @@ import { playSound } from "~/utils/playSound";
 import { jsonToProcedure, CharacterMatchingProcedure } from "~/types/procedure";
 import { CharactorMatchingResult } from "~/types/result";
 
+definePageMeta({
+  layout: "train",
+});
+
 // Vue Router
 const route = useRoute();
 const router = useRouter();

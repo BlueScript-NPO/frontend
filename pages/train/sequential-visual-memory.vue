@@ -9,6 +9,10 @@ import { SequentialVisualMemoryResult } from "~/types/result";
 import { stimuliCharactorSets } from "~/utils/util";
 import { playSound } from "~/utils/playSound";
 
+definePageMeta({
+  layout: "train",
+});
+
 const { t } = useI18n();
 
 // Vue Router

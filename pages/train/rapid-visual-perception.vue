@@ -9,6 +9,10 @@ import { stimuliCharactorSets } from "~/utils/util";
 import { RapidVisualPerceptionProcedureResult } from "~/types/result";
 import { playSound } from "~/utils/playSound";
 
+definePageMeta({
+  layout: "train",
+});
+
 // Vue Router
 const route = useRoute();
 const router = useRouter();

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {ref, computed, watch} from "vue";
-import {useRouter} from "vue-router";
+import { ref, computed, watch } from "vue";
+import { useRouter } from "vue-router";
 import {
   RapidVisualPerceptionProcedure,
   SequentialVisualMemoryProcedure,
@@ -9,10 +9,10 @@ import {
   CharacterGuesstimateProcedure,
   Procedure,
 } from "~/types/procedure";
-import {Parameter, NumParameter, SelectParameter} from "~/types/parameter";
-import type {FormError, FormErrorEvent} from "#ui/types";
+import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
+import type { FormError, FormErrorEvent } from "#ui/types";
 
-const {t} = useI18n();
+const { t } = useI18n();
 
 const router = useRouter();
 
@@ -30,20 +30,20 @@ const selectedProcedureName = ref<string>(trainingProcedures[0].name);
 
 // Track selected training procedure parameters
 const selectedTrainingParameters = ref<Parameter[]>(
-    trainingProcedures[0].parameters
+  trainingProcedures[0].parameters
 );
 
 // Compute selected training procedure
 const selectedTrainingProcedure = computed<Procedure | undefined>(() =>
-    trainingProcedures.find(
-        (procedure) => procedure.name === selectedProcedureName.value
-    )
+  trainingProcedures.find(
+    (procedure) => procedure.name === selectedProcedureName.value
+  )
 );
 
 // Watch for changes in selectedProcedureName to update parameters
 watch(selectedProcedureName, (newProcedureName) => {
   const procedure = trainingProcedures.find(
-      (procedure) => procedure.name === newProcedureName
+    (procedure) => procedure.name === newProcedureName
   );
   if (procedure) {
     selectedTrainingParameters.value = procedure.parameters;
@@ -55,11 +55,11 @@ const validateForm = (state: { parameters: Parameter[] }): FormError[] => {
   const errors: FormError[] = [];
   state.parameters.forEach((parameter) => {
     if (parameter instanceof SelectParameter && !parameter.selected) {
-      errors.push({path: parameter.displayName, message: "Required"});
+      errors.push({ path: parameter.displayName, message: "Required" });
     }
     if (parameter instanceof NumParameter) {
       if (parameter.value == null) {
-        errors.push({path: parameter.displayName, message: "Required"});
+        errors.push({ path: parameter.displayName, message: "Required" });
       }
       if (parameter.min !== undefined && parameter.value < parameter.min) {
         errors.push({
@@ -84,11 +84,11 @@ const handleFormSubmit = async () => {
     const jsonString = JSON.stringify(selectedTrainingProcedure.value.toJson());
     console.log("Starting training with data:", jsonString);
     const routeName = selectedTrainingProcedure.value.name
-        .toLowerCase()
-        .replace(/ /g, "-");
+      .toLowerCase()
+      .replace(/ /g, "-");
     router.push({
       name: `train-${routeName}`,
-      query: {data: encodeURIComponent(jsonString)},
+      query: { data: encodeURIComponent(jsonString) },
     });
   }
 };
@@ -97,7 +97,7 @@ const handleFormSubmit = async () => {
 const handleFormError = async (event: FormErrorEvent) => {
   const element = document.getElementById(event.errors[0].id);
   element?.focus();
-  element?.scrollIntoView({behavior: "smooth", block: "center"});
+  element?.scrollIntoView({ behavior: "smooth", block: "center" });
 };
 </script>
 
@@ -106,12 +106,12 @@ const handleFormError = async (event: FormErrorEvent) => {
     <Title>{{ t("nav.train") }}</Title>
   </Head>
   <UForm
-      v-if="selectedTrainingProcedure"
-      :validate="validateForm"
-      :state="{ parameters: selectedTrainingParameters }"
-      class="space-y-4"
-      @submit="handleFormSubmit"
-      @error="handleFormError"
+    v-if="selectedTrainingProcedure"
+    :validate="validateForm"
+    :state="{ parameters: selectedTrainingParameters }"
+    class="space-y-4"
+    @submit="handleFormSubmit"
+    @error="handleFormError"
   >
     <UCard class="mx-auto mt-8 max-w-md">
       <template #header>
@@ -119,56 +119,55 @@ const handleFormError = async (event: FormErrorEvent) => {
           {{ $t("train.title") }}
         </h2>
         <USelectMenu
-            v-model="selectedProcedureName"
-            :options="
+          v-model="selectedProcedureName"
+          :options="
             trainingProcedures.map((p) => ({
               label: $t('procedure.' + p.name),
               value: p.name,
             }))
           "
-            option-attribute="label"
-            value-attribute="value"
+          option-attribute="label"
+          value-attribute="value"
         />
       </template>
 
       <div
-          v-for="parameter in selectedTrainingParameters"
-          :key="parameter.displayName"
-          class="py-2"
+        v-for="parameter in selectedTrainingParameters"
+        :key="parameter.displayName"
+        class="py-2"
       >
         <UFormGroup
-            :label="t(parameter.displayName)"
-            :name="parameter.displayName"
+          :label="t(parameter.displayName)"
+          :name="parameter.displayName"
         >
           <UInput
-              v-if="parameter instanceof NumParameter"
-              v-model="parameter.value"
-              type="number"
-              :min="parameter.min"
-              :max="parameter.max"
-              :step="parameter.step"
+            v-if="parameter instanceof NumParameter"
+            v-model="parameter.value"
+            type="number"
+            :min="parameter.min"
+            :max="parameter.max"
+            :step="parameter.step"
           />
 
           <USelectMenu
-              v-else-if="parameter instanceof SelectParameter"
-              v-model="parameter.selected"
-              :options="
+            v-else-if="parameter instanceof SelectParameter"
+            v-model="parameter.selected"
+            :options="
               parameter.options.map((option) => ({
                 label: $t('parameter.' + option),
                 value: option,
               }))
             "
-              option-attribute="label"
-              value-attribute="value"
+            option-attribute="label"
+            value-attribute="value"
           />
         </UFormGroup>
       </div>
 
       <template #footer>
         <div class="flex justify-center space-x-4 pb-4">
-          <UButton color="primary" type="submit">{{
-              $t("train.start")
-            }}
+          <UButton color="primary" type="submit"
+            >{{ $t("train.start") }}
           </UButton>
         </div>
         <!-- <UAlert
