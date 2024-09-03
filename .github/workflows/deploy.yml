@@ -23,7 +23,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh ${{ secrets.USER }}@${{ secrets.SERVER_IP }} << 'ENDSSH'
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'ENDSSH'
           cd ${{ secrets.SERVER_DEPLOY_PATH }}
           git pull origin main
           docker stop ${{ secrets.APP_NAME }} || true
