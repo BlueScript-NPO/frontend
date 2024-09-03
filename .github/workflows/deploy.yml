@@ -26,7 +26,8 @@ jobs:
 
       - name: Save Docker image as tarball
         run: |
-          docker save bluescript:latest | gzip > bluescript.tar.gz
+          docker save bluescript:latest -o bluescript.tar
+          gzip bluescript.tar
 
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.9.0
@@ -44,7 +45,8 @@ jobs:
         run: |
           ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'ENDSSH'
           cd ${{ secrets.SERVER_DEPLOY_PATH }}
-          gunzip -c bluescript.tar.gz | sudo docker load
+          gunzip -c bluescript.tar.gz > bluescript.tar
+          sudo docker load -i bluescript.tar
           sudo docker stop bluescript || true
           sudo docker rm bluescript || true
           sudo docker run -d --name bluescript --network web -p 3000:3000 bluescript:latest
