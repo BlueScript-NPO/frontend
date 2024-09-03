@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import {useI18n} from "vue-i18n";
+const { t } = useI18n();
 
-const {t} = useI18n();
-
-const navigation = inject<Ref<NavItem[]>>('navigation', ref([]))
-const links = computed(() => navigation.value.find(item => item._path === '/docs')?.children ?? [])
+const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
+const links = computed(
+  () => navigation.value.find((item) => item._path === "/docs")?.children ?? []
+);
 </script>
 
 <template>
@@ -13,17 +13,14 @@ const links = computed(() => navigation.value.find(item => item._path === '/docs
       <template #left>
         <UAside>
           <template #top>
-            <UContentSearchButton
-                size="sm"
-                :label="t('search.placeholder')"
-            />
+            <UContentSearchButton size="sm" :label="t('search.placeholder')" />
           </template>
 
-          <UNavigationTree :links="mapContentNavigation(links)"/>
+          <UNavigationTree :links="mapContentNavigation(links)" />
         </UAside>
       </template>
 
-      <NuxtPage/>
+      <NuxtPage />
     </UPage>
   </UContainer>
 </template>

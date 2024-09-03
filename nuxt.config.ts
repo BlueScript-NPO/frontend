@@ -38,12 +38,6 @@ export default defineNuxtConfig({
     },
   },
 
-  hooks: {
-    "prerender:routes"({ routes }) {
-      routes.clear(); // Do not generate any routes (except the defaults)
-    },
-  },
-
   i18n: {
     baseUrl: "https://bluescript.app",
     langDir: "locales",
@@ -116,7 +110,6 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    "/api/search.json": { prerender: true },
     "/docs": { redirect: "/docs/getting-started" },
   },
   compatibilityDate: "2024-07-25",

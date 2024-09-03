@@ -19,9 +19,7 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
-import { useI18n } from "vue-i18n";
 import { ref, onMounted } from "vue";
-import { useHead } from "@vueuse/head";
 
 const route = useRoute();
 const router = useRouter();
