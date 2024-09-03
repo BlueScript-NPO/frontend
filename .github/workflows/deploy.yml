@@ -19,8 +19,6 @@ jobs:
       - name: Set up Nuxt UI Pro license
         run: |
           echo "NUXT_UI_PRO_LICENSE=${{ secrets.NUXT_UI_PRO_LICENSE }}" > .env
-        env:
-          NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
 
       - name: Build Docker image
         run: |
@@ -49,6 +47,6 @@ jobs:
           gunzip -c bluescript.tar.gz | sudo docker load
           sudo docker stop bluescript || true
           sudo docker rm bluescript || true
-          sudo docker run -d --name bluescript --network web bluescript:latest
+          sudo docker run -d --name bluescript --network web -p 3000:3000 bluescript:latest
           sudo docker system prune -f --volumes
           ENDSSH
