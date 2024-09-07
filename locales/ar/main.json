@@ -42,6 +42,9 @@
     "result": "النتيجة",
     "docs": "التوثيق"
   },
+  "docs": {
+    "toc": "목차"
+  },
   "search": {
     "placeholder": "بحث"
   },
