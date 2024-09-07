@@ -9,7 +9,6 @@
           alt="BlueScript demo hero image"
           class="dark:hidden"
         />
-        />
         <NuxtImg
           src="/hero-dark.png"
           alt="BlueScript demo hero image (dark)"

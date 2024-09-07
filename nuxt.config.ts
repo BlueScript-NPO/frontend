@@ -20,6 +20,11 @@ export default defineNuxtConfig({
     },
   },
 
+  image: {
+    quality: 80,
+    format: ["webp", "jpeg"],
+  },
+
   i18n: {
     baseUrl: "https://bluescript.app",
     langDir: "locales",
