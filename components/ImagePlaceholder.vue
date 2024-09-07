@@ -2,16 +2,19 @@
   <div class="relative">
     <div class="bg-background border-gradient rounded-xl p-2 sm:p-4">
       <div
-          class="aspect-w-16 aspect-h-9 rounded-lg relative overflow-hidden border border-dashed border-gray-950/10 dark:border-white/10"
+        class="aspect-w-16 aspect-h-9 rounded-lg relative overflow-hidden border border-dashed border-gray-950/10 dark:border-white/10"
       >
-        <client-only>
-          <img
-              src="~/assets/hero-dark.png"
-              alt="BlueScript demo hero image (dark)"
-              v-if="isDark"
-          />
-          <img src="~/assets/hero.png" alt="BlueScript demo hero image" v-else/>
-        </client-only>
+        <NuxtImg
+          src="/hero.png"
+          alt="BlueScript demo hero image"
+          class="dark:hidden"
+        />
+        />
+        <NuxtImg
+          src="/hero-dark.png"
+          alt="BlueScript demo hero image (dark)"
+          class="hidden dark:block"
+        />
       </div>
     </div>
   </div>
@@ -37,12 +40,12 @@
 
   @supports (background: paint(houdini)) {
     background: linear-gradient(
-        var(--angle),
-        var(--border-color),
-        var(--border-color),
-        var(--border-color),
-        var(--border-color),
-        var(--highlight-color)
+      var(--angle),
+      var(--border-color),
+      var(--border-color),
+      var(--border-color),
+      var(--border-color),
+      var(--highlight-color)
     );
     animation: 10s rotate linear infinite;
   }
@@ -65,15 +68,3 @@
   inherits: false;
 }
 </style>
-
-<script setup lang="ts">
-const colorMode = useColorMode();
-const isDark = computed({
-  get() {
-    return colorMode.value === "dark";
-  },
-  set() {
-    colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
-  },
-});
-</script>

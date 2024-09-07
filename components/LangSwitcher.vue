@@ -8,7 +8,7 @@
   >
     <template #leading>
       <span class="mr-2">
-        <img
+        <NuxtImg
           class="h-4 w-auto"
           :src="'/flags/' + selectedLang + '.svg'"
           loading="lazy"
@@ -17,7 +17,7 @@
       </span>
     </template>
     <template #option="{ option }">
-      <img
+      <NuxtImg
         class="h-4 w-auto"
         :src="'/flags/' + option.code + '.svg'"
         loading="lazy"

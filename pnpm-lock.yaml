@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@nuxt/image':
-        specifier: ^1.8.0
-        version: 1.8.0(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.21.2)
       '@nuxt/ui':
         specifier: ^2.18.4
         version: 2.18.4(axios@1.7.7)(magicast@0.3.5)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.2)(terser@5.31.6))(vue@3.4.38)
@@ -39,6 +36,9 @@ importers:
       '@nuxt/content':
         specifier: ^2.13.2
         version: 2.13.2(ioredis@5.4.1)(magicast@0.3.5)(nuxt@3.13.0(@parcel/watcher@2.4.1)(@types/node@22.5.2)(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.21.2)(terser@5.31.6)(vite@5.4.2(@types/node@22.5.2)(terser@5.31.6)))(rollup@4.21.2)(vue@3.4.38)
+      '@nuxt/image':
+        specifier: ^1.8.0
+        version: 1.8.0(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.21.2)
       '@nuxtjs/seo':
         specifier: 2.0.0-rc.20
         version: 2.0.0-rc.20(h3@1.12.0)(magicast@0.3.5)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.2)(terser@5.31.6))(vue@3.4.38)

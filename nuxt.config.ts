@@ -10,29 +10,11 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@nuxt/content",
     "@nuxtjs/seo",
+    "@nuxt/image",
   ],
 
   icon: {
     provider: "server",
-    clientBundle: {
-      icons: [
-        "ph:moon",
-        "ph:sun",
-        "ph:caret-down",
-        "ph:check",
-        "ph:list",
-        "ph:x",
-        "ph:arrow-right",
-        "ph:check-square",
-        "ph:code-block",
-        "ph:money",
-        "ph:person-simple-circle",
-        "ph:shield-check",
-        "ph:user-check",
-        "ph:lightbulb",
-        "ph:wrench",
-      ],
-    },
     serverBundle: {
       collections: ["ph"],
     },

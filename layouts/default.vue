@@ -32,33 +32,21 @@ provide("navigation", navigation);
 provide("files", files);
 
 const colorMode = useColorMode();
-const isDark = computed({
-  get() {
-    return colorMode.value === "dark";
-  },
-  set() {
-    colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
-  },
-});
 </script>
 
 <template>
   <UHeader>
     <template #logo>
-      <ClientOnly>
-        <img
-          src="~/assets/logo-dark.svg"
-          alt="BlueScript darkmode logo"
-          class="h-8 hover:opacity-90"
-          v-if="isDark"
-        />
-        <img
-          src="~/assets/logo.svg"
-          alt="BlueScript logo"
-          class="h-8 hover:opacity-90"
-          v-else
-        />
-      </ClientOnly>
+      <NuxtImg
+        src="/logo.svg"
+        alt="BlueScript darkmode logo"
+        class="h-8 hover:opacity-90 dark:hidden"
+      />
+      <NuxtImg
+        src="/logo-dark.svg"
+        alt="BlueScript logo"
+        class="h-8 hover:opacity-90 hidden dark:block"
+      />
     </template>
 
     <template #center>
