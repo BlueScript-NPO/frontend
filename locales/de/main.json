@@ -42,6 +42,9 @@
     "result": "Ergebnis",
     "docs": "Dokumentation"
   },
+  "docs": {
+    "toc": "목차"
+  },
   "search": {
     "placeholder": "Suche"
   },
