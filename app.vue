@@ -10,8 +10,8 @@
       </head>
     </client-only>
 
+    <NuxtLoadingIndicator />
     <NuxtLayout>
-      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
   </Html>
