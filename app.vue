@@ -10,7 +10,7 @@
       </head>
     </client-only>
 
-    <NuxtLoadingIndicator />
+    <NuxtLoadingIndicator color="#192B77" />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

@@ -13,15 +13,18 @@ const links = computed(() => [
   {
     label: t("nav.docs"),
     to: "/docs",
+    icon: "i-ph-book-light",
   },
   {
     label: t("nav.train"),
     to: "/train",
+    icon: "i-ph-brain-light",
   },
 
   {
     label: t("nav.result"),
     to: "/result",
+    icon: "i-ph-chart-bar",
   },
 ]);
 
