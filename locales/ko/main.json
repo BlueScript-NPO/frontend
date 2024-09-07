@@ -42,6 +42,9 @@
     "result": "결과",
     "docs": "문서"
   },
+  "docs": {
+    "toc": "목차"
+  },
   "search": {
     "placeholder": "검색"
   },

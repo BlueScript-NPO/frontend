@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
 
+const { t } = useI18n();
 const route = useRoute();
 
 const { data: page } = await useAsyncData(route.path, () =>
@@ -51,7 +52,7 @@ const headline = computed(() => findPageHeadline(page.value!));
     </UPageBody>
 
     <template v-if="page.toc !== false" #right>
-      <UContentToc :links="page.body?.toc?.links" />
+      <UContentToc :links="page.body?.toc?.links" :title="t('docs.toc')" />
     </template>
   </UPage>
 </template>
