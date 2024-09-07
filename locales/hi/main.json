@@ -42,6 +42,9 @@
     "result": "परिणाम",
     "docs": "दस्तावेज़"
   },
+  "docs": {
+    "toc": "목차"
+  },
   "search": {
     "placeholder": "ढूंढें"
   },

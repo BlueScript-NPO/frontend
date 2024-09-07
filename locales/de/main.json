@@ -42,6 +42,9 @@
     "result": "Ergebnis",
     "docs": "Dokumentation"
   },
+  "docs": {
+    "toc": "Inhaltsübersicht"
+  },
   "search": {
     "placeholder": "Suche"
   },

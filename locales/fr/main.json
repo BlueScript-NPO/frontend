@@ -42,6 +42,9 @@
     "result": "Résultat",
     "docs": "Documentation"
   },
+  "docs": {
+    "toc": "Table des matières"
+  },
   "search": {
     "placeholder": "Recherche"
   },

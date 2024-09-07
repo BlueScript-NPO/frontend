@@ -42,6 +42,9 @@
     "result": "結果",
     "docs": "ドキュメント"
   },
+  "docs": {
+    "toc": "目次"
+  },
   "search": {
     "placeholder": "検索"
   },

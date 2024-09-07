@@ -42,6 +42,9 @@
     "result": "结果",
     "docs": "文件"
   },
+  "docs": {
+    "toc": "目录"
+  },
   "search": {
     "placeholder": "搜索"
   },
