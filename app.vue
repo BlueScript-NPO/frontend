@@ -10,7 +10,7 @@
       </head>
     </client-only>
 
-    <NuxtLoadingIndicator color="#192B77" />
+    <NuxtLoadingIndicator :color="isDark ? 'white' : '#2F45C7'" />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -20,6 +20,16 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
+
+const colorMode = useColorMode();
+const isDark = computed({
+  get() {
+    return colorMode.value === "dark";
+  },
+  set() {
+    colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
+  },
+});
 
 const route = useRoute();
 const router = useRouter();
