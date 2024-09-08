@@ -3,7 +3,7 @@
     "title": "ブルースクリプト",
     "cta": "トレーニング開始",
     "github": "ソースコードをダウンロード",
-    "docs": "사용법",
+    "docs": "使用方法",
     "description": "BlueScript とは、難読症（ディスレクシア）で悩んでいる方々を支援するための無料オープンソースツールを開発しておる非営利団体です。",
     "features": {
       "title": "BlueScriptを選んだ理由",
@@ -56,10 +56,10 @@
       }
     },
     "community": {
-      "title": "커뮤니티",
+      "title": "コミュニティ",
       "items": {
-        "github": "깃허브",
-        "suhjae": "창립자 서재"
+        "github": "GitHub",
+        "suhjae": "創業者書斎"
       }
     }
   },
