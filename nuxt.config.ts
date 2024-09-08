@@ -1,24 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: true,
   css: ["@/assets/globals.css"],
   devtools: { enabled: false },
   extends: ["@nuxt/ui-pro"],
   modules: [
     "@nuxtjs/i18n",
     "@nuxt/content",
-    "@nuxt/ui",
     "@nuxtjs/seo",
     "@nuxt/image",
     "@nuxthq/studio",
+    "@nuxt/ui",
   ],
 
   uiPro: {
-    content: true
-  },
-
-  ui: {
-    global: true
+    content: true,
   },
 
   icon: {
