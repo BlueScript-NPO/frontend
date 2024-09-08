@@ -45,6 +45,16 @@
   "docs": {
     "toc": "目录"
   },
+  "footer": {
+    "license": "本项目采用 GNU GPL v3.0 许可。",
+    "resources": {
+      "title": "资源",
+      "items": {
+        "docs": "文件",
+        "license": "许可"
+      }
+    }
+  },
   "search": {
     "placeholder": "搜索"
   },

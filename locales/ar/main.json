@@ -45,6 +45,16 @@
   "docs": {
     "toc": "جدول المحتويات"
   },
+  "footer": {
+    "license": "هذا المشروع متاح بموجب رخصة GNU GPL v3.0.",
+    "resources": {
+      "title": "الموارد",
+      "items": {
+        "docs": "التوثيق",
+        "license": "الترخيص"
+      }
+    }
+  },
   "search": {
     "placeholder": "بحث"
   },

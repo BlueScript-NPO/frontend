@@ -45,6 +45,16 @@
   "docs": {
     "toc": "Inhaltsübersicht"
   },
+  "footer": {
+    "license": "Dieses Projekt ist unter der GNU GPL v3.0 Lizenz verfügbar.",
+    "resources": {
+      "title": "Ressourcen",
+      "items": {
+        "docs": "Dokumentation",
+        "license": "Lizenzvergabe"
+      }
+    }
+  },
   "search": {
     "placeholder": "Suche"
   },

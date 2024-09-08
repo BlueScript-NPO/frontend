@@ -45,6 +45,16 @@
   "docs": {
     "toc": "Оглавление"
   },
+  "footer": {
+    "license": "Этот проект доступен под лицензией GNU GPL v3.0.",
+    "resources": {
+      "title": "Ресурсы",
+      "items": {
+        "docs": "Документация",
+        "license": "Лицензирование"
+      }
+    }
+  },
   "search": {
     "placeholder": "Поиск"
   },

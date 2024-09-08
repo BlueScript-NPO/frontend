@@ -45,6 +45,16 @@
   "docs": {
     "toc": "目次"
   },
+  "footer": {
+    "license": "このプロジェクトはGNU GPL v3.0ライセンスの下で提供されます。",
+    "resources": {
+      "title": "資料",
+      "items": {
+        "docs": "ドキュメント",
+        "license": "ライセンス"
+      }
+    }
+  },
   "search": {
     "placeholder": "検索"
   },
