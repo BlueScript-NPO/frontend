@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxtjs/seo",
     "@nuxt/image",
+    "@nuxthq/studio",
   ],
 
   icon: {
