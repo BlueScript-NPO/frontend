@@ -3,6 +3,7 @@
     "title": "BlueScript",
     "cta": "ابدأ التدريب",
     "github": "احصل على الكود المصدري",
+    "docs": "사용법",
     "description": "BlueScript هي منظمة غير ربحية تطور أدوات مجانية ومفتوحة المصدر لمساعدة الأفراد الذين يعانون من عسر القراءة.",
     "features": {
       "title": "لماذا تختار BlueScript؟",
@@ -52,6 +53,13 @@
       "items": {
         "docs": "التوثيق",
         "license": "الترخيص"
+      }
+    },
+    "community": {
+      "title": "커뮤니티",
+      "items": {
+        "github": "깃허브",
+        "suhjae": "창립자 서재"
       }
     }
   },
