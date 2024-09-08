@@ -33,10 +33,6 @@ WORKDIR /app
 # Copy the output from the build stage to the working directory
 COPY --from=build /app/.output ./
 
-# Define environment variables
-ENV HOST=0.0.0.0 NODE_ENV=production
-ENV NODE_ENV=production
-
 # Expose the port the application will run on
 EXPOSE 3000
 
