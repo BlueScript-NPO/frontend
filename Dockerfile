@@ -22,7 +22,7 @@ RUN pnpm install
 COPY . ./
 
 # Build the application
-RUN pnpm run build
+RUN pnpm build
 
 # Create a new stage for the production image
 FROM node:${NODE_VERSION}
