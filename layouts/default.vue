@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ParsedContent } from "@nuxt/content";
+const { toggleContentSearch } = useUIState();
 const { t } = useI18n();
 
 const { data: navigation } = await useAsyncData("navigation", () =>
@@ -6,7 +8,7 @@ const { data: navigation } = await useAsyncData("navigation", () =>
 );
 const { data: files } = useLazyFetch<ParsedContent[]>("/api/search.json", {
   default: () => [],
-  server: false,
+  server: true,
 });
 
 const links = computed(() => [
@@ -30,8 +32,6 @@ const links = computed(() => [
 
 provide("navigation", navigation);
 provide("files", files);
-
-const colorMode = useColorMode();
 </script>
 
 <template>
@@ -54,13 +54,32 @@ const colorMode = useColorMode();
     </template>
 
     <template #right>
-      <LangSwitcher />
-
+      <LangSwitcher class="hidden sm:flex" />
+      <UButton
+        variant="ghost"
+        color="gray"
+        square
+        icon="i-ph-magnifying-glass"
+        @click="toggleContentSearch"
+      ></UButton>
       <UColorModeButton />
     </template>
 
     <template #panel>
-      <UAsideLinks :links="links" class="px-2" />
+      <UContentSearchButton
+        size="sm"
+        :label="t('search.placeholder')"
+        class="w-full mb-3"
+      />
+
+      <UNavigationLinks :links="links" />
+      <UDivider class="my-3" />
+      <UNavigationAccordion
+        v-if="navigation"
+        :links="mapContentNavigation(navigation)"
+      />
+      <UDivider class="my-3" />
+      <LangSwitcher class="w-full" />
     </template>
   </UHeader>
 
@@ -71,7 +90,7 @@ const colorMode = useColorMode();
   <ClientOnly>
     <LazyUContentSearch
       :files="files"
-      :navigation="navigation"
+      :navigation="navigation ?? undefined"
       :links="links"
     />
   </ClientOnly>

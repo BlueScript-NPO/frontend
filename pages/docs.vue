@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { NavItem } from "@nuxt/content";
 const { t } = useI18n();
 
 const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
