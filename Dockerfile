@@ -16,7 +16,7 @@ COPY ./package.json /app/
 COPY ./pnpm-lock.yaml /app/
 
 ## Install dependencies
-RUN pnpm install --shamefully-hoist
+RUN pnpm install
 
 # Copy the rest of the application files to the working directory
 COPY . ./
@@ -25,7 +25,7 @@ COPY . ./
 RUN pnpm run build
 
 # Create a new stage for the production image
-FROM node:${NODE_VERSION}-slim
+FROM node:${NODE_VERSION}
 
 # Set the working directory inside the container
 WORKDIR /app
