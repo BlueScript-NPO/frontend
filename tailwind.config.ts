@@ -6,6 +6,7 @@ export default <Partial<Config>>{
     "./components/**/*.vue",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
+    "docs/content/**/*.md",
   ],
   theme: {
     extend: {

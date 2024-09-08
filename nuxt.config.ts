@@ -14,6 +14,10 @@ export default defineNuxtConfig({
     "nuxt-og-image",
   ],
 
+  ui: {
+    global: true,
+  },
+
   uiPro: {
     content: true,
   },
