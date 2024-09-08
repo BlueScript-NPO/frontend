@@ -17,6 +17,10 @@ export default defineNuxtConfig({
     content: true
   },
 
+  ui: {
+    global: true
+  },
+
   icon: {
     provider: "server",
     serverBundle: {
