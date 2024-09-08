@@ -11,15 +11,10 @@ RUN corepack enable
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and pnpm-lock.yaml files to the working directory
-COPY ./package.json /app/
-COPY ./pnpm-lock.yaml /app/
+COPY . ./
 
 ## Install dependencies
 RUN pnpm install
-
-# Copy the rest of the application files to the working directory
-COPY . ./
 
 # Build the application
 RUN pnpm build
