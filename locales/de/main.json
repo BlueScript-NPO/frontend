@@ -46,12 +46,12 @@
     "toc": "Inhaltsübersicht"
   },
   "footer": {
-    "license": "이 프로젝트는 GNU GPL v3.0 라이선스에 따라 제공됩니다.",
+    "license": "Dieses Projekt ist unter der GNU GPL v3.0 Lizenz verfügbar.",
     "resources": {
-      "title": "자료",
+      "title": "Ressourcen",
       "items": {
-        "docs": "문서",
-        "license": "라이선스"
+        "docs": "Dokumentation",
+        "license": "Lizenzvergabe"
       }
     }
   },
