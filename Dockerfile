@@ -1,7 +1,7 @@
 ARG NODE_VERSION=22.7.0
 
 # Create build stage
-FROM node:${NODE_VERSION}-slim AS build
+FROM node:${NODE_VERSION} AS build
 
 # Enable pnpm
 ENV PNPM_HOME="/pnpm"
