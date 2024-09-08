@@ -3,6 +3,7 @@
     "title": "BlueScript",
     "cta": "开始训练",
     "github": "获取源代码",
+    "docs": "如何使用",
     "description": "BlueScript 是一个非营利组织，开发免费和开源工具来帮助有阅读障碍的人。",
     "features": {
       "title": "为什么选择 BlueScript？",
@@ -52,6 +53,13 @@
       "items": {
         "docs": "文件",
         "license": "许可"
+      }
+    },
+    "community": {
+      "title": "社区",
+      "items": {
+        "github": "GitHub",
+        "suhjae": "创始人的巢穴"
       }
     }
   },

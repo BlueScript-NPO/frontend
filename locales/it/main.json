@@ -3,6 +3,7 @@
     "title": "BlueScript",
     "cta": "Iniziare la formazione",
     "github": "Ottenere il codice sorgente",
+    "docs": "Come si usa",
     "description": "BlueScript è uno strumento gratuito e open source per aiutare le persone con dislessia.",
     "features": {
       "title": "Perché scegliere BlueScript?",
@@ -52,6 +53,13 @@
       "items": {
         "docs": "Documentazione",
         "license": "Licenze"
+      }
+    },
+    "community": {
+      "title": "Comunità",
+      "items": {
+        "github": "GitHub",
+        "suhjae": "Tana del Fondatore"
       }
     }
   },
