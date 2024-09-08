@@ -62,7 +62,6 @@ provide("files", files);
         icon="i-ph-magnifying-glass"
         @click="toggleContentSearch"
       ></UButton>
-      <UColorModeButton />
     </template>
 
     <template #panel>
@@ -86,6 +85,8 @@ provide("files", files);
   <UMain>
     <slot />
   </UMain>
+
+  <AppFooter />
 
   <ClientOnly>
     <LazyUContentSearch
