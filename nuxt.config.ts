@@ -14,6 +14,10 @@ export default defineNuxtConfig({
     "@nuxthq/studio",
   ],
 
+  uiPro: {
+    content: true
+  },
+
   icon: {
     provider: "server",
     serverBundle: {
