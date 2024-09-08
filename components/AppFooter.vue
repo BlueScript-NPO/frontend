@@ -32,8 +32,7 @@ const links = computed(() => [
     </template>
 
     <template #right>
-      <UColorModeButton size="sm" />
-
+      <UColorModeSelect class="w-30" />
       <UButton
         to="https://github.com/BlueScript-NPO/"
         target="_blank"
