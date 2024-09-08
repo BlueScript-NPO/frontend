@@ -3,7 +3,7 @@
     "title": "BlueScript",
     "cta": "Beginn der Ausbildung",
     "github": "Abrufen des Quellcodes",
-    "docs": "사용법",
+    "docs": "Wie zu verwenden",
     "description": "BlueScript ist ein kostenloses und quelloffenes Tool zur Unterstützung von Menschen mit Legasthenie.",
     "features": {
       "title": "Warum BlueScript wählen?",
@@ -56,10 +56,10 @@
       }
     },
     "community": {
-      "title": "커뮤니티",
+      "title": "Gemeinschaft",
       "items": {
-        "github": "깃허브",
-        "suhjae": "창립자 서재"
+        "github": "GitHub",
+        "suhjae": "Gründerhöhle"
       }
     }
   },
