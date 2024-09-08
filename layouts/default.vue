@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ParsedContent } from "@nuxt/content";
+import LangSwitcher from "~/components/LangSwitcher.vue";
 const { toggleContentSearch } = useUIState();
 const { t } = useI18n();
 
@@ -15,12 +16,12 @@ const links = computed(() => [
   {
     label: t("nav.docs"),
     to: "/docs",
-    icon: "i-ph-book-light",
+    icon: "i-ph-book",
   },
   {
     label: t("nav.train"),
     to: "/train",
-    icon: "i-ph-brain-light",
+    icon: "i-ph-yin-yang",
   },
 
   {
@@ -54,7 +55,6 @@ provide("files", files);
     </template>
 
     <template #right>
-      <LangSwitcher class="hidden sm:flex" />
       <UButton
         variant="ghost"
         color="gray"
@@ -65,20 +65,17 @@ provide("files", files);
     </template>
 
     <template #panel>
-      <UContentSearchButton
-        size="sm"
-        :label="t('search.placeholder')"
-        class="w-full mb-3"
-      />
-
+      <UButtonGroup orientation="horizontal" class="w-full">
+        <UColorModeSelect class="w-full" />
+        <LangSwitcher class="w-full" />
+      </UButtonGroup>
+      <UDivider class="my-3" />
       <UNavigationLinks :links="links" />
       <UDivider class="my-3" />
       <UNavigationAccordion
         v-if="navigation"
         :links="mapContentNavigation(navigation)"
       />
-      <UDivider class="my-3" />
-      <LangSwitcher class="w-full" />
     </template>
   </UHeader>
 

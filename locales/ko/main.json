@@ -3,6 +3,7 @@
     "title": "BlueScript",
     "cta": "훈련 시작",
     "github": "소스코드 받기",
+    "docs": "사용법",
     "description": "BlueScript는 난독증이 있는 사람들을 돕기 위한 무료 및 오픈 소스 도구입니다.",
     "features": {
       "title": "BlueScript를 선택하는 이유",
@@ -52,6 +53,13 @@
       "items": {
         "docs": "문서",
         "license": "라이선스"
+      }
+    },
+    "community": {
+      "title": "커뮤니티",
+      "items": {
+        "github": "깃허브",
+        "suhjae": "창립자 서재"
       }
     }
   },

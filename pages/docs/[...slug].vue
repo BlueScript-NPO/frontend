@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { withoutTrailingSlash } from "ufo";
+import type { NavItem } from "@nuxt/content";
 
 const { t } = useI18n();
 const route = useRoute();
+const navigation = inject<Ref<NavItem[]>>("navigation", ref([]));
 
 const { data: page } = await useAsyncData(route.path, () =>
   queryContent(route.path).findOne()
 );
+
+const breadcrumb = computed(() =>
+  mapContentNavigation(findPageBreadcrumb(navigation.value, page.value))
+);
+
 if (!page.value) {
   throw createError({
     statusCode: 404,
@@ -31,28 +38,26 @@ useSeoMeta({
   description: page.value.description,
   ogDescription: page.value.description,
 });
-const headline = computed(() => findPageHeadline(page.value!));
 </script>
 
 <template>
   <UPage v-if="page">
-    <UPageHeader
-      :title="page.title"
-      :description="page.description"
-      :links="page.links"
-      :headline="headline"
-    />
+    <UPageHeader UPageHeader v-bind="page">
+      <template #headline>
+        <UBreadcrumb :links="breadcrumb" />
+      </template>
+    </UPageHeader>
 
     <UPageBody prose>
       <ContentRenderer v-if="page.body" :value="page" />
-
       <hr v-if="surround?.length" />
-
       <UContentSurround :surround="surround" />
     </UPageBody>
 
     <template v-if="page.toc !== false" #right>
-      <UContentToc :links="page.body?.toc?.links" :title="t('docs.toc')" />
+      <UContentToc :links="page.body?.toc?.links" :title="t('docs.toc')">
+        <template #bottom> </template>
+      </UContentToc>
     </template>
   </UPage>
 </template>

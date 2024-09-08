@@ -16,11 +16,9 @@ const links = computed(
           <template #top>
             <UContentSearchButton size="sm" :label="t('search.placeholder')" />
           </template>
-
           <UNavigationTree :links="mapContentNavigation(links)" />
         </UAside>
       </template>
-
       <NuxtPage />
     </UPage>
   </UContainer>

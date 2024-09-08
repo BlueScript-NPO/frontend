@@ -100,10 +100,20 @@ export default defineAppConfig({
         },
       },
     },
+    accordion: {
+      default: {
+        openIcon: "i-ph-caret-down",
+      },
+    },
+    breadcrumb: {
+      default: {
+        divider: "i-ph-caret-right",
+      },
+    },
     icons: {
       dark: "i-ph-moon",
       light: "i-ph-sun",
-      system: "i-ph-chart-bar",
+      system: "i-ph-monitor",
       search: "i-ph-magnifying-glass",
       external: "i-ph-arrow-square-out",
       chevron: "i-ph-caret-down",
@@ -111,6 +121,18 @@ export default defineAppConfig({
       menu: "i-ph-list",
       close: "i-ph-x",
       check: "i-ph-check",
+    },
+  },
+  content: {
+    prose: {
+      code: {
+        button: {
+          icon: {
+            copy: "i-ph-copy-duotone",
+            copied: "i-ph-check-square-duotone",
+          },
+        },
+      },
     },
   },
 });

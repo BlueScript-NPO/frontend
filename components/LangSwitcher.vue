@@ -4,7 +4,6 @@
     v-model="selectedLang"
     option-attribute="label"
     value-attribute="code"
-    variant="none"
   >
     <template #leading>
       <span class="mr-2">

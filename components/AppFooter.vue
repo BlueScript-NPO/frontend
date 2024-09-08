@@ -16,6 +16,21 @@ const links = computed(() => [
       },
     ],
   },
+  {
+    label: t("footer.community.title"),
+    children: [
+      {
+        label: t("footer.community.items.github"),
+        to: "https://github.com/BlueScript-NPO",
+        target: "_blank",
+      },
+      {
+        label: t("footer.community.items.suhjae"),
+        to: "https://suhjae.dev/",
+        target: "_blank",
+      },
+    ],
+  },
 ]);
 </script>
 
@@ -32,15 +47,10 @@ const links = computed(() => [
     </template>
 
     <template #right>
-      <UColorModeSelect class="w-30" />
-      <UButton
-        to="https://github.com/BlueScript-NPO/"
-        target="_blank"
-        icon="i-simple-icons-github"
-        aria-label="GitHub"
-        color="gray"
-        variant="ghost"
-      />
+      <UButtonGroup orientation="horizontal">
+        <LangSwitcher />
+        <UColorModeSelect />
+      </UButtonGroup>
     </template>
   </UFooter>
 </template>

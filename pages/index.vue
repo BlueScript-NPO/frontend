@@ -66,9 +66,9 @@ const actionLinks = computed(() => [
     size: "xl",
   },
   {
-    label: t("landing.github"),
-    icon: "i-simple-icons-github",
-    to: "https://github.com/BlueScript-NPO/",
+    label: t("landing.docs"),
+    icon: "i-ph-book",
+    to: "/docs",
     size: "xl",
   },
 ]);
