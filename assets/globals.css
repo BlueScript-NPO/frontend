@@ -6,59 +6,7 @@
 @tailwind utilities;
 
 /* Define your global styles here */
-.text-main {
-  @apply text-8xl font-light text-center text-zinc-900 dark:text-zinc-100 w-full;
-  letter-spacing: 0.5em;
-  padding-left: 0.5em;
-
-  font-family: "Nanum Gothic Coding", monospace;
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "NanumBarunGothic";
-  font-style: normal;
-  font-weight: 400;
-  src: url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
-  src: url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix")
-      format("embedded-opentype"),
-    url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff")
-      format("woff"),
-    url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf")
-      format("truetype");
-}
-
-@font-face {
-  font-family: "NanumBarunGothic";
-  font-style: normal;
-  font-weight: 700;
-  src: url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot");
-  src: url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix")
-      format("embedded-opentype"),
-    url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff")
-      format("woff"),
-    url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf")
-      format("truetype");
-}
-
-@font-face {
-  font-family: "NanumBarunGothic";
-  font-style: normal;
-  font-weight: 300;
-  src: url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot");
-  src: url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix")
-      format("embedded-opentype"),
-    url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff")
-      format("woff"),
-    url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf")
-      format("truetype");
-}
 
 .training-text {
   @apply text-zinc-900 dark:text-zinc-100;
-}
-
-.flex-center {
-  @apply flex justify-center items-center;
 }

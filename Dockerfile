@@ -1,7 +1,7 @@
 ARG NODE_VERSION=22.7.0
 
 # Create build stage
-FROM node:${NODE_VERSION} AS build
+FROM node:${NODE_VERSION}-slim AS build
 
 # Enable pnpm
 ENV PNPM_HOME="/pnpm"
@@ -20,7 +20,7 @@ RUN pnpm install
 RUN pnpm build
 
 # Create a new stage for the production image
-FROM node:${NODE_VERSION}
+FROM node:${NODE_VERSION}-slim
 
 # Set the working directory inside the container
 WORKDIR /app

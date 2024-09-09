@@ -1,16 +1,7 @@
 <template>
   <!-- Google Font -->
   <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
-    <client-only>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-    </client-only>
-
-    <NuxtLoadingIndicator :color="isDark ? 'white' : '#2F45C7'" />
+    <NuxtLoadingIndicator :color="isDark ? '#C2C8EC' : '#2F45C7'" />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -18,9 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router";
-import { ref, onMounted } from "vue";
-
 const colorMode = useColorMode();
 const isDark = computed({
   get() {

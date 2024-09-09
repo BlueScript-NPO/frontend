@@ -3,6 +3,21 @@ export default defineAppConfig({
     primary: "blueScriptBlue",
     gray: "zinc",
 
+    variables: {
+      light: {
+        background: "255 255 255",
+        foreground: "var(--color-gray-700)",
+      },
+      dark: {
+        background: "var(--color-gray-950)",
+        foreground: "var(--color-gray-200)",
+      },
+    },
+
+    card: {
+      background: "bg-white dark:bg-zinc-950",
+    },
+
     button: {
       rounded: "rounded-full",
       default: {
@@ -47,12 +62,22 @@ export default defineAppConfig({
       default: {
         size: "md",
       },
+      color: {
+        white: {
+          outline: "dark:bg-gray-950",
+        },
+      },
     },
 
     select: {
       rounded: "rounded-full",
       default: {
         size: "md",
+      },
+      color: {
+        white: {
+          outline: "dark:bg-gray-950",
+        },
       },
     },
 
@@ -123,6 +148,7 @@ export default defineAppConfig({
       check: "i-ph-check",
     },
   },
+
   content: {
     prose: {
       code: {

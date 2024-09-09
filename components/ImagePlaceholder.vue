@@ -2,7 +2,7 @@
   <div class="relative">
     <div class="bg-background border-gradient rounded-xl p-2 sm:p-4">
       <div
-        class="aspect-w-16 aspect-h-9 rounded-lg relative overflow-hidden border border-dashed border-gray-950/10 dark:border-white/10"
+        class="rounded-lg relative overflow-hidden border border-dashed border-gray-950/10 dark:border-white/10"
       >
         <NuxtImg
           src="/hero.png"

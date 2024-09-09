@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     "@nuxthq/studio",
     "@nuxtjs/seo",
     "nuxt-og-image",
+    "@nuxt/fonts",
   ],
 
   icon: {

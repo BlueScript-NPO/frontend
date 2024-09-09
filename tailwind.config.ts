@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default <Partial<Config>>{
   content: [
@@ -31,7 +32,8 @@ export default <Partial<Config>>{
       },
     },
     fontFamily: {
-      sans: ["ui-NanumBarunGothic", "sans-serif"],
+      sans: ["Noto Sans KR", "DM Sans", ...defaultTheme.fontFamily.sans],
+      serif: ["Nanum Myeongjo", ...defaultTheme.fontFamily.serif],
     },
   },
 };
