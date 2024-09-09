@@ -8,11 +8,13 @@
           src="/hero.png"
           alt="BlueScript demo hero image"
           class="dark:hidden"
+          format="webp"
         />
         <NuxtImg
           src="/hero-dark.png"
           alt="BlueScript demo hero image (dark)"
           class="hidden dark:block"
+          format="webp"
         />
       </div>
     </div>

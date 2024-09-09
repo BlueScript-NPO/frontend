@@ -100,6 +100,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/docs": { redirect: "/docs/getting-started" },
+    "/": { prerender: true },
   },
   compatibilityDate: "2024-07-25",
 });
