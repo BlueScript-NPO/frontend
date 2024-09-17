@@ -109,7 +109,7 @@ const handleFormError = async (event: FormErrorEvent) => {
     v-if="selectedTrainingProcedure"
     :validate="validateForm"
     :state="{ parameters: selectedTrainingParameters }"
-    class="space-y-4"
+    class="space-y-4 p-4"
     @submit="handleFormSubmit"
     @error="handleFormError"
   >

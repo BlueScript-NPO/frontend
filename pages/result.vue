@@ -96,206 +96,213 @@ onMounted(() => {
   <Head>
     <Title>{{ $t("result.title") }}</Title>
   </Head>
-  <UCard v-if="trainingData" class="mx-auto mt-8 max-w-md mb-20">
-    <template #header>
-      <div class="flex justify-between">
-        <div>
-          <h2 class="text-xl h-8 flex items-center align-middle font-semibold">
-            {{ $t("result.title") }}
-            <UBadge color="primary" variant="outline" class="ml-2">
-              {{ $t("procedure." + (trainingData?.procedure.name ?? "")) }}
-            </UBadge>
-          </h2>
-        </div>
-        <div>
-          <UButton
-            icon="i-ph-upload"
-            size="sm"
-            square
-            variant="ghost"
-            @click="loadResultPrompt"
-          />
-        </div>
-      </div>
 
-      <div class="py-2">
-        <p class="font-light">{{ $t("result.date") }}: {{ formattedDate }}</p>
-        <p class="font-light text-xs">
-          {{ $t("result.trainer") }}: {{ trainingData?.trainerID }}
-        </p>
-        <p class="font-light text-xs">
-          {{ $t("result.trainee") }}: {{ trainingData?.traineeID }}
-        </p>
-      </div>
-    </template>
-
-    <div
-      v-for="value in trainingData?.values"
-      :key="value.jsonKey"
-      class="px-1 py-1"
-    >
-      <!-- check if the value is instance of TableValue -->
-      <div v-if="value.type === 'table'">
-        <UCard class="mt-4">
-          <div class="flex justify-center items-center -mt-3">
-            <div class="font-semibold">
-              {{ $t(value.displayName ?? "") }}
-            </div>
-          </div>
-          <UTable class="-mb-4" :rows="value.getValue()"></UTable>
-        </UCard>
-      </div>
-      <div v-else-if="value.type === 'percentage'">
-        <UCard class="mb-4">
-          <p class="font-semibold m-0 -mt-1">
-            {{ $t(value.displayName ?? "") }}
-            <UTooltip>
-              <template #text>
-                <span>{{ $t(value.description ?? "") }}</span>
-              </template>
-              <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
-            </UTooltip>
-          </p>
-          <UMeter :value="value.getValue()" indicator></UMeter>
-        </UCard>
-      </div>
-
-      <div v-else-if="value.type === 'ComputedPercentage'">
-        <UCard class="mb-4">
-          <div class="flex justify-between -mt-1">
-            <div>
-              <p class="font-semibold m-0">
-                {{ $t(value.displayName ?? "") }}
-                <UTooltip>
-                  <template #text>
-                    <span>{{ $t(value.description ?? "") }}</span>
-                  </template>
-                  <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
-                </UTooltip>
-              </p>
-            </div>
-            <div>
-              {{ (value as PercentAccuracyValue).getCounted() }}
-              /
-              {{ (value as PercentAccuracyValue).getTotal() }}
-            </div>
-          </div>
-
-          <UMeter
-            :value="(value as PercentAccuracyValue).getPercentage()"
-            indicator
-          >
-          </UMeter>
-        </UCard>
-      </div>
-
-      <div v-else-if="value.type === 'time'" class="px-4">
-        <span class="font-semibold"> {{ $t(value.displayName ?? "") }} </span>:
-        <span v-if="value.getValue() < 60">
-          {{ value.getValue() % 60 }}{{ $t("unit.sec") }}
-        </span>
-        <span v-else>
-          {{ Math.floor(value.getValue() / 60) }}{{ $t("unit.min") }}
-          {{ value.getValue() % 60 }}{{ $t("unit.sec") }}
-        </span>
-        <UTooltip>
-          <template #text>
-            <span>{{ $t(value.description ?? "") }}</span>
-          </template>
-          <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
-        </UTooltip>
-      </div>
-
-      <div v-else class="px-4">
-        <span class="font-semibold"> {{ $t(value.displayName ?? "") }} </span>:
-        {{ value.getValue() }}
-        <UTooltip>
-          <template #text>
-            <span>{{ $t(value.description ?? "") }}</span>
-          </template>
-          <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
-        </UTooltip>
-      </div>
-    </div>
-
-    <UAccordion
-      variant="ghost"
-      class="mt-4 pt-1.5 rounded-lg ring-1 ring-gray-200 dark:ring-gray-800"
-      :items="[
-        {
-          label: $t('result.trainingParameters'),
-          icon: 'i-ph-wrench',
-          defaultOpen: false,
-        },
-      ]"
-    >
-      <template #item>
-        <div class="px-4">
-          <ul>
-            <li
-              v-for="param in trainingData?.procedure.parameters"
-              :key="param.jsonKey"
+  <div class="space-y-4 p-4">
+    <UCard v-if="trainingData" class="mx-auto mt-8 max-w-md">
+      <template #header>
+        <div class="flex justify-between">
+          <div>
+            <h2
+              class="text-xl h-8 flex items-center align-middle font-semibold"
             >
-              <span class="font-semibold">
-                {{ $t(param.displayName ?? "") }} </span
-              >:
-              <span v-if="param instanceof SelectParameter">
-                {{ $t("parameter." + param.selected) }}
-              </span>
-              <span v-else>
-                {{ param.getValue() }}
-              </span>
-            </li>
-          </ul>
+              {{ $t("result.title") }}
+              <UBadge color="primary" variant="outline" class="ml-2">
+                {{ $t("procedure." + (trainingData?.procedure.name ?? "")) }}
+              </UBadge>
+            </h2>
+          </div>
+          <div>
+            <UButton
+              icon="i-ph-upload"
+              size="sm"
+              square
+              variant="ghost"
+              @click="loadResultPrompt"
+            />
+          </div>
+        </div>
+
+        <div class="py-2">
+          <p class="font-light">{{ $t("result.date") }}: {{ formattedDate }}</p>
+          <p class="font-light text-xs">
+            {{ $t("result.trainer") }}: {{ trainingData?.trainerID }}
+          </p>
+          <p class="font-light text-xs">
+            {{ $t("result.trainee") }}: {{ trainingData?.traineeID }}
+          </p>
         </div>
       </template>
-    </UAccordion>
 
-    <UTextarea
-      class="pt-4"
-      autoresize
-      :placeholder="$t('result.notesPlaceholder')"
-      v-model="trainingData.notes"
-    />
+      <div
+        v-for="value in trainingData?.values"
+        :key="value.jsonKey"
+        class="px-1 py-1"
+      >
+        <!-- check if the value is instance of TableValue -->
+        <div v-if="value.type === 'table'">
+          <UCard class="mt-4">
+            <div class="flex justify-center items-center -mt-3">
+              <div class="font-semibold">
+                {{ $t(value.displayName ?? "") }}
+              </div>
+            </div>
+            <UTable class="-mb-4" :rows="value.getValue()"></UTable>
+          </UCard>
+        </div>
+        <div v-else-if="value.type === 'percentage'">
+          <UCard class="mb-4">
+            <p class="font-semibold m-0 -mt-1">
+              {{ $t(value.displayName ?? "") }}
+              <UTooltip>
+                <template #text>
+                  <span>{{ $t(value.description ?? "") }}</span>
+                </template>
+                <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
+              </UTooltip>
+            </p>
+            <UMeter :value="value.getValue()" indicator></UMeter>
+          </UCard>
+        </div>
 
-    <template #footer>
-      <div class="flex justify-center space-x-4">
-        <UButton color="gray" @click="saveResult">
-          {{ $t("result.download") }}
-        </UButton>
-        <UButton color="primary" @click="router.push('/train')">
-          {{ $t("result.goTrain") }}
-        </UButton>
+        <div v-else-if="value.type === 'ComputedPercentage'">
+          <UCard class="mb-4">
+            <div class="flex justify-between -mt-1">
+              <div>
+                <p class="font-semibold m-0">
+                  {{ $t(value.displayName ?? "") }}
+                  <UTooltip>
+                    <template #text>
+                      <span>{{ $t(value.description ?? "") }}</span>
+                    </template>
+                    <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
+                  </UTooltip>
+                </p>
+              </div>
+              <div>
+                {{ (value as PercentAccuracyValue).getCounted() }}
+                /
+                {{ (value as PercentAccuracyValue).getTotal() }}
+              </div>
+            </div>
+
+            <UMeter
+              :value="(value as PercentAccuracyValue).getPercentage()"
+              indicator
+            >
+            </UMeter>
+          </UCard>
+        </div>
+
+        <div v-else-if="value.type === 'time'" class="px-4">
+          <span class="font-semibold"> {{ $t(value.displayName ?? "") }} </span
+          >:
+          <span v-if="value.getValue() < 60">
+            {{ value.getValue() % 60 }}{{ $t("unit.sec") }}
+          </span>
+          <span v-else>
+            {{ Math.floor(value.getValue() / 60) }}{{ $t("unit.min") }}
+            {{ value.getValue() % 60 }}{{ $t("unit.sec") }}
+          </span>
+          <UTooltip>
+            <template #text>
+              <span>{{ $t(value.description ?? "") }}</span>
+            </template>
+            <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
+          </UTooltip>
+        </div>
+
+        <div v-else class="px-4">
+          <span class="font-semibold"> {{ $t(value.displayName ?? "") }} </span
+          >:
+          {{ value.getValue() }}
+          <UTooltip>
+            <template #text>
+              <span>{{ $t(value.description ?? "") }}</span>
+            </template>
+            <UIcon name="i-ph-lightbulb" class="mx-1 h-4" />
+          </UTooltip>
+        </div>
       </div>
-    </template>
-  </UCard>
 
-  <!-- When no data is loaded -->
+      <UAccordion
+        variant="ghost"
+        class="mt-4 pt-1.5 rounded-lg ring-1 ring-gray-200 dark:ring-gray-800"
+        :items="[
+          {
+            label: $t('result.trainingParameters'),
+            icon: 'i-ph-wrench',
+            defaultOpen: false,
+          },
+        ]"
+      >
+        <template #item>
+          <div class="px-4">
+            <ul>
+              <li
+                v-for="param in trainingData?.procedure.parameters"
+                :key="param.jsonKey"
+              >
+                <span class="font-semibold">
+                  {{ $t(param.displayName ?? "") }} </span
+                >:
+                <span v-if="param instanceof SelectParameter">
+                  {{ $t("parameter." + param.selected) }}
+                </span>
+                <span v-else>
+                  {{ param.getValue() }}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </template>
+      </UAccordion>
 
-  <UCard v-else class="mx-auto mt-8 max-w-md">
-    <template #header>
-      <h2 class="text-lg h-8 flex items-center">
-        {{ $t("result.noData") }}
-      </h2>
-      <p class="font-light">
-        {{ $t("result.noDataDesc") }}
-      </p>
-    </template>
+      <UTextarea
+        class="pt-4"
+        autoresize
+        :placeholder="$t('result.notesPlaceholder')"
+        v-model="trainingData.notes"
+      />
 
-    <UInput
-      type="file"
-      size="sm"
-      icon="i-ph-upload"
-      @change="loadResult"
-      class="mt-4"
-    />
+      <template #footer>
+        <div class="flex justify-center space-x-4">
+          <UButton color="gray" @click="saveResult">
+            {{ $t("result.download") }}
+          </UButton>
+          <UButton color="primary" @click="router.push('/train')">
+            {{ $t("result.goTrain") }}
+          </UButton>
+        </div>
+      </template>
+    </UCard>
 
-    <template #footer>
-      <div class="flex justify-center">
-        <UButton color="primary" @click="router.push('/train')">
-          {{ $t("result.goTrain") }}
-        </UButton>
-      </div>
-    </template>
-  </UCard>
+    <!-- When no data is loaded -->
+
+    <UCard v-else class="mx-auto mt-8 max-w-md">
+      <template #header>
+        <h2 class="text-lg h-8 flex items-center">
+          {{ $t("result.noData") }}
+        </h2>
+        <p class="font-light">
+          {{ $t("result.noDataDesc") }}
+        </p>
+      </template>
+
+      <UInput
+        type="file"
+        size="sm"
+        icon="i-ph-upload"
+        @change="loadResult"
+        class="mt-4"
+      />
+
+      <template #footer>
+        <div class="flex justify-center">
+          <UButton color="primary" @click="router.push('/train')">
+            {{ $t("result.goTrain") }}
+          </UButton>
+        </div>
+      </template>
+    </UCard>
+  </div>
 </template>

@@ -38,16 +38,7 @@ provide("files", files);
 <template>
   <UHeader>
     <template #logo>
-      <NuxtImg
-        src="/logo.svg"
-        alt="BlueScript darkmode logo"
-        class="h-8 hover:opacity-90 dark:hidden"
-      />
-      <NuxtImg
-        src="/logo-dark.svg"
-        alt="BlueScript logo"
-        class="h-8 hover:opacity-90 hidden dark:block"
-      />
+      <Logo class="h-8 hover:opacity-90" />
     </template>
 
     <template #center>
