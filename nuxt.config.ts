@@ -15,6 +15,12 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
   ],
 
+  nitro: {
+    prerender: {
+      routes: ["/sitemap.xml"],
+    },
+  },
+
   icon: {
     provider: "server",
     serverBundle: {
