@@ -9,23 +9,6 @@
             <CharacterSequencingDemo />
           </div>
         </div>
-        <!-- Optional: Uncomment if you want to use images instead -->
-        <!--
-        <NuxtImg
-          src="/hero.png"
-          alt="BlueScript demo hero image"
-          class="dark:hidden"
-          format="webp"
-          loading="lazy"
-        />
-        <NuxtImg
-          src="/hero-dark.png"
-          alt="BlueScript demo hero image (dark)"
-          class="hidden dark:block"
-          format="webp"
-          loading="lazy"
-        />
-        -->
       </div>
     </div>
   </div>
