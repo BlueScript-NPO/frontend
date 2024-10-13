@@ -3,7 +3,7 @@
     "title": "BlueScript",
     "cta": "Start Training",
     "github": "Get the source code",
-    "docs": "How to use",
+    "docs": "Docs",
     "description": "BlueScript is a non-profit organization that develops free and open-source tools to help dyslexic individuals.",
     "features": {
       "title": "Why Choose BlueScript?",
@@ -52,7 +52,7 @@
       "title": "Resources",
       "items": {
         "docs": "Documentation",
-        "license": "Licensing"
+        "license": "License"
       }
     },
     "community": {
@@ -73,10 +73,10 @@
   "train": {
     "title": "Configure Training",
     "start": "Start Training",
-    "docs": "도움말",
-    "link": "링크 복사",
-    "visual": "시각",
-    "audition": "청각"
+    "docs": "Docs",
+    "link": "Copy Link",
+    "visual": "Visual",
+    "audition": "Audition"
   },
   "training": {
     "ready": "Get Ready!",
@@ -123,23 +123,23 @@
     "Character Guesstimate": "Character Guesstimate"
   },
   "Rapid Visual Perception": {
-    "description": "250ms 이하의 시간 안에 화면에 나타나는 문자를 식별하고 입력하는 훈련.",
+    "description": "Training to identify and type characters that appear on the screen in 250 ms or less.",
     "icon": "i-ph-speedometer"
   },
   "Sequential Visual Memory": {
-    "description": "일련의 문자를 순차적으로 식별하고 기억한 후, 일정 시간이 지난 후에 다시 입력하는 훈련.",
+    "description": "Training to identify and memorize a sequence of characters, then retype them after a period of time.",
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "프롬프트를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "Practice finding the prompts in order, and using the right arrow key and spacebar to enter characters.",
     "icon": "i-ph-arrow-right"
   },
   "Character Matching": {
-    "description": "프롬프트와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "Training to click the matching string from a set of strings that are visually similar to the prompt.",
     "icon": "i-ph-intersect-square"
   },
   "Character Guesstimate": {
-    "description": "서서히 나타나는 문자를 가능한 한 빨리 식별하는 훈련.",
+    "description": "Training to identify slowly appearing characters as quickly as possible.",
     "icon": "i-ph-question"
   },
   "result": {
