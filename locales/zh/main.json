@@ -73,10 +73,10 @@
   "train": {
     "title": "配置训练",
     "start": "开始训练",
-    "docs": "도움말",
-    "link": "링크 복사",
-    "visual": "시각",
-    "audition": "청각"
+    "docs": "帮助",
+    "link": "复制链接",
+    "visual": "时间",
+    "audition": "听力"
   },
   "training": {
     "ready": "准备好了！",
@@ -123,23 +123,23 @@
     "Character Guesstimate": "字符猜测"
   },
   "Rapid Visual Perception": {
-    "description": "250ms 이하의 시간 안에 화면에 나타나는 문자를 식별하고 입력하는 훈련.",
-    "icon": "i-ph-speedometer"
+    "description": "训练在 250 毫秒或更短时间内识别并键入屏幕上出现的字符。",
+    "icon": "i-ph-速度计"
   },
   "Sequential Visual Memory": {
-    "description": "일련의 문자를 순차적으로 식별하고 기억한 후, 일정 시간이 지난 후에 다시 입력하는 훈련.",
+    "description": "训练按顺序识别和记忆一系列字符，并在一段时间后重新输入。",
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "프롬프트를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "练习按顺序找到提示，并使用右箭头键和空格键输入字符。",
     "icon": "i-ph-arrow-right"
   },
   "Character Matching": {
-    "description": "프롬프트와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
-    "icon": "i-ph-intersect-square"
+    "description": "训练从一组视觉上与提示相似的字符串中点击匹配的字符串。",
+    "icon": "i-ph-相交-平方"
   },
   "Character Guesstimate": {
-    "description": "서서히 나타나는 문자를 가능한 한 빨리 식별하는 훈련.",
+    "description": "训练尽快识别缓慢出现的字符。",
     "icon": "i-ph-question"
   },
   "result": {
