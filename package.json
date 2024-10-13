@@ -10,21 +10,22 @@
     "sync:translations": "node syncTranslations.js"
   },
   "dependencies": {
-    "@nuxt/ui": "^2.18.4",
-    "@nuxt/ui-pro": "^1.4.1",
-    "@nuxtjs/i18n": "^8.5.2",
+    "@nuxt/ui": "^2.18.7",
+    "@nuxt/ui-pro": "^1.4.4",
+    "@nuxtjs/i18n": "^8.5.5",
     "axios": "^1.7.7",
-    "vue": "^3.5.3",
-    "vue-router": "^4.4.3"
+    "sitemap": "^8.0.0",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@iconify-json/ph": "^1.2.0",
-    "@iconify-json/simple-icons": "^1.2.1",
+    "@iconify-json/ph": "^1.2.1",
+    "@iconify-json/simple-icons": "^1.2.7",
     "@nuxt/content": "^2.13.2",
     "@nuxt/fonts": "^0.7.2",
-    "@nuxt/image": "^1.8.0",
-    "@nuxthq/studio": "^2.0.3",
+    "@nuxt/image": "^1.8.1",
+    "@nuxthq/studio": "^2.1.1",
     "@nuxtjs/seo": "2.0.0-rc.20",
-    "nuxt": "^3.13.1"
+    "nuxt": "^3.13.2"
   }
 }

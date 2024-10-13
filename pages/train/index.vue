@@ -1,4 +1,7 @@
 <template>
+  <Head>
+    <Title>{{ t("nav.train") }}</Title>
+  </Head>
   <UModal v-model="isParameterOpen">
     <UForm
       :validate="validateForm"
@@ -50,7 +53,7 @@
               v-else-if="parameter instanceof SelectParameter"
               v-model="parameter.selected"
               :options="
-                parameter.options.map((option) => ({
+                parameter.options.map((option: string) => ({
                   label: $t('parameter.' + option),
                   value: option,
                 }))
@@ -70,7 +73,11 @@
               :icon="linkCopied ? 'i-ph-check' : 'i-ph-clipboard'"
               >{{ $t("train.link") }}
             </UButton>
-            <UButton color="primary" type="submit"
+            <UButton
+              color="primary"
+              type="submit"
+              icon="i-ph-arrow-right"
+              trailing
               >{{ $t("train.start") }}
             </UButton>
           </div>
@@ -117,6 +124,8 @@
                     size="xs"
                     color="white"
                     variant="outline"
+                    icon="i-ph-book"
+                    @click.stop=""
                     :to="
                       '/docs/training/' +
                       procedure.name.toLowerCase().replace(/\s+/g, '-')
@@ -145,10 +154,7 @@
 <script setup lang="ts">
 import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
 import type { FormError, FormErrorEvent } from "#ui/types";
-
-const { t } = useI18n();
-const router = useRouter();
-const linkCopied = ref(false);
+import { preloadAudioFiles, audioFiles } from "~/utils/playSound";
 
 import {
   RapidVisualPerceptionProcedure,
@@ -159,25 +165,9 @@ import {
   Procedure,
 } from "~/types/procedure";
 
-// Initialize procedures
-const visualProcedures: Procedure[] = [
-  new RapidVisualPerceptionProcedure(),
-  new SequentialVisualMemoryProcedure(),
-  new CharacterSequencingProcedure(),
-  new CharacterMatchingProcedure(),
-  new CharacterGuesstimateProcedure(),
-];
-
-const isParameterOpen = ref(false);
-const selectedProcedure = ref<Procedure | null>(null);
-const selectedTrainingParameters = ref<Parameter[]>([]);
-
-// Handle start training
-const openParameterModel = (procedure: Procedure) => {
-  selectedProcedure.value = procedure;
-  selectedTrainingParameters.value = procedure.parameters;
-  isParameterOpen.value = true;
-};
+const { t } = useI18n();
+const toast = useToast();
+const router = useRouter();
 
 const items = [
   {
@@ -191,6 +181,28 @@ const items = [
     icon: "i-ph-user-sound",
   },
 ];
+
+const visualProcedures: Procedure[] = [
+  new RapidVisualPerceptionProcedure(),
+  new SequentialVisualMemoryProcedure(),
+  new CharacterSequencingProcedure(),
+  new CharacterMatchingProcedure(),
+  new CharacterGuesstimateProcedure(),
+];
+
+// Page state variables
+const isParameterOpen = ref(false);
+const linkCopied = ref(false);
+const isAudioLoaded = ref(false);
+const selectedProcedure = ref<Procedure | null>(null);
+const selectedTrainingParameters = ref<Parameter[]>([]);
+
+// Handle start training
+const openParameterModel = (procedure: Procedure) => {
+  selectedProcedure.value = procedure;
+  selectedTrainingParameters.value = procedure.parameters;
+  isParameterOpen.value = true;
+};
 
 // Validate form data
 const validateForm = (state: { parameters: Parameter[] }): FormError[] => {
@@ -230,13 +242,58 @@ const getTrainingLink = (procedure: Procedure) => {
 };
 
 const handleFormSubmit = async () => {
+  if (!isAudioLoaded.value) {
+    try {
+      const totalFiles = audioFiles.length;
+      let loadedFiles = 0;
+      const progressToastId = "progress-toast";
+
+      const updateToast = () => {
+        toast.remove(progressToastId);
+        toast.add({
+          id: progressToastId,
+          title: t("notification.loadingAsset.title", {
+            loaded: loadedFiles,
+            total: totalFiles,
+          }),
+          description: t("notification.loadingAsset.description"),
+          timeout: 0, // No timeout
+        });
+      };
+
+      updateToast();
+
+      await preloadAudioFiles((loaded, total) => {
+        loadedFiles = loaded;
+        updateToast();
+        if (loadedFiles === total) {
+          toast.remove(progressToastId);
+        }
+      });
+
+      isAudioLoaded.value = true;
+    } catch (error: Error) {
+      console.error(error);
+      toast.add({
+        title: t("notification.loadingAsset.error.title"),
+        description: t("notification.loadingAsset.error.description", {
+          error: error.message,
+        }),
+        color: "red",
+      });
+      // remove the progress toast
+      toast.remove("progress-toast");
+      return; // Stop if error in loading audio
+    }
+  }
+
+  // Proceed with form submission
   if (selectedProcedure.value) {
     console.log(
       "Starting training with data:",
       JSON.stringify(selectedProcedure.value.toJson())
     );
     const link = getTrainingLink(selectedProcedure.value);
-    // Push the `path` instead of `name`
     router.push(link);
   }
 };
@@ -247,7 +304,11 @@ const copyLink = async () => {
     // Construct the full URL using `path`
     const fullLink = `${window.location.origin}${link.path}?data=${link.query.data}`;
     await navigator.clipboard.writeText(fullLink);
-    console.log("Link copied to clipboard:", fullLink);
+    toast.add({
+      title: t("notification.copied.title"),
+      description: t("notification.copied.description"),
+      callback: () => (linkCopied.value = false),
+    });
     linkCopied.value = true;
   }
 };
