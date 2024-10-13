@@ -238,10 +238,6 @@ const endTrial = () => {
   playSound("finish");
 
   mainText.value = t("training.finish");
-  subText.value = `Time: ${trialDuration.toFixed(
-    2
-  )}s | Accuracy: ${accuracy.value.toFixed(2)}%`;
-
   subText.value = `${t("training.timeSpent")} ${trialDuration.toFixed(2)} ${t(
     "unit.sec"
   )} | ${t("training.accuracy")} ${accuracy.value.toFixed(2)}%`;
