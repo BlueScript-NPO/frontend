@@ -73,10 +73,10 @@
   "train": {
     "title": "Configurer l'entraînement",
     "start": "Commencer l'entraînement",
-    "docs": "도움말",
-    "link": "링크 복사",
-    "visual": "시각",
-    "audition": "청각"
+    "docs": "Aide",
+    "link": "Copier le lien",
+    "visual": "L'heure",
+    "audition": "L'audition"
   },
   "training": {
     "ready": "Prêt ?",
@@ -123,23 +123,23 @@
     "Character Guesstimate": "Estimation de caractères"
   },
   "Rapid Visual Perception": {
-    "description": "250ms 이하의 시간 안에 화면에 나타나는 문자를 식별하고 입력하는 훈련.",
+    "description": "Formation à l'identification et à la saisie de caractères apparaissant à l'écran en 250 ms ou moins.",
     "icon": "i-ph-speedometer"
   },
   "Sequential Visual Memory": {
-    "description": "일련의 문자를 순차적으로 식별하고 기억한 후, 일정 시간이 지난 후에 다시 입력하는 훈련.",
+    "description": "Entraînement à identifier et à mémoriser une série de caractères dans l'ordre, puis à les retaper après un certain temps.",
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "프롬프트를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
-    "icon": "i-ph-arrow-right"
+    "description": "Entraînez-vous à trouver les invites dans l'ordre et à utiliser la flèche droite et la barre d'espacement pour saisir des caractères.",
+    "icon": "i-ph-flèche-droite"
   },
   "Character Matching": {
-    "description": "프롬프트와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "L'entraînement consiste à cliquer sur la chaîne de caractères correspondante à partir d'un ensemble de chaînes de caractères visuellement similaires à l'invite.",
     "icon": "i-ph-intersect-square"
   },
   "Character Guesstimate": {
-    "description": "서서히 나타나는 문자를 가능한 한 빨리 식별하는 훈련.",
+    "description": "S'entraîner à identifier le plus rapidement possible les caractères qui apparaissent lentement.",
     "icon": "i-ph-question"
   },
   "result": {
