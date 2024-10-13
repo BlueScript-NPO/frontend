@@ -73,7 +73,10 @@
   "train": {
     "title": "훈련 설정",
     "start": "훈련 시작",
-    "docs": "도움말"
+    "docs": "도움말",
+    "link": "링크 복사",
+    "visual": "시각",
+    "audition": "청각"
   },
   "training": {
     "ready": "준비하세요!",
