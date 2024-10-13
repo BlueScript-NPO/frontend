@@ -73,10 +73,10 @@
   "train": {
     "title": "Einstellungen für die Ausbildung",
     "start": "Beginn der Ausbildung",
-    "docs": "도움말",
-    "link": "링크 복사",
-    "visual": "시각",
-    "audition": "청각"
+    "docs": "Hilfe",
+    "link": "Link kopieren",
+    "visual": "Zeit",
+    "audition": "Anhörung"
   },
   "training": {
     "ready": "Macht euch bereit!",
@@ -123,24 +123,24 @@
     "Character Guesstimate": "Einschätzung des Charakters"
   },
   "Rapid Visual Perception": {
-    "description": "250ms 이하의 시간 안에 화면에 나타나는 문자를 식별하고 입력하는 훈련.",
-    "icon": "i-ph-speedometer"
+    "description": "Training zur Erkennung und Eingabe von Zeichen, die auf dem Bildschirm in 250 ms oder weniger erscheinen.",
+    "icon": "i-ph-Geschwindigkeitsmesser"
   },
   "Sequential Visual Memory": {
-    "description": "일련의 문자를 순차적으로 식별하고 기억한 후, 일정 시간이 지난 후에 다시 입력하는 훈련.",
-    "icon": "i-ph-dots-three-outline"
+    "description": "Training, um eine Reihe von Zeichen nacheinander zu erkennen und sich zu merken, um sie dann nach einer gewissen Zeit erneut einzugeben.",
+    "icon": "i-ph-punkte-drei-umrisse"
   },
   "Character Sequencing": {
-    "description": "프롬프트를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
-    "icon": "i-ph-arrow-right"
+    "description": "Üben Sie, die Eingabeaufforderungen in der richtigen Reihenfolge zu finden und die rechte Pfeiltaste und die Leertaste zur Eingabe von Zeichen zu verwenden.",
+    "icon": "i-ph-pfeil-rechts"
   },
   "Character Matching": {
-    "description": "프롬프트와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
-    "icon": "i-ph-intersect-square"
+    "description": "Training zum Anklicken der passenden Zeichenfolge aus einer Reihe von Zeichenfolgen, die der Aufforderung visuell ähnlich sind.",
+    "icon": "i-ph-quer-quadrat"
   },
   "Character Guesstimate": {
-    "description": "서서히 나타나는 문자를 가능한 한 빨리 식별하는 훈련.",
-    "icon": "i-ph-question"
+    "description": "Training, um langsam erscheinende Zeichen so schnell wie möglich zu erkennen.",
+    "icon": "i-ph-Frage"
   },
   "result": {
     "date": "Datum",
