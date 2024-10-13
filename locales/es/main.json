@@ -72,7 +72,11 @@
   },
   "train": {
     "title": "Configurar Entrenamiento",
-    "start": "Iniciar Entrenamiento"
+    "start": "Iniciar Entrenamiento",
+    "docs": "Ayuda",
+    "link": "Copiar enlace",
+    "visual": "Tiempo",
+    "audition": "Audición"
   },
   "training": {
     "ready": "¡Prepárate!",
@@ -117,6 +121,26 @@
     "Character Sequencing": "Secuenciación de Caracteres",
     "Character Matching": "Emparejamiento de Caracteres",
     "Character Guesstimate": "Estimación de Caracteres"
+  },
+  "Rapid Visual Perception": {
+    "description": "Formación para identificar y escribir caracteres que aparecen en la pantalla en 250 ms o menos.",
+    "icon": "i-ph-speedometer"
+  },
+  "Sequential Visual Memory": {
+    "description": "Entrenamiento para identificar y recordar una serie de caracteres en secuencia, y volver a escribirlos al cabo de un tiempo.",
+    "icon": "i-ph-dots-three-outline"
+  },
+  "Character Sequencing": {
+    "description": "Practica a encontrar las indicaciones en orden y a utilizar la tecla de flecha derecha y la barra espaciadora para introducir caracteres.",
+    "icon": "i-ph-flecha-derecha"
+  },
+  "Character Matching": {
+    "description": "Entrenamiento para hacer clic en la cadena coincidente de un conjunto de cadenas que son visualmente similares a la indicación.",
+    "icon": "i-ph-intersecto-cuadrado"
+  },
+  "Character Guesstimate": {
+    "description": "Entrenamiento para identificar lo antes posible los caracteres que aparecen lentamente.",
+    "icon": "i-ph-question"
   },
   "result": {
     "date": "Fecha",

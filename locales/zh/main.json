@@ -72,7 +72,11 @@
   },
   "train": {
     "title": "配置训练",
-    "start": "开始训练"
+    "start": "开始训练",
+    "docs": "帮助",
+    "link": "复制链接",
+    "visual": "时间",
+    "audition": "听力"
   },
   "training": {
     "ready": "准备好了！",
@@ -117,6 +121,26 @@
     "Character Sequencing": "字符排序",
     "Character Matching": "字符匹配",
     "Character Guesstimate": "字符猜测"
+  },
+  "Rapid Visual Perception": {
+    "description": "训练在 250 毫秒或更短时间内识别并键入屏幕上出现的字符。",
+    "icon": "i-ph-速度计"
+  },
+  "Sequential Visual Memory": {
+    "description": "训练按顺序识别和记忆一系列字符，并在一段时间后重新输入。",
+    "icon": "i-ph-dots-three-outline"
+  },
+  "Character Sequencing": {
+    "description": "练习按顺序找到提示，并使用右箭头键和空格键输入字符。",
+    "icon": "i-ph-arrow-right"
+  },
+  "Character Matching": {
+    "description": "训练从一组视觉上与提示相似的字符串中点击匹配的字符串。",
+    "icon": "i-ph-相交-平方"
+  },
+  "Character Guesstimate": {
+    "description": "训练尽快识别缓慢出现的字符。",
+    "icon": "i-ph-question"
   },
   "result": {
     "date": "日期",

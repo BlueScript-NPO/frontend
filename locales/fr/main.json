@@ -72,7 +72,11 @@
   },
   "train": {
     "title": "Configurer l'entraînement",
-    "start": "Commencer l'entraînement"
+    "start": "Commencer l'entraînement",
+    "docs": "Aide",
+    "link": "Copier le lien",
+    "visual": "L'heure",
+    "audition": "L'audition"
   },
   "training": {
     "ready": "Prêt ?",
@@ -117,6 +121,26 @@
     "Character Sequencing": "Séquençage de caractères",
     "Character Matching": "Correspondance de caractères",
     "Character Guesstimate": "Estimation de caractères"
+  },
+  "Rapid Visual Perception": {
+    "description": "Formation à l'identification et à la saisie de caractères apparaissant à l'écran en 250 ms ou moins.",
+    "icon": "i-ph-speedometer"
+  },
+  "Sequential Visual Memory": {
+    "description": "Entraînement à identifier et à mémoriser une série de caractères dans l'ordre, puis à les retaper après un certain temps.",
+    "icon": "i-ph-dots-three-outline"
+  },
+  "Character Sequencing": {
+    "description": "Entraînez-vous à trouver les invites dans l'ordre et à utiliser la flèche droite et la barre d'espacement pour saisir des caractères.",
+    "icon": "i-ph-flèche-droite"
+  },
+  "Character Matching": {
+    "description": "L'entraînement consiste à cliquer sur la chaîne de caractères correspondante à partir d'un ensemble de chaînes de caractères visuellement similaires à l'invite.",
+    "icon": "i-ph-intersect-square"
+  },
+  "Character Guesstimate": {
+    "description": "S'entraîner à identifier le plus rapidement possible les caractères qui apparaissent lentement.",
+    "icon": "i-ph-question"
   },
   "result": {
     "date": "Date",

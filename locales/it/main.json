@@ -72,7 +72,11 @@
   },
   "train": {
     "title": "Impostazioni di formazione",
-    "start": "Iniziare la formazione"
+    "start": "Iniziare la formazione",
+    "docs": "Aiuto",
+    "link": "Copiare il link",
+    "visual": "Tempo",
+    "audition": "Audizione"
   },
   "training": {
     "ready": "Preparatevi!",
@@ -117,6 +121,26 @@
     "Character Sequencing": "Sequenza di personaggi",
     "Character Matching": "Corrispondenza dei caratteri",
     "Character Guesstimate": "Stima del carattere"
+  },
+  "Rapid Visual Perception": {
+    "description": "Formazione per identificare e digitare i caratteri che appaiono sullo schermo in 250 ms o meno.",
+    "icon": "i-ph-speedometer"
+  },
+  "Sequential Visual Memory": {
+    "description": "Addestramento a identificare e ricordare una serie di caratteri in sequenza, per poi riscriverli dopo un certo periodo di tempo.",
+    "icon": "i-ph-dots-three-outline"
+  },
+  "Character Sequencing": {
+    "description": "Esercitarsi a trovare i prompt in ordine e a usare il tasto freccia destra e la barra spaziatrice per inserire i caratteri.",
+    "icon": "i-ph-freccia-destra"
+  },
+  "Character Matching": {
+    "description": "Formazione per fare clic sulla stringa corrispondente da un insieme di stringhe visivamente simili al prompt.",
+    "icon": "i-ph-intersetto-quadrato"
+  },
+  "Character Guesstimate": {
+    "description": "Allenarsi a identificare il più rapidamente possibile i caratteri che compaiono lentamente.",
+    "icon": "domanda i-ph"
   },
   "result": {
     "date": "Data",

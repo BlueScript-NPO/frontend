@@ -72,7 +72,11 @@
   },
   "train": {
     "title": "Einstellungen für die Ausbildung",
-    "start": "Beginn der Ausbildung"
+    "start": "Beginn der Ausbildung",
+    "docs": "Hilfe",
+    "link": "Link kopieren",
+    "visual": "Zeit",
+    "audition": "Anhörung"
   },
   "training": {
     "ready": "Macht euch bereit!",
@@ -117,6 +121,26 @@
     "Character Sequencing": "Sequenzierung von Zeichen",
     "Character Matching": "Zeichenabgleich",
     "Character Guesstimate": "Einschätzung des Charakters"
+  },
+  "Rapid Visual Perception": {
+    "description": "Training zur Erkennung und Eingabe von Zeichen, die auf dem Bildschirm in 250 ms oder weniger erscheinen.",
+    "icon": "i-ph-Geschwindigkeitsmesser"
+  },
+  "Sequential Visual Memory": {
+    "description": "Training, um eine Reihe von Zeichen nacheinander zu erkennen und sich zu merken, um sie dann nach einer gewissen Zeit erneut einzugeben.",
+    "icon": "i-ph-punkte-drei-umrisse"
+  },
+  "Character Sequencing": {
+    "description": "Üben Sie, die Eingabeaufforderungen in der richtigen Reihenfolge zu finden und die rechte Pfeiltaste und die Leertaste zur Eingabe von Zeichen zu verwenden.",
+    "icon": "i-ph-pfeil-rechts"
+  },
+  "Character Matching": {
+    "description": "Training zum Anklicken der passenden Zeichenfolge aus einer Reihe von Zeichenfolgen, die der Aufforderung visuell ähnlich sind.",
+    "icon": "i-ph-quer-quadrat"
+  },
+  "Character Guesstimate": {
+    "description": "Training, um langsam erscheinende Zeichen so schnell wie möglich zu erkennen.",
+    "icon": "i-ph-Frage"
   },
   "result": {
     "date": "Datum",
