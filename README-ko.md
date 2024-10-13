@@ -27,7 +27,7 @@ npm run dev
 
 아래는 BlueScript 웹앱에서 제공하는 훈련 모듈입니다:
 
-1. **고속 시각 인지 (Quick Visual Perception) 모듈**
+1. **빠른 시각 인지 (Quick Visual Perception) 모듈**
 
    - 250ms 이하의 시간 안에 화면에 나타나는 문자를 식별하고 입력하는 훈련입니다.
    - 지각 속도, 시각 기억, 시각화, 시간적 시각 처리 능력을 향상시킵니다.
