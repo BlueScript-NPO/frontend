@@ -73,10 +73,10 @@
   "train": {
     "title": "Impostazioni di formazione",
     "start": "Iniziare la formazione",
-    "docs": "도움말",
-    "link": "링크 복사",
-    "visual": "시각",
-    "audition": "청각"
+    "docs": "Aiuto",
+    "link": "Copiare il link",
+    "visual": "Tempo",
+    "audition": "Audizione"
   },
   "training": {
     "ready": "Preparatevi!",
@@ -123,24 +123,24 @@
     "Character Guesstimate": "Stima del carattere"
   },
   "Rapid Visual Perception": {
-    "description": "250ms 이하의 시간 안에 화면에 나타나는 문자를 식별하고 입력하는 훈련.",
+    "description": "Formazione per identificare e digitare i caratteri che appaiono sullo schermo in 250 ms o meno.",
     "icon": "i-ph-speedometer"
   },
   "Sequential Visual Memory": {
-    "description": "일련의 문자를 순차적으로 식별하고 기억한 후, 일정 시간이 지난 후에 다시 입력하는 훈련.",
+    "description": "Addestramento a identificare e ricordare una serie di caratteri in sequenza, per poi riscriverli dopo un certo periodo di tempo.",
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "프롬프트를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
-    "icon": "i-ph-arrow-right"
+    "description": "Esercitarsi a trovare i prompt in ordine e a usare il tasto freccia destra e la barra spaziatrice per inserire i caratteri.",
+    "icon": "i-ph-freccia-destra"
   },
   "Character Matching": {
-    "description": "프롬프트와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
-    "icon": "i-ph-intersect-square"
+    "description": "Formazione per fare clic sulla stringa corrispondente da un insieme di stringhe visivamente simili al prompt.",
+    "icon": "i-ph-intersetto-quadrato"
   },
   "Character Guesstimate": {
-    "description": "서서히 나타나는 문자를 가능한 한 빨리 식별하는 훈련.",
-    "icon": "i-ph-question"
+    "description": "Allenarsi a identificare il più rapidamente possibile i caratteri che compaiono lentamente.",
+    "icon": "domanda i-ph"
   },
   "result": {
     "date": "Data",
