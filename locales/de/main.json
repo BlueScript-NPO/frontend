@@ -78,6 +78,20 @@
     "visual": "Zeit",
     "audition": "Anhörung"
   },
+  "notification": {
+    "copied": {
+      "title": "링크가 복사되었습니다.",
+      "description": "링크를 주소창에 붙여넣어 설정한 훈련을 바로 시작할 수 있습니다."
+    },
+    "loadingAsset": {
+      "title": "데이터 내려받는 중... ({loaded}/{total})",
+      "description": "훈련에 필요한 데이터를 내려받는 중입니다. 잠시만 기다려주세요.",
+      "error": {
+        "title": "데이터를 내려받는 중 문제가 발생했습니다.",
+        "description": "페이지를 새로고침하고, 다시 시도해주세요. 문제가 지속되면 브라우저 캐시를 비워주세요. 에러 메세지: {error}"
+      }
+    }
+  },
   "training": {
     "ready": "Macht euch bereit!",
     "trial": "Versuchen Sie",
