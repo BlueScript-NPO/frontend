@@ -3,7 +3,7 @@
     "title": "BlueScript",
     "cta": "Start Training",
     "github": "Get the source code",
-    "docs": "Docs",
+    "docs": "How to use",
     "description": "BlueScript is a non-profit organization that develops free and open-source tools to help dyslexic individuals.",
     "features": {
       "title": "Why Choose BlueScript?",
@@ -73,10 +73,24 @@
   "train": {
     "title": "Configure Training",
     "start": "Start Training",
-    "docs": "Docs",
+    "docs": "Help",
     "link": "Copy Link",
     "visual": "Visual",
     "audition": "Audition"
+  },
+  "notification": {
+    "copied": {
+      "title": "The link has been copied.",
+      "description": "Paste the link into the address bar to start the training you've set up right away."
+    },
+    "loadingAsset": {
+      "title": "Downloading assets… ({loaded}/{total})",
+      "description": "We're downloading data for training. Please be patient.",
+      "error": {
+        "title": "There was a problem downloading assets.",
+        "description": "Please refresh the page and try again. If the problem persists, please clear your browser cache. Error message: {error}"
+      }
+    }
   },
   "training": {
     "ready": "Get Ready!",

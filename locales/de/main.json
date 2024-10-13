@@ -78,6 +78,20 @@
     "visual": "Zeit",
     "audition": "Anhörung"
   },
+  "notification": {
+    "copied": {
+      "title": "Der Link ist kopiert worden.",
+      "description": "Fügen Sie den Link in die Adressleiste ein, um das Training, das Sie eingerichtet haben, sofort zu starten."
+    },
+    "loadingAsset": {
+      "title": "{loaded}{total}Herunterladen von Daten... ( / )",
+      "description": "Wir laden gerade Daten für die Schulung herunter. Bitte haben Sie Geduld.",
+      "error": {
+        "title": "Beim Herunterladen der Daten ist ein Problem aufgetreten.",
+        "description": "Bitte aktualisieren Sie die Seite und versuchen Sie es erneut. Sollte das Problem weiterhin bestehen, leeren Sie bitte Ihren Browser-Cache. {error}Fehlermeldung:"
+      }
+    }
+  },
   "training": {
     "ready": "Macht euch bereit!",
     "trial": "Versuchen Sie",

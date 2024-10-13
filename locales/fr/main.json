@@ -78,6 +78,20 @@
     "visual": "L'heure",
     "audition": "L'audition"
   },
+  "notification": {
+    "copied": {
+      "title": "Le lien a été copié.",
+      "description": "Collez le lien dans la barre d'adresse pour commencer immédiatement la formation que vous avez mise en place."
+    },
+    "loadingAsset": {
+      "title": "{loaded}{total}Téléchargement de données... ( / )",
+      "description": "Nous sommes en train de télécharger des données pour la formation. Veuillez patienter.",
+      "error": {
+        "title": "Il y a eu un problème de téléchargement des données.",
+        "description": "Veuillez actualiser la page et réessayer. Si le problème persiste, veuillez vider le cache de votre navigateur. {error}Message d'erreur :"
+      }
+    }
+  },
   "training": {
     "ready": "Prêt ?",
     "trial": "Essai",

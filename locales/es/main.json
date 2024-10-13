@@ -78,6 +78,20 @@
     "visual": "Tiempo",
     "audition": "Audición"
   },
+  "notification": {
+    "copied": {
+      "title": "El enlace ha sido copiado.",
+      "description": "Pegue el enlace en la barra de direcciones para iniciar inmediatamente la formación que ha configurado."
+    },
+    "loadingAsset": {
+      "title": "{loaded}{total}Descarga de datos... ( / )",
+      "description": "Estamos descargando datos para la formación. Por favor, tenga paciencia.",
+      "error": {
+        "title": "Ha habido un problema al descargar los datos.",
+        "description": "Actualice la página e inténtelo de nuevo. Si el problema persiste, borre la memoria caché de su navegador. {error}Mensaje de error:"
+      }
+    }
+  },
   "training": {
     "ready": "¡Prepárate!",
     "trial": "Ensayo",

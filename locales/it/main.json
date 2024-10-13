@@ -78,6 +78,20 @@
     "visual": "Tempo",
     "audition": "Audizione"
   },
+  "notification": {
+    "copied": {
+      "title": "Il link è stato copiato.",
+      "description": "Incollate il link nella barra degli indirizzi per iniziare subito la formazione che avete impostato."
+    },
+    "loadingAsset": {
+      "title": "{loaded}{total}Scaricare i dati... ( / )",
+      "description": "Stiamo scaricando i dati per la formazione. Si prega di essere pazienti.",
+      "error": {
+        "title": "Si è verificato un problema nel download dei dati.",
+        "description": "Aggiornare la pagina e riprovare. Se il problema persiste, cancellare la cache del browser. {error}Messaggio di errore:"
+      }
+    }
+  },
   "training": {
     "ready": "Preparatevi!",
     "trial": "Prova",
