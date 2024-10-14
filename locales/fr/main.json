@@ -114,8 +114,8 @@
     "stimuliLength": "Longueur du stimulus",
     "presentationTime": "Temps de présentation (s)",
     "delayTime": "Temps de retard (s)",
-    "promptType": "Type d'invite",
-    "promptLength": "Longueur de l'invite",
+    "promptType": "보기 종류",
+    "promptLength": "보기 길이",
     "targetLength": "Longueur de la cible",
     "targetCount": "Nombre de cibles",
     "chunkSize": "Taille du segment",
@@ -132,7 +132,7 @@
   "procedure": {
     "Rapid Visual Perception": "Perception visuelle rapide",
     "Sequential Visual Memory": "Mémoire visuelle séquentielle",
-    "Character Sequencing": "Séquençage de caractères",
+    "Character Sequencing": "문자 순차 처리",
     "Character Matching": "Correspondance de caractères",
     "Character Guesstimate": "Estimation de caractères"
   },
@@ -145,11 +145,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "Entraînez-vous à trouver les invites dans l'ordre et à utiliser la flèche droite et la barre d'espacement pour saisir des caractères.",
+    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
     "icon": "i-ph-flèche-droite"
   },
   "Character Matching": {
-    "description": "L'entraînement consiste à cliquer sur la chaîne de caractères correspondante à partir d'un ensemble de chaînes de caractères visuellement similaires à l'invite.",
+    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
     "icon": "i-ph-intersect-square"
   },
   "Character Guesstimate": {
