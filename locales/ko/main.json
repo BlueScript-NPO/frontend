@@ -115,8 +115,8 @@
     "stimuliLength": "문자 길이",
     "presentationTime": "표시 시간 (초)",
     "delayTime": "지연 시간 (초)",
-    "promptType": "프롬프트 종류",
-    "promptLength": "프롬프트 길이",
+    "promptType": "보기 종류",
+    "promptLength": "보기 길이",
     "targetLength": "정답 길이",
     "targetCount": "정답 개수",
     "chunkSize": "블록 크기",
@@ -133,7 +133,7 @@
   "procedure": {
     "Rapid Visual Perception": "빠른 시각 인지",
     "Sequential Visual Memory": "순차적 시각 기억",
-    "Character Sequencing": "문자 시퀀싱",
+    "Character Sequencing": "문자 순차 처리",
     "Character Matching": "문자 매칭",
     "Character Guesstimate": "문자 추정"
   },
@@ -148,12 +148,12 @@
   },
 
   "Character Sequencing": {
-    "description": "프롬프트를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
     "icon": "i-ph-arrow-right"
   },
 
   "Character Matching": {
-    "description": "프롬프트와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
     "icon": "i-ph-intersect-square"
   },
 
