@@ -3,7 +3,7 @@
     "title": "BlueScript",
     "cta": "Commencer l'entraînement",
     "github": "Obtenez le code source",
-    "docs": "Comment l'utiliser",
+    "docs": "도움말",
     "description": "BlueScript est une organisation à but non lucratif qui développe des outils gratuits et open-source pour aider les personnes dyslexiques.",
     "features": {
       "title": "Pourquoi choisir BlueScript ?",
@@ -41,7 +41,7 @@
     "home": "Accueil",
     "train": "Entraînement",
     "result": "Résultat",
-    "docs": "Documentation"
+    "docs": "도움말"
   },
   "docs": {
     "toc": "Table des matières"
@@ -51,7 +51,7 @@
     "resources": {
       "title": "Ressources",
       "items": {
-        "docs": "Documentation",
+        "docs": "도움말",
         "license": "Licences"
       }
     },
