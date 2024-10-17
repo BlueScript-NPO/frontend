@@ -32,8 +32,8 @@ export default <Partial<Config>>{
       },
     },
     fontFamily: {
-      sans: ["Noto Sans KR", "DM Sans", ...defaultTheme.fontFamily.sans],
-      serif: ["Nanum Myeongjo", ...defaultTheme.fontFamily.serif],
+      sans: ["Noto Sans KR", ...defaultTheme.fontFamily.sans],
+      // serif: ["Nanum Myeongjo", ...defaultTheme.fontFamily.serif],
     },
   },
 };

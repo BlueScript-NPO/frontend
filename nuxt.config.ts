@@ -36,7 +36,7 @@ export default defineNuxtConfig({
   i18n: {
     baseUrl: "https://bluescript.app",
     langDir: "locales",
-    lazy: true,
+    lazy: false,
     strategy: "no_prefix",
     defaultLocale: "en",
 
