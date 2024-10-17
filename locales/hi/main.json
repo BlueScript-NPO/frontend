@@ -3,7 +3,7 @@
     "title": "BlueScript",
     "cta": "प्रशिक्षण प्रारंभ करें",
     "github": "सोर्स कोड प्राप्त करें",
-    "docs": "사용법",
+    "docs": "도움말",
     "description": "BlueScript एक गैर-लाभकारी संगठन है जो डिस्लेक्सिया वाले व्यक्तियों की मदद के लिए मुफ्त और ओपन-सोर्स उपकरण विकसित करता है।",
     "features": {
       "title": "BlueScript क्यों चुनें?",
@@ -41,7 +41,7 @@
     "home": "होम",
     "train": "प्रशिक्षण",
     "result": "परिणाम",
-    "docs": "दस्तावेज़"
+    "docs": "도움말"
   },
   "docs": {
     "toc": "목차"
@@ -51,7 +51,7 @@
     "resources": {
       "title": "자료",
       "items": {
-        "docs": "문서",
+        "docs": "도움말",
         "license": "라이선스"
       }
     },
@@ -114,8 +114,8 @@
     "stimuliLength": "उत्तेजना की लंबाई",
     "presentationTime": "प्रस्तुति समय (सेकंड)",
     "delayTime": "विलंब समय (सेकंड)",
-    "promptType": "प्रॉम्प्ट प्रकार",
-    "promptLength": "प्रॉम्प्ट की लंबाई",
+    "promptType": "보기 종류",
+    "promptLength": "보기 길이",
     "targetLength": "लक्ष्य की लंबाई",
     "targetCount": "लक्ष्य की संख्या",
     "chunkSize": "खंड आकार",
@@ -132,7 +132,7 @@
   "procedure": {
     "Rapid Visual Perception": "तेज़ दृश्य धारणा",
     "Sequential Visual Memory": "क्रमबद्ध दृश्य स्मृति",
-    "Character Sequencing": "वर्ण क्रमबद्धता",
+    "Character Sequencing": "문자 순차 처리",
     "Character Matching": "वर्ण मिलान",
     "Character Guesstimate": "वर्ण अनुमान"
   },
@@ -145,11 +145,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "프롬프트를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
     "icon": "i-ph-arrow-right"
   },
   "Character Matching": {
-    "description": "프롬프트와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
     "icon": "i-ph-intersect-square"
   },
   "Character Guesstimate": {
