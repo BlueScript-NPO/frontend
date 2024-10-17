@@ -3,7 +3,7 @@
     "title": "BlueScript",
     "cta": "Iniziare la formazione",
     "github": "Ottenere il codice sorgente",
-    "docs": "도움말",
+    "docs": "Come si usa",
     "description": "BlueScript è uno strumento gratuito e open source per aiutare le persone con dislessia.",
     "features": {
       "title": "Perché scegliere BlueScript?",
@@ -41,7 +41,7 @@
     "home": "首页",
     "train": "Formazione",
     "result": "Risultato",
-    "docs": "도움말"
+    "docs": "Documentazione"
   },
   "docs": {
     "toc": "Indice dei contenuti"
@@ -51,7 +51,7 @@
     "resources": {
       "title": "Risorse",
       "items": {
-        "docs": "도움말",
+        "docs": "Documentazione",
         "license": "Licenze"
       }
     },
@@ -114,8 +114,8 @@
     "stimuliLength": "Lunghezza dei caratteri",
     "presentationTime": "Tempo di visualizzazione (secondi)",
     "delayTime": "Latenza (secondi)",
-    "promptType": "보기 종류",
-    "promptLength": "보기 길이",
+    "promptType": "Tipo di prompt",
+    "promptLength": "Lunghezza del prompt",
     "targetLength": "Lunghezza della risposta",
     "targetCount": "Numero di risposte corrette",
     "chunkSize": "Dimensione del blocco",
@@ -132,7 +132,7 @@
   "procedure": {
     "Rapid Visual Perception": "Percezione visiva veloce",
     "Sequential Visual Memory": "Memoria visiva sequenziale",
-    "Character Sequencing": "문자 순차 처리",
+    "Character Sequencing": "Sequenza di personaggi",
     "Character Matching": "Corrispondenza dei caratteri",
     "Character Guesstimate": "Stima del carattere"
   },
@@ -145,11 +145,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "Esercitarsi a trovare i prompt in ordine e a usare il tasto freccia destra e la barra spaziatrice per inserire i caratteri.",
     "icon": "i-ph-freccia-destra"
   },
   "Character Matching": {
-    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "Formazione per fare clic sulla stringa corrispondente da un insieme di stringhe visivamente simili al prompt.",
     "icon": "i-ph-intersetto-quadrato"
   },
   "Character Guesstimate": {

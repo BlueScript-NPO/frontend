@@ -3,7 +3,7 @@
     "title": "BlueScript",
     "cta": "ابدأ التدريب",
     "github": "احصل على الكود المصدري",
-    "docs": "도움말",
+    "docs": "كيفية الاستخدام",
     "description": "BlueScript هي منظمة غير ربحية تطور أدوات مجانية ومفتوحة المصدر لمساعدة الأفراد الذين يعانون من عسر القراءة.",
     "features": {
       "title": "لماذا تختار BlueScript؟",
@@ -41,7 +41,7 @@
     "home": "الرئيسية",
     "train": "التدريب",
     "result": "النتيجة",
-    "docs": "도움말"
+    "docs": "التوثيق"
   },
   "docs": {
     "toc": "جدول المحتويات"
@@ -51,7 +51,7 @@
     "resources": {
       "title": "الموارد",
       "items": {
-        "docs": "도움말",
+        "docs": "التوثيق",
         "license": "الترخيص"
       }
     },
@@ -114,8 +114,8 @@
     "stimuliLength": "طول التحفيز",
     "presentationTime": "وقت العرض (ثواني)",
     "delayTime": "وقت التأخير (ثواني)",
-    "promptType": "보기 종류",
-    "promptLength": "보기 길이",
+    "promptType": "نوع الموجه",
+    "promptLength": "طول الموجه",
     "targetLength": "طول الهدف",
     "targetCount": "عدد الأهداف",
     "chunkSize": "حجم القطعة",
@@ -132,7 +132,7 @@
   "procedure": {
     "Rapid Visual Perception": "الإدراك البصري السريع",
     "Sequential Visual Memory": "الذاكرة البصرية التسلسلية",
-    "Character Sequencing": "문자 순차 처리",
+    "Character Sequencing": "تسلسل الأحرف",
     "Character Matching": "مطابقة الأحرف",
     "Character Guesstimate": "تخمين الأحرف"
   },
@@ -145,11 +145,11 @@
     "icon": "آي-ف-ف-نقاط-ثلاثة-خطوط"
   },
   "Character Sequencing": {
-    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "تدرب على إيجاد المطالبات بالترتيب، واستخدام مفتاح السهم الأيمن ومفتاح المسافة لإدخال الأحرف.",
     "icon": "ط-ف-سهم-يمين"
   },
   "Character Matching": {
-    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "التدريب على النقر على السلسلة المطابقة من مجموعة من السلاسل المتشابهة بصريًا مع المطالبة.",
     "icon": "ط-ف-تقاطع-مربع-مربع"
   },
   "Character Guesstimate": {

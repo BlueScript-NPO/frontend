@@ -3,7 +3,7 @@
     "title": "BlueScript",
     "cta": "Начать тренировку",
     "github": "Получить исходный код",
-    "docs": "도움말",
+    "docs": "Как использовать",
     "description": "BlueScript — это некоммерческая организация, разрабатывающая бесплатные и открытые инструменты для помощи людям с дислексией.",
     "features": {
       "title": "Почему выбрать BlueScript?",
@@ -41,7 +41,7 @@
     "home": "Главная",
     "train": "Тренировка",
     "result": "Результат",
-    "docs": "도움말"
+    "docs": "Документация"
   },
   "docs": {
     "toc": "Оглавление"
@@ -51,7 +51,7 @@
     "resources": {
       "title": "Ресурсы",
       "items": {
-        "docs": "도움말",
+        "docs": "Документация",
         "license": "Лицензирование"
       }
     },
@@ -114,8 +114,8 @@
     "stimuliLength": "Длина стимула",
     "presentationTime": "Время показа (с)",
     "delayTime": "Время задержки (с)",
-    "promptType": "보기 종류",
-    "promptLength": "보기 길이",
+    "promptType": "Тип подсказки",
+    "promptLength": "Длина подсказки",
     "targetLength": "Длина цели",
     "targetCount": "Количество целей",
     "chunkSize": "Размер блока",
@@ -132,7 +132,7 @@
   "procedure": {
     "Rapid Visual Perception": "Быстрое визуальное восприятие",
     "Sequential Visual Memory": "Последовательная зрительная память",
-    "Character Sequencing": "문자 순차 처리",
+    "Character Sequencing": "Последовательность символов",
     "Character Matching": "Соответствие символов",
     "Character Guesstimate": "Предположение символов"
   },
@@ -145,11 +145,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "Потренируйтесь находить подсказки по порядку и использовать клавишу со стрелкой вправо и пробел для ввода символов.",
     "icon": "i-ph-arrow-right"
   },
   "Character Matching": {
-    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "Тренируйтесь нажимать на соответствующую строку из набора строк, визуально похожих на подсказку.",
     "icon": "i-ph-интерсект-квадрат"
   },
   "Character Guesstimate": {

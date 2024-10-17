@@ -3,7 +3,7 @@
     "title": "ブルースクリプト",
     "cta": "トレーニング開始",
     "github": "ソースコードをダウンロード",
-    "docs": "도움말",
+    "docs": "使用方法",
     "description": "BlueScript とは、難読症（ディスレクシア）で悩んでいる方々を支援するための無料オープンソースツールを開発しておる非営利団体です。",
     "features": {
       "title": "BlueScriptを選んだ理由",
@@ -41,7 +41,7 @@
     "home": "ホーム",
     "train": "トレーニング",
     "result": "結果",
-    "docs": "도움말"
+    "docs": "ドキュメント"
   },
   "docs": {
     "toc": "目次"
@@ -51,7 +51,7 @@
     "resources": {
       "title": "資料",
       "items": {
-        "docs": "도움말",
+        "docs": "ドキュメント",
         "license": "ライセンス"
       }
     },
@@ -114,8 +114,8 @@
     "stimuliLength": "文字の長さ",
     "presentationTime": "提示時間（秒）",
     "delayTime": "ディレイ時間（秒）",
-    "promptType": "보기 종류",
-    "promptLength": "보기 길이",
+    "promptType": "プロンプトタイプ",
+    "promptLength": "プロンプトの長さ",
     "targetLength": "正解の長さ",
     "targetCount": "ターゲット数",
     "chunkSize": "ブロックのサイズ",
@@ -132,7 +132,7 @@
   "procedure": {
     "Rapid Visual Perception": "即時視覚認知",
     "Sequential Visual Memory": "順次視覚記憶",
-    "Character Sequencing": "문자 순차 처리",
+    "Character Sequencing": "文字シーケンス",
     "Character Matching": "文字マッチング",
     "Character Guesstimate": "文字推測"
   },
@@ -145,11 +145,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "プロンプトを順番に探し、右矢印キーとスペースバーを使って文字を入力する訓練。",
     "icon": "i-ph-arrow-right"
   },
   "Character Matching": {
-    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "プロンプトと視覚的に類似した文字列の中から一致する文字列をクリックする訓練。",
     "icon": "i-ph-intersect-square"
   },
   "Character Guesstimate": {

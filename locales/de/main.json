@@ -3,7 +3,7 @@
     "title": "BlueScript",
     "cta": "Beginn der Ausbildung",
     "github": "Abrufen des Quellcodes",
-    "docs": "도움말",
+    "docs": "Wie zu verwenden",
     "description": "BlueScript ist ein kostenloses und quelloffenes Tool zur Unterstützung von Menschen mit Legasthenie.",
     "features": {
       "title": "Warum BlueScript wählen?",
@@ -41,7 +41,7 @@
     "home": "首页",
     "train": "Ausbildung",
     "result": "Ergebnis",
-    "docs": "도움말"
+    "docs": "Dokumentation"
   },
   "docs": {
     "toc": "Inhaltsübersicht"
@@ -51,7 +51,7 @@
     "resources": {
       "title": "Ressourcen",
       "items": {
-        "docs": "도움말",
+        "docs": "Dokumentation",
         "license": "Lizenzvergabe"
       }
     },
@@ -114,8 +114,8 @@
     "stimuliLength": "Zeichenlänge",
     "presentationTime": "Anzeigezeit (Sekunden)",
     "delayTime": "Latenzzeit (Sekunden)",
-    "promptType": "보기 종류",
-    "promptLength": "보기 길이",
+    "promptType": "Typ der Aufforderung",
+    "promptLength": "Länge der Aufforderung",
     "targetLength": "Länge der Antwort",
     "targetCount": "Anzahl der richtigen Antworten",
     "chunkSize": "Blockgröße",
@@ -132,7 +132,7 @@
   "procedure": {
     "Rapid Visual Perception": "Schnelle visuelle Wahrnehmung",
     "Sequential Visual Memory": "Sequentielles visuelles Gedächtnis",
-    "Character Sequencing": "문자 순차 처리",
+    "Character Sequencing": "Sequenzierung von Zeichen",
     "Character Matching": "Zeichenabgleich",
     "Character Guesstimate": "Einschätzung des Charakters"
   },
@@ -145,11 +145,11 @@
     "icon": "i-ph-punkte-drei-umrisse"
   },
   "Character Sequencing": {
-    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "Üben Sie, die Eingabeaufforderungen in der richtigen Reihenfolge zu finden und die rechte Pfeiltaste und die Leertaste zur Eingabe von Zeichen zu verwenden.",
     "icon": "i-ph-pfeil-rechts"
   },
   "Character Matching": {
-    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "Training zum Anklicken der passenden Zeichenfolge aus einer Reihe von Zeichenfolgen, die der Aufforderung visuell ähnlich sind.",
     "icon": "i-ph-quer-quadrat"
   },
   "Character Guesstimate": {
