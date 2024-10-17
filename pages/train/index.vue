@@ -24,7 +24,7 @@
             <UButton
               color="gray"
               variant="ghost"
-              icon="i-heroicons-x-mark-20-solid"
+              icon="i-ph-x"
               class="-my-1"
               @click="isParameterOpen = false"
             />

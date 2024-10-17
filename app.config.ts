@@ -73,11 +73,21 @@ export default defineAppConfig({
       rounded: "rounded-full",
       default: {
         size: "md",
+        loadingIcon: "i-svg-spinners-180-ring-with-bg",
+        trailingIcon: "i-ph-caret-down",
       },
       color: {
         white: {
           outline: "dark:bg-gray-950",
         },
+      },
+    },
+
+    selectMenu: {
+      default: {
+        selectedIcon: "i-ph-check",
+        clearSearchOnClose: false,
+        showCreateOptionWhen: "empty",
       },
     },
 
