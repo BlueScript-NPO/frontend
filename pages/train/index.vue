@@ -127,7 +127,7 @@
                     icon="i-ph-book"
                     @click.stop=""
                     :to="
-                      '/docs/training/' +
+                      '/docs/training/visual/' +
                       procedure.name.toLowerCase().replace(/\s+/g, '-')
                     "
                   >
@@ -169,7 +169,7 @@ const { t } = useI18n();
 const toast = useToast();
 const router = useRouter();
 
-const items = [
+const items = ref([
   {
     label: t("train.visual"),
     key: "visual",
@@ -180,7 +180,22 @@ const items = [
     key: "audition",
     icon: "i-ph-user-sound",
   },
-];
+]);
+
+watchEffect(() => {
+  items.value = [
+    {
+      label: t("train.visual"),
+      key: "visual",
+      icon: "i-ph-eye",
+    },
+    {
+      label: t("train.audition"),
+      key: "audition",
+      icon: "i-ph-user-sound",
+    },
+  ];
+});
 
 const visualProcedures: Procedure[] = [
   new RapidVisualPerceptionProcedure(),

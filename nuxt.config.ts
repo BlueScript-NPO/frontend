@@ -106,6 +106,12 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/docs": { redirect: "/docs/getting-started" },
+    "/docs/training/": {
+      redirect: "/docs/training/visual/rapid-visual-perception",
+    },
+    "/docs/training/visual/": {
+      redirect: "/docs/training/visual/rapid-visual-perception",
+    },
     "/": { prerender: true },
   },
   compatibilityDate: "2024-07-25",
