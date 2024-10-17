@@ -38,10 +38,12 @@ const links = computed(() => [
       </span>
     </template>
     <template #right>
-      <UButtonGroup orientation="horizontal" clsss="my-2">
-        <LangSwitcher />
-        <UColorModeSelect />
-      </UButtonGroup>
+      <ClientOnly>
+        <UButtonGroup orientation="horizontal" clsss="my-2">
+          <LangSwitcher />
+          <UColorModeSelect />
+        </UButtonGroup>
+      </ClientOnly>
     </template>
   </UFooter>
 </template>

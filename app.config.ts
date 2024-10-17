@@ -104,11 +104,11 @@ export default defineAppConfig({
       left: "sm:flex-1",
       right: "sm:flex-1",
       panel: {
-        wrapper: "sm:hidden",
+        wrapper: "lg:hidden",
       },
 
       button: {
-        base: "sm:hidden",
+        base: "lg:hidden",
         icon: {
           open: "i-ph-list",
           close: "i-ph-x",

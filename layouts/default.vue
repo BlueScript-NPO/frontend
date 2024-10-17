@@ -56,13 +56,18 @@ provide("files", files);
     </template>
 
     <template #panel>
-      <UButtonGroup orientation="horizontal" class="w-full">
-        <UColorModeSelect class="w-full" />
-        <LangSwitcher class="w-full" />
-      </UButtonGroup>
-      <UDivider class="my-3" />
-      <UNavigationLinks :links="links" />
-      <UDivider class="my-3" />
+      <span class="sm:hidden">
+        <ClientOnly>
+          <UButtonGroup orientation="horizontal" class="w-full">
+            <UColorModeSelect class="w-full" />
+            <LangSwitcher class="w-full" />
+          </UButtonGroup>
+        </ClientOnly>
+        <UDivider class="my-3" />
+
+        <UNavigationLinks :links="links" />
+        <UDivider class="my-3" />
+      </span>
       <UNavigationAccordion
         v-if="navigation"
         :links="mapContentNavigation(navigation)"
