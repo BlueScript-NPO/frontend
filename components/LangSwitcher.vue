@@ -1,4 +1,4 @@
-<template #right>
+<template>
   <USelectMenu
     :options="langItems"
     v-model="selectedLang"
@@ -28,24 +28,23 @@
 </template>
 
 <script setup lang="ts">
-const { locale, locales, setLocale } = useI18n();
+import { ref, computed, watch } from "vue";
+import { useNuxtApp } from "#imports";
 
-const selectedLang = ref<string>(locale.value);
+const { $getLocale, $switchLocale, $getLocales } = useNuxtApp();
 
-// watch lang change
+const selectedLang = ref<string>($getLocale());
+
+// Watch for language changes and update the locale
 watch(selectedLang, (val) => {
-  setLocale(val);
+  $switchLocale(val);
 });
 
+// Generate language options from available locales
 const langItems = computed(() => {
-  const items = [];
-
-  for (let i in locales.value) {
-    items.push({
-      label: locales.value[i].name,
-      code: locales.value[i].code,
-    });
-  }
-  return items;
+  return $getLocales().map((locale) => ({
+    label: locale.name, // Assuming $getLocales provides `name` for label
+    code: locale.code,
+  }));
 });
 </script>

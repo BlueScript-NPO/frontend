@@ -164,6 +164,7 @@
 import { Parameter, NumParameter, SelectParameter } from "~/types/parameter";
 import type { FormError, FormErrorEvent } from "#ui/types";
 import { preloadAudioFiles, audioFiles } from "~/utils/playSound";
+const { $localeRoute } = useNuxtApp();
 
 import {
   RapidVisualPerceptionProcedure,
@@ -259,8 +260,13 @@ const validateForm = (state: { parameters: Parameter[] }): FormError[] => {
 const getTrainingLink = (procedure: Procedure) => {
   const jsonString = JSON.stringify(procedure.toJson());
   const routeName = procedure.name.toLowerCase().replace(/ /g, "-");
+
+  const basePath = $localeRoute({ name: "train" });
+
+  console.log("Base path:", basePath);
+
   return {
-    path: `/train/${routeName}`, // Use `path` instead of `name`
+    path: `${basePath.fullPath}/${routeName}`,
     query: { data: encodeURIComponent(jsonString) },
   };
 };

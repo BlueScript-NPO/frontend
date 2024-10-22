@@ -8,8 +8,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/image",
     "@nuxt/ui",
-    "@nuxtjs/i18n",
-    "@nuxtjs/seo",
+    "nuxt-i18n-micro",
     "nuxt-og-image",
     "@nuxt/fonts",
   ],
@@ -35,9 +34,8 @@ export default defineNuxtConfig({
   i18n: {
     baseUrl: "https://bluescript.app",
     langDir: "locales",
-    lazy: false,
-    strategy: "no_prefix",
-    defaultLocale: "en",
+    meta: true,
+    defaultLocale: "ko",
 
     detectBrowserLanguage: {
       useCookie: true,
