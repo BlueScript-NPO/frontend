@@ -16,6 +16,8 @@ export default defineAppConfig({
 
     card: {
       background: "bg-white dark:bg-zinc-950",
+      ring: "ring-1 ring-gray-200 dark:ring-gray-800",
+      rounded: "rounded-xl",
     },
 
     button: {
@@ -26,7 +28,6 @@ export default defineAppConfig({
       block: "w-full flex justify-center items-center",
       inline: "inline-flex items-center",
       size: {
-        default: "h-10 px-4 py-2",
         "2xs": "text-xs",
         xs: "text-xs",
         sm: "h-9 rounded-md px-3 text-sm",

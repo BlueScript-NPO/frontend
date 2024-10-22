@@ -6,7 +6,7 @@
   >
   </ULandingHero>
 
-  <div class="sm:px-8 px-2 flex w-screen justify-center">
+  <div class="sm:px-8 px-2 flex w-full justify-center">
     <div class="max-w-4xl w-full aspect-[16/9]">
       <ImagePlaceholder class="h-full" />
     </div>
