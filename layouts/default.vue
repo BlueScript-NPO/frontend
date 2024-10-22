@@ -38,7 +38,7 @@ provide("files", files);
 <template>
   <UHeader>
     <template #logo>
-      <Logo class="h-8 hover:opacity-90" />
+      <Logo class="h-7 hover:opacity-90" />
     </template>
 
     <template #center>
