@@ -1,0 +1,187 @@
+{
+  "landing": {
+    "title": "ブルースクリプト",
+    "cta": "トレーニング開始",
+    "github": "ソースコードをダウンロード",
+    "docs": "使用方法",
+    "description": "BlueScript とは、難読症（ディスレクシア）で悩んでいる方々を支援するための無料オープンソースツールを開発しておる非営利団体です。",
+    "features": {
+      "title": "BlueScriptを選んだ理由",
+      "description": "BlueScript とは、難読症（ディスレクシア）で悩んでいる方々を支援するための無料オープンソースツールを開発している非営利団体です。",
+      "headline": "メイン機能",
+      "items": {
+        "card1": {
+          "title": "ユーザーフレンドリー",
+          "description": "BlueScript（ブルースクリプト）は普通の家庭や教室で個人的に使用しやすくため設計されており、専門的な知識が無くても難読症のみんなが利用できます。"
+        },
+        "card2": {
+          "title": "ずっと無料",
+          "description": "BlueScript（ブルースクリプト）はアクセシビリティをもっとも重視しておるため、難読症のみんなが難読症サポートツールを常に無料でアクセスできることを保証します。"
+        },
+        "card3": {
+          "title": "オープンソース",
+          "description": "BlueScript は、誰でも自由に貢献できます。ソースコードにアクセスし、自由に変更、強化、革新してください。"
+        },
+        "card4": {
+          "title": "プライバシー優先",
+          "description": "BlueScriptはユーザーのプライバシーを最優先にしており、ユーザーのプライバシー権利を守るために個人情報を収集しません。"
+        },
+        "card5": {
+          "title": "完全なアクセシビリティ",
+          "description": "BlueScriptは最新ウェブ技術を活用してどのデバイスでもアクセスできるように設計されており、すべてのユーザーをサポートに含まれます。"
+        },
+        "card6": {
+          "title": "科学的に証明されたトレーニング方法",
+          "description": "BlueScriptのトレーニング法は20年以上の難読症研究経験を持つ専門家たちによって開発され、検証されました。"
+        }
+      }
+    }
+  },
+  "nav": {
+    "home": "ホーム",
+    "train": "トレーニング",
+    "result": "結果",
+    "docs": "ドキュメント"
+  },
+  "docs": {
+    "toc": "目次"
+  },
+  "footer": {
+    "license": "このプロジェクトはGNU GPL v3.0ライセンスの下で提供されます。",
+    "resources": {
+      "title": "資料",
+      "items": {
+        "docs": "ドキュメント",
+        "license": "ライセンス"
+      }
+    },
+    "community": {
+      "title": "コミュニティ",
+      "items": {
+        "github": "GitHub",
+        "suhjae": "創業者書斎"
+      }
+    }
+  },
+  "search": {
+    "placeholder": "検索"
+  },
+  "unit": {
+    "sec": "秒",
+    "min": "分"
+  },
+  "train": {
+    "title": "トレーニング設定",
+    "start": "トレーニングを開始",
+    "docs": "ヘルプ",
+    "link": "リンクコピー",
+    "visual": "時間",
+    "audition": "聴覚"
+  },
+  "notification": {
+    "copied": {
+      "title": "リンクがコピーされました。",
+      "description": "リンクをアドレスバーに貼り付けて、設定したトレーニングをすぐに開始できます。"
+    },
+    "loadingAsset": {
+      "title": "データダウンロード中... ({loaded}/{total})",
+      "description": "トレーニングに必要なデータをダウンロード中です。しばらくお待ちください。",
+      "error": {
+        "title": "データのダウンロード中に問題が発生しました。",
+        "description": "ページを更新して、もう一度お試しください。問題が解決しない場合は、ブラウザのキャッシュをクリアしてください。エラーメッセージ ： {error}"
+      }
+    }
+  },
+  "training": {
+    "ready": "用意！",
+    "trial": "試行回数",
+    "timeSpent": "所要時間 :",
+    "accuracy": "正確度：",
+    "elapsed": "経過時間：",
+    "typeAnswer": "見えた文字を入力してください\n（Enter またはスペースキーを押して送信）",
+    "correct": "正解！\n(Enter キーまたはスペースキーを押して進む)",
+    "incorrect": "不正解！\n(Enter またはスペースキーを押して進む)",
+    "sequencingInstruction": "右方向キーを押してカーソルを移動\n(Enter またはスペースキーを押して選択)",
+    "finish": "完了！",
+    "continue": "続行するにはスペースキーまたはEnterキーを押してください",
+    "findMatch": "一致する文字を見つける",
+    "remaining": "件残り",
+    "guess": "だんだん見える文字と一致する文字のキーを押してください"
+  },
+  "parameter": {
+    "durationMin": "時間（分）",
+    "stimuliType": "文字タイプ",
+    "stimuliLength": "文字の長さ",
+    "presentationTime": "提示時間（秒）",
+    "delayTime": "ディレイ時間（秒）",
+    "promptType": "プロンプトタイプ",
+    "promptLength": "プロンプトの長さ",
+    "targetLength": "正解の長さ",
+    "targetCount": "ターゲット数",
+    "chunkSize": "ブロックのサイズ",
+    "Numbers": "数字",
+    "Alphabet": "アルファベット",
+    "Alphanumeric": "アルファベット＋数字",
+    "Korean": "ハングル",
+    "Sequential": "順次的",
+    "Random": "ランダム",
+    "Small": "小",
+    "Medium": "中",
+    "Large": "大"
+  },
+  "procedure": {
+    "Rapid Visual Perception": "即時視覚認知",
+    "Sequential Visual Memory": "順次視覚記憶",
+    "Character Sequencing": "文字シーケンス",
+    "Character Matching": "文字マッチング",
+    "Character Guesstimate": "文字推測"
+  },
+  "Rapid Visual Perception": {
+    "description": "250ms以下の時間内に画面に表示される文字を識別して入力するトレーニング。",
+    "icon": "i-phスピードメーター"
+  },
+  "Sequential Visual Memory": {
+    "description": "一連の文字を順番に識別して記憶した後、一定時間後に再入力する訓練。",
+    "icon": "i-ph-dots-three-outline"
+  },
+  "Character Sequencing": {
+    "description": "プロンプトを順番に探し、右矢印キーとスペースバーを使って文字を入力する訓練。",
+    "icon": "i-ph-arrow-right"
+  },
+  "Character Matching": {
+    "description": "プロンプトと視覚的に類似した文字列の中から一致する文字列をクリックする訓練。",
+    "icon": "i-ph-intersect-square"
+  },
+  "Character Guesstimate": {
+    "description": "徐々に現れる文字をできるだけ早く識別する訓練。",
+    "icon": "i-ph-question"
+  },
+  "result": {
+    "date": "日付",
+    "trainer": "トレーナー",
+    "trainee": "トレイニー",
+    "trainingParameters": "トレーニングパラメータ設定",
+    "notesPlaceholder": "ここにメモを記述してください...",
+    "title": "トレーニング結果",
+    "noData": "データが読み込まれていません",
+    "noDataDesc": "以前のトレーニング結果を読み込んだり、新しいトレーニングセッションを開始してください。",
+    "download": "結果をダウンロード",
+    "goTrain": "トレーニングを始める",
+    "averageRevealed": "平均表示程度",
+    "averageRevealedDesc": "キャラクターブロックの平均開示率",
+    "accuracy": "正確度",
+    "accuracyDesc": "正解率",
+    "averageAccuracy": "平均正確度",
+    "averageAccuracyDesc": "すべての試行の平均正確度",
+    "trials": "試行",
+    "trialsDesc": "すべての試行記録",
+    "averageTrialTime": "平均試行時間",
+    "averageTrialTimeDesc": "各試行の平均所要時間（秒）",
+    "elapsedTime": "経過時間",
+    "elapsedTimeDesc": "トレーニング所要時間",
+    "trialCount": "試行回数",
+    "trialCountDesc": "実行された試行回数",
+    "correctCount": "正解数",
+    "correctCountDesc": "正解応答回数"
+  }
+}

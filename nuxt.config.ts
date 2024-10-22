@@ -111,5 +111,6 @@ export default defineNuxtConfig({
     },
     "/": { prerender: true },
   },
+
   compatibilityDate: "2024-07-25",
 });
