@@ -97,7 +97,7 @@
             <div
               v-for="procedure in visualProcedures"
               :key="procedure.name"
-              class="relative bg-white dark:bg-zinc-950 shadow-lg rounded-xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-800 hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out"
+              class="relative bg-white dark:bg-zinc-950 shadow rounded-xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-800 hover:shadow-lg transform hover:-translate-y-1 transition duration-300 ease-in-out"
               @click="openParameterModel(procedure)"
               style="cursor: pointer"
             >

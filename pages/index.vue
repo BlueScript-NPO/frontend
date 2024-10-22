@@ -63,13 +63,13 @@ const actionLinks = computed(() => [
     icon: "i-ph-arrow-right",
     trailing: true,
     to: "/train",
-    size: "xl",
+    size: "md",
   },
   {
     label: t("landing.docs"),
     icon: "i-ph-book",
     to: "/docs",
-    size: "xl",
+    size: "md",
   },
 ]);
 
