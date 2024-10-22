@@ -2,7 +2,12 @@
   <Head>
     <Title>{{ t("nav.train") }}</Title>
   </Head>
-  <UModal v-model="isParameterOpen">
+  <UModal
+    v-model="isParameterOpen"
+    :ui="{
+      width: 'w-full sm:max-w-sm',
+    }"
+  >
     <UForm
       :validate="validateForm"
       :state="{ parameters: selectedTrainingParameters }"
@@ -17,10 +22,14 @@
       >
         <template #header>
           <div class="flex items-center justify-between">
-            <h2 class="text-lg font-semibold">
-              {{ $t("train.title") }}:
-              {{ $t("procedure." + selectedProcedure?.name) }}
-            </h2>
+            <div class="flex-col text-xl">
+              <h2 class="text-lg font-semibold">
+                {{ $t("train.title") }}
+              </h2>
+              <h3 class="text-sm font-normal">
+                {{ $t("procedure." + selectedProcedure?.name) }}
+              </h3>
+            </div>
             <UButton
               color="gray"
               variant="ghost"
