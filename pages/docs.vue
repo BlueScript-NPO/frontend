@@ -13,7 +13,6 @@ const links = computed(
     <UPage>
       <template #left>
         <UAside>
-          <template #top> </template>
           <UNavigationTree :links="mapContentNavigation(links)" />
         </UAside>
       </template>
