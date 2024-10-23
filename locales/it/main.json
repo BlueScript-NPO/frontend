@@ -182,6 +182,7 @@
     "trialCount": "Numero di tentativi",
     "trialCountDesc": "Numero di tentativi eseguiti",
     "correctCount": "Numero di risposte corrette",
-    "correctCountDesc": "Numero di risposte corrette"
+    "correctCountDesc": "Numero di risposte corrette",
+    "upload": "결과 불러오기"
   }
 }
