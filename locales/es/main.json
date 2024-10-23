@@ -182,6 +182,7 @@
     "trialCount": "Cantidad de Ensayos",
     "trialCountDesc": "Número de ensayos realizados",
     "correctCount": "Cantidad de Correctas",
-    "correctCountDesc": "Número de respuestas correctas"
+    "correctCountDesc": "Número de respuestas correctas",
+    "upload": "결과 불러오기"
   }
 }
