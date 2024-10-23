@@ -182,6 +182,7 @@
     "trialCount": "परीक्षणों की संख्या",
     "trialCountDesc": "निष्पादित परीक्षणों की संख्या",
     "correctCount": "सही उत्तरों की संख्या",
-    "correctCountDesc": "सही प्रतिक्रियाओं की संख्या"
+    "correctCountDesc": "सही प्रतिक्रियाओं की संख्या",
+    "upload": "결과 불러오기"
   }
 }
