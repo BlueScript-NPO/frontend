@@ -15,7 +15,7 @@ const props = defineProps({
   <div class="text-6xl text-center training-text">
     {{ props.title }}
   </div>
-  <div class="text-xl font-light text-center training-text">
+  <div class="text-xl font-normal text-center training-text">
     {{ props.subtitle }}
   </div>
 </template>

@@ -188,6 +188,7 @@
     "trialCount": "시도 횟수",
     "trialCountDesc": "실행된 시도의 수",
     "correctCount": "정답 수",
-    "correctCountDesc": "정답 응답의 수"
+    "correctCountDesc": "정답 응답의 수",
+    "upload": "결과 불러오기"
   }
 }

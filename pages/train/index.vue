@@ -74,16 +74,16 @@
         </div>
 
         <template #footer>
-          <div class="flex justify-center space-x-4 pb-4">
+          <div class="flex space-x-4 justify-between">
             <UButton
               color="white"
+              variant="solid"
               @click="copyLink"
-              trailing
               :icon="linkCopied ? 'i-ph-check' : 'i-ph-clipboard'"
               >{{ $t("train.link") }}
             </UButton>
             <UButton
-              color="primary"
+              color="black"
               type="submit"
               icon="i-ph-arrow-right"
               trailing
@@ -131,8 +131,8 @@
 
                   <UButton
                     size="xs"
-                    color="white"
-                    variant="outline"
+                    color="black"
+                    variant="link"
                     icon="i-ph-book"
                     @click.stop=""
                     :to="

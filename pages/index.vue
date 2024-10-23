@@ -59,17 +59,19 @@ const { t } = useI18n();
 
 const actionLinks = computed(() => [
   {
+    label: t("landing.docs"),
+    icon: "i-ph-book",
+    to: "/docs",
+    size: "md",
+    color: "white",
+  },
+  {
     label: t("landing.cta"),
     icon: "i-ph-arrow-right",
     trailing: true,
     to: "/train",
     size: "md",
-  },
-  {
-    label: t("landing.docs"),
-    icon: "i-ph-book",
-    to: "/docs",
-    size: "md",
+    color: "black",
   },
 ]);
 

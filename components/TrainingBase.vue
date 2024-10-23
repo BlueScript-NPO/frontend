@@ -11,7 +11,7 @@
     >
       <div
         :style="{ whiteSpace: 'pre-line' }"
-        class="text-center font-light tracking-wide leading-relaxed"
+        class="text-center font-normal tracking-wide leading-relaxed"
       >
         {{ instructionText }}
       </div>

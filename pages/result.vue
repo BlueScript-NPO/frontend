@@ -100,26 +100,13 @@ onMounted(() => {
   <div class="space-y-4 p-4">
     <UCard v-if="trainingData" class="mx-auto mt-8 max-w-md">
       <template #header>
-        <div class="flex justify-between">
-          <div>
-            <h2
-              class="text-xl h-8 flex items-center align-middle font-semibold"
-            >
-              {{ $t("result.title") }}
-              <UBadge color="primary" variant="outline" class="ml-2">
-                {{ $t("procedure." + (trainingData?.procedure.name ?? "")) }}
-              </UBadge>
-            </h2>
-          </div>
-          <div>
-            <UButton
-              icon="i-ph-upload"
-              size="sm"
-              square
-              variant="ghost"
-              @click="loadResultPrompt"
-            />
-          </div>
+        <div>
+          <h2 class="text-xl h-8 flex items-center align-middle font-semibold">
+            {{ $t("result.title") }}
+            <UBadge color="primary" variant="outline" class="ml-2">
+              {{ $t("procedure." + (trainingData?.procedure.name ?? "")) }}
+            </UBadge>
+          </h2>
         </div>
 
         <div class="py-2">
@@ -225,7 +212,7 @@ onMounted(() => {
       </div>
 
       <UAccordion
-        variant="ghost"
+        color="black"
         class="mt-4 pt-1.5 rounded-lg ring-1 ring-gray-200 dark:ring-gray-800"
         :items="[
           {
@@ -265,11 +252,22 @@ onMounted(() => {
       />
 
       <template #footer>
-        <div class="flex justify-center space-x-4">
-          <UButton color="gray" @click="saveResult">
-            {{ $t("result.download") }}
-          </UButton>
-          <UButton color="primary" @click="router.push('/train')">
+        <div class="flex justify-between flex-wrap">
+          <div class="space-x-2">
+            <UButton
+              icon="i-ph-upload"
+              size="sm"
+              color="white"
+              square
+              @click="loadResultPrompt"
+            >
+            </UButton>
+            <UButton color="white" icon="i-ph-download" @click="saveResult">
+              {{ $t("result.download") }}
+            </UButton>
+          </div>
+
+          <UButton color="black" @click="router.push('/train')">
             {{ $t("result.goTrain") }}
           </UButton>
         </div>
@@ -297,8 +295,8 @@ onMounted(() => {
       />
 
       <template #footer>
-        <div class="flex justify-center">
-          <UButton color="primary" @click="router.push('/train')">
+        <div class="flex justify-end">
+          <UButton color="black" @click="router.push('/train')">
             {{ $t("result.goTrain") }}
           </UButton>
         </div>

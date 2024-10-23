@@ -165,7 +165,7 @@
     "title": "Training Result",
     "noData": "No Data Loaded",
     "noDataDesc": "Please load a training result or start a new training.",
-    "download": "Download Result",
+    "download": "Save Result",
     "goTrain": "Go Training",
     "averageRevealed": "Average Revealed",
     "averageRevealedDesc": "Average percentage of revealed chunks of a character",
@@ -182,6 +182,7 @@
     "trialCount": "Trial Count",
     "trialCountDesc": "Number of trials performed",
     "correctCount": "Correct Count",
-    "correctCountDesc": "Number of correct responses"
+    "correctCountDesc": "Number of correct responses",
+    "upload": "Load Result"
   }
 }
