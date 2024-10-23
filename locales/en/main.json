@@ -182,6 +182,7 @@
     "trialCount": "Trial Count",
     "trialCountDesc": "Number of trials performed",
     "correctCount": "Correct Count",
-    "correctCountDesc": "Number of correct responses"
+    "correctCountDesc": "Number of correct responses",
+    "upload": "결과 불러오기"
   }
 }
