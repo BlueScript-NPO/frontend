@@ -182,6 +182,7 @@
     "trialCount": "عدد التجارب",
     "trialCountDesc": "عدد التجارب المنفذة",
     "correctCount": "عدد الإجابات الصحيحة",
-    "correctCountDesc": "عدد الإجابات الصحيحة"
+    "correctCountDesc": "عدد الإجابات الصحيحة",
+    "upload": "결과 불러오기"
   }
 }
