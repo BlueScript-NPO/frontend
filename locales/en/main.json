@@ -1,4 +1,8 @@
 {
+  "setting": {
+    "title": "설정",
+    "colorMode": "색상 모드"
+  },
   "landing": {
     "title": "BlueScript",
     "cta": "Start Training",
@@ -73,6 +77,7 @@
   "train": {
     "title": "Configure Training",
     "start": "Start Training",
+    "quit": "훈련 나가기",
     "docs": "Help",
     "link": "Copy Link",
     "visual": "Visual",
