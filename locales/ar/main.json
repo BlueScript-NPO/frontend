@@ -1,13 +1,13 @@
 {
   "setting": {
-    "title": "설정",
-    "colorMode": "색상 모드"
+    "title": "الإعدادات",
+    "colorMode": "أوضاع الألوان"
   },
   "landing": {
     "title": "BlueScript",
     "cta": "ابدأ التدريب",
     "github": "احصل على الكود المصدري",
-    "docs": "도움말",
+    "docs": "المساعدة",
     "description": "BlueScript هي منظمة غير ربحية تطور أدوات مجانية ومفتوحة المصدر لمساعدة الأفراد الذين يعانون من عسر القراءة.",
     "features": {
       "title": "لماذا تختار BlueScript؟",
@@ -45,7 +45,7 @@
     "home": "الرئيسية",
     "train": "التدريب",
     "result": "النتيجة",
-    "docs": "도움말"
+    "docs": "المساعدة"
   },
   "docs": {
     "toc": "جدول المحتويات"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "الموارد",
       "items": {
-        "docs": "도움말",
+        "docs": "المساعدة",
         "license": "الترخيص"
       }
     },
@@ -77,7 +77,7 @@
   "train": {
     "title": "إعداد التدريب",
     "start": "ابدأ التدريب",
-    "quit": "훈련 나가기",
+    "quit": "ترك التدريب",
     "docs": "المساعدة",
     "link": "نسخ الرابط",
     "visual": "الوقت",
@@ -119,8 +119,8 @@
     "stimuliLength": "طول التحفيز",
     "presentationTime": "وقت العرض (ثواني)",
     "delayTime": "وقت التأخير (ثواني)",
-    "promptType": "보기 종류",
-    "promptLength": "보기 길이",
+    "promptType": "عرض النوع",
+    "promptLength": "عرض الطول",
     "targetLength": "طول الهدف",
     "targetCount": "عدد الأهداف",
     "chunkSize": "حجم القطعة",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "الإدراك البصري السريع",
     "Sequential Visual Memory": "الذاكرة البصرية التسلسلية",
-    "Character Sequencing": "문자 순차 처리",
-    "Character Matching": "문자 대조",
+    "Character Sequencing": "المعالجة المتسلسلة للشخصية",
+    "Character Matching": "تباين الشخصيات",
     "Character Guesstimate": "تخمين الأحرف"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "آي-ف-ف-نقاط-ثلاثة-خطوط"
   },
   "Character Sequencing": {
-    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "التدريب على العثور على طرق العرض بالترتيب وكتابة الأحرف باستخدام مفتاح السهم الأيمن ومفتاح المسافة.",
     "icon": "ط-ف-سهم-يمين"
   },
   "Character Matching": {
-    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "التدريب على النقر على سلسلة مطابقة من بين السلاسل المتشابهة بصريًا مع العرض.",
     "icon": "ط-ف-تقاطع-مربع-مربع"
   },
   "Character Guesstimate": {
@@ -188,6 +188,6 @@
     "trialCountDesc": "عدد التجارب المنفذة",
     "correctCount": "عدد الإجابات الصحيحة",
     "correctCountDesc": "عدد الإجابات الصحيحة",
-    "upload": "결과 불러오기"
+    "upload": "استرجاع النتائج"
   }
 }
