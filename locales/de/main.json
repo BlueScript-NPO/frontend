@@ -1,13 +1,13 @@
 {
   "setting": {
-    "title": "설정",
-    "colorMode": "색상 모드"
+    "title": "Einstellungen",
+    "colorMode": "Farb-Modi"
   },
   "landing": {
     "title": "BlueScript",
     "cta": "Beginn der Ausbildung",
     "github": "Abrufen des Quellcodes",
-    "docs": "도움말",
+    "docs": "Hilfe",
     "description": "BlueScript ist ein kostenloses und quelloffenes Tool zur Unterstützung von Menschen mit Legasthenie.",
     "features": {
       "title": "Warum BlueScript wählen?",
@@ -45,7 +45,7 @@
     "home": "首页",
     "train": "Ausbildung",
     "result": "Ergebnis",
-    "docs": "도움말"
+    "docs": "Hilfe"
   },
   "docs": {
     "toc": "Inhaltsübersicht"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "Ressourcen",
       "items": {
-        "docs": "도움말",
+        "docs": "Hilfe",
         "license": "Lizenzvergabe"
       }
     },
@@ -77,7 +77,7 @@
   "train": {
     "title": "Einstellungen für die Ausbildung",
     "start": "Beginn der Ausbildung",
-    "quit": "훈련 나가기",
+    "quit": "Ausbildung verlassen",
     "docs": "Hilfe",
     "link": "Link kopieren",
     "visual": "Zeit",
@@ -119,8 +119,8 @@
     "stimuliLength": "Zeichenlänge",
     "presentationTime": "Anzeigezeit (Sekunden)",
     "delayTime": "Latenzzeit (Sekunden)",
-    "promptType": "보기 종류",
-    "promptLength": "보기 길이",
+    "promptType": "Ansicht Typ",
+    "promptLength": "Länge anzeigen",
     "targetLength": "Länge der Antwort",
     "targetCount": "Anzahl der richtigen Antworten",
     "chunkSize": "Blockgröße",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "Schnelle visuelle Wahrnehmung",
     "Sequential Visual Memory": "Sequentielles visuelles Gedächtnis",
-    "Character Sequencing": "문자 순차 처리",
-    "Character Matching": "문자 대조",
+    "Character Sequencing": "Sequentielle Zeichenverarbeitung",
+    "Character Matching": "Charakter-Kontrast",
     "Character Guesstimate": "Einschätzung des Charakters"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "i-ph-punkte-drei-umrisse"
   },
   "Character Sequencing": {
-    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "Trainieren Sie, Ansichten in der richtigen Reihenfolge zu finden und Zeichen mit der rechten Pfeiltaste und der Leertaste einzugeben.",
     "icon": "i-ph-pfeil-rechts"
   },
   "Character Matching": {
-    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "Training zum Anklicken einer passenden Zeichenfolge unter Zeichenfolgen, die der Ansicht visuell ähnlich sind.",
     "icon": "i-ph-quer-quadrat"
   },
   "Character Guesstimate": {
@@ -188,6 +188,6 @@
     "trialCountDesc": "Anzahl der durchgeführten Versuche",
     "correctCount": "Anzahl der richtigen Antworten",
     "correctCountDesc": "Anzahl der richtigen Antworten",
-    "upload": "결과 불러오기"
+    "upload": "Abrufen von Ergebnissen"
   }
 }
