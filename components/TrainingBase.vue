@@ -32,8 +32,60 @@
 
   <!-- Top right toggle theme button -->
   <div class="fixed top-0 right-0 p-4 cursor-pointer">
-    <UColorModeButton />
+    <UButton
+      icon="i-ph-gear"
+      color="white"
+      variant="outline"
+      @click="isSettingOpen = true"
+    />
   </div>
+
+  <UModal
+    v-model="isSettingOpen"
+    :ui="{
+      width: 'w-full sm:max-w-sm',
+    }"
+  >
+    <UCard
+      :ui="{
+        ring: '',
+        divide: 'divide-y divide-gray-100 dark:divide-gray-800',
+      }"
+    >
+      <template #header>
+        <div class="flex items-center justify-between">
+          <div class="flex-col text-xl">
+            <h2 class="text-lg font-semibold">{{ $t("setting.title") }}</h2>
+          </div>
+
+          <UButton
+            color="gray"
+            variant="ghost"
+            icon="i-ph-x"
+            class="-my-1"
+            @click="isSettingOpen = false"
+          />
+        </div>
+      </template>
+
+      <div class="space-y-4">
+        <UFormGroup :label="$t('setting.colorMode')">
+          <UColorModeSelect />
+        </UFormGroup>
+        <UFormGroup label="Language">
+          <LangSwitcher />
+        </UFormGroup>
+      </div>
+
+      <template #footer>
+        <div class="flex space-x-4 justify-end">
+          <UButton color="red" icon="i-ph-door-open" to="/train"
+            >{{ $t("train.quit") }}
+          </UButton>
+        </div>
+      </template></UCard
+    ></UModal
+  >
 </template>
 
 <script setup lang="ts">
@@ -51,6 +103,8 @@ const model = defineModel<number>();
 const startTime = ref<number | null>(null);
 const elapsedSeconds = ref<number>(0);
 let intervalId: number | null = null;
+
+const isSettingOpen = ref<boolean>(false);
 
 const formattedElapsedTime = computed<string>(() => {
   const minutes = Math.floor(elapsedSeconds.value / 60);
