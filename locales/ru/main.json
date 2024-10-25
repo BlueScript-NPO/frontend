@@ -1,13 +1,13 @@
 {
   "setting": {
-    "title": "설정",
-    "colorMode": "색상 모드"
+    "title": "Настройки",
+    "colorMode": "Цветовые режимы"
   },
   "landing": {
     "title": "BlueScript",
     "cta": "Начать тренировку",
     "github": "Получить исходный код",
-    "docs": "도움말",
+    "docs": "Помощь",
     "description": "BlueScript — это некоммерческая организация, разрабатывающая бесплатные и открытые инструменты для помощи людям с дислексией.",
     "features": {
       "title": "Почему выбрать BlueScript?",
@@ -45,7 +45,7 @@
     "home": "Главная",
     "train": "Тренировка",
     "result": "Результат",
-    "docs": "도움말"
+    "docs": "Помощь"
   },
   "docs": {
     "toc": "Оглавление"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "Ресурсы",
       "items": {
-        "docs": "도움말",
+        "docs": "Помощь",
         "license": "Лицензирование"
       }
     },
@@ -77,7 +77,7 @@
   "train": {
     "title": "Настроить тренировку",
     "start": "Начать тренировку",
-    "quit": "훈련 나가기",
+    "quit": "Обучение в отпуске",
     "docs": "Помощь",
     "link": "Копировать ссылку",
     "visual": "Время",
@@ -119,8 +119,8 @@
     "stimuliLength": "Длина стимула",
     "presentationTime": "Время показа (с)",
     "delayTime": "Время задержки (с)",
-    "promptType": "보기 종류",
-    "promptLength": "보기 길이",
+    "promptType": "Тип вида",
+    "promptLength": "Длина просмотра",
     "targetLength": "Длина цели",
     "targetCount": "Количество целей",
     "chunkSize": "Размер блока",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "Быстрое визуальное восприятие",
     "Sequential Visual Memory": "Последовательная зрительная память",
-    "Character Sequencing": "문자 순차 처리",
-    "Character Matching": "문자 대조",
+    "Character Sequencing": "Последовательная обработка символов",
+    "Character Matching": "Контраст характеров",
     "Character Guesstimate": "Предположение символов"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "Тренируйтесь находить виды по порядку и набирать символы с помощью клавиши со стрелкой вправо и пробела.",
     "icon": "i-ph-arrow-right"
   },
   "Character Matching": {
-    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "Обучение щелчку на совпадающей строке среди строк, визуально похожих на вид.",
     "icon": "i-ph-интерсект-квадрат"
   },
   "Character Guesstimate": {
@@ -188,6 +188,6 @@
     "trialCountDesc": "Количество проведенных испытаний",
     "correctCount": "Количество правильных ответов",
     "correctCountDesc": "Количество правильных ответов",
-    "upload": "결과 불러오기"
+    "upload": "Получение результатов"
   }
 }
