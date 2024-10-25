@@ -1,4 +1,8 @@
 {
+  "setting": {
+    "title": "الإعدادات",
+    "colorMode": "أوضاع الألوان"
+  },
   "landing": {
     "title": "BlueScript",
     "cta": "ابدأ التدريب",
@@ -73,6 +77,7 @@
   "train": {
     "title": "إعداد التدريب",
     "start": "ابدأ التدريب",
+    "quit": "ترك التدريب",
     "docs": "المساعدة",
     "link": "نسخ الرابط",
     "visual": "الوقت",
@@ -182,6 +187,7 @@
     "trialCount": "عدد التجارب",
     "trialCountDesc": "عدد التجارب المنفذة",
     "correctCount": "عدد الإجابات الصحيحة",
-    "correctCountDesc": "عدد الإجابات الصحيحة"
+    "correctCountDesc": "عدد الإجابات الصحيحة",
+    "upload": "استرجاع النتائج"
   }
 }

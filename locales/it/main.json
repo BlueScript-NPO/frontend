@@ -1,4 +1,8 @@
 {
+  "setting": {
+    "title": "Impostazioni",
+    "colorMode": "Modalità di colore"
+  },
   "landing": {
     "title": "BlueScript",
     "cta": "Iniziare la formazione",
@@ -73,6 +77,7 @@
   "train": {
     "title": "Impostazioni di formazione",
     "start": "Iniziare la formazione",
+    "quit": "Formazione per il congedo",
     "docs": "Aiuto",
     "link": "Copiare il link",
     "visual": "Tempo",
@@ -182,6 +187,7 @@
     "trialCount": "Numero di tentativi",
     "trialCountDesc": "Numero di tentativi eseguiti",
     "correctCount": "Numero di risposte corrette",
-    "correctCountDesc": "Numero di risposte corrette"
+    "correctCountDesc": "Numero di risposte corrette",
+    "upload": "Recupero dei risultati"
   }
 }

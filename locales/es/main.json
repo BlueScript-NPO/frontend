@@ -1,4 +1,8 @@
 {
+  "setting": {
+    "title": "Ajustes",
+    "colorMode": "Modos de color"
+  },
   "landing": {
     "title": "BlueScript",
     "cta": "Comenzar entrenamiento",
@@ -73,6 +77,7 @@
   "train": {
     "title": "Configurar Entrenamiento",
     "start": "Iniciar Entrenamiento",
+    "quit": "Dejar la formación",
     "docs": "Ayuda",
     "link": "Copiar enlace",
     "visual": "Tiempo",
@@ -182,6 +187,7 @@
     "trialCount": "Cantidad de Ensayos",
     "trialCountDesc": "Número de ensayos realizados",
     "correctCount": "Cantidad de Correctas",
-    "correctCountDesc": "Número de respuestas correctas"
+    "correctCountDesc": "Número de respuestas correctas",
+    "upload": "Recuperación de resultados"
   }
 }

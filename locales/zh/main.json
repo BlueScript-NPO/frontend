@@ -1,4 +1,8 @@
 {
+  "setting": {
+    "title": "设置",
+    "colorMode": "颜色模式"
+  },
   "landing": {
     "title": "BlueScript",
     "cta": "开始训练",
@@ -73,6 +77,7 @@
   "train": {
     "title": "配置训练",
     "start": "开始训练",
+    "quit": "休假培训",
     "docs": "帮助",
     "link": "复制链接",
     "visual": "时间",
@@ -182,6 +187,7 @@
     "trialCount": "试验次数",
     "trialCountDesc": "进行的试验次数",
     "correctCount": "正确次数",
-    "correctCountDesc": "正确反应的次数"
+    "correctCountDesc": "正确反应的次数",
+    "upload": "检索结果"
   }
 }
