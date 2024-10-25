@@ -1,13 +1,13 @@
 {
   "setting": {
-    "title": "설정",
-    "colorMode": "색상 모드"
+    "title": "Settings",
+    "colorMode": "Color Modes"
   },
   "landing": {
     "title": "BlueScript",
     "cta": "Start Training",
     "github": "Get the source code",
-    "docs": "도움말",
+    "docs": "Docs",
     "description": "BlueScript is a non-profit organization that develops free and open-source tools to help dyslexic individuals.",
     "features": {
       "title": "Why Choose BlueScript?",
@@ -45,7 +45,7 @@
     "home": "Home",
     "train": "Training",
     "result": "Result",
-    "docs": "도움말"
+    "docs": "Docs"
   },
   "docs": {
     "toc": "TOC"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "Resources",
       "items": {
-        "docs": "도움말",
+        "docs": "Help",
         "license": "License"
       }
     },
@@ -77,7 +77,7 @@
   "train": {
     "title": "Configure Training",
     "start": "Start Training",
-    "quit": "훈련 나가기",
+    "quit": "Leave training",
     "docs": "Help",
     "link": "Copy Link",
     "visual": "Visual",
@@ -119,8 +119,8 @@
     "stimuliLength": "Stimuli Length",
     "presentationTime": "Presentation Time (s)",
     "delayTime": "Delay Time (s)",
-    "promptType": "보기 종류",
-    "promptLength": "보기 길이",
+    "promptType": "Prompt Types",
+    "promptLength": "Prompt Length",
     "targetLength": "Target Length",
     "targetCount": "Target Count",
     "chunkSize": "Chunk Size",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "Rapid Visual Perception",
     "Sequential Visual Memory": "Sequential Visual Memory",
-    "Character Sequencing": "문자 순차 처리",
-    "Character Matching": "문자 대조",
+    "Character Sequencing": "Sequential Visual Memory",
+    "Character Matching": "Character Match",
     "Character Guesstimate": "Character Guesstimate"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "This module trains you to identify and memorize a series of characters in sequence, and then retype them after a period of time.",
     "icon": "i-ph-arrow-right"
   },
   "Character Matching": {
-    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "This module trains you to click on a matching string from a set of strings that are visually similar to the prompt.",
     "icon": "i-ph-intersect-square"
   },
   "Character Guesstimate": {
@@ -188,6 +188,6 @@
     "trialCountDesc": "Number of trials performed",
     "correctCount": "Correct Count",
     "correctCountDesc": "Number of correct responses",
-    "upload": "결과 불러오기"
+    "upload": "Load Results"
   }
 }
