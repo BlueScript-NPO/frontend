@@ -1,4 +1,8 @@
 {
+  "setting": {
+    "title": "설정",
+    "colorMode": "색상 모드"
+  },
   "landing": {
     "title": "BlueScript",
     "cta": "ابدأ التدريب",
@@ -73,6 +77,7 @@
   "train": {
     "title": "إعداد التدريب",
     "start": "ابدأ التدريب",
+    "quit": "훈련 나가기",
     "docs": "المساعدة",
     "link": "نسخ الرابط",
     "visual": "الوقت",
