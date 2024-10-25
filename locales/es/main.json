@@ -1,13 +1,13 @@
 {
   "setting": {
-    "title": "설정",
-    "colorMode": "색상 모드"
+    "title": "Ajustes",
+    "colorMode": "Modos de color"
   },
   "landing": {
     "title": "BlueScript",
     "cta": "Comenzar entrenamiento",
     "github": "Obtener el código fuente",
-    "docs": "도움말",
+    "docs": "Ayuda",
     "description": "BlueScript es una organización sin fines de lucro que desarrolla herramientas gratuitas y de código abierto para ayudar a las personas con dislexia.",
     "features": {
       "title": "¿Por qué elegir BlueScript?",
@@ -45,7 +45,7 @@
     "home": "Inicio",
     "train": "Entrenamiento",
     "result": "Resultado",
-    "docs": "도움말"
+    "docs": "Ayuda"
   },
   "docs": {
     "toc": "Índice"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "Recursos",
       "items": {
-        "docs": "도움말",
+        "docs": "Ayuda",
         "license": "Licencias"
       }
     },
@@ -77,7 +77,7 @@
   "train": {
     "title": "Configurar Entrenamiento",
     "start": "Iniciar Entrenamiento",
-    "quit": "훈련 나가기",
+    "quit": "Dejar la formación",
     "docs": "Ayuda",
     "link": "Copiar enlace",
     "visual": "Tiempo",
@@ -119,8 +119,8 @@
     "stimuliLength": "Longitud del Estímulo",
     "presentationTime": "Tiempo de Presentación (s)",
     "delayTime": "Tiempo de Retardo (s)",
-    "promptType": "보기 종류",
-    "promptLength": "보기 길이",
+    "promptType": "Ver tipo",
+    "promptLength": "Ver longitud",
     "targetLength": "Longitud del Objetivo",
     "targetCount": "Cantidad de Objetivos",
     "chunkSize": "Tamaño del Bloque",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "Percepción Visual Rápida",
     "Sequential Visual Memory": "Memoria Visual Secuencial",
-    "Character Sequencing": "문자 순차 처리",
-    "Character Matching": "문자 대조",
+    "Character Sequencing": "Tratamiento secuencial de caracteres",
+    "Character Matching": "Contraste de caracteres",
     "Character Guesstimate": "Estimación de Caracteres"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "보기를 순서대로 찾고, 오른쪽 화살표 키와 스페이스바를 사용하여 문자를 입력하는 훈련.",
+    "description": "Entrena para encontrar las vistas en orden y escribe los caracteres utilizando la tecla de flecha derecha y la barra espaciadora.",
     "icon": "i-ph-flecha-derecha"
   },
   "Character Matching": {
-    "description": "보기와 시각적으로 비슷한 문자열들 중에서 일치하는 문자열을 클릭하는 훈련.",
+    "description": "Entrenamiento para hacer clic en una cadena coincidente entre cadenas visualmente similares a la vista.",
     "icon": "i-ph-intersecto-cuadrado"
   },
   "Character Guesstimate": {
@@ -188,6 +188,6 @@
     "trialCountDesc": "Número de ensayos realizados",
     "correctCount": "Cantidad de Correctas",
     "correctCountDesc": "Número de respuestas correctas",
-    "upload": "결과 불러오기"
+    "upload": "Recuperación de resultados"
   }
 }
