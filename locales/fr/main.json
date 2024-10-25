@@ -7,7 +7,7 @@
     "title": "BlueScript",
     "cta": "Commencer l'entraînement",
     "github": "Obtenez le code source",
-    "docs": "Aide",
+    "docs": "Comment l'utiliser",
     "description": "BlueScript est une organisation à but non lucratif qui développe des outils gratuits et open-source pour aider les personnes dyslexiques.",
     "features": {
       "title": "Pourquoi choisir BlueScript ?",
@@ -45,7 +45,7 @@
     "home": "Accueil",
     "train": "Entraînement",
     "result": "Résultat",
-    "docs": "Aide"
+    "docs": "Documentation"
   },
   "docs": {
     "toc": "Table des matières"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "Ressources",
       "items": {
-        "docs": "Aide",
+        "docs": "Documentation",
         "license": "Licences"
       }
     },
@@ -119,8 +119,8 @@
     "stimuliLength": "Longueur du stimulus",
     "presentationTime": "Temps de présentation (s)",
     "delayTime": "Temps de retard (s)",
-    "promptType": "Voir le type",
-    "promptLength": "Voir la longueur",
+    "promptType": "Type d'invite",
+    "promptLength": "Longueur de l'invite",
     "targetLength": "Longueur de la cible",
     "targetCount": "Nombre de cibles",
     "chunkSize": "Taille du segment",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "Perception visuelle rapide",
     "Sequential Visual Memory": "Mémoire visuelle séquentielle",
-    "Character Sequencing": "Traitement séquentiel des caractères",
-    "Character Matching": "Contraste de caractère",
+    "Character Sequencing": "Séquençage de caractères",
+    "Character Matching": "Correspondance de caractères",
     "Character Guesstimate": "Estimation de caractères"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "S'entraîner à trouver les vues dans l'ordre et à taper des caractères en utilisant la flèche droite et la barre d'espacement.",
+    "description": "Entraînez-vous à trouver les invites dans l'ordre et à utiliser la flèche droite et la barre d'espacement pour saisir des caractères.",
     "icon": "i-ph-flèche-droite"
   },
   "Character Matching": {
-    "description": "Entraînement à cliquer sur une chaîne de caractères correspondante parmi les chaînes de caractères visuellement similaires à la vue.",
+    "description": "L'entraînement consiste à cliquer sur la chaîne de caractères correspondante à partir d'un ensemble de chaînes de caractères visuellement similaires à l'invite.",
     "icon": "i-ph-intersect-square"
   },
   "Character Guesstimate": {

@@ -7,7 +7,7 @@
     "title": "BlueScript",
     "cta": "开始训练",
     "github": "获取源代码",
-    "docs": "帮助",
+    "docs": "如何使用",
     "description": "BlueScript 是一个非营利组织，开发免费和开源工具来帮助有阅读障碍的人。",
     "features": {
       "title": "为什么选择 BlueScript？",
@@ -45,7 +45,7 @@
     "home": "首页",
     "train": "训练",
     "result": "结果",
-    "docs": "帮助"
+    "docs": "文件"
   },
   "docs": {
     "toc": "目录"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "资源",
       "items": {
-        "docs": "帮助",
+        "docs": "文件",
         "license": "许可"
       }
     },
@@ -119,8 +119,8 @@
     "stimuliLength": "刺激长度",
     "presentationTime": "展示时间（秒）",
     "delayTime": "延迟时间（秒）",
-    "promptType": "查看类型",
-    "promptLength": "查看长度",
+    "promptType": "提示类型",
+    "promptLength": "提示长度",
     "targetLength": "目标长度",
     "targetCount": "目标数量",
     "chunkSize": "块大小",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "快速视觉感知",
     "Sequential Visual Memory": "顺序视觉记忆",
-    "Character Sequencing": "字符顺序处理",
-    "Character Matching": "字符对比",
+    "Character Sequencing": "字符排序",
+    "Character Matching": "字符匹配",
     "Character Guesstimate": "字符猜测"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "训练按顺序查找视图，并使用右箭头键和空格键输入字符。",
+    "description": "练习按顺序找到提示，并使用右箭头键和空格键输入字符。",
     "icon": "i-ph-arrow-right"
   },
   "Character Matching": {
-    "description": "在与视图视觉相似的字符串中点击匹配字符串的训练。",
+    "description": "训练从一组视觉上与提示相似的字符串中点击匹配的字符串。",
     "icon": "i-ph-相交-平方"
   },
   "Character Guesstimate": {

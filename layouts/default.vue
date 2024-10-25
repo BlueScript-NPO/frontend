@@ -37,22 +37,27 @@ provide("files", files);
 
 <template>
   <UHeader>
-    <template #logo>
-      <Logo class="h-8 hover:opacity-90" />
-    </template>
-
-    <template #center>
+    <template #left>
+      <NuxtLink to="/">
+        <Logo class="h-6 hover:opacity-90" />
+      </NuxtLink>
       <UHeaderLinks :links="links" class="hidden sm:flex" />
     </template>
 
     <template #right>
       <UButton
+        class="block md:hidden"
         variant="ghost"
         color="gray"
         square
         icon="i-ph-magnifying-glass"
         @click="toggleContentSearch"
       ></UButton>
+      <UContentSearchButton
+        class="hidden w-full md:flex md:max-w-48 lg:max-w-56"
+        size="sm"
+        :label="t('search.placeholder')"
+      />
     </template>
 
     <template #panel>

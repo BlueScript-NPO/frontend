@@ -7,7 +7,7 @@
     "title": "BlueScript",
     "cta": "Iniziare la formazione",
     "github": "Ottenere il codice sorgente",
-    "docs": "Aiuto",
+    "docs": "Come si usa",
     "description": "BlueScript è uno strumento gratuito e open source per aiutare le persone con dislessia.",
     "features": {
       "title": "Perché scegliere BlueScript?",
@@ -45,7 +45,7 @@
     "home": "首页",
     "train": "Formazione",
     "result": "Risultato",
-    "docs": "Aiuto"
+    "docs": "Documentazione"
   },
   "docs": {
     "toc": "Indice dei contenuti"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "Risorse",
       "items": {
-        "docs": "Aiuto",
+        "docs": "Documentazione",
         "license": "Licenze"
       }
     },
@@ -119,8 +119,8 @@
     "stimuliLength": "Lunghezza dei caratteri",
     "presentationTime": "Tempo di visualizzazione (secondi)",
     "delayTime": "Latenza (secondi)",
-    "promptType": "Visualizza tipo",
-    "promptLength": "Visualizza la lunghezza",
+    "promptType": "Tipo di prompt",
+    "promptLength": "Lunghezza del prompt",
     "targetLength": "Lunghezza della risposta",
     "targetCount": "Numero di risposte corrette",
     "chunkSize": "Dimensione del blocco",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "Percezione visiva veloce",
     "Sequential Visual Memory": "Memoria visiva sequenziale",
-    "Character Sequencing": "Elaborazione sequenziale dei caratteri",
-    "Character Matching": "Contrasto di caratteri",
+    "Character Sequencing": "Sequenza di personaggi",
+    "Character Matching": "Corrispondenza dei caratteri",
     "Character Guesstimate": "Stima del carattere"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "Allenatevi a trovare le visualizzazioni in ordine e a digitare i caratteri usando il tasto freccia destra e la barra spaziatrice.",
+    "description": "Esercitarsi a trovare i prompt in ordine e a usare il tasto freccia destra e la barra spaziatrice per inserire i caratteri.",
     "icon": "i-ph-freccia-destra"
   },
   "Character Matching": {
-    "description": "Allenamento per fare clic su una stringa corrispondente tra le stringhe visivamente simili alla vista.",
+    "description": "Formazione per fare clic sulla stringa corrispondente da un insieme di stringhe visivamente simili al prompt.",
     "icon": "i-ph-intersetto-quadrato"
   },
   "Character Guesstimate": {

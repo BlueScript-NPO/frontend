@@ -7,7 +7,7 @@
     "title": "BlueScript",
     "cta": "Comenzar entrenamiento",
     "github": "Obtener el código fuente",
-    "docs": "Ayuda",
+    "docs": "Cómo utilizarlo",
     "description": "BlueScript es una organización sin fines de lucro que desarrolla herramientas gratuitas y de código abierto para ayudar a las personas con dislexia.",
     "features": {
       "title": "¿Por qué elegir BlueScript?",
@@ -45,7 +45,7 @@
     "home": "Inicio",
     "train": "Entrenamiento",
     "result": "Resultado",
-    "docs": "Ayuda"
+    "docs": "Documentación"
   },
   "docs": {
     "toc": "Índice"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "Recursos",
       "items": {
-        "docs": "Ayuda",
+        "docs": "Documentación",
         "license": "Licencias"
       }
     },
@@ -119,8 +119,8 @@
     "stimuliLength": "Longitud del Estímulo",
     "presentationTime": "Tiempo de Presentación (s)",
     "delayTime": "Tiempo de Retardo (s)",
-    "promptType": "Ver tipo",
-    "promptLength": "Ver longitud",
+    "promptType": "Tipo de Prompt",
+    "promptLength": "Longitud del Prompt",
     "targetLength": "Longitud del Objetivo",
     "targetCount": "Cantidad de Objetivos",
     "chunkSize": "Tamaño del Bloque",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "Percepción Visual Rápida",
     "Sequential Visual Memory": "Memoria Visual Secuencial",
-    "Character Sequencing": "Tratamiento secuencial de caracteres",
-    "Character Matching": "Contraste de caracteres",
+    "Character Sequencing": "Secuenciación de Caracteres",
+    "Character Matching": "Emparejamiento de Caracteres",
     "Character Guesstimate": "Estimación de Caracteres"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "Entrena para encontrar las vistas en orden y escribe los caracteres utilizando la tecla de flecha derecha y la barra espaciadora.",
+    "description": "Practica a encontrar las indicaciones en orden y a utilizar la tecla de flecha derecha y la barra espaciadora para introducir caracteres.",
     "icon": "i-ph-flecha-derecha"
   },
   "Character Matching": {
-    "description": "Entrenamiento para hacer clic en una cadena coincidente entre cadenas visualmente similares a la vista.",
+    "description": "Entrenamiento para hacer clic en la cadena coincidente de un conjunto de cadenas que son visualmente similares a la indicación.",
     "icon": "i-ph-intersecto-cuadrado"
   },
   "Character Guesstimate": {

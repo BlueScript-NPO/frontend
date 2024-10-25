@@ -7,7 +7,7 @@
     "title": "BlueScript",
     "cta": "ابدأ التدريب",
     "github": "احصل على الكود المصدري",
-    "docs": "المساعدة",
+    "docs": "كيفية الاستخدام",
     "description": "BlueScript هي منظمة غير ربحية تطور أدوات مجانية ومفتوحة المصدر لمساعدة الأفراد الذين يعانون من عسر القراءة.",
     "features": {
       "title": "لماذا تختار BlueScript؟",
@@ -45,7 +45,7 @@
     "home": "الرئيسية",
     "train": "التدريب",
     "result": "النتيجة",
-    "docs": "المساعدة"
+    "docs": "التوثيق"
   },
   "docs": {
     "toc": "جدول المحتويات"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "الموارد",
       "items": {
-        "docs": "المساعدة",
+        "docs": "التوثيق",
         "license": "الترخيص"
       }
     },
@@ -119,8 +119,8 @@
     "stimuliLength": "طول التحفيز",
     "presentationTime": "وقت العرض (ثواني)",
     "delayTime": "وقت التأخير (ثواني)",
-    "promptType": "عرض النوع",
-    "promptLength": "عرض الطول",
+    "promptType": "نوع الموجه",
+    "promptLength": "طول الموجه",
     "targetLength": "طول الهدف",
     "targetCount": "عدد الأهداف",
     "chunkSize": "حجم القطعة",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "الإدراك البصري السريع",
     "Sequential Visual Memory": "الذاكرة البصرية التسلسلية",
-    "Character Sequencing": "المعالجة المتسلسلة للشخصية",
-    "Character Matching": "تباين الشخصيات",
+    "Character Sequencing": "تسلسل الأحرف",
+    "Character Matching": "مطابقة الأحرف",
     "Character Guesstimate": "تخمين الأحرف"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "آي-ف-ف-نقاط-ثلاثة-خطوط"
   },
   "Character Sequencing": {
-    "description": "التدريب على العثور على طرق العرض بالترتيب وكتابة الأحرف باستخدام مفتاح السهم الأيمن ومفتاح المسافة.",
+    "description": "تدرب على إيجاد المطالبات بالترتيب، واستخدام مفتاح السهم الأيمن ومفتاح المسافة لإدخال الأحرف.",
     "icon": "ط-ف-سهم-يمين"
   },
   "Character Matching": {
-    "description": "التدريب على النقر على سلسلة مطابقة من بين السلاسل المتشابهة بصريًا مع العرض.",
+    "description": "التدريب على النقر على السلسلة المطابقة من مجموعة من السلاسل المتشابهة بصريًا مع المطالبة.",
     "icon": "ط-ف-تقاطع-مربع-مربع"
   },
   "Character Guesstimate": {

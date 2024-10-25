@@ -2,7 +2,12 @@
   <Head>
     <Title>{{ t("nav.train") }}</Title>
   </Head>
-  <UModal v-model="isParameterOpen">
+  <UModal
+    v-model="isParameterOpen"
+    :ui="{
+      width: 'w-full sm:max-w-sm',
+    }"
+  >
     <UForm
       :validate="validateForm"
       :state="{ parameters: selectedTrainingParameters }"
@@ -17,10 +22,14 @@
       >
         <template #header>
           <div class="flex items-center justify-between">
-            <h2 class="text-lg font-semibold">
-              {{ $t("train.title") }}:
-              {{ $t("procedure." + selectedProcedure?.name) }}
-            </h2>
+            <div class="flex-col text-xl">
+              <h2 class="text-lg font-semibold">
+                {{ $t("train.title") }}
+              </h2>
+              <h3 class="text-sm font-normal">
+                {{ $t("procedure." + selectedProcedure?.name) }}
+              </h3>
+            </div>
             <UButton
               color="gray"
               variant="ghost"
@@ -65,16 +74,16 @@
         </div>
 
         <template #footer>
-          <div class="flex justify-center space-x-4 pb-4">
+          <div class="flex space-x-4 justify-between">
             <UButton
               color="white"
+              variant="solid"
               @click="copyLink"
-              trailing
               :icon="linkCopied ? 'i-ph-check' : 'i-ph-clipboard'"
               >{{ $t("train.link") }}
             </UButton>
             <UButton
-              color="primary"
+              color="black"
               type="submit"
               icon="i-ph-arrow-right"
               trailing
@@ -97,7 +106,7 @@
             <div
               v-for="procedure in visualProcedures"
               :key="procedure.name"
-              class="relative bg-white dark:bg-zinc-950 shadow-lg rounded-xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-800 hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out"
+              class="relative bg-white dark:bg-zinc-950 shadow rounded-xl overflow-hidden ring-1 ring-gray-200 dark:ring-gray-800 hover:shadow-lg transform hover:-translate-y-1 transition duration-300 ease-in-out"
               @click="openParameterModel(procedure)"
               style="cursor: pointer"
             >
@@ -122,8 +131,8 @@
 
                   <UButton
                     size="xs"
-                    color="white"
-                    variant="outline"
+                    color="black"
+                    variant="link"
                     icon="i-ph-book"
                     @click.stop=""
                     :to="

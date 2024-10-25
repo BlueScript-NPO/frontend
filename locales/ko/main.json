@@ -1,4 +1,8 @@
 {
+  "setting": {
+    "title": "설정",
+    "colorMode": "색상 모드"
+  },
   "landing": {
     "title": "BlueScript",
     "cta": "훈련 시작",
@@ -73,6 +77,7 @@
   "train": {
     "title": "훈련 설정",
     "start": "훈련 시작",
+    "quit": "훈련 나가기",
     "docs": "도움말",
     "link": "링크 복사",
     "visual": "시각",
@@ -188,6 +193,7 @@
     "trialCount": "시도 횟수",
     "trialCountDesc": "실행된 시도의 수",
     "correctCount": "정답 수",
-    "correctCountDesc": "정답 응답의 수"
+    "correctCountDesc": "정답 응답의 수",
+    "upload": "결과 불러오기"
   }
 }

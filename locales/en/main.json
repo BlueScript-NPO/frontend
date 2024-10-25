@@ -7,7 +7,7 @@
     "title": "BlueScript",
     "cta": "Start Training",
     "github": "Get the source code",
-    "docs": "Docs",
+    "docs": "How to use",
     "description": "BlueScript is a non-profit organization that develops free and open-source tools to help dyslexic individuals.",
     "features": {
       "title": "Why Choose BlueScript?",
@@ -55,7 +55,7 @@
     "resources": {
       "title": "Resources",
       "items": {
-        "docs": "Help",
+        "docs": "Documentation",
         "license": "License"
       }
     },
@@ -119,7 +119,7 @@
     "stimuliLength": "Stimuli Length",
     "presentationTime": "Presentation Time (s)",
     "delayTime": "Delay Time (s)",
-    "promptType": "Prompt Types",
+    "promptType": "Prompt Type",
     "promptLength": "Prompt Length",
     "targetLength": "Target Length",
     "targetCount": "Target Count",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "Rapid Visual Perception",
     "Sequential Visual Memory": "Sequential Visual Memory",
-    "Character Sequencing": "Sequential Visual Memory",
-    "Character Matching": "Character Match",
+    "Character Sequencing": "Character Sequencing",
+    "Character Matching": "Character Matching",
     "Character Guesstimate": "Character Guesstimate"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "i-ph-dots-three-outline"
   },
   "Character Sequencing": {
-    "description": "This module trains you to identify and memorize a series of characters in sequence, and then retype them after a period of time.",
+    "description": "Practice finding the prompts in order, and using the right arrow key and spacebar to enter characters.",
     "icon": "i-ph-arrow-right"
   },
   "Character Matching": {
-    "description": "This module trains you to click on a matching string from a set of strings that are visually similar to the prompt.",
+    "description": "Training to click the matching string from a set of strings that are visually similar to the prompt.",
     "icon": "i-ph-intersect-square"
   },
   "Character Guesstimate": {
@@ -170,7 +170,7 @@
     "title": "Training Result",
     "noData": "No Data Loaded",
     "noDataDesc": "Please load a training result or start a new training.",
-    "download": "Download Result",
+    "download": "Save Result",
     "goTrain": "Go Training",
     "averageRevealed": "Average Revealed",
     "averageRevealedDesc": "Average percentage of revealed chunks of a character",
@@ -188,6 +188,6 @@
     "trialCountDesc": "Number of trials performed",
     "correctCount": "Correct Count",
     "correctCountDesc": "Number of correct responses",
-    "upload": "Load Results"
+    "upload": "Load Result"
   }
 }

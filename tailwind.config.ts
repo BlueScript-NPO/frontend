@@ -32,7 +32,7 @@ export default <Partial<Config>>{
       },
     },
     fontFamily: {
-      sans: ["Noto Sans KR", ...defaultTheme.fontFamily.sans],
+      sans: ["Interop", ...defaultTheme.fontFamily.sans],
       // serif: ["Nanum Myeongjo", ...defaultTheme.fontFamily.serif],
     },
   },
