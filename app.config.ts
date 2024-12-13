@@ -233,6 +233,9 @@ export default defineAppConfig({
 
     select: {
       rounded: "rounded-md",
+      default: {
+        trailingIcon: "ph-caret-down",
+      },
     },
 
     selectMenu: {
@@ -287,7 +290,7 @@ export default defineAppConfig({
         placement: "bottom-end",
       },
       default: {
-        selectedIcon: "i-heroicons-check-20-solid",
+        selectedIcon: "i-ph-check",
         clearSearchOnClose: false,
         showCreateOptionWhen: "empty",
       },
@@ -347,6 +350,13 @@ export default defineAppConfig({
         },
       },
     },
+    notification: {
+      default: {
+        closeButton: {
+          icon: "i-ph-x",
+        },
+      },
+    },
     commandPalette: {
       default: {
         icon: "i-ph-magnifying-glass",
@@ -366,7 +376,7 @@ export default defineAppConfig({
     icons: {
       dark: "i-ph-moon",
       light: "i-ph-sun",
-      system: "i-ph-monitor",
+      system: "ph-laptop",
       search: "i-ph-magnifying-glass",
       external: "i-ph-arrow-square-out",
       chevron: "i-ph-caret-down",
