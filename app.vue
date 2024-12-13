@@ -1,7 +1,9 @@
 <template>
   <!-- Google Font -->
   <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
-    <NuxtLoadingIndicator :color="isDark ? '#C2C8EC' : '#2F45C7'" />
+    <ClientOnly>
+      <NuxtLoadingIndicator :color="isDark ? '#C2C8EC' : '#2F45C7'" />
+    </ClientOnly>
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

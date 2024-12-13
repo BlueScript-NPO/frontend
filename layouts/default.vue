@@ -55,7 +55,7 @@ provide("files", files);
         @click="toggleContentSearch"
       ></UButton>
       <UContentSearchButton
-        class="hidden w-full md:flex md:max-w-48 lg:max-w-56"
+        class="hidden w-full md:flex md:max-w-48 lg:max-w-56 text-zinc-600 dark:text-zinc-300"
         size="sm"
         :label="t('search.placeholder')"
       />
