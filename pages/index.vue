@@ -12,10 +12,7 @@
     </div>
   </div>
 
-  <ULandingSection
-    :title="t('landing.features.title')"
-    :headline="t('landing.features.headline')"
-  >
+  <ULandingSection :title="t('landing.features.title')">
     <UPageGrid
       id="features"
       class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]"

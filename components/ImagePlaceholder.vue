@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch, nextTick } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const scalingContainer = ref(null);
 const demoWrapper = ref(null);
@@ -24,18 +24,14 @@ const maxWidth = 862;
 const maxHeight = 470;
 
 const calculateScale = () => {
-  if (scalingContainer.value && demoWrapper.value) {
-    const parentWidth = scalingContainer.value.clientWidth;
-    const parentHeight = scalingContainer.value.clientHeight;
+  const container = scalingContainer.value;
+  const wrapper = demoWrapper.value;
+  if (!container || !wrapper) return;
 
-    const widthScale = parentWidth / maxWidth;
-    const heightScale = parentHeight / maxHeight;
+  const { clientWidth, clientHeight } = container;
+  const scale = Math.min(clientWidth / maxWidth, clientHeight / maxHeight, 1);
 
-    const scale = Math.min(widthScale, heightScale, 1); // Ensure scale doesn't exceed 1
-
-    demoWrapper.value.style.transform = `scale(${scale})`;
-    demoWrapper.value.style.transformOrigin = "top left";
-  }
+  wrapper.style.transform = `scale(${scale})`;
 };
 
 onMounted(() => {
@@ -53,7 +49,6 @@ onBeforeUnmount(() => {
   --angle: 0deg;
   --border-color: rgb(var(--color-gray-300));
   --highlight-color: rgb(var(--color-primary-500));
-
   content: "";
   position: absolute;
   top: 0;
@@ -65,7 +60,6 @@ onBeforeUnmount(() => {
   border-radius: 0.8rem;
   z-index: -1;
   background: var(--border-color);
-
   @supports (background: paint(houdini)) {
     background: linear-gradient(
       var(--angle),
@@ -96,7 +90,6 @@ onBeforeUnmount(() => {
   inherits: false;
 }
 
-/* Scaling Styles */
 .scaling-container {
   width: 100%;
   height: 100%;
@@ -107,9 +100,9 @@ onBeforeUnmount(() => {
 .demo-wrapper {
   width: 862px;
   height: 470px;
-  /* Optional: To center the scaled content */
   display: flex;
   justify-content: center;
   align-items: center;
+  transform-origin: top left;
 }
 </style>

@@ -10,7 +10,6 @@
         <NuxtImg
           class="h-4 w-auto"
           :src="'/flags/' + selectedLang + '.svg'"
-          loading="lazy"
           :alt="selectedLang"
         />
       </span>
@@ -19,7 +18,6 @@
       <NuxtImg
         class="h-4 w-auto"
         :src="'/flags/' + option.code + '.svg'"
-        loading="lazy"
         :alt="option.code"
       />
       <span class="truncate">{{ option.label }}</span>

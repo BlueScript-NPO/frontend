@@ -40,12 +40,7 @@
     />
   </div>
 
-  <UModal
-    v-model="isSettingOpen"
-    :ui="{
-      width: 'w-full sm:max-w-sm',
-    }"
-  >
+  <UModal v-model="isSettingOpen" :ui="{ width: 'w-full sm:max-w-sm' }">
     <UCard
       :ui="{
         ring: '',
@@ -54,10 +49,7 @@
     >
       <template #header>
         <div class="flex items-center justify-between">
-          <div class="flex-col text-xl">
-            <h2 class="text-lg font-semibold">{{ $t("setting.title") }}</h2>
-          </div>
-
+          <h2 class="text-lg font-semibold">{{ $t("setting.title") }}</h2>
           <UButton
             color="gray"
             variant="ghost"
@@ -79,13 +71,13 @@
 
       <template #footer>
         <div class="flex space-x-4 justify-end">
-          <UButton color="red" icon="i-ph-door-open" to="/train"
-            >{{ $t("train.quit") }}
+          <UButton color="red" icon="i-ph-door-open" to="/train">
+            {{ $t("train.quit") }}
           </UButton>
         </div>
-      </template></UCard
-    ></UModal
-  >
+      </template>
+    </UCard>
+  </UModal>
 </template>
 
 <script setup lang="ts">
@@ -101,33 +93,28 @@ const props = defineProps<Props>();
 const model = defineModel<number>();
 
 const startTime = ref<number | null>(null);
-const elapsedSeconds = ref<number>(0);
+const elapsedSeconds = ref(0);
 let intervalId: number | null = null;
 
-const isSettingOpen = ref<boolean>(false);
+const isSettingOpen = ref(false);
 
-const formattedElapsedTime = computed<string>(() => {
+const formattedElapsedTime = computed(() => {
   const minutes = Math.floor(elapsedSeconds.value / 60);
-  const seconds = (elapsedSeconds.value % 60).toString().padStart(2, "0");
+  const seconds = String(elapsedSeconds.value % 60).padStart(2, "0");
   return `${minutes}:${seconds}`;
 });
 
-// Watch for changes in the elapsed time to update the model
-watch(elapsedSeconds, (newVal) => {
-  model.value = newVal;
+watch(elapsedSeconds, (val) => {
+  model.value = val;
 });
 
-// Watch for changes in total training time to adjust the elapsed time if needed
 watch(
   () => props.totalTrainingTime,
-  (newVal) => {
-    if (elapsedSeconds.value > newVal) {
-      elapsedSeconds.value = newVal;
-    }
+  (val) => {
+    if (elapsedSeconds.value > val) elapsedSeconds.value = val;
   }
 );
 
-// Watch for changes in pauseTimer to pause/resume the timer
 watch(
   () => props.pauseTimer,
   (pause) => {
@@ -144,11 +131,9 @@ watch(
 );
 
 const startTimer = () => {
-  if (startTime.value === null) {
-    startTime.value = Date.now();
-  } else {
-    startTime.value = Date.now() - elapsedSeconds.value * 1000;
-  }
+  const now = Date.now();
+  startTime.value =
+    startTime.value === null ? now : now - elapsedSeconds.value * 1000;
 
   intervalId = window.setInterval(() => {
     if (startTime.value !== null) {
@@ -158,29 +143,20 @@ const startTimer = () => {
 };
 
 onMounted(() => {
-  if (!props.pauseTimer) {
-    startTimer();
-  }
+  if (!props.pauseTimer) startTimer();
 });
 
 onUnmounted(() => {
-  if (intervalId !== null) {
-    clearInterval(intervalId);
-  }
+  if (intervalId !== null) clearInterval(intervalId);
 });
 </script>
 
 <style scoped>
-/* Disable text selection */
 * {
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-}
-
-/* Disable dragging */
-* {
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
