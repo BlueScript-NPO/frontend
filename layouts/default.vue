@@ -51,7 +51,7 @@ provide("files", files);
         color="gray"
         square
         icon="i-ph-magnifying-glass"
-        label="Search documentation"
+        aria-label="Search documentation"
         @click="toggleContentSearch"
       ></UButton>
       <UContentSearchButton
