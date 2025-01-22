@@ -7,7 +7,7 @@
     "title": "BlueScript",
     "cta": "Beginn der Ausbildung",
     "github": "Abrufen des Quellcodes",
-    "docs": "Wie zu verwenden",
+    "docs": "Hilfe",
     "description": "BlueScript ist ein kostenloses und quelloffenes Tool zur Unterstützung von Menschen mit Legasthenie.",
     "features": {
       "title": "Warum BlueScript wählen?",
@@ -45,7 +45,7 @@
     "home": "首页",
     "train": "Ausbildung",
     "result": "Ergebnis",
-    "docs": "Dokumentation"
+    "docs": "Hilfe"
   },
   "docs": {
     "toc": "Inhaltsübersicht"
@@ -55,7 +55,7 @@
     "resources": {
       "title": "Ressourcen",
       "items": {
-        "docs": "Dokumentation",
+        "docs": "Hilfe",
         "license": "Lizenzvergabe"
       }
     },
@@ -119,8 +119,8 @@
     "stimuliLength": "Zeichenlänge",
     "presentationTime": "Anzeigezeit (Sekunden)",
     "delayTime": "Latenzzeit (Sekunden)",
-    "promptType": "Typ der Aufforderung",
-    "promptLength": "Länge der Aufforderung",
+    "promptType": "Ansicht Typ",
+    "promptLength": "Länge anzeigen",
     "targetLength": "Länge der Antwort",
     "targetCount": "Anzahl der richtigen Antworten",
     "chunkSize": "Blockgröße",
@@ -137,8 +137,8 @@
   "procedure": {
     "Rapid Visual Perception": "Schnelle visuelle Wahrnehmung",
     "Sequential Visual Memory": "Sequentielles visuelles Gedächtnis",
-    "Character Sequencing": "Sequenzierung von Zeichen",
-    "Character Matching": "Zeichenabgleich",
+    "Character Sequencing": "Sequentielle Zeichenverarbeitung",
+    "Character Matching": "Charakter-Kontrast",
     "Character Guesstimate": "Einschätzung des Charakters"
   },
   "Rapid Visual Perception": {
@@ -150,11 +150,11 @@
     "icon": "i-ph-punkte-drei-umrisse"
   },
   "Character Sequencing": {
-    "description": "Üben Sie, die Eingabeaufforderungen in der richtigen Reihenfolge zu finden und die rechte Pfeiltaste und die Leertaste zur Eingabe von Zeichen zu verwenden.",
+    "description": "Trainieren Sie, Ansichten in der richtigen Reihenfolge zu finden und Zeichen mit der rechten Pfeiltaste und der Leertaste einzugeben.",
     "icon": "i-ph-pfeil-rechts"
   },
   "Character Matching": {
-    "description": "Training zum Anklicken der passenden Zeichenfolge aus einer Reihe von Zeichenfolgen, die der Aufforderung visuell ähnlich sind.",
+    "description": "Training zum Anklicken einer passenden Zeichenfolge unter Zeichenfolgen, die der Ansicht visuell ähnlich sind.",
     "icon": "i-ph-quer-quadrat"
   },
   "Character Guesstimate": {
@@ -182,4 +182,12 @@
     "trialsDesc": "Geschichte aller Versuche",
     "averageTrialTime": "Durchschnittliche Versuchsdauer",
     "averageTrialTimeDesc": "Durchschnittliche Zeit für jeden Versuch (in Sekunden)",
-   
+    "elapsedTime": "Verstrichene Zeit",
+    "elapsedTimeDesc": "Tatsächlich in der Ausbildung verbrachte Zeit",
+    "trialCount": "Anzahl der Versuche",
+    "trialCountDesc": "Anzahl der durchgeführten Versuche",
+    "correctCount": "Anzahl der richtigen Antworten",
+    "correctCountDesc": "Anzahl der richtigen Antworten",
+    "upload": "Abrufen von Ergebnissen"
+  }
+}
