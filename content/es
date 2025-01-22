@@ -1,50 +1,26 @@
 ---
-title: Instalación
-description: Cómo instalar y utilizar BlueScript
-navigation: Instalación
+title: Preparación de la formación
+description: Configuración del entorno para la formación con BlueScript
 ---
 
-## Para usuarios generales
+## Hardware
 
-BlueScript se proporciona como una aplicación web, lo que le permite utilizarlo fácilmente desde cualquier lugar con sólo un **navegador**, sin ningún proceso de instalación. Visite la aplicación web oficial y comience a utilizar todas las funciones de BlueScript de inmediato.
+BlueScript es una aplicación web que puede utilizarse en cualquier sistema operativo. Sin embargo, para una formación eficaz, se recomienda utilizar un dispositivo que cumpla los siguientes criterios.
 
-## Autoalojamiento
+### Requisitos del dispositivo
 
-Además de la aplicación web oficial, puedes alojar **BlueScript** en tu propio servidor. Esta opción es adecuada para quienes tienen conocimientos de gestión de servidores o quienes prefieren un entorno personalizado.
+- Un ordenador, portátil o tableta equipado con un teclado físico.
+- Una pantalla de al menos 7 pulgadas (17,78 cm).
 
-### Alojamiento con Docker
+### Herramientas útiles
 
-https://hub.docker.com/r/suhjae/bluescriptBlueScript se puede alojar fácilmente utilizando la [imagen Docker oficial](). Siga los siguientes pasos para instalar Docker y ejecutar el servidor BlueScript.
+- Un cuaderno para registrar el progreso de la formación (próximamente se añadirá una función de cuenta para guardar los registros de formación).
+- Tapones para los oídos o auriculares para bloquear el ruido en un entorno de distracción.
 
-#### **1. Instalar Docker**
+## Postura de entrenamiento
 
-https://www.docker.com/Si Docker aún no está instalado, descargue e instale Docker para su plataforma desde el [sitio web oficial de Docker]().
+Mantenga una distancia de aproximadamente 30 cm de su monitor durante el entrenamiento. Equivale aproximadamente a la longitud diagonal de una hoja de papel A4.
 
-#### **2. Extraer la imagen Docker de BlueScript**
+No apoye las manos en el teclado cuando no esté introduciendo respuestas. En las sesiones de formación que requieren una memorización rápida, colocar las manos en el teclado o prepararse para escribir las respuestas antes de tiempo puede reducir la eficacia de la formación.
 
-Una vez instalado Docker, descarga la imagen oficial de BlueScript ejecutando el siguiente comando en tu terminal:
-
-```bash
-docker pull suhjae/bluescript
-```
-
-#### **3. Ejecutar BlueScript**
-
-Después de descargar la imagen Docker, inicie el contenedor utilizando el siguiente comando:
-
-```bash
-docker run -d -p 80:3000 --name bluescript suhjae/bluescript
-```
-
-Toma:
-
-- `-d` ejecuta el contenedor en segundo plano.
-- `-p 80:3000` asigna el puerto 80 de tu máquina local al puerto 3000 dentro del contenedor.
-
-#### \*\*4. Acceder a BlueScript
-
-Abra su navegador y navegue hasta `http://localhost` para acceder a BlueScript.
-
-#### **5. Configurar ajustes**
-
-Para una configuración adicional, puede modificar el archivo `docker-compose.yml` o utilizar variables de entorno Docker para personalizar BlueScript. https://traefik.io/traefik/Por ejemplo, puede configurar un proxy web como [Traefik]() dentro del archivo `docker-compose.yml` para conectar su dominio y crear una configuración más avanzada.
+Evite hablar solo o murmurar durante el entrenamiento. Repetir las indicaciones en voz alta o murmurarlas puede repercutir negativamente en la mejora de las funciones cognitivas visuales.
