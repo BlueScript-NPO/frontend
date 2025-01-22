@@ -1,71 +1,32 @@
 ---
-title: Character Guesstimate
-description: Training to predict and input letters appearing gradually on the screen
+title: مقدمة
+description: مرحبًا بك في بلو سكريبت.
 ---
 
-## Overview
+## ما هو بلو سكريبت؟
 
-Character Guesstimate training involves partially revealing a letter and identifying it as quickly as possible before it is fully displayed. This training improves shape perception, visual recognition, spatial awareness, information processing speed, and simultaneous processing ability.
+BlueScript هو مشروع مفتوح المصدر مصمم لمساعدة الأفراد الذين يعانون من عسر القراءة. ويجمع اسمها بين عنصرين: "أزرق" الذي يرمز إلى التغيير الإيجابي، و"سكريبت" الذي يمثل الحروف أو النص. يتجاوز هذا المشروع المناهج اللغوية التقليدية من خلال توظيف منهجيات علم الأعصاب لتوفير تدريب فعال للمصابين بعسر القراءة.
 
-Each training attempt follows this sequence and repeats until the allotted training time is exceeded:
+لضمان وصول الأفراد الذين يعانون من عسر القراءة إلى التدريب بحرية في أي مكان، تم تطوير BlueScript كتطبيق ويب. يقدم هذا التطبيق مجموعة متنوعة من الوحدات التدريبية التي تهدف إلى تقوية الروابط العصبية في الدماغ، ومعالجة أوجه القصور الناجمة عن عسر القراءة.
 
-1. At the start of an attempt, a blank rectangle is displayed, and a letter begins to gradually appear within it.\
-   ![character-guesstimate-1](/character-guesstimate-1.png){width="1024" height="576"}
-2. Identify the letter as quickly as possible and press the corresponding key. A blue progress bar below the rectangle indicates how much of the letter has been revealed.\
-   ![character-guesstimate-2](/character-guesstimate-2.png){width="1024" height="576"}
-3. After pressing a key, the full letter is revealed, and the result is compared to your input. Correct answers are highlighted in green, while incorrect answers are shown in red.\
-   ![character-guesstimate-3](/character-guesstimate-3.png){width="1024" height="576"}\
-   ![character-guesstimate-4](/character-guesstimate-4.png){width="1024" height="576"}
+### بدايات بلو سكريبت: سوه جاي
 
-## Training Settings
+https://github.com/SuhJaeوقد بدأ هذا المشروع من قبل [سوه جاي]()، الذي عانى من تحديات وألم عسر القراءة أثناء الطفولة. ومع معاناتها من بطء سرعة القراءة ومحدودية الإلمام بالقراءة والكتابة، عملت سوه جاي بلا كلل للتغلب على هذه الصعوبات. ولحسن الحظ، ساعده التدريب الذي تلقاه خلال المرحلة الإعدادية على تحسين مهاراته في القراءة. ومع ذلك، فقد تركت هذه التجربة فهماً عميقاً لمدى صعوبة التغلب على عسر القراءة لدى العديد من الأشخاص.
 
-### Duration (Minutes)
+بدافع من رحلته الشخصية، قام سوه جاي بتطوير **BlueScript** بهدف التخفيف من الصعوبات التي يواجهها الآخرون الذين يعانون من عسر القراءة. وقد أدرك أن العبء المالي غالبًا ما يجعل التغلب على عسر القراءة غير متاح للكثيرين. وقد أدى هذا الإدراك إلى تصميمه على إنشاء برنامج تدريبي مجاني لعسر القراءة، مما يتيح للناس فرصة للتغلب على عسر القراءة دون قيود اقتصادية.
 
-The training ends after the current attempt finishes if the preset training duration is exceeded. The recommended training duration is around 5 minutes, and sessions exceeding 10 minutes are not advised.
+## مشروع مفتوح المصدر
 
-### Character Type
+BlueScript هو مشروع مفتوح المصدر يمكن لأي شخص استخدامه والمساهمة فيه مجانًا. يتم تشجيع كل من المستخدمين والمطورين على المشاركة في تحسين برامج التدريب. https://github.com/BlueScript-NPOيتوفر بلو سكريبت حاليًا بتسع لغات، مع إصلاحات مستمرة للأخطاء وتحسينات على واجهة المستخدم ([BlueScript GitHub]()).
 
-Sets the type of characters used in the training. Using characters from the trainee's native language is most effective. The available character types are:
+## وحدات التدريب
 
-- **Numbers**: Digits from 0 to 9
-- **Alphabets**: Uppercase letters from A to Z
-- **Alphabets + Numbers**: Uppercase letters (A-Z) and numbers (0-9)
-- **Korean**: Korean consonants (e.g., ㄱ, ㄴ, ㄷ) and vowels (e.g., ㅏ, ㅑ, ㅓ)
+يوفر BlueScript مجموعة متنوعة من الوحدات التدريبية المصممة لتحفيز الخلايا العصبية في الدماغ وتعزيز مهارات القراءة للأفراد الذين يعانون من عسر القراءة. تشمل وحدات التدريب الرئيسية ما يلي:
 
-**To lower the difficulty**, select simpler character types (e.g., from `Alphabets + Numbers` to `Alphabets` or `Numbers`).
+1. /docs/training/visual/rapid-visual-perception[**الإدراك البصري السريع**](): وحدة تدريبية حيث يتعرف المستخدمون بسرعة على الحروف المعروضة على الشاشة ويدخلونها بشكل موجز.
+2. /docs/training/visual/sequential-visual-memory[**ذاكرة بصرية متتابعة**](): وحدة يتم فيها عرض الحروف واحدًا تلو الآخر، ويجب على المستخدمين تذكرها وإدخالها.
+3. /docs/training/visual/character-sequencing[**تسلسل الحروف**](): التدريب الذي يتضمن تحديد الحروف وإدخالها بترتيب محدد.
+4. /docs/training/visual/character-matching[**مطابقة الأحرف**](): وحدة يقوم فيها المستخدمون بتحديد الحروف المطابقة لمطلب معين من بين أحرف متشابهة بصريًا.
+5. /docs/training/visual/character-guesstimate[**تخمين الحروف**](): وحدة تظهر فيها الحروف تدريجيًا، ويجب على المستخدمين التنبؤ بها وإدخالها بأسرع ما يمكن.
 
-**To increase the difficulty**, select more complex character types (e.g., from `Numbers` to `Alphabets + Numbers`).
-
-### Block Size
-
-Sets the size of the "blocks" that form the letters as they appear. Smaller blocks make the training easier.
-
-- **Small**: 20×20 blocks
-- **Medium**: 15×15 blocks
-- **Large**: 10×10 blocks
-
-## Adjusting Training Difficulty
-
-Based on training results, you can determine whether the current settings are appropriate:
-
-### Accuracy/Average Accuracy
-
-- **Below 70%**: The difficulty is too high. If low accuracy persists (2–3 sessions), reduce the difficulty for the next session.
-- **70%–80%**: The difficulty is appropriate. Continue with the current settings for the next session.
-- **Above 80%**: The difficulty is too low. Increase the difficulty for the next session.
-
-### Average Reveal Percentage
-
-- **Below 30%**: The difficulty is too low. Increase the difficulty for the next session.
-- **30%–50%**: The difficulty is appropriate. Continue with the current settings for the next session.
-- **Above 50%**: The difficulty is too high. If this persists (2–3 sessions), reduce the difficulty for the next session.
-
-Adjust the training settings within the recommended ranges based on these metrics.
-
-::callout{color="primary" icon="i-ph-lightbulb"}
-If the average reveal percentage is low but accuracy is also low, encourage trainees to focus on improving accuracy rather than rushing during training.
-::
-
-::callout{color="primary" icon="i-ph-lightbulb"}
-This training can be considered mastered when using "Large" blocks, achieving an accuracy rate above 90%, and maintaining an average reveal percentage below 30%.
-::
+صُممت هذه الوحدات لتحفيز الدماغ بطرق مختلفة، مما يضمن استمرار تفاعل المستخدمين وعدم تحولهم إلى حساسين للمحفزات المتكررة.
