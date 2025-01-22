@@ -1,24 +1,2 @@
----
-title: Configurazione della formazione
-description: Come organizzare sessioni di formazione efficaci
----
-
-## Panoramica
-
-La formazione BlueScript consente agli utenti di personalizzare le impostazioni della formazione. Il livello di difficoltà della formazione ha un impatto significativo sul suo successo. Se la difficoltà è troppo alta, l'allenamento diventa troppo impegnativo e meno efficace. Al contrario, se la difficoltà è troppo bassa, l'allenamento può diventare monotono, riducendone l'efficacia. Pertanto, regolare la difficoltà in modo appropriato è fondamentale per condurre sessioni di allenamento efficaci.
-
-## Regolazione della difficoltà
-
-/trainVisitare la pagina [Formazione]() per selezionare un modulo di formazione. È inoltre possibile fare clic sul pulsante **Aiuto** per imparare a utilizzare ciascun modulo di formazione.
-
-/select-procedure.png![select-procedure](){width="1024" height="576"}
-
-Una volta selezionato un modulo per la formazione, è possibile configurarne le impostazioni come mostrato nell'immagine seguente. Tutti i moduli di allenamento hanno impostazioni per **tempo** e **tipo di personaggio**, che non influiscono sulla difficoltà. Oltre a queste, ogni modulo include impostazioni uniche. **Le impostazioni in alto hanno un impatto maggiore sulla difficoltà rispetto a quelle in basso.** \*\*Le impostazioni in alto hanno un impatto maggiore sulla difficoltà rispetto a quelle in basso.
-
-/setting-example.png![setting-example](){width="1024" height="576"}
-
-Ad esempio, nel modulo Percezione visiva rapida, la regolazione della **lunghezza del carattere** di un passo tramite le frecce laterali ha un impatto maggiore sulla difficoltà rispetto alla modifica del **tempo di visualizzazione** di un passo. Per informazioni dettagliate sulle impostazioni specifiche di ciascun modulo, consultare la relativa documentazione.
-
-## Risultati della formazione
-
-I risultati dell'allenamento sono indicatori fondamentali per regolare la difficoltà delle sessioni successive. Utilizzate i risultati per regolare la difficoltà come segue:
+title: Come iniziare
+navigation.icon: i-ph-rocket-lancio
