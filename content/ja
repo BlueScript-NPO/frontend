@@ -1,71 +1,32 @@
 ---
-title: Character Guesstimate
-description: Training to predict and input letters appearing gradually on the screen
+title: はじめに
+description: BlueScriptへようこそ。
 ---
 
-## Overview
+## BlueScriptとは？
 
-Character Guesstimate training involves partially revealing a letter and identifying it as quickly as possible before it is fully displayed. This training improves shape perception, visual recognition, spatial awareness, information processing speed, and simultaneous processing ability.
+BlueScriptは、失読症の方を支援するためのオープンソースプロジェクトです。 ネーミングは、ポジティブな変化を象徴する「ブルー」と文字やテキストを表す「スクリプト」の2つの要素を組み合わせたものです。 このプロジェクトは、従来の言語学的アプローチにとどまらず、神経科学的方法論を採用することで、難読者のための効果的なトレーニングを提供します。
 
-Each training attempt follows this sequence and repeats until the allotted training time is exceeded:
+難読症の方がどこでも自由にトレーニングにアクセスできるように、BlueScriptはWebアプリケーションとして開発されました。 このアプリは、失読症によって引き起こされる非効率に対処し、脳内の神経接続を強化することを目的とした様々なトレーニングモジュールを提供します。
 
-1. At the start of an attempt, a blank rectangle is displayed, and a letter begins to gradually appear within it.\
-   ![character-guesstimate-1](/character-guesstimate-1.png){width="1024" height="576"}
-2. Identify the letter as quickly as possible and press the corresponding key. A blue progress bar below the rectangle indicates how much of the letter has been revealed.\
-   ![character-guesstimate-2](/character-guesstimate-2.png){width="1024" height="576"}
-3. After pressing a key, the full letter is revealed, and the result is compared to your input. Correct answers are highlighted in green, while incorrect answers are shown in red.\
-   ![character-guesstimate-3](/character-guesstimate-3.png){width="1024" height="576"}\
-   ![character-guesstimate-4](/character-guesstimate-4.png){width="1024" height="576"}
+### BlueScriptのはじまり: ソ・ジェ
 
-## Training Settings
+このプロジェクトは、幼少期にディスレクシアの難しさと苦しみを経験した [ソ・ジェ](https://github.com/SuhJae)が立ち上げたものです。 読書速度が遅く、識字能力に限界があることに苦しみながら、ソ・ジェはこれらの困難を克服するためにひたすら努力しました。 ありがたいことに、中学時代に受けたトレーニングが読解力の向上に役立った。 しかし、この経験は、失読症がいかに多くの人にとって克服が難しいものであるかを深く理解するきっかけとなりました。
 
-### Duration (Minutes)
+ソ・ジェは、自分の個人的な旅をきっかけに、他の失読症者の苦しみを軽減することを目標に、**BlueScript**を開発しました。 経済的な負担のために、多くの人が難読症の克服に踏み切れないことが多いことを認識した。 このような気づきから、経済的な制約を受けずに難読症を克服する機会を提供する無料の難読症トレーニングプログラムを作ろうと決意した。
 
-The training ends after the current attempt finishes if the preset training duration is exceeded. The recommended training duration is around 5 minutes, and sessions exceeding 10 minutes are not advised.
+## オープンソースプロジェクト
 
-### Character Type
+BlueScriptは、誰でも無料で利用・貢献できるオープンソースプロジェクトです。 ユーザーも開発者も研修プログラムの改善に参加してください。 現在、BlueScriptは9つの言語で利用可能で、現在もバグ修正やUIの改善が行われています([BlueScript GitHub](https://github.com/BlueScript-NPO))。
 
-Sets the type of characters used in the training. Using characters from the trainee's native language is most effective. The available character types are:
+## トレーニングモジュール
 
-- **Numbers**: Digits from 0 to 9
-- **Alphabets**: Uppercase letters from A to Z
-- **Alphabets + Numbers**: Uppercase letters (A-Z) and numbers (0-9)
-- **Korean**: Korean consonants (e.g., ㄱ, ㄴ, ㄷ) and vowels (e.g., ㅏ, ㅑ, ㅓ)
+BlueScriptは、脳の神経細胞を刺激し、失読症の方の読解力を高めるために設計された様々なトレーニングモジュールを提供しています。 主なトレーニングモジュールは以下の通りです：
 
-**To lower the difficulty**, select simpler character types (e.g., from `Alphabets + Numbers` to `Alphabets` or `Numbers`).
+1. [**Rapid Visual Perception**](/docs/training/visual/rapid-visual-perception)：画面に短く表示された文字を素早く認識して入力するトレーニングモジュール。
+2. [**Sequential Visual Memory**](/docs/training/visual/sequential-visual-memory)：文字を一文字ずつ表示し、ユーザーが記憶して入力するモジュール。
+3. [**文字シーケンス**](/docs/training/visual/character-sequencing)：指定された順番で文字を識別して入力するトレーニング。
+4. [**文字照合**](/docs/training/visual/character-matching)：視覚的に類似した文字の中から、指定されたプロンプトに一致する文字を識別するモジュール。
+5. [**Character Guesstimate**](/docs/training/visual/character-guesstimate)：文字が徐々に表示され、ユーザーができるだけ早く予測して入力するモジュール。
 
-**To increase the difficulty**, select more complex character types (e.g., from `Numbers` to `Alphabets + Numbers`).
-
-### Block Size
-
-Sets the size of the "blocks" that form the letters as they appear. Smaller blocks make the training easier.
-
-- **Small**: 20×20 blocks
-- **Medium**: 15×15 blocks
-- **Large**: 10×10 blocks
-
-## Adjusting Training Difficulty
-
-Based on training results, you can determine whether the current settings are appropriate:
-
-### Accuracy/Average Accuracy
-
-- **Below 70%**: The difficulty is too high. If low accuracy persists (2–3 sessions), reduce the difficulty for the next session.
-- **70%–80%**: The difficulty is appropriate. Continue with the current settings for the next session.
-- **Above 80%**: The difficulty is too low. Increase the difficulty for the next session.
-
-### Average Reveal Percentage
-
-- **Below 30%**: The difficulty is too low. Increase the difficulty for the next session.
-- **30%–50%**: The difficulty is appropriate. Continue with the current settings for the next session.
-- **Above 50%**: The difficulty is too high. If this persists (2–3 sessions), reduce the difficulty for the next session.
-
-Adjust the training settings within the recommended ranges based on these metrics.
-
-::callout{color="primary" icon="i-ph-lightbulb"}
-If the average reveal percentage is low but accuracy is also low, encourage trainees to focus on improving accuracy rather than rushing during training.
-::
-
-::callout{color="primary" icon="i-ph-lightbulb"}
-This training can be considered mastered when using "Large" blocks, achieving an accuracy rate above 90%, and maintaining an average reveal percentage below 30%.
-::
+これらのモジュールは、さまざまな方法で脳を刺激するように設計されており、ユーザーが飽きずに、繰り返し刺激を受けることで鈍感にならないように配慮されています。
