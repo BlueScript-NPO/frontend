@@ -1,20 +1,20 @@
 ---
-title: Mémoire visuelle séquentielle
-description: Entraînement à la mémorisation et à la saisie de lettres affichées de manière séquentielle
+title: Séquencement des caractères
+description: Apprentissage de la localisation et de la saisie de caractères dans l'ordre
 ---
 
 ## Vue d'ensemble
 
-L'entraînement à la mémoire visuelle séquentielle consiste à identifier et à mémoriser une série de caractères affichés en séquence et à les rappeler après un délai déterminé. Cette formation améliore la mémoire visuelle séquentielle, la mémoire de travail, la vitesse de perception, la précision visuo-motrice et la capacité de traitement séquentiel.
+La formation au séquençage des caractères consiste à localiser et à saisir les caractères affichés à l'écran dans un ordre spécifique à l'aide de la touche fléchée droite et de la barre d'espacement. Cet entraînement améliore le traitement visuel temporel, l'attention visuelle, la discrimination visuelle, le raisonnement spatial et la vitesse visuelle.
 
 Chaque tentative d'entraînement suit cette séquence et se répète jusqu'à ce que le temps d'entraînement alloué soit dépassé :
 
-1. Les caractères sont affichés un par un dans l'ordre sur l'écran.\
-   /sequential-visual-memory-1.png![sequential-visual-memory-1](){width="1024" height="576"}
-2. Après l'affichage de tous les caractères, un délai (qui peut être désactivé en le réglant sur 0 seconde) affiche un motif aléatoire à l'écran.\
-   /sequential-visual-memory-2.png![sequential-visual-memory-2](){width="1024" height="576"}
-3. Lorsque le schéma disparaît, le stagiaire saisit les caractères dont il se souvient et vérifie ses réponses.\
-   /sequential-visual-memory-3.png![sequential-visual-memory-3](){width="1024" height="576"}
+1. Au début d'une tentative, une séquence de caractères est affichée en haut, et un champ de saisie est affiché en dessous.\
+   /character-sequencing-1.png![character-sequencing-1](){width="1024" height="576"}
+2. Utilisez la touche fléchée vers la droite pour déplacer le curseur dans le champ de saisie. Lorsque le curseur correspond à un caractère de la séquence, appuyez sur la barre d'espacement. Si vous sautez un caractère ou appuyez sur la barre d'espacement sur le mauvais caractère, cela est considéré comme une erreur et le curseur se déplace vers le caractère correct le plus proche dans la séquence.\
+   /character-sequencing-2.png![character-sequencing-2](){width="1024" height="576"}\
+   Par exemple, dans l'image ci-dessus, les caractères a, b, c, d et e ont déjà été trouvés. Le prochain caractère à saisir est ㅜ. Si vous oubliez ㅜ ou si vous appuyez sur la barre d'espacement sur le mauvais caractère, le curseur passe au caractère suivant de la séquence, ㅈ.
+3. La tentative se termine lorsque le curseur atteint le dernier caractère de la séquence.
 
 ## Paramètres de formation
 
@@ -35,13 +35,22 @@ Définit le type de caractères utilisés dans la formation. L'utilisation de ca
 
 **Pour augmenter la difficulté**, sélectionnez des types de caractères plus complexes (par exemple, de `Nombres` à `Alphabets + Chiffres`).
 
-### Longueur des caractères
+### Type de séquence
 
-Définit la longueur de la séquence de caractères utilisée dans la formation. La longueur peut être réglée de `1` à `6`, et les séquences plus longues **augmentent significativement la difficulté**.
+Définit le type de séquence utilisé dans la formation. Les options sont les suivantes :
 
-### Temps de retard (secondes)
+- **Séquentiel** : La séquence est affichée dans l'ordre (par exemple, `ABCD`, `And`, `1234`).
+- **Random** : La séquence est affichée de manière aléatoire (par exemple, `HOEB`, `аппак`, `0584`).
 
-Définit la durée pendant laquelle le motif aléatoire est affiché après les caractères. Le temps de retard peut être réglé entre 0 et 25 secondes. Des délais plus longs augmentent **légèrement** la difficulté. L'intervalle recommandé est de 0 à 15 secondes. Si l'ajustement du délai n'est pas suffisant pour affiner la difficulté, modifiez plutôt la longueur des caractères.
+L'utilisation d'une séquence séquentielle diminue **significativement** la difficulté, tandis qu'une séquence aléatoire l'augmente **significativement**.
+
+::callout{colour="primary" icon="i-ph-lightbulb"}
+Si vous utilisez une séquence aléatoire, encouragez le stagiaire à mémoriser autant de caractères que possible en même temps et à les localiser en se basant sur sa mémoire.
+: :
+
+### Longueur de la séquence
+
+Définit la longueur de la séquence utilisée dans la formation. La longueur peut être ajustée de `1` à `25`, les séquences plus longues **augmentant significativement la difficulté**.
 
 ## Adapter la difficulté de l'entraînement
 
@@ -53,4 +62,10 @@ Sur la base des résultats de la formation, vous pouvez déterminer si les param
 - **70%-80%** : La difficulté est appropriée. Continuer avec les paramètres actuels pour la prochaine session.
 - **Au-dessus de 80 %** : La difficulté est trop faible. Augmenter la difficulté pour la session suivante.
 
-Après avoir évalué la difficulté à l'aide des critères ci-dessus, réglez les paramètres de l'entraînement dans les limites recommandées.
+### Durée moyenne de la tentative
+
+- **Plus de 40 secondes** : La difficulté est trop élevée. Si cela persiste (2-3 sessions), réduisez la difficulté pour la session suivante.
+- **30-40 secondes** : La difficulté est appropriée. Continuer avec les paramètres actuels pour la prochaine session.
+- **En dessous de 30 secondes** : La difficulté est trop faible. Augmenter la difficulté pour la session suivante.
+
+Ajustez les paramètres dans les fourchettes recommandées en fonction des critères ci-dessus afin d'optimiser l'efficacité de l'entraînement.
