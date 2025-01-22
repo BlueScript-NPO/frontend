@@ -94,6 +94,12 @@ export default defineNuxtConfig({
         name: "العربية",
         file: "ar/main.json",
       },
+      {
+        code: "de",
+        language: "de-DE",
+        name: "Deutsch",
+        file: "de/main.json",
+      },
     ],
   },
 
@@ -103,7 +109,7 @@ export default defineNuxtConfig({
 });
 
 function generateRouteRules() {
-  const locales = ["ko", "fr", "es", "ru", "ja", "zh", "ar", "hi"];
+  const locales = ["ko", "fr", "es", "ru", "ja", "zh", "ar", "de"];
   const rules: Record<string, any> = {
     // Default locale (en) routes
     "/docs": { redirect: "/docs/getting-started" },
