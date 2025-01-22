@@ -1,24 +1,2 @@
----
-title: Configuration de la formation
-description: Comment organiser des sessions de formation efficaces
----
-
-## Vue d'ensemble
-
-La formation BlueScript permet aux utilisateurs de personnaliser leurs paramètres de formation. Le niveau de difficulté de la formation a un impact significatif sur son succès. Si la difficulté est trop élevée, la formation devient trop difficile et moins efficace. Inversement, si la difficulté est trop faible, la formation peut devenir monotone, ce qui réduit également son efficacité. C'est pourquoi il est essentiel d'ajuster la difficulté de manière appropriée pour mener des sessions de formation efficaces.
-
-## Adaptation de la difficulté
-
-/trainVisitez la page [Formation] ( ) pour sélectionner un module de formation. Vous pouvez également cliquer sur le bouton **Aide** pour apprendre à utiliser chaque module de formation.
-
-/select-procedure.png![select-procedure](){width="1024" height="576"}
-
-Une fois que vous avez sélectionné un module de formation, vous pouvez configurer ses paramètres comme indiqué dans l'image ci-dessous. Tous les modules de formation ont des paramètres pour **la durée** et **le type de personnage**, qui n'affectent pas la difficulté. En outre, chaque module comprend des paramètres uniques. **Les réglages du haut ont un impact plus important sur la difficulté que ceux du bas.** \*\* Les réglages du haut ont un impact plus important sur la difficulté que ceux du bas.
-
-/setting-example.png![setting-example](){width="1024" height="576"}
-
-Par exemple, dans le module Perception visuelle rapide, l'ajustement de la **longueur de caractères** d'un cran à l'aide des flèches latérales a un impact plus important sur la difficulté que l'ajustement du **temps d'affichage** d'un cran. Reportez-vous à la documentation de chaque module pour plus de détails sur ses paramètres spécifiques.
-
-## Résultats de la formation
-
-Les résultats de l'entraînement sont des indicateurs cruciaux pour ajuster la difficulté des sessions suivantes. Utilisez les résultats pour ajuster la difficulté comme suit :
+title: Pour commencer
+navigation.icon: i-ph-rocket-launch
