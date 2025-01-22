@@ -1,71 +1,32 @@
 ---
-title: Character Guesstimate
-description: Training to predict and input letters appearing gradually on the screen
+title: Introducción
+description: Bienvenido a BlueScript.
 ---
 
-## Overview
+## ¿Qué es BlueScript?
 
-Character Guesstimate training involves partially revealing a letter and identifying it as quickly as possible before it is fully displayed. This training improves shape perception, visual recognition, spatial awareness, information processing speed, and simultaneous processing ability.
+BlueScript es un proyecto de código abierto diseñado para ayudar a las personas con dislexia. Su nombre combina dos elementos: "Azul", que simboliza el cambio positivo, y "Script", que representa letras o texto. Este proyecto va más allá de los enfoques lingüísticos tradicionales al emplear metodologías neurocientíficas para proporcionar una formación eficaz a las personas con dislexia.
 
-Each training attempt follows this sequence and repeats until the allotted training time is exceeded:
+Para garantizar que las personas con dislexia puedan acceder libremente a la formación en cualquier lugar, BlueScript se ha desarrollado como una aplicación web. Esta aplicación ofrece diversos módulos de entrenamiento destinados a reforzar las conexiones neuronales del cerebro, abordando las ineficiencias causadas por la dislexia.
 
-1. At the start of an attempt, a blank rectangle is displayed, and a letter begins to gradually appear within it.\
-   ![character-guesstimate-1](/character-guesstimate-1.png){width="1024" height="576"}
-2. Identify the letter as quickly as possible and press the corresponding key. A blue progress bar below the rectangle indicates how much of the letter has been revealed.\
-   ![character-guesstimate-2](/character-guesstimate-2.png){width="1024" height="576"}
-3. After pressing a key, the full letter is revealed, and the result is compared to your input. Correct answers are highlighted in green, while incorrect answers are shown in red.\
-   ![character-guesstimate-3](/character-guesstimate-3.png){width="1024" height="576"}\
-   ![character-guesstimate-4](/character-guesstimate-4.png){width="1024" height="576"}
+### Los inicios de BlueScript: Suh Jae
 
-## Training Settings
+https://github.com/SuhJaeEste proyecto fue iniciado por [Suh Jae](), que experimentó los retos y el dolor de la dislexia durante la infancia. Suh Jae, que tenía una velocidad de lectura lenta y una alfabetización limitada, trabajó incansablemente para superar estas dificultades. Afortunadamente, la formación recibida durante la enseñanza media le ayudó a mejorar su capacidad de lectura. Sin embargo, esta experiencia me dejó una profunda comprensión de lo difícil que es superar la dislexia para muchas personas.
 
-### Duration (Minutes)
+Motivado por su viaje personal, Suh Jae desarrolló **BlueScript** con el objetivo de aliviar las dificultades a las que se enfrentan otras personas con dislexia. Reconoció que la carga financiera hace a menudo inaccesible para muchos la superación de la dislexia. Esta constatación le llevó a tomar la determinación de crear un programa gratuito de formación para la dislexia, que ofreciera a las personas la oportunidad de superarla sin limitaciones económicas.
 
-The training ends after the current attempt finishes if the preset training duration is exceeded. The recommended training duration is around 5 minutes, and sessions exceeding 10 minutes are not advised.
+## Un proyecto de código abierto
 
-### Character Type
+BlueScript es un proyecto de código abierto que cualquiera puede utilizar y al que cualquiera puede contribuir gratuitamente. Se anima tanto a los usuarios como a los desarrolladores a participar en la mejora de los programas de formación. https://github.com/BlueScript-NPOActualmente, BlueScript está disponible en nueve idiomas, con continuas correcciones de errores y mejoras de la interfaz de usuario ([BlueScript GitHub]()).
 
-Sets the type of characters used in the training. Using characters from the trainee's native language is most effective. The available character types are:
+## Módulos de formación
 
-- **Numbers**: Digits from 0 to 9
-- **Alphabets**: Uppercase letters from A to Z
-- **Alphabets + Numbers**: Uppercase letters (A-Z) and numbers (0-9)
-- **Korean**: Korean consonants (e.g., ㄱ, ㄴ, ㄷ) and vowels (e.g., ㅏ, ㅑ, ㅓ)
+BlueScript proporciona una variedad de módulos de formación diseñados para estimular las neuronas del cerebro y mejorar las habilidades de lectura de las personas con dislexia. Los principales módulos de formación incluyen:
 
-**To lower the difficulty**, select simpler character types (e.g., from `Alphabets + Numbers` to `Alphabets` or `Numbers`).
+1. /docs/training/visual/rapid-visual-perception[Percepción visual rápida\*\*](): Módulo de entrenamiento en el que los usuarios reconocen e introducen rápidamente letras que aparecen brevemente en la pantalla.
+2. /docs/training/visual/sequential-visual-memory[Memoria visual secuencial\*\*](): Módulo en el que las letras se muestran de una en una y los usuarios deben recordarlas e introducirlas.
+3. /docs/training/visual/character-sequencing[Secuenciación de caracteres\*\*](): Formación que consiste en identificar e introducir letras en un orden determinado.
+4. /docs/training/visual/character-matching[Coincidencia de caracteres\*\*](): Un módulo en el que los usuarios identifican las letras que coinciden con una indicación dada entre caracteres visualmente similares.
+5. /docs/training/visual/character-guesstimate[Estimación de caracteres\*\*](): Un módulo donde las letras aparecen gradualmente, y los usuarios deben predecirlas e introducirlas lo más rápido posible.
 
-**To increase the difficulty**, select more complex character types (e.g., from `Numbers` to `Alphabets + Numbers`).
-
-### Block Size
-
-Sets the size of the "blocks" that form the letters as they appear. Smaller blocks make the training easier.
-
-- **Small**: 20×20 blocks
-- **Medium**: 15×15 blocks
-- **Large**: 10×10 blocks
-
-## Adjusting Training Difficulty
-
-Based on training results, you can determine whether the current settings are appropriate:
-
-### Accuracy/Average Accuracy
-
-- **Below 70%**: The difficulty is too high. If low accuracy persists (2–3 sessions), reduce the difficulty for the next session.
-- **70%–80%**: The difficulty is appropriate. Continue with the current settings for the next session.
-- **Above 80%**: The difficulty is too low. Increase the difficulty for the next session.
-
-### Average Reveal Percentage
-
-- **Below 30%**: The difficulty is too low. Increase the difficulty for the next session.
-- **30%–50%**: The difficulty is appropriate. Continue with the current settings for the next session.
-- **Above 50%**: The difficulty is too high. If this persists (2–3 sessions), reduce the difficulty for the next session.
-
-Adjust the training settings within the recommended ranges based on these metrics.
-
-::callout{color="primary" icon="i-ph-lightbulb"}
-If the average reveal percentage is low but accuracy is also low, encourage trainees to focus on improving accuracy rather than rushing during training.
-::
-
-::callout{color="primary" icon="i-ph-lightbulb"}
-This training can be considered mastered when using "Large" blocks, achieving an accuracy rate above 90%, and maintaining an average reveal percentage below 30%.
-::
+Estos módulos están diseñados para estimular el cerebro de diversas maneras, garantizando que los usuarios sigan participando y no se desensibilicen ante estímulos repetidos.
