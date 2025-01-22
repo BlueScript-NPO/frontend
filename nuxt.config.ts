@@ -47,34 +47,16 @@ export default defineNuxtConfig({
 
     locales: [
       {
-        code: "ko",
-        language: "ko-KR",
-        name: "한국어",
-        file: "ko/main.json",
-      },
-      {
         code: "en",
         language: "en-US",
         name: "English",
         file: "en/main.json",
       },
       {
-        code: "fr",
-        language: "fr-FR",
-        name: "Français",
-        file: "fr/main.json",
-      },
-      {
-        code: "es",
-        language: "es-ES",
-        name: "Español",
-        file: "es/main.json",
-      },
-      {
-        code: "ru",
-        language: "ru-RU",
-        name: "Русский",
-        file: "ru/main.json",
+        code: "ko",
+        language: "ko-KR",
+        name: "한국어",
+        file: "ko/main.json",
       },
       {
         code: "ja",
@@ -89,10 +71,28 @@ export default defineNuxtConfig({
         file: "zh/main.json",
       },
       {
+        code: "es",
+        language: "es-ES",
+        name: "Español",
+        file: "es/main.json",
+      },
+      {
         code: "ar",
         language: "ar-SA",
         name: "العربية",
         file: "ar/main.json",
+      },
+      {
+        code: "fr",
+        language: "fr-FR",
+        name: "Français",
+        file: "fr/main.json",
+      },
+      {
+        code: "ru",
+        language: "ru-RU",
+        name: "Русский",
+        file: "ru/main.json",
       },
       {
         code: "de",
