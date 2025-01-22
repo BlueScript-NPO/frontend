@@ -1,32 +1,50 @@
 ---
-title: 导言
-description: 欢迎访问 BlueScript。
+title: 安装
+description: 如何安装和使用 BlueScript
+navigation: 安装
 ---
 
-## 什么是 BlueScript？
+## 普通用户
 
-BlueScript 是一个开源项目，旨在帮助有阅读障碍的人。 它的名字融合了两个元素："蓝色 "象征积极的变化，"脚本 "代表字母或文字。 该项目超越了传统的语言学方法，采用神经科学方法为阅读障碍患者提供有效的培训。
+BlueScript 以网络应用程序的形式提供，您只需使用**浏览器**，即可随时随地轻松使用，无需任何安装过程。 访问官方网络应用程序，立即开始使用 BlueScript 的所有功能。
 
-为了确保有阅读障碍的个人能够在任何地方自由地接受培训，BlueScript 被开发成一个网络应用程序。 该应用程序提供各种训练模块，旨在加强大脑神经连接，解决因阅读障碍造成的效率低下问题。
+## 自助托管
 
-### BlueScript 的起源：Suh Jae
+除官方网络应用程序外，您还可以在自己的服务器上托管**BlueScript**。 该选项适合具有服务器管理技能或喜欢定制环境的用户。
 
-https://github.com/SuhJae该项目由[Suh Jae]（ ）发起，他在童年时期经历了阅读障碍带来的挑战和痛苦。 Suh Jae 在阅读速度慢和识字能力有限的情况下，通过不懈努力克服了这些困难。 幸好，中学期间接受的培训帮助提高了他的阅读能力。 然而，这次经历让我深刻地认识到，对于许多人来说，克服阅读障碍是多么困难。
+### 使用 Docker 托管
 
-Suh Jae 从自己的个人经历中汲取灵感，开发了**BlueScript**，旨在减轻其他有阅读障碍的人所面临的困难。 他认识到，经济负担往往使许多人无法克服阅读障碍。 意识到这一点后，他决心创建一个针对阅读障碍的免费培训项目，为人们提供一个不受经济限制的克服阅读障碍的机会。
+https://hub.docker.com/r/suhjae/bluescriptBlueScript 可使用 [官方 Docker 镜像]（ ）轻松托管。 请按照以下步骤安装 Docker 并运行 BlueScript 服务器。
 
-## 一个开源项目
+#### **1. 安装 Docker**
 
-BlueScript 是一个开源项目，任何人都可以免费使用和贡献。 我们鼓励用户和开发人员参与改进培训计划。 https://github.com/BlueScript-NPO目前，BlueScript 有九种语言版本，并在不断修正错误和增强用户界面（[BlueScript GitHub]()）。
+https://www.docker.com/如果尚未安装 Docker，请从[Docker 官方网站]（ ）下载并安装适用于你的平台的 Docker。
 
-## 培训模块
+#### **2. 调出 BlueScript Docker 映像**
 
-BlueScript 提供各种训练模块，旨在刺激大脑神经元，提高阅读障碍患者的阅读技能。 主要培训模块包括
+安装好 Docker 后，在终端运行以下命令下载 BlueScript 官方镜像：
 
-1. /docs/training/visual/rapid-visual-perception[快速视觉感知\*\*]（）：用户快速识别并输入屏幕上简短显示的字母的训练模块。
-2. /docs/training/visual/sequential-visual-memory[顺序视觉记忆\*\*]（ ）：一次显示一个字母，用户必须记住并输入这些字母的模块。
-3. /docs/training/visual/character-sequencing[字符排序\*\*]（ ）：按照指定顺序识别和输入字母的训练。
-4. /docs/training/visual/character-matching[字符匹配\*\*]()：用户从视觉相似的字符中识别与给定提示相匹配的字母的模块。
-5. /docs/training/visual/character-guesstimate[字符猜测\*\*]()：一个字母逐渐出现，用户必须尽快预测并输入的模块。
+```bash
+docker pull suhjae/bluescript
+```
 
-这些模块旨在以各种方式刺激大脑，确保用户始终参与其中，不会对重复刺激产生麻木。
+#### **3. 运行 BlueScript**
+
+下载 Docker 映像后，使用以下命令启动容器：
+
+```bash
+docker run -d -p 80:3000 --name bluescript suhjae/bluescript
+```
+
+给你
+
+- d\` 在后台运行容器。
+- 将本地计算机上的端口 80 映射到容器内的端口 3000。
+
+#### \*\*4. 访问 BlueScript
+
+打开浏览器，导航至 `http://localhost` 访问 BlueScript。
+
+#### **5. 配置设置**
+
+要进行其他配置，可以修改 `docker-compose.yml` 文件或使用 Docker 环境变量来定制 BlueScript。 https://traefik.io/traefik/例如，你可以在 `docker-compose.yml` 文件中设置一个类似 [Traefik]() 的网络代理来连接你的域名，并创建一个更高级的设置。
