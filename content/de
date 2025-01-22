@@ -1,18 +1,20 @@
 ---
-title: Schnelle visuelle Wahrnehmung
-description: Training zum schnellen Erkennen und Eingeben von Buchstaben, die kurz auf dem Bildschirm angezeigt werden
+title: Sequentielles visuelles Gedächtnis
+description: Training zum Abrufen und Eingeben von nacheinander angezeigten Buchstaben
 ---
 
 ## Übersicht
 
-Das Training der schnellen visuellen Wahrnehmung verbessert die Fähigkeit, visuelle Reize zu erkennen und wiederzugeben, die normalerweise in weniger als 0,25 Sekunden präsentiert werden. Dieses Training trägt dazu bei, die Geschwindigkeit der visuellen Informationsverarbeitung zu verbessern, den Sehbereich zu erweitern und die Wahrnehmungsgeschwindigkeit, das visuelle Gedächtnis, die Visualisierung und die zeitliche visuelle Verarbeitung zu verbessern.
+Beim Training des sequenziellen visuellen Gedächtnisses geht es darum, eine Reihe von nacheinander angezeigten Zeichen zu erkennen und sich zu merken und sie nach einer bestimmten Zeit wieder abzurufen. Dieses Training verbessert das sequenzielle visuelle Gedächtnis, das Arbeitsgedächtnis, die Wahrnehmungsgeschwindigkeit, die visuell-motorische Genauigkeit und die sequenzielle Verarbeitungsfähigkeit.
 
 Jeder Trainingsversuch folgt dieser Abfolge und wird so lange wiederholt, bis die zugewiesene Trainingszeit überschritten ist:
 
-1. Die Buchstaben werden kurz auf dem Bildschirm angezeigt.\
-   /rapid-visual-perception-1.png![rapid-visual-perception-1](){width="1024" height="576"}
-2. Nachdem die Buchstaben verschwunden sind, gibt der Auszubildende die Buchstaben ein, an die er sich erinnert, und überprüft seine Antworten.\
-   /rapid-visual-perception-2.png![rapid-visual-perception-2](){width="1024" height="576"}
+1. Die Zeichen werden der Reihe nach auf dem Bildschirm angezeigt.\
+   /sequential-visual-memory-1.png![sequential-visual-memory-1](){width="1024" height="576"}
+2. Nachdem alle Zeichen angezeigt wurden, wird mit einer Verzögerung (die durch Einstellung auf 0 Sekunden deaktiviert werden kann) ein Zufallsmuster auf dem Bildschirm angezeigt.\
+   /sequential-visual-memory-2.png![sequential-visual-memory-2](){width="1024" height="576"}
+3. Sobald das Muster verschwindet, gibt der Auszubildende die Zeichen ein, an die er sich erinnert, und überprüft seine Antworten.\
+   /sequential-visual-memory-3.png![sequential-visual-memory-3](){width="1024" height="576"}
 
 ## Trainingseinstellungen
 
@@ -35,11 +37,11 @@ Legt die Art der für das Training verwendeten Zeichen fest. Die Verwendung von 
 
 ### Zeichenlänge
 
-Legt die Länge der für das Training verwendeten Zeichenkette fest. Die Länge kann von "1" bis "10" eingestellt werden. Größere Zeichenlängen erhöhen den Schwierigkeitsgrad erheblich\*\*.
+Legt die Länge der beim Training verwendeten Zeichenfolge fest. Die Länge kann von "1" bis "6" eingestellt werden, und längere Sequenzen erhöhen den Schwierigkeitsgrad erheblich.
 
-### Anzeigezeit (Sekunden)
+### Verzögerungszeit (Sekunden)
 
-Legt die Dauer fest, für die Zeichen auf dem Bildschirm angezeigt werden. Die Anzeigezeit kann von 0,05 bis 1 Sekunde eingestellt werden. Kürzere Anzeigezeiten erhöhen den Schwierigkeitsgrad **geringfügig**. Der empfohlene Bereich liegt zwischen 0,05 und 0,5 Sekunden. Wenn eine weitere Anpassung der Schwierigkeit erforderlich ist, ändern Sie stattdessen die Zeichenlänge.
+Legt die Zeit fest, für die das Zufallsmuster nach den Zeichen angezeigt wird. Die Verzögerungszeit kann von "0" bis "25" Sekunden eingestellt werden. Längere Verzögerungen erhöhen die Schwierigkeit **geringfügig**. Der empfohlene Bereich liegt zwischen 0 und 15 Sekunden. Wenn die Anpassung der Verzögerungszeit nicht ausreicht, um den Schwierigkeitsgrad einzustellen, ändern Sie stattdessen die Zeichenlänge.
 
 ## Anpassen der Trainingsschwierigkeit
 
