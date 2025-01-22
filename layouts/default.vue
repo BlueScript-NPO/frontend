@@ -75,10 +75,7 @@ provide("files", files);
         <UNavigationLinks :links="links" />
         <UDivider class="my-3" />
       </span>
-      <UNavigationAccordion
-        v-if="navigation"
-        :links="mapContentNavigation(navigation)"
-      />
+      <DocsNav />
     </template>
   </UHeader>
 
