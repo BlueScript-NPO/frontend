@@ -1,20 +1,20 @@
 ---
-title: Memoria visual secuencial
-description: Entrenamiento para recordar e introducir letras mostradas secuencialmente
+title: Secuenciación de caracteres
+description: Entrenamiento para localizar e introducir caracteres en secuencia
 ---
 
 ## Visión general
 
-El entrenamiento de la memoria visual secuencial consiste en identificar y memorizar una serie de caracteres mostrados en secuencia y recordarlos tras un tiempo determinado. Este entrenamiento mejora la memoria visual secuencial, la memoria de trabajo, la velocidad de percepción, la precisión visomotora y la capacidad de procesamiento secuencial.
+El entrenamiento de secuenciación de caracteres consiste en localizar e introducir los caracteres que aparecen en la pantalla en un orden específico utilizando la tecla de flecha derecha y la barra espaciadora. Este entrenamiento mejora el procesamiento visual temporal, la atención visual, la discriminación visual, el razonamiento espacial y la velocidad visual.
 
 Cada intento de entrenamiento sigue esta secuencia y se repite hasta que se supera el tiempo de entrenamiento asignado:
 
-1. Los caracteres aparecen uno a uno por orden en la pantalla.\
-   /sequential-visual-memory-1.png![memoria-secuencial-visual-1](){width="1024" height="576"}
-2. Una vez mostrados todos los caracteres, un retardo (que puede desactivarse ajustando a 0 segundos) muestra un patrón aleatorio en la pantalla.\
-   /sequential-visual-memory-2.png![secuencial-visual-memory-2](){width="1024" height="576"}
-3. Una vez que desaparece el patrón, el alumno introduce los caracteres que recuerda y comprueba sus respuestas.\
-   /sequential-visual-memory-3.png![secuencial-visual-memory-3](){width="1024" height="576"}
+1. Al comienzo de un intento, se muestra una secuencia de caracteres en la parte superior y un campo de entrada en la parte inferior.\
+   /character-sequencing-1.png![secuencia-caracteres-1](){width="1024" height="576"}
+2. Utilice la tecla de flecha derecha para mover el cursor en el campo de entrada. Cuando el cursor coincida con un carácter de la secuencia, pulse la barra espaciadora. Si se salta un carácter o pulsa la barra espaciadora en el carácter equivocado, se considera un error y el cursor se desplaza al carácter correcto más próximo de la secuencia.\
+   /character-sequencing-2.png![secuencia-caracteres-2](){width="1024" height="576"}\
+   Por ejemplo, en la imagen anterior, ya se han encontrado los caracteres a, b, c, d y e. El siguiente carácter a introducir es ㅜ. Si omite ㅜ o pulsa la barra espaciadora en el carácter equivocado, el cursor se desplaza al siguiente carácter de la secuencia, ㅈ.
+3. El intento finaliza cuando el cursor alcanza el último carácter de la secuencia.
 
 ## Ajustes de formación
 
@@ -35,13 +35,22 @@ Establece el tipo de caracteres utilizados en la formación. Lo más eficaz es u
 
 **Para aumentar la dificultad**, seleccione tipos de caracteres más complejos (por ejemplo, de `Números` a `Alfabetos + Números`).
 
-### Longitud de caracteres
+### Tipo de secuencia
 
-Establece la longitud de la secuencia de caracteres utilizada en el entrenamiento. La longitud puede ajustarse de `1` a `6`, y las secuencias más largas **aumentan significativamente la dificultad**.
+Establece el tipo de secuencia utilizada en el entrenamiento. Las opciones son:
 
-### Tiempo de retardo (segundos)
+- **Secuencial**: La secuencia se muestra en orden (por ejemplo, `ABCD`, `And`, `1234`).
+- **Aleatorio**: La secuencia se muestra aleatoriamente (por ejemplo, `HOEB`, `аппак`, `0584`).
 
-Establece el tiempo durante el cual se muestra el patrón aleatorio después de los caracteres. El tiempo de retardo puede ajustarse de `0` a `25` segundos. Los retrasos más largos **aumentan ligeramente** la dificultad. El intervalo recomendado es de `0` a `15` segundos. Si ajustar el tiempo de retardo no es suficiente para afinar la dificultad, modifique en su lugar la longitud de los caracteres.
+Utilizar una secuencia secuencial **disminuye significativamente** la dificultad, mientras que una secuencia aleatoria **la aumenta significativamente**.
+
+::callout{colour="primary" icon="i-ph-lightbulb"}
+Si utiliza una secuencia aleatoria, anime al alumno a memorizar el mayor número posible de caracteres a la vez y a localizarlos basándose en su memoria.
+::
+
+### Longitud de la secuencia
+
+Establece la longitud de la secuencia utilizada en el entrenamiento. La longitud puede ajustarse de `1` a `25`, con secuencias más largas que **incrementan significativamente la dificultad**.
 
 ## Ajustar la dificultad del entrenamiento
 
@@ -53,4 +62,10 @@ En función de los resultados del entrenamiento, puede determinar si la configur
 - **70%-80%**: La dificultad es adecuada. Continúe con la configuración actual para la siguiente sesión.
 - **Por encima del 80%**: La dificultad es demasiado baja. Aumenta la dificultad para la siguiente sesión.
 
-Después de evaluar la dificultad utilizando los criterios anteriores, ajusta los parámetros de entrenamiento dentro de los márgenes recomendados.
+### Tiempo medio de intento
+
+- **Más de 40 segundos**: La dificultad es demasiado alta. Si persiste (2-3 sesiones), reduzca la dificultad para la siguiente sesión.
+- **30-40 segundos**: La dificultad es adecuada. Continúe con la configuración actual para la siguiente sesión.
+- **Inferior a 30 segundos**: La dificultad es demasiado baja. Aumenta la dificultad para la siguiente sesión.
+
+Ajuste la configuración dentro de los márgenes recomendados en función de los criterios anteriores para optimizar la eficacia del entrenamiento.
