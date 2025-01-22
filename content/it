@@ -1,26 +1,24 @@
 ---
-title: Preparazione alla formazione
-description: Impostazione dell'ambiente per la formazione con BlueScript
+title: Configurazione della formazione
+description: Come organizzare sessioni di formazione efficaci
 ---
 
-## Hardware
+## Panoramica
 
-BlueScript è un'applicazione web che può essere utilizzata su qualsiasi sistema operativo. Tuttavia, per un addestramento efficace, si raccomanda di utilizzare un dispositivo che soddisfi i seguenti criteri.
+La formazione BlueScript consente agli utenti di personalizzare le impostazioni della formazione. Il livello di difficoltà della formazione ha un impatto significativo sul suo successo. Se la difficoltà è troppo alta, l'allenamento diventa troppo impegnativo e meno efficace. Al contrario, se la difficoltà è troppo bassa, l'allenamento può diventare monotono, riducendone l'efficacia. Pertanto, regolare la difficoltà in modo appropriato è fondamentale per condurre sessioni di allenamento efficaci.
 
-### Requisiti del dispositivo
+## Regolazione della difficoltà
 
-- Un computer, un portatile o un tablet dotato di tastiera fisica.
-- Un display di almeno 7 pollici (17,78 cm).
+/trainVisitare la pagina [Formazione]() per selezionare un modulo di formazione. È inoltre possibile fare clic sul pulsante **Aiuto** per imparare a utilizzare ciascun modulo di formazione.
 
-### Strumenti utili
+/select-procedure.png![select-procedure](){width="1024" height="576"}
 
-- Un taccuino per registrare i progressi della formazione (la funzionalità di salvataggio dei record di formazione sarà aggiunta a breve).
-- Tappi per le orecchie o cuffie per bloccare il rumore in un ambiente distraente.
+Una volta selezionato un modulo per la formazione, è possibile configurarne le impostazioni come mostrato nell'immagine seguente. Tutti i moduli di allenamento hanno impostazioni per **tempo** e **tipo di personaggio**, che non influiscono sulla difficoltà. Oltre a queste, ogni modulo include impostazioni uniche. **Le impostazioni in alto hanno un impatto maggiore sulla difficoltà rispetto a quelle in basso.** \*\*Le impostazioni in alto hanno un impatto maggiore sulla difficoltà rispetto a quelle in basso.
 
-## Postura di allenamento
+/setting-example.png![setting-example](){width="1024" height="576"}
 
-Mantenere una distanza di circa 30 cm dal monitor durante l'allenamento. Questo corrisponde all'incirca alla lunghezza diagonale di un foglio A4.
+Ad esempio, nel modulo Percezione visiva rapida, la regolazione della **lunghezza del carattere** di un passo tramite le frecce laterali ha un impatto maggiore sulla difficoltà rispetto alla modifica del **tempo di visualizzazione** di un passo. Per informazioni dettagliate sulle impostazioni specifiche di ciascun modulo, consultare la relativa documentazione.
 
-Non appoggiare le mani sulla tastiera quando non si inseriscono le risposte. Nelle sessioni di formazione che richiedono una memorizzazione immediata a breve termine, il preposizionamento delle mani sulla tastiera o la preparazione a digitare le risposte prima del tempo possono ridurre l'efficacia della formazione.
+## Risultati della formazione
 
-Evitare di parlare da soli o di borbottare durante l'allenamento. Ripetere i suggerimenti ad alta voce o mormorarli può avere un impatto negativo sul miglioramento delle funzioni cognitive visive.
+I risultati dell'allenamento sono indicatori fondamentali per regolare la difficoltà delle sessioni successive. Utilizzate i risultati per regolare la difficoltà come segue:
