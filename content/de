@@ -1,24 +1,2 @@
----
-title: Schulung konfigurieren
-description: Wie man effektive Trainingseinheiten gestaltet
----
-
-## Übersicht
-
-BlueScript Training ermöglicht es den Benutzern, ihre Trainingseinstellungen anzupassen. Der Schwierigkeitsgrad der Ausbildung hat einen erheblichen Einfluss auf ihren Erfolg. Wenn der Schwierigkeitsgrad zu hoch ist, wird das Training zu anspruchsvoll und weniger effektiv. Umgekehrt kann ein zu niedriger Schwierigkeitsgrad dazu führen, dass das Training eintönig wird, was seine Wirksamkeit ebenfalls verringert. Daher ist eine angemessene Anpassung des Schwierigkeitsgrads der Schlüssel zur Durchführung effektiver Trainingseinheiten.
-
-## Schwierigkeitsgrad einstellen
-
-/trainBesuchen Sie die Seite [Schulung](), um ein Schulungsmodul auszuwählen. Sie können auch auf die Schaltfläche **Hilfe** klicken, um zu erfahren, wie Sie die einzelnen Schulungsmodule verwenden können.
-
-/select-procedure.png![select-procedure](){width="1024" height="576"}
-
-Sobald Sie ein Modul für die Schulung ausgewählt haben, können Sie dessen Einstellungen konfigurieren, wie in der folgenden Abbildung gezeigt. Alle Trainingsmodule haben Einstellungen für **Zeit** und **Charaktertyp**, die keinen Einfluss auf die Schwierigkeit haben. Darüber hinaus verfügt jedes Modul über eigene Einstellungen. \*\*Einstellungen im oberen Bereich wirken sich stärker auf den Schwierigkeitsgrad aus als die darunter liegenden \*\*Einstellungen im oberen Bereich wirken sich stärker auf den Schwierigkeitsgrad aus als die darunter liegenden.
-
-/setting-example.png![Einstellungsbeispiel](){width="1024" height="576"}
-
-Im Modul "Schnelle visuelle Wahrnehmung" hat beispielsweise die Anpassung der **Zeichenlänge** um eine Stufe mit Hilfe der seitlichen Pfeile eine größere Auswirkung auf die Schwierigkeit als die Änderung der **Anzeigezeit** um eine Stufe. Einzelheiten zu den spezifischen Einstellungen finden Sie in der Dokumentation des jeweiligen Moduls.
-
-## Ergebnisse der Ausbildung
-
-Die Trainingsergebnisse sind ein entscheidender Indikator für die Anpassung des Schwierigkeitsgrads der nachfolgenden Sitzungen. Verwenden Sie die Ergebnisse, um die Schwierigkeit wie folgt anzupassen:
+title: Erste Schritte
+navigation.icon: i-ph-rocket-launch
