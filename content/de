@@ -1,19 +1,21 @@
 ---
-title: Zeichenübereinstimmung
-description: Training zum Auffinden und Anklicken passender Zeichen aus visuell ähnlichen Optionen
+title: Charakter Schätzung
+description: Training zur Vorhersage und Eingabe von Buchstaben, die nach und nach auf dem Bildschirm erscheinen
 ---
 
 ## Übersicht
 
-Beim Training der Zeichenübereinstimmung werden Zeichenfolgen angeklickt, die visuell mit einem vorgegebenen Beispiel übereinstimmen. Dieses Training verbessert die visuelle Planung, die Wahrnehmungsgeschwindigkeit, die Formwahrnehmung, das visuelle Gedächtnis, die motorischen Fähigkeiten der Augen, die Richtungsabhängigkeit und die zeitliche visuelle Verarbeitung.
+Beim Training der Buchstabenschätzung geht es darum, einen Buchstaben teilweise aufzudecken und ihn so schnell wie möglich zu identifizieren, bevor er vollständig angezeigt wird. Dieses Training verbessert die Formwahrnehmung, das visuelle Erkennen, das räumliche Bewusstsein, die Geschwindigkeit der Informationsverarbeitung und die Fähigkeit zur simultanen Verarbeitung.
 
 Jeder Trainingsversuch folgt dieser Abfolge und wird so lange wiederholt, bis die zugewiesene Trainingszeit überschritten ist:
 
-1. Zu Beginn eines Versuchs wird die Beispielzeichenkette oben angezeigt.\
-   /character-matching-1.png![character-matching-1](){width="1024" height="576"}
-2. Suchen Sie mit der Maus im Eingabefeld unten nach Zeichenfolgen, die dem Beispiel entsprechen, und klicken Sie sie an. Das Eingabefeld enthält 30 % richtige und 70 % falsche Antworten, wobei sich die falschen Zeichenfolgen nur um ein Zeichen vom Beispiel unterscheiden. Die Anzahl der verbleibenden richtigen Antworten wird ebenfalls unten angezeigt.\
-   /character-matching-2.png![character-matching-2](){width="1024" height="576"}
-3. Wenn alle richtigen Saiten gefunden wurden, geht das Training mit dem nächsten Versuch weiter.
+1. Zu Beginn eines Versuchs wird ein leeres Rechteck angezeigt, in dem nach und nach ein Buchstabe erscheint.\
+   /character-guesstimate-1.png![character-guesstimate-1](){width="1024" height="576"}
+2. Erkennen Sie den Buchstaben so schnell wie möglich und drücken Sie die entsprechende Taste. Ein blauer Fortschrittsbalken unter dem Rechteck zeigt an, wie viel von dem Buchstaben bereits enthüllt wurde.\
+   /character-guesstimate-2.png![character-guesstimate-2](){width="1024" height="576"}
+3. Nach dem Drücken einer Taste wird der vollständige Buchstabe angezeigt, und das Ergebnis wird mit Ihrer Eingabe verglichen. Richtige Antworten sind grün hervorgehoben, während falsche Antworten rot dargestellt sind.\
+   /character-guesstimate-3.png![character-guesstimate-3](){width="1024" height="576"}\
+   /character-guesstimate-4.png![character-guesstimate-4](){width="1024" height="576"}
 
 ## Trainingseinstellungen
 
@@ -34,13 +36,13 @@ Legt die Art der für das Training verwendeten Zeichen fest. Die Verwendung von 
 
 **Um den Schwierigkeitsgrad zu erhöhen**, wählen Sie komplexere Zeichentypen (z. B. von `Zahlen` auf `Alphabete + Zahlen`).
 
-### Antwort Länge
+### Blockgröße
 
-Legt die Länge der Zeichenfolgen fest, die für das Training verwendet werden. Die Länge kann zwischen 2 und 6 eingestellt werden. Die Erhöhung der Anzahl der Zeichen **erhöht den Schwierigkeitsgrad erheblich**.
+Legt die Größe der "Blöcke" fest, die die Buchstaben bilden, wenn sie erscheinen. Kleinere Blöcke machen die Ausbildung einfacher.
 
-### Anzahl der Antworten
-
-Legt die Anzahl der richtigen Antworten fest, die im Eingabefeld angezeigt werden. Diese kann zwischen 15 und 60 eingestellt werden. Mit zunehmender Anzahl richtiger Antworten **erhöht sich der Schwierigkeitsgrad leicht**.
+- **Klein**: 20×20 Blöcke
+- **Medium**: 15×15 Blöcke
+- **Groß**: 10×10 Blöcke
 
 ## Anpassen der Trainingsschwierigkeit
 
@@ -52,10 +54,18 @@ Anhand der Trainingsergebnisse können Sie feststellen, ob die aktuellen Einstel
 - **70%-80%**: Der Schwierigkeitsgrad ist angemessen. Fahren Sie mit den aktuellen Einstellungen für die nächste Sitzung fort.
 - **Über 80%**: Der Schwierigkeitsgrad ist zu niedrig. Erhöhen Sie den Schwierigkeitsgrad für die nächste Sitzung.
 
-### Durchschnittliche Versuchsdauer
+### Durchschnittlicher Aufdeckungsprozentsatz
 
-- **Über 40 Sekunden**: Der Schwierigkeitsgrad ist zu hoch. Wenn dies andauert (2-3 Sitzungen), verringern Sie den Schwierigkeitsgrad für die nächste Sitzung.
-- **30-40 Sekunden**: Der Schwierigkeitsgrad ist angemessen. Fahren Sie mit den aktuellen Einstellungen für die nächste Sitzung fort.
-- **Unter 30 Sekunden**: Der Schwierigkeitsgrad ist zu niedrig. Erhöhen Sie den Schwierigkeitsgrad für die nächste Sitzung.
+- **Unter 30%**: Der Schwierigkeitsgrad ist zu niedrig. Erhöhen Sie den Schwierigkeitsgrad für die nächste Sitzung.
+- **30%-50%**: Der Schwierigkeitsgrad ist angemessen. Fahren Sie mit den aktuellen Einstellungen für die nächste Sitzung fort.
+- **Über 50%**: Der Schwierigkeitsgrad ist zu hoch. Wenn dies andauert (2-3 Sitzungen), verringern Sie den Schwierigkeitsgrad für die nächste Sitzung.
 
-Passen Sie die Einstellungen innerhalb der empfohlenen Bereiche anhand der oben genannten Kriterien an, um die Wirksamkeit des Trainings zu optimieren.
+Passen Sie die Trainingseinstellungen innerhalb der empfohlenen Bereiche auf der Grundlage dieser Metriken an.
+
+::callout{colour="primary" icon="i-ph-lightbulb"}
+Wenn der durchschnittliche Prozentsatz der Enthüllungen niedrig ist, aber auch die Genauigkeit niedrig ist, sollten Sie die Auszubildenden ermutigen, sich auf die Verbesserung der Genauigkeit zu konzentrieren, anstatt sich während der Ausbildung zu beeilen.
+::
+
+::callout{colour="primary" icon="i-ph-lightbulb"}
+Dieses Training kann als gemeistert angesehen werden, wenn man "große" Blöcke verwendet, eine Trefferquote von über 90 % erreicht und einen durchschnittlichen Prozentsatz von unter 30 % beibehält.
+::
