@@ -1,20 +1,19 @@
 ---
-title: Sequenza di caratteri
-description: Addestramento alla localizzazione e all'inserimento di caratteri in sequenza
+title: Corrispondenza dei caratteri
+description: Addestramento a individuare e fare clic sui caratteri corrispondenti da opzioni visivamente simili.
 ---
 
 ## Panoramica
 
-L'addestramento sulla sequenza dei caratteri prevede l'individuazione e l'inserimento dei caratteri visualizzati sullo schermo in un ordine specifico utilizzando il tasto freccia destra e la barra spaziatrice. Questo allenamento migliora l'elaborazione visiva temporale, l'attenzione visiva, la discriminazione visiva, il ragionamento spaziale e la velocità visiva.
+L'addestramento alla corrispondenza dei caratteri prevede che si faccia clic sulle stringhe che corrispondono visivamente a un determinato esempio. Questo allenamento migliora la pianificazione visiva, la velocità di percezione, la percezione delle forme, la memoria visiva, le capacità motorie oculari, la direzionalità e l'elaborazione visiva temporale.
 
 Ogni tentativo di allenamento segue questa sequenza e si ripete fino al superamento del tempo di allenamento assegnato:
 
-1. All'inizio di un tentativo, viene visualizzata una sequenza di caratteri in alto e un campo di immissione in basso.\
-   /character-sequencing-1.png![character-sequencing-1](){width="1024" height="576"}
-2. Utilizzare il tasto freccia destra per spostare il cursore nel campo di immissione. Quando il cursore corrisponde a un carattere della sequenza, premere la barra spaziatrice. Se si salta un carattere o si preme la barra spaziatrice sul carattere sbagliato, questo viene considerato un errore e il cursore si sposta sul carattere corretto più vicino nella sequenza.\
-   /character-sequencing-2.png![character-sequencing-2](){width="1024" height="576"}\
-   Ad esempio, nell'immagine qui sopra, i caratteri a, b, c, d ed e sono già stati trovati. Il carattere successivo da inserire è ㅜ. Se non si trova ㅜ o si preme la barra spaziatrice sul carattere sbagliato, il cursore si sposta sul carattere successivo della sequenza, ㅈ.
-3. Il tentativo termina quando il cursore raggiunge il carattere finale della sequenza.
+1. All'inizio di un tentativo, la stringa di esempio viene visualizzata in alto.\
+   /character-matching-1.png![character-matching-1](){width="1024" height="576"}
+2. Con il mouse, individuare e fare clic sulle stringhe nel campo di immissione sottostante che corrispondono all'esempio. Il campo di immissione contiene il 30% di risposte corrette e il 70% di risposte errate, con stringhe errate che differiscono dall'esempio di un solo carattere. Di seguito viene visualizzato anche il numero di risposte corrette rimanenti.\
+   /character-matching-2.png![character-matching-2](){width="1024" height="576"}
+3. Una volta individuate tutte le stringhe corrette, l'allenamento passa al tentativo successivo.
 
 ## Impostazioni di formazione
 
@@ -35,22 +34,13 @@ Imposta il tipo di caratteri utilizzati nella formazione. L'uso di caratteri del
 
 **Per aumentare la difficoltà**, selezionate tipi di caratteri più complessi (ad esempio, da "Numeri" a "Alfabeti + Numeri").
 
-### Tipo di sequenza
+### Risposta Lunghezza
 
-Imposta il tipo di sequenza utilizzata nell'addestramento. Le opzioni sono:
+Imposta la lunghezza delle stringhe utilizzate nell'addestramento. La lunghezza può essere impostata tra 2 e 6. L'aumento del numero di caratteri **aumenta significativamente la difficoltà**.
 
-- **Sequenziale**: la sequenza viene visualizzata in ordine (ad esempio, `ABCD`, `And`, `1234`).
-- **Random**: la sequenza viene visualizzata in modo casuale (ad esempio, `HOEB`, `аппак`, `0584`).
+### Numero di risposte
 
-L'uso di una sequenza sequenziale **abbassa significativamente** la difficoltà, mentre una sequenza casuale **aumenta significativamente** la difficoltà.
-
-::callout{colour="primary" icon="i-ph-lightbulb"}
-Se si utilizza una sequenza casuale, incoraggiare l'allievo a memorizzare il maggior numero possibile di caratteri contemporaneamente e a individuarli in base alla propria memoria.
-::
-
-### Lunghezza della sequenza
-
-Imposta la lunghezza della sequenza utilizzata nell'addestramento. La lunghezza può essere regolata da `1` a `25`, con sequenze più lunghe che **aumentano notevolmente la difficoltà**.
+Imposta il numero di risposte corrette visualizzate nel campo di immissione. Può essere impostato tra 15 e 60. L'aumento del numero di risposte corrette **aumenta leggermente la difficoltà**.
 
 ## Regolazione della difficoltà di allenamento
 
