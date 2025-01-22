@@ -1,20 +1,20 @@
 ---
-title: Memoria visiva sequenziale
-description: Addestramento al richiamo e all'inserimento di lettere visualizzate in sequenza
+title: Sequenza di caratteri
+description: Addestramento alla localizzazione e all'inserimento di caratteri in sequenza
 ---
 
 ## Panoramica
 
-L'allenamento della memoria visiva sequenziale prevede l'identificazione e la memorizzazione di una serie di caratteri visualizzati in sequenza e il loro richiamo dopo un determinato ritardo. Questo allenamento migliora la memoria visiva sequenziale, la memoria di lavoro, la velocità di percezione, la precisione visuo-motoria e la capacità di elaborazione sequenziale.
+L'addestramento sulla sequenza dei caratteri prevede l'individuazione e l'inserimento dei caratteri visualizzati sullo schermo in un ordine specifico utilizzando il tasto freccia destra e la barra spaziatrice. Questo allenamento migliora l'elaborazione visiva temporale, l'attenzione visiva, la discriminazione visiva, il ragionamento spaziale e la velocità visiva.
 
 Ogni tentativo di allenamento segue questa sequenza e si ripete fino al superamento del tempo di allenamento assegnato:
 
-1. I caratteri vengono visualizzati uno per uno in ordine sullo schermo.\
-   /sequential-visual-memory-1.png![sequential-visual-memory-1](){width="1024" height="576"}
-2. Dopo la visualizzazione di tutti i caratteri, un ritardo (che può essere disattivato impostando 0 secondi) mostra un motivo casuale sullo schermo.\
-   /sequential-visual-memory-2.png![sequential-visual-memory-2](){width="1024" height="576"}
-3. Una volta scomparso lo schema, l'apprendista inserisce i caratteri che ricorda e verifica le risposte.\
-   /sequential-visual-memory-3.png![sequential-visual-memory-3](){width="1024" height="576"}
+1. All'inizio di un tentativo, viene visualizzata una sequenza di caratteri in alto e un campo di immissione in basso.\
+   /character-sequencing-1.png![character-sequencing-1](){width="1024" height="576"}
+2. Utilizzare il tasto freccia destra per spostare il cursore nel campo di immissione. Quando il cursore corrisponde a un carattere della sequenza, premere la barra spaziatrice. Se si salta un carattere o si preme la barra spaziatrice sul carattere sbagliato, questo viene considerato un errore e il cursore si sposta sul carattere corretto più vicino nella sequenza.\
+   /character-sequencing-2.png![character-sequencing-2](){width="1024" height="576"}\
+   Ad esempio, nell'immagine qui sopra, i caratteri a, b, c, d ed e sono già stati trovati. Il carattere successivo da inserire è ㅜ. Se non si trova ㅜ o si preme la barra spaziatrice sul carattere sbagliato, il cursore si sposta sul carattere successivo della sequenza, ㅈ.
+3. Il tentativo termina quando il cursore raggiunge il carattere finale della sequenza.
 
 ## Impostazioni di formazione
 
@@ -35,13 +35,22 @@ Imposta il tipo di caratteri utilizzati nella formazione. L'uso di caratteri del
 
 **Per aumentare la difficoltà**, selezionate tipi di caratteri più complessi (ad esempio, da "Numeri" a "Alfabeti + Numeri").
 
-### Lunghezza dei caratteri
+### Tipo di sequenza
 
-Imposta la lunghezza della sequenza di caratteri utilizzata nella formazione. La lunghezza può essere impostata da `1` a `6`, e le sequenze più lunghe **aumentano notevolmente la difficoltà**.
+Imposta il tipo di sequenza utilizzata nell'addestramento. Le opzioni sono:
 
-### Tempo di ritardo (secondi)
+- **Sequenziale**: la sequenza viene visualizzata in ordine (ad esempio, `ABCD`, `And`, `1234`).
+- **Random**: la sequenza viene visualizzata in modo casuale (ad esempio, `HOEB`, `аппак`, `0584`).
 
-Imposta il tempo di visualizzazione del motivo casuale dopo i caratteri. Il tempo di ritardo può essere regolato da `0` a `25` secondi. I ritardi più lunghi aumentano leggermente la difficoltà. L'intervallo consigliato va da `0` a `15` secondi. Se la regolazione del tempo di ritardo non è sufficiente per regolare la difficoltà, modificare la lunghezza dei caratteri.
+L'uso di una sequenza sequenziale **abbassa significativamente** la difficoltà, mentre una sequenza casuale **aumenta significativamente** la difficoltà.
+
+::callout{colour="primary" icon="i-ph-lightbulb"}
+Se si utilizza una sequenza casuale, incoraggiare l'allievo a memorizzare il maggior numero possibile di caratteri contemporaneamente e a individuarli in base alla propria memoria.
+::
+
+### Lunghezza della sequenza
+
+Imposta la lunghezza della sequenza utilizzata nell'addestramento. La lunghezza può essere regolata da `1` a `25`, con sequenze più lunghe che **aumentano notevolmente la difficoltà**.
 
 ## Regolazione della difficoltà di allenamento
 
@@ -53,4 +62,10 @@ In base ai risultati dell'addestramento, è possibile determinare se le impostaz
 - **70%-80%**: la difficoltà è adeguata. Continuare con le impostazioni correnti per la sessione successiva.
 - **Superiore all'80%**: la difficoltà è troppo bassa. Aumentare la difficoltà per la sessione successiva.
 
-Dopo aver valutato la difficoltà in base ai criteri di cui sopra, regolare le impostazioni di allenamento entro gli intervalli consigliati.
+### Tempo medio di tentativo
+
+- **Oltre 40 secondi**: la difficoltà è troppo alta. Se il problema persiste (2-3 sessioni), ridurre la difficoltà per la sessione successiva.
+- **30-40 secondi**: la difficoltà è adeguata. Continuare con le impostazioni correnti per la sessione successiva.
+- **Sotto i 30 secondi**: la difficoltà è troppo bassa. Aumentare la difficoltà per la sessione successiva.
+
+Per ottimizzare l'efficacia dell'allenamento, regolare le impostazioni all'interno degli intervalli consigliati in base ai criteri di cui sopra.
