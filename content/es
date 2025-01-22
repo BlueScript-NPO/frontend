@@ -1,19 +1,21 @@
 ---
-title: Coincidencia de caracteres
-description: Entrenamiento para localizar y hacer clic en los caracteres coincidentes a partir de opciones visualmente similares.
+title: Carácter estimado
+description: Entrenamiento para predecir e introducir letras que aparecen gradualmente en la pantalla
 ---
 
 ## Visión general
 
-El entrenamiento de Coincidencia de caracteres consiste en hacer clic en las cadenas que coinciden visualmente con un ejemplo dado. Este entrenamiento mejora la planificación visual, la velocidad de percepción, la percepción de formas, la memoria visual, la motricidad ocular, la direccionalidad y el procesamiento visual temporal.
+El entrenamiento de adivinación de caracteres consiste en desvelar parcialmente una letra e identificarla lo más rápidamente posible antes de que aparezca por completo. Este entrenamiento mejora la percepción de la forma, el reconocimiento visual, la conciencia espacial, la velocidad de procesamiento de la información y la capacidad de procesamiento simultáneo.
 
 Cada intento de entrenamiento sigue esta secuencia y se repite hasta que se supera el tiempo de entrenamiento asignado:
 
-1. Al inicio de un intento, la cadena de ejemplo aparece en la parte superior.\
-   /character-matching-1.png![character-matching-1](){width="1024" height="576"}
-2. Con el ratón, localice y haga clic en las cadenas del campo de entrada inferior que coincidan con el ejemplo. El campo de entrada contiene un 30% de respuestas correctas y un 70% de respuestas incorrectas, con cadenas incorrectas que difieren del ejemplo en un solo carácter. A continuación también se muestra el número de respuestas correctas restantes.\
-   /character-matching-2.png![character-matching-2](){width="1024" height="576"}
-3. Una vez localizadas todas las cadenas correctas, el entrenamiento avanza al siguiente intento.
+1. Al comienzo de un intento, se muestra un rectángulo en blanco, en cuyo interior comienza a aparecer gradualmente una letra.\
+   /character-guesstimate-1.png![character-guesstimate-1](){width="1024" height="576"}
+2. Identifica la letra lo más rápido posible y pulsa la tecla correspondiente. Una barra azul de progreso debajo del rectángulo indica la parte de la letra que se ha revelado.\
+   /character-guesstimate-2.png![character-guesstimate-2](){width="1024" height="576"}
+3. Tras pulsar una tecla, se revela la letra completa y el resultado se compara con lo introducido. Las respuestas correctas se resaltan en verde, mientras que las incorrectas se muestran en rojo.\
+   /character-guesstimate-3.png![character-guesstimate-3](){width="1024" height="576"}\
+   /character-guesstimate-4.png![character-guesstimate-4](){width="1024" height="576"}
 
 ## Ajustes de formación
 
@@ -34,13 +36,13 @@ Establece el tipo de caracteres utilizados en la formación. Lo más eficaz es u
 
 **Para aumentar la dificultad**, seleccione tipos de caracteres más complejos (por ejemplo, de `Números` a `Alfabetos + Números`).
 
-### Longitud de la respuesta
+### Tamaño del bloque
 
-Establece la longitud de las cadenas utilizadas en el entrenamiento. La longitud puede fijarse entre 2 y 6. Aumentar el número de caracteres **incrementa significativamente la dificultad**.
+Establece el tamaño de los "bloques" que forman las letras a medida que aparecen. Los bloques más pequeños facilitan el entrenamiento.
 
-### Número de respuestas
-
-Establece el número de respuestas correctas mostradas en el campo de entrada. Puede ajustarse entre 15 y 60. Aumentar el número de respuestas correctas **incrementa ligeramente la dificultad**.
+- **Pequeño**: 20×20 bloques
+- **Medio**: 15×15 bloques
+- **Grande**: 10×10 bloques
 
 ## Ajustar la dificultad del entrenamiento
 
@@ -52,10 +54,18 @@ En función de los resultados del entrenamiento, puede determinar si la configur
 - **70%-80%**: La dificultad es adecuada. Continúe con la configuración actual para la siguiente sesión.
 - **Por encima del 80%**: La dificultad es demasiado baja. Aumenta la dificultad para la siguiente sesión.
 
-### Tiempo medio de intento
+### Porcentaje medio de revelación
 
-- **Más de 40 segundos**: La dificultad es demasiado alta. Si persiste (2-3 sesiones), reduzca la dificultad para la siguiente sesión.
-- **30-40 segundos**: La dificultad es adecuada. Continúe con la configuración actual para la siguiente sesión.
-- **Inferior a 30 segundos**: La dificultad es demasiado baja. Aumenta la dificultad para la siguiente sesión.
+- **Por debajo del 30%**: La dificultad es demasiado baja. Aumenta la dificultad para la siguiente sesión.
+- **30%-50%**: La dificultad es adecuada. Continúe con la configuración actual para la siguiente sesión.
+- **Por encima del 50%**: La dificultad es demasiado alta. Si persiste (2-3 sesiones), reduzca la dificultad para la siguiente sesión.
 
-Ajuste la configuración dentro de los márgenes recomendados en función de los criterios anteriores para optimizar la eficacia del entrenamiento.
+Ajusta los parámetros de entrenamiento dentro de los rangos recomendados en función de estas métricas.
+
+::callout{colour="primary" icon="i-ph-lightbulb"}
+Si el porcentaje medio de revelado es bajo pero la precisión también lo es, anime a los alumnos a centrarse en mejorar la precisión en lugar de precipitarse durante el entrenamiento.
+::
+
+::callout{colour="primary" icon="i-ph-lightbulb"}
+Esta formación puede considerarse dominada cuando se utilizan bloques "Grandes", se consigue un índice de precisión superior al 90% y se mantiene un porcentaje medio de revelación inferior al 30%.
+::
