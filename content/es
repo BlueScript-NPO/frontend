@@ -1,20 +1,19 @@
 ---
-title: Secuenciación de caracteres
-description: Entrenamiento para localizar e introducir caracteres en secuencia
+title: Coincidencia de caracteres
+description: Entrenamiento para localizar y hacer clic en los caracteres coincidentes a partir de opciones visualmente similares.
 ---
 
 ## Visión general
 
-El entrenamiento de secuenciación de caracteres consiste en localizar e introducir los caracteres que aparecen en la pantalla en un orden específico utilizando la tecla de flecha derecha y la barra espaciadora. Este entrenamiento mejora el procesamiento visual temporal, la atención visual, la discriminación visual, el razonamiento espacial y la velocidad visual.
+El entrenamiento de Coincidencia de caracteres consiste en hacer clic en las cadenas que coinciden visualmente con un ejemplo dado. Este entrenamiento mejora la planificación visual, la velocidad de percepción, la percepción de formas, la memoria visual, la motricidad ocular, la direccionalidad y el procesamiento visual temporal.
 
 Cada intento de entrenamiento sigue esta secuencia y se repite hasta que se supera el tiempo de entrenamiento asignado:
 
-1. Al comienzo de un intento, se muestra una secuencia de caracteres en la parte superior y un campo de entrada en la parte inferior.\
-   /character-sequencing-1.png![secuencia-caracteres-1](){width="1024" height="576"}
-2. Utilice la tecla de flecha derecha para mover el cursor en el campo de entrada. Cuando el cursor coincida con un carácter de la secuencia, pulse la barra espaciadora. Si se salta un carácter o pulsa la barra espaciadora en el carácter equivocado, se considera un error y el cursor se desplaza al carácter correcto más próximo de la secuencia.\
-   /character-sequencing-2.png![secuencia-caracteres-2](){width="1024" height="576"}\
-   Por ejemplo, en la imagen anterior, ya se han encontrado los caracteres a, b, c, d y e. El siguiente carácter a introducir es ㅜ. Si omite ㅜ o pulsa la barra espaciadora en el carácter equivocado, el cursor se desplaza al siguiente carácter de la secuencia, ㅈ.
-3. El intento finaliza cuando el cursor alcanza el último carácter de la secuencia.
+1. Al inicio de un intento, la cadena de ejemplo aparece en la parte superior.\
+   /character-matching-1.png![character-matching-1](){width="1024" height="576"}
+2. Con el ratón, localice y haga clic en las cadenas del campo de entrada inferior que coincidan con el ejemplo. El campo de entrada contiene un 30% de respuestas correctas y un 70% de respuestas incorrectas, con cadenas incorrectas que difieren del ejemplo en un solo carácter. A continuación también se muestra el número de respuestas correctas restantes.\
+   /character-matching-2.png![character-matching-2](){width="1024" height="576"}
+3. Una vez localizadas todas las cadenas correctas, el entrenamiento avanza al siguiente intento.
 
 ## Ajustes de formación
 
@@ -35,22 +34,13 @@ Establece el tipo de caracteres utilizados en la formación. Lo más eficaz es u
 
 **Para aumentar la dificultad**, seleccione tipos de caracteres más complejos (por ejemplo, de `Números` a `Alfabetos + Números`).
 
-### Tipo de secuencia
+### Longitud de la respuesta
 
-Establece el tipo de secuencia utilizada en el entrenamiento. Las opciones son:
+Establece la longitud de las cadenas utilizadas en el entrenamiento. La longitud puede fijarse entre 2 y 6. Aumentar el número de caracteres **incrementa significativamente la dificultad**.
 
-- **Secuencial**: La secuencia se muestra en orden (por ejemplo, `ABCD`, `And`, `1234`).
-- **Aleatorio**: La secuencia se muestra aleatoriamente (por ejemplo, `HOEB`, `аппак`, `0584`).
+### Número de respuestas
 
-Utilizar una secuencia secuencial **disminuye significativamente** la dificultad, mientras que una secuencia aleatoria **la aumenta significativamente**.
-
-::callout{colour="primary" icon="i-ph-lightbulb"}
-Si utiliza una secuencia aleatoria, anime al alumno a memorizar el mayor número posible de caracteres a la vez y a localizarlos basándose en su memoria.
-::
-
-### Longitud de la secuencia
-
-Establece la longitud de la secuencia utilizada en el entrenamiento. La longitud puede ajustarse de `1` a `25`, con secuencias más largas que **incrementan significativamente la dificultad**.
+Establece el número de respuestas correctas mostradas en el campo de entrada. Puede ajustarse entre 15 y 60. Aumentar el número de respuestas correctas **incrementa ligeramente la dificultad**.
 
 ## Ajustar la dificultad del entrenamiento
 
