@@ -1,26 +1,24 @@
 ---
-title: Vorbereitung auf die Ausbildung
-description: Einrichten der Umgebung für die Schulung mit BlueScript
+title: Schulung konfigurieren
+description: Wie man effektive Trainingseinheiten gestaltet
 ---
 
-## Hardware
+## Übersicht
 
-BlueScript ist eine Webanwendung, die auf allen Betriebssystemen verwendet werden kann. Für ein effektives Training ist es jedoch empfehlenswert, ein Gerät zu verwenden, das die folgenden Kriterien erfüllt.
+BlueScript Training ermöglicht es den Benutzern, ihre Trainingseinstellungen anzupassen. Der Schwierigkeitsgrad der Ausbildung hat einen erheblichen Einfluss auf ihren Erfolg. Wenn der Schwierigkeitsgrad zu hoch ist, wird das Training zu anspruchsvoll und weniger effektiv. Umgekehrt kann ein zu niedriger Schwierigkeitsgrad dazu führen, dass das Training eintönig wird, was seine Wirksamkeit ebenfalls verringert. Daher ist eine angemessene Anpassung des Schwierigkeitsgrads der Schlüssel zur Durchführung effektiver Trainingseinheiten.
 
-### Anforderungen an das Gerät
+## Schwierigkeitsgrad einstellen
 
-- Ein Computer, Laptop oder Tablet, der mit einer physischen Tastatur ausgestattet ist.
-- Ein Display von mindestens 7 Zoll (17,78 cm).
+/trainBesuchen Sie die Seite [Schulung](), um ein Schulungsmodul auszuwählen. Sie können auch auf die Schaltfläche **Hilfe** klicken, um zu erfahren, wie Sie die einzelnen Schulungsmodule verwenden können.
 
-### Nützliche Tools
+/select-procedure.png![select-procedure](){width="1024" height="576"}
 
-- Ein Notizbuch für die Aufzeichnung des Schulungsfortschritts (eine Kontofunktion zum Speichern von Schulungsunterlagen wird in Kürze hinzugefügt).
-- Ohrstöpsel oder Kopfhörer, um den Lärm in einer ablenkenden Umgebung auszublenden.
+Sobald Sie ein Modul für die Schulung ausgewählt haben, können Sie dessen Einstellungen konfigurieren, wie in der folgenden Abbildung gezeigt. Alle Trainingsmodule haben Einstellungen für **Zeit** und **Charaktertyp**, die keinen Einfluss auf die Schwierigkeit haben. Darüber hinaus verfügt jedes Modul über eigene Einstellungen. \*\*Einstellungen im oberen Bereich wirken sich stärker auf den Schwierigkeitsgrad aus als die darunter liegenden \*\*Einstellungen im oberen Bereich wirken sich stärker auf den Schwierigkeitsgrad aus als die darunter liegenden.
 
-## Trainingshaltung
+/setting-example.png![Einstellungsbeispiel](){width="1024" height="576"}
 
-Halten Sie während des Trainings einen Abstand von etwa 30 cm zu Ihrem Monitor ein. Dies entspricht in etwa der diagonalen Länge eines A4-Blattes.
+Im Modul "Schnelle visuelle Wahrnehmung" hat beispielsweise die Anpassung der **Zeichenlänge** um eine Stufe mit Hilfe der seitlichen Pfeile eine größere Auswirkung auf die Schwierigkeit als die Änderung der **Anzeigezeit** um eine Stufe. Einzelheiten zu den spezifischen Einstellungen finden Sie in der Dokumentation des jeweiligen Moduls.
 
-Legen Sie Ihre Hände nicht auf der Tastatur ab, wenn Sie keine Antworten eingeben. Bei Schulungen, die ein kurzfristiges Einprägen von Handlungsaufforderungen erfordern, kann eine vorzeitige Positionierung der Hände auf der Tastatur oder eine vorzeitige Vorbereitung auf die Eingabe von Antworten die Wirksamkeit der Schulung verringern.
+## Ergebnisse der Ausbildung
 
-Vermeiden Sie es, während des Trainings Selbstgespräche zu führen oder zu murmeln. Das laute Wiederholen von Aufforderungen oder deren Murmeln kann sich negativ auf die Verbesserung der visuellen kognitiven Funktionen auswirken.
+Die Trainingsergebnisse sind ein entscheidender Indikator für die Anpassung des Schwierigkeitsgrads der nachfolgenden Sitzungen. Verwenden Sie die Ergebnisse, um die Schwierigkeit wie folgt anzupassen:
