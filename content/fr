@@ -1,18 +1,20 @@
 ---
-title: Perception visuelle rapide
-description: Entraînement à la reconnaissance rapide et à la saisie de lettres affichées brièvement à l'écran
+title: Mémoire visuelle séquentielle
+description: Entraînement à la mémorisation et à la saisie de lettres affichées de manière séquentielle
 ---
 
 ## Vue d'ensemble
 
-L'entraînement à la perception visuelle rapide améliore la capacité à identifier et à reproduire des stimuli visuels présentés typiquement en moins de 0,25 seconde. Cet entraînement permet d'améliorer la vitesse de traitement des informations visuelles, d'élargir le champ visuel et d'améliorer la vitesse de perception, la mémoire visuelle, la visualisation et le traitement visuel temporel.
+L'entraînement à la mémoire visuelle séquentielle consiste à identifier et à mémoriser une série de caractères affichés en séquence et à les rappeler après un délai déterminé. Cette formation améliore la mémoire visuelle séquentielle, la mémoire de travail, la vitesse de perception, la précision visuo-motrice et la capacité de traitement séquentiel.
 
 Chaque tentative d'entraînement suit cette séquence et se répète jusqu'à ce que le temps d'entraînement alloué soit dépassé :
 
-1. Les lettres s'affichent brièvement à l'écran.\
-   /rapid-visual-perception-1.png![rapid-visual-perception-1](){width="1024" height="576"}
-2. Après la disparition des lettres, le stagiaire saisit les lettres dont il se souvient et vérifie ses réponses.\
-   /rapid-visual-perception-2.png![rapid-visual-perception-2](){width="1024" height="576"}
+1. Les caractères sont affichés un par un dans l'ordre sur l'écran.\
+   /sequential-visual-memory-1.png![sequential-visual-memory-1](){width="1024" height="576"}
+2. Après l'affichage de tous les caractères, un délai (qui peut être désactivé en le réglant sur 0 seconde) affiche un motif aléatoire à l'écran.\
+   /sequential-visual-memory-2.png![sequential-visual-memory-2](){width="1024" height="576"}
+3. Lorsque le schéma disparaît, le stagiaire saisit les caractères dont il se souvient et vérifie ses réponses.\
+   /sequential-visual-memory-3.png![sequential-visual-memory-3](){width="1024" height="576"}
 
 ## Paramètres de formation
 
@@ -35,11 +37,11 @@ Définit le type de caractères utilisés dans la formation. L'utilisation de ca
 
 ### Longueur des caractères
 
-Définit la longueur de la chaîne de caractères utilisée dans la formation. La longueur peut être réglée de `1` à `10`. Les caractères plus longs **augmentent la difficulté** de manière significative.
+Définit la longueur de la séquence de caractères utilisée dans la formation. La longueur peut être réglée de `1` à `6`, et les séquences plus longues **augmentent significativement la difficulté**.
 
-### Temps d'affichage (secondes)
+### Temps de retard (secondes)
 
-Définit la durée d'affichage des caractères à l'écran. La durée d'affichage peut être réglée de 0,05 à 1 seconde. Des temps d'affichage plus courts augmentent **légèrement** la difficulté. La fourchette recommandée est de 0,05 à 0,5 seconde. Si un ajustement supplémentaire de la difficulté est nécessaire, modifiez plutôt la longueur des caractères.
+Définit la durée pendant laquelle le motif aléatoire est affiché après les caractères. Le temps de retard peut être réglé entre 0 et 25 secondes. Des délais plus longs augmentent **légèrement** la difficulté. L'intervalle recommandé est de 0 à 15 secondes. Si l'ajustement du délai n'est pas suffisant pour affiner la difficulté, modifiez plutôt la longueur des caractères.
 
 ## Adapter la difficulté de l'entraînement
 
