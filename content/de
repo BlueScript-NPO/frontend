@@ -1,32 +1,50 @@
 ---
-title: Einführung
-description: Willkommen bei BlueScript.
+title: Einrichtung
+description: Wie man BlueScript installiert und verwendet
+navigation: Einrichtung
 ---
 
-## Was ist BlueScript?
+## Für allgemeine Benutzer
 
-BlueScript ist ein Open-Source-Projekt, das Menschen mit Legasthenie helfen soll. Der Name kombiniert zwei Elemente: "Blau", das für positive Veränderungen steht, und "Script", das für Buchstaben oder Text steht. Dieses Projekt geht über die traditionellen linguistischen Ansätze hinaus, indem es neurowissenschaftliche Methoden einsetzt, um ein wirksames Training für Menschen mit Legasthenie zu ermöglichen.
+BlueScript wird als Webanwendung zur Verfügung gestellt, so dass Sie es einfach von überall aus mit einem **Browser** nutzen können, ohne dass eine Installation erforderlich ist. Besuchen Sie die offizielle Webanwendung und beginnen Sie sofort mit der Nutzung aller Funktionen von BlueScript.
 
-Um sicherzustellen, dass Menschen mit Legasthenie überall frei auf das Training zugreifen können, wurde BlueScript als Webanwendung entwickelt. Diese Anwendung bietet eine Vielzahl von Trainingsmodulen, die darauf abzielen, die neuronalen Verbindungen im Gehirn zu stärken und die durch Legasthenie verursachten Ineffizienzen zu beheben.
+## Selbst-Hosting
 
-### Die Anfänge von BlueScript: Suh Jae
+Neben der offiziellen Webanwendung können Sie **BlueScript** auch auf Ihrem eigenen Server hosten. Diese Option eignet sich für Personen mit Kenntnissen in der Serververwaltung oder für diejenigen, die eine maßgeschneiderte Umgebung bevorzugen.
 
-https://github.com/SuhJaeDieses Projekt wurde von [Suh Jae]() initiiert, der in seiner Kindheit mit den Herausforderungen und Schmerzen der Legasthenie zu kämpfen hatte. Suh Jae hatte mit einer langsamen Lesegeschwindigkeit und begrenzten Lesefähigkeiten zu kämpfen und arbeitete unermüdlich daran, diese Schwierigkeiten zu überwinden. Glücklicherweise hat die Ausbildung während der Mittelstufe dazu beigetragen, seine Lesefähigkeit zu verbessern. Diese Erfahrung hinterließ jedoch ein tiefes Verständnis dafür, wie schwierig es für viele Menschen ist, Legasthenie zu überwinden.
+### Hosten mit Docker
 
-Motiviert durch seinen persönlichen Weg, entwickelte Suh Jae **BlueScript** mit dem Ziel, die Probleme anderer Legastheniker zu lindern. Er hat erkannt, dass die finanzielle Belastung die Überwindung der Legasthenie für viele unerschwinglich macht. Diese Erkenntnis führte zu seiner Entschlossenheit, ein kostenloses Trainingsprogramm für Legasthenie zu entwickeln, das Menschen die Möglichkeit bietet, die Krankheit ohne wirtschaftliche Zwänge zu überwinden.
+https://hub.docker.com/r/suhjae/bluescriptBlueScript kann einfach mit dem [offiziellen Docker-Image]() gehostet werden. Führen Sie die folgenden Schritte aus, um Docker zu installieren und den BlueScript-Server auszuführen.
 
-## Ein Open-Source-Projekt
+#### **1. Docker installieren**
 
-BlueScript ist ein Open-Source-Projekt, das jeder kostenlos nutzen und mitgestalten kann. Sowohl Benutzer als auch Entwickler sind aufgefordert, sich an der Verbesserung der Schulungsprogramme zu beteiligen. https://github.com/BlueScript-NPODerzeit ist BlueScript in neun Sprachen verfügbar und wird laufend um Fehlerbehebungen und Verbesserungen der Benutzeroberfläche erweitert ([BlueScript GitHub]()).
+https://www.docker.com/Wenn Docker noch nicht installiert ist, laden Sie Docker für Ihre Plattform von der [offiziellen Docker-Website]() herunter und installieren Sie es.
 
-## Ausbildungsmodule
+#### **2. Ziehen Sie das BlueScript-Docker-Image**
 
-BlueScript bietet eine Reihe von Trainingsmodulen, die die Neuronen des Gehirns stimulieren und die Lesefähigkeit von Personen mit Legasthenie verbessern sollen. Zu den wichtigsten Schulungsmodulen gehören:
+Sobald Docker installiert ist, laden Sie das offizielle BlueScript-Image herunter, indem Sie den folgenden Befehl in Ihrem Terminal ausführen:
 
-1. /docs/training/visual/rapid-visual-perception[**Rapid Visual Perception**](): Ein Trainingsmodul, bei dem die Benutzer kurz auf dem Bildschirm angezeigte Buchstaben schnell erkennen und eingeben.
-2. /docs/training/visual/sequential-visual-memory[**Sequentielles visuelles Gedächtnis**](): Ein Modul, bei dem die Buchstaben nacheinander angezeigt werden und die Benutzer sie sich merken und eingeben müssen.
-3. /docs/training/visual/character-sequencing[**Zeichenreihenfolge**](): Training, bei dem Buchstaben in einer bestimmten Reihenfolge erkannt und eingegeben werden müssen.
-4. /docs/training/visual/character-matching[**Character Matching**](): Ein Modul, bei dem die Benutzer unter visuell ähnlichen Zeichen die Buchstaben identifizieren, die einer bestimmten Aufforderung entsprechen.
-5. /docs/training/visual/character-guesstimate[**Zeichenvorhersage**](): Ein Modul, in dem nach und nach Buchstaben auftauchen, die der Benutzer so schnell wie möglich erraten und eingeben muss.
+```bash
+docker pull suhjae/bluescript
+```
 
-Diese Module sind so konzipiert, dass sie das Gehirn auf verschiedene Weise stimulieren, so dass die Benutzer beschäftigt bleiben und nicht durch wiederholte Reize desensibilisiert werden.
+#### **3. BlueScript** ausführen
+
+Nachdem Sie das Docker-Image heruntergeladen haben, starten Sie den Container mit dem folgenden Befehl:
+
+```bash
+docker run -d -p 80:3000 --name bluescript suhjae/bluescript
+```
+
+Hier:
+
+- d" lässt den Container im Hintergrund laufen.
+- p 80:3000" ordnet Port 80 auf Ihrem lokalen Rechner dem Port 3000 innerhalb des Containers zu.
+
+#### \*\*4. Zugang zu BlueScript
+
+Öffnen Sie Ihren Browser und navigieren Sie zu `http://localhost`, um BlueScript aufzurufen.
+
+#### **5. Einstellungen konfigurieren**
+
+Für zusätzliche Konfigurationen können Sie die Datei `docker-compose.yml` ändern oder Docker-Umgebungsvariablen verwenden, um BlueScript anzupassen. https://traefik.io/traefik/Sie können zum Beispiel einen Web-Proxy wie [Traefik]() in der Datei `docker-compose.yml` einrichten, um Ihre Domäne zu verbinden und ein fortgeschrittenes Setup zu erstellen.
