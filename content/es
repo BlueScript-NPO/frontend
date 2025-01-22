@@ -1,2 +1,54 @@
-title: Formación
-navigation.icon: i-ph-yin-yang
+---
+title: Percepción visual rápida
+description: Entrenamiento para reconocer e introducir rápidamente letras que aparecen brevemente en la pantalla.
+---
+
+## Visión general
+
+El entrenamiento en Percepción Visual Rápida mejora la capacidad de identificar y reproducir estímulos visuales presentados típicamente en menos de 0,25 segundos. Este entrenamiento ayuda a mejorar la velocidad de procesamiento de la información visual, amplía el alcance visual y mejora la velocidad de percepción, la memoria visual, la visualización y el procesamiento visual temporal.
+
+Cada intento de entrenamiento sigue esta secuencia y se repite hasta que se supera el tiempo de entrenamiento asignado:
+
+1. Las letras aparecen brevemente en la pantalla.\
+   /rapid-visual-perception-1.png![rapid-visual-perception-1](){width="1024" height="576"}
+2. Cuando las letras desaparecen, el alumno introduce las letras que recuerda y comprueba sus respuestas.\
+   /rapid-visual-perception-2.png![rapid-visual-perception-2](){width="1024" height="576"}
+
+## Ajustes de formación
+
+### Duración (minutos)
+
+El entrenamiento finaliza al terminar el intento actual si se supera la duración de entrenamiento preestablecida. La duración recomendada del entrenamiento es de unos 5 minutos, y no se aconsejan sesiones de más de 10 minutos.
+
+### Tipo de carácter
+
+Establece el tipo de caracteres utilizados en la formación. Lo más eficaz es utilizar caracteres de la lengua materna del alumno. Los tipos de caracteres disponibles son:
+
+- **Números**: Dígitos del 0 al 9
+- **Alfabetos**: letras mayúsculas de la A a la Z
+- **Alfabetos + números**: letras mayúsculas (A-Z) y números (0-9)
+- **Coreano**: consonantes coreanas (por ejemplo, ㄱ, ㄴ, ㄷ) y vocales (por ejemplo, а, ㅑ, ㅓ).
+
+**Para reducir la dificultad**, seleccione tipos de caracteres más sencillos (por ejemplo, de `Alfabetos + Números` a `Alfabetos` o `Números`).
+
+**Para aumentar la dificultad**, seleccione tipos de caracteres más complejos (por ejemplo, de `Números` a `Alfabetos + Números`).
+
+### Longitud de caracteres
+
+Establece la longitud de la cadena de caracteres utilizada en el entrenamiento. La longitud puede ajustarse de `1` a `10`. Los caracteres más largos **aumentan significativamente la dificultad**.
+
+### Tiempo de visualización (segundos)
+
+Establece la duración durante la cual se muestran los caracteres en la pantalla. El tiempo de visualización puede ajustarse de `0,05` a `1` segundo. Los tiempos de visualización más cortos **aumentan ligeramente** la dificultad. El intervalo recomendado es de `0,05` a `0,5` segundos. Si es necesario ajustar más la dificultad, modifique en su lugar la longitud de los caracteres.
+
+## Ajustar la dificultad del entrenamiento
+
+En función de los resultados del entrenamiento, puede determinar si la configuración actual es adecuada:
+
+### Precisión/Precisión media
+
+- **Por debajo del 70%**: La dificultad es demasiado alta. Si persiste la baja precisión (2-3 sesiones), reduzca la dificultad para la siguiente sesión.
+- **70%-80%**: La dificultad es adecuada. Continúe con la configuración actual para la siguiente sesión.
+- **Por encima del 80%**: La dificultad es demasiado baja. Aumenta la dificultad para la siguiente sesión.
+
+Después de evaluar la dificultad utilizando los criterios anteriores, ajusta los parámetros de entrenamiento dentro de los márgenes recomendados.
