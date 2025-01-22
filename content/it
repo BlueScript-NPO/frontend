@@ -1,2 +1,54 @@
-title: Formazione
-navigation.icon: i-ph-yin-yang
+---
+title: Percezione visiva rapida
+description: Addestramento al riconoscimento e all'inserimento rapido di lettere visualizzate brevemente sullo schermo
+---
+
+## Panoramica
+
+L'allenamento della percezione visiva rapida migliora la capacità di identificare e riprodurre stimoli visivi presentati in genere in meno di 0,25 secondi. Questo allenamento aiuta a migliorare la velocità di elaborazione delle informazioni visive, ad ampliare il campo visivo e a migliorare la velocità di percezione, la memoria visiva, la visualizzazione e l'elaborazione visiva temporale.
+
+Ogni tentativo di allenamento segue questa sequenza e si ripete fino al superamento del tempo di allenamento assegnato:
+
+1. Le lettere vengono visualizzate brevemente sullo schermo.\
+   /rapid-visual-perception-1.png![rapid-visual-perception-1](){width="1024" height="576"}
+2. Dopo che le lettere scompaiono, l'apprendista inserisce le lettere che ricorda e controlla le sue risposte.\
+   /rapid-visual-perception-2.png![rapid-visual-perception-2](){width="1024" height="576"}
+
+## Impostazioni di formazione
+
+### Durata (minuti)
+
+L'addestramento termina al termine del tentativo in corso se si supera la durata dell'addestramento preimpostata. La durata dell'allenamento consigliata è di circa 5 minuti, mentre sono sconsigliate le sessioni che superano i 10 minuti.
+
+### Tipo di carattere
+
+Imposta il tipo di caratteri utilizzati nella formazione. L'uso di caratteri della lingua madre dell'apprendista è il più efficace. I tipi di carattere disponibili sono:
+
+- **Numeri**: cifre da 0 a 9
+- **alfabeti**: lettere maiuscole dalla A alla Z
+- **Alfabeti + Numeri**: lettere maiuscole (A-Z) e numeri (0-9).
+- **Coreano**: consonanti coreane (ad esempio, ㄱ, ㄴ, ㄷ) e vocali (ad esempio, а, ㅑ, ㅓ).
+
+**Per ridurre la difficoltà**, selezionare tipi di caratteri più semplici (ad esempio, da "Alfabeti + Numeri" a "Alfabeti" o "Numeri").
+
+**Per aumentare la difficoltà**, selezionate tipi di caratteri più complessi (ad esempio, da "Numeri" a "Alfabeti + Numeri").
+
+### Lunghezza dei caratteri
+
+Imposta la lunghezza della stringa di caratteri utilizzata nella formazione. La lunghezza può essere impostata da `1` a `10`. La lunghezza dei caratteri aumenta in modo significativo **la difficoltà**.
+
+### Tempo di visualizzazione (secondi)
+
+Imposta la durata di visualizzazione dei caratteri sullo schermo. Il tempo di visualizzazione può essere regolato da `0,05` a `1` secondo. I tempi di visualizzazione più brevi aumentano leggermente la difficoltà. L'intervallo consigliato va da `0,05` a `0,5` secondi. Se è necessario regolare ulteriormente la difficoltà, modificare invece la lunghezza dei caratteri.
+
+## Regolazione della difficoltà di allenamento
+
+In base ai risultati dell'addestramento, è possibile determinare se le impostazioni correnti sono adeguate:
+
+### Precisione/Accuratezza media
+
+- **Sotto il 70%**: la difficoltà è troppo alta. Se la bassa precisione persiste (2-3 sessioni), ridurre la difficoltà per la sessione successiva.
+- **70%-80%**: la difficoltà è adeguata. Continuare con le impostazioni correnti per la sessione successiva.
+- **Superiore all'80%**: la difficoltà è troppo bassa. Aumentare la difficoltà per la sessione successiva.
+
+Dopo aver valutato la difficoltà in base ai criteri di cui sopra, regolare le impostazioni di allenamento entro gli intervalli consigliati.
