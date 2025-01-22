@@ -94,12 +94,6 @@ export default defineNuxtConfig({
         name: "العربية",
         file: "ar/main.json",
       },
-      {
-        code: "hi",
-        language: "hi-IN",
-        name: "हिन्दी",
-        file: "hi/main.json",
-      },
     ],
   },
 
