@@ -3,6 +3,7 @@ import type { ParsedContent } from "@nuxt/content";
 import LangSwitcher from "~/components/LangSwitcher.vue";
 const { toggleContentSearch } = useUIState();
 const { t } = useI18n();
+const localePath = useLocalePath();
 
 const { data: navigation } = await useAsyncData("navigation", () =>
   fetchContentNavigation()
@@ -15,18 +16,18 @@ const { data: files } = useLazyFetch<ParsedContent[]>("/api/search.json", {
 const links = computed(() => [
   {
     label: t("nav.docs"),
-    to: "/docs",
+    to: localePath("/docs"),
     icon: "i-ph-book",
   },
   {
     label: t("nav.train"),
-    to: "/train",
+    to: localePath("/train"),
     icon: "i-ph-yin-yang",
   },
 
   {
     label: t("nav.result"),
-    to: "/result",
+    to: localePath("/result"),
     icon: "i-ph-chart-bar",
   },
 ]);
@@ -38,7 +39,7 @@ provide("files", files);
 <template>
   <UHeader>
     <template #left>
-      <NuxtLink to="/">
+      <NuxtLink :to="localePath('/')">
         <Logo class="h-6 hover:opacity-90" />
       </NuxtLink>
       <UHeaderLinks :links="links" class="hidden sm:flex" />

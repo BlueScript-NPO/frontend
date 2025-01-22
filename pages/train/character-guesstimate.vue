@@ -15,6 +15,7 @@ definePageMeta({
 });
 
 const { t } = useI18n();
+const localePath = useLocalePath();
 
 // Vue Router
 const route = useRoute();
@@ -134,10 +135,12 @@ const saveTrainingResults = (): void => {
 
   const jsonString: string = JSON.stringify(result.toJson());
   console.log("Training Result:", jsonString);
-  router.push({
-    name: "result",
-    query: { data: encodeURIComponent(jsonString) },
-  });
+  router.push(
+    localePath({
+      name: "result",
+      query: { data: encodeURIComponent(jsonString) },
+    })
+  );
 };
 
 // function: evaluate user input

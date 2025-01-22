@@ -18,6 +18,7 @@ const route = useRoute();
 const router = useRouter();
 
 const { t } = useI18n();
+const localePath = useLocalePath();
 
 // Ref Variables
 const trainingParameter = ref<RapidVisualPerceptionProcedure>(
@@ -160,10 +161,12 @@ const saveTrainingResults = () => {
 
   const jsonString = JSON.stringify(result.toJson());
   console.log("Training Result:", jsonString);
-  router.push({
-    name: "result",
-    query: { data: encodeURIComponent(jsonString) },
-  });
+  router.push(
+    localePath({
+      name: "result",
+      query: { data: encodeURIComponent(jsonString) },
+    })
+  );
 };
 
 // Lifecycle Hook: On Component Mounted

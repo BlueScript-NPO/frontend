@@ -136,8 +136,10 @@
                     icon="i-ph-book"
                     @click.stop=""
                     :to="
-                      '/docs/training/visual/' +
-                      procedure.name.toLowerCase().replace(/\s+/g, '-')
+                      localePath(
+                        '/docs/training/visual/' +
+                          procedure.name.toLowerCase().replace(/\s+/g, '-')
+                      )
                     "
                   >
                     {{ $t("train.docs") }}
@@ -177,6 +179,7 @@ import {
 const { t } = useI18n();
 const toast = useToast();
 const router = useRouter();
+const localePath = useLocalePath();
 
 const items = ref([
   {
@@ -260,7 +263,7 @@ const getTrainingLink = (procedure: Procedure) => {
   const jsonString = JSON.stringify(procedure.toJson());
   const routeName = procedure.name.toLowerCase().replace(/ /g, "-");
   return {
-    path: `/train/${routeName}`, // Use `path` instead of `name`
+    path: localePath(`/train/${routeName}`),
     query: { data: encodeURIComponent(jsonString) },
   };
 };

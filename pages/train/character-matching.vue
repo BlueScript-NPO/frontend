@@ -14,6 +14,7 @@ const route = useRoute();
 const router = useRouter();
 
 const { t } = useI18n();
+const localePath = useLocalePath();
 
 // training parameters
 const trainingParameter = ref<CharacterMatchingProcedure>(
@@ -117,10 +118,12 @@ const saveTrainingResults = (): void => {
 
   const jsonString: string = JSON.stringify(result.toJson());
   console.log("Training Result:", jsonString);
-  router.push({
-    name: "result",
-    query: { data: encodeURIComponent(jsonString) },
-  });
+  router.push(
+    localePath({
+      name: "result",
+      query: { data: encodeURIComponent(jsonString) },
+    })
+  );
 };
 
 const generatePrompt = () => {

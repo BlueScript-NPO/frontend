@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   ssr: true,
   css: ["@/assets/globals.css"],
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   extends: ["@nuxt/ui-pro"],
   modules: [
     "@nuxt/content",
@@ -36,7 +36,7 @@ export default defineNuxtConfig({
     baseUrl: "https://bluescript.app",
     langDir: "locales",
     lazy: false,
-    strategy: "no_prefix",
+    strategy: "prefix_except_default",
     defaultLocale: "en",
 
     detectBrowserLanguage: {
@@ -103,7 +103,15 @@ export default defineNuxtConfig({
     ],
   },
 
-  routeRules: {
+  routeRules: generateRouteRules(),
+
+  compatibilityDate: "2024-07-25",
+});
+
+function generateRouteRules() {
+  const locales = ["ko", "fr", "es", "ru", "ja", "zh", "ar", "hi"];
+  const rules: Record<string, any> = {
+    // Default locale (en) routes
     "/docs": { redirect: "/docs/getting-started" },
     "/docs/training/": {
       redirect: "/docs/training/visual/rapid-visual-perception",
@@ -112,6 +120,19 @@ export default defineNuxtConfig({
       redirect: "/docs/training/visual/rapid-visual-perception",
     },
     "/": { prerender: true },
-  },
-  compatibilityDate: "2024-07-25",
-});
+  };
+
+  // Add routes for each non-default locale
+  locales.forEach((locale) => {
+    rules[`/${locale}/docs`] = { redirect: `/${locale}/docs/getting-started` };
+    rules[`/${locale}/docs/training/`] = {
+      redirect: `/${locale}/docs/training/visual/rapid-visual-perception`,
+    };
+    rules[`/${locale}/docs/training/visual/`] = {
+      redirect: `/${locale}/docs/training/visual/rapid-visual-perception`,
+    };
+    rules[`/${locale}/`] = { prerender: true };
+  });
+
+  return rules;
+}
