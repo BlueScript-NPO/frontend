@@ -1,20 +1,19 @@
 ---
-title: Séquencement des caractères
-description: Apprentissage de la localisation et de la saisie de caractères dans l'ordre
+title: Correspondance des caractères
+description: Apprentissage de la localisation et du clic sur les caractères correspondants à partir d'options visuellement similaires
 ---
 
 ## Vue d'ensemble
 
-La formation au séquençage des caractères consiste à localiser et à saisir les caractères affichés à l'écran dans un ordre spécifique à l'aide de la touche fléchée droite et de la barre d'espacement. Cet entraînement améliore le traitement visuel temporel, l'attention visuelle, la discrimination visuelle, le raisonnement spatial et la vitesse visuelle.
+La formation à la correspondance des caractères consiste à cliquer sur les chaînes de caractères qui correspondent visuellement à un exemple donné. Cet entraînement améliore la planification visuelle, la vitesse de perception, la perception des formes, la mémoire visuelle, la motricité oculaire, la directionnalité et le traitement visuel temporel.
 
 Chaque tentative d'entraînement suit cette séquence et se répète jusqu'à ce que le temps d'entraînement alloué soit dépassé :
 
-1. Au début d'une tentative, une séquence de caractères est affichée en haut, et un champ de saisie est affiché en dessous.\
-   /character-sequencing-1.png![character-sequencing-1](){width="1024" height="576"}
-2. Utilisez la touche fléchée vers la droite pour déplacer le curseur dans le champ de saisie. Lorsque le curseur correspond à un caractère de la séquence, appuyez sur la barre d'espacement. Si vous sautez un caractère ou appuyez sur la barre d'espacement sur le mauvais caractère, cela est considéré comme une erreur et le curseur se déplace vers le caractère correct le plus proche dans la séquence.\
-   /character-sequencing-2.png![character-sequencing-2](){width="1024" height="576"}\
-   Par exemple, dans l'image ci-dessus, les caractères a, b, c, d et e ont déjà été trouvés. Le prochain caractère à saisir est ㅜ. Si vous oubliez ㅜ ou si vous appuyez sur la barre d'espacement sur le mauvais caractère, le curseur passe au caractère suivant de la séquence, ㅈ.
-3. La tentative se termine lorsque le curseur atteint le dernier caractère de la séquence.
+1. Au début d'une tentative, la chaîne d'exemple est affichée en haut.\
+   /character-matching-1.png![character-matching-1](){width="1024" height="576"}
+2. À l'aide de la souris, localisez et cliquez sur les chaînes de caractères qui correspondent à l'exemple dans le champ de saisie ci-dessous. Le champ de saisie contient 30 % de réponses correctes et 70 % de réponses incorrectes, les chaînes incorrectes ne différant de l'exemple que par un seul caractère. Le nombre de réponses correctes restantes est également affiché ci-dessous.\
+   /character-matching-2.png![character-matching-2](){width="1024" height="576"}
+3. Une fois que toutes les chaînes correctes ont été localisées, l'entraînement passe à la tentative suivante.
 
 ## Paramètres de formation
 
@@ -35,22 +34,13 @@ Définit le type de caractères utilisés dans la formation. L'utilisation de ca
 
 **Pour augmenter la difficulté**, sélectionnez des types de caractères plus complexes (par exemple, de `Nombres` à `Alphabets + Chiffres`).
 
-### Type de séquence
+### Longueur de la réponse
 
-Définit le type de séquence utilisé dans la formation. Les options sont les suivantes :
+Définit la longueur des chaînes utilisées dans la formation. La longueur peut être réglée entre 2 et 6. L'augmentation du nombre de caractères **accroît considérablement la difficulté**.
 
-- **Séquentiel** : La séquence est affichée dans l'ordre (par exemple, `ABCD`, `And`, `1234`).
-- **Random** : La séquence est affichée de manière aléatoire (par exemple, `HOEB`, `аппак`, `0584`).
+### Nombre de réponses
 
-L'utilisation d'une séquence séquentielle diminue **significativement** la difficulté, tandis qu'une séquence aléatoire l'augmente **significativement**.
-
-::callout{colour="primary" icon="i-ph-lightbulb"}
-Si vous utilisez une séquence aléatoire, encouragez le stagiaire à mémoriser autant de caractères que possible en même temps et à les localiser en se basant sur sa mémoire.
-: :
-
-### Longueur de la séquence
-
-Définit la longueur de la séquence utilisée dans la formation. La longueur peut être ajustée de `1` à `25`, les séquences plus longues **augmentant significativement la difficulté**.
+Définit le nombre de réponses correctes affichées dans le champ de saisie. Cette valeur peut être comprise entre 15 et 60. L'augmentation du nombre de réponses correctes **augmente légèrement la difficulté**.
 
 ## Adapter la difficulté de l'entraînement
 
