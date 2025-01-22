@@ -1,32 +1,32 @@
 ---
 title: Introduction
-description: Welcome to BlueScript.
+description: Bienvenue à BlueScript.
 ---
 
-## What is BlueScript?
+## Qu'est-ce que BlueScript ?
 
-BlueScript is an open-source project designed to help individuals with dyslexia. Its name combines two elements: "Blue," symbolizing positive change, and "Script," representing letters or text. This project goes beyond traditional linguistic approaches by employing neuroscience methodologies to provide effective training for those with dyslexia.
+BlueScript est un projet open-source conçu pour aider les personnes souffrant de dyslexie. Son nom combine deux éléments : "Blue", qui symbolise le changement positif, et "Script", qui représente des lettres ou du texte. Ce projet va au-delà des approches linguistiques traditionnelles en utilisant des méthodologies neuroscientifiques pour offrir une formation efficace aux personnes souffrant de dyslexie.
 
-To ensure individuals with dyslexia can freely access training anywhere, BlueScript has been developed as a web application. This application offers a variety of training modules aimed at strengthening neural connections in the brain, addressing inefficiencies caused by dyslexia.
+Pour que les personnes atteintes de dyslexie puissent accéder librement à la formation où qu'elles se trouvent, BlueScript a été développé sous forme d'application web. Cette application propose divers modules de formation visant à renforcer les connexions neuronales dans le cerveau, afin de remédier aux inefficacités causées par la dyslexie.
 
-### The Beginnings of BlueScript: Suh Jae
+### Les débuts de BlueScript : Suh Jae
 
-This project was initiated by [Suh Jae](https://github.com/SuhJae), who experienced the challenges and pain of dyslexia during childhood. Struggling with slow reading speed and limited literacy, Suh Jae worked tirelessly to overcome these difficulties. Thankfully, training received during middle school helped improve his reading skills. However, this experience left a profound understanding of how difficult dyslexia is to overcome for many people.
+https://github.com/SuhJaeCe projet a été lancé par [Suh Jae] ( ), qui a connu les difficultés et les souffrances de la dyslexie pendant son enfance. Luttant contre une vitesse de lecture lente et un niveau d'alphabétisation limité, Suh Jae a travaillé sans relâche pour surmonter ces difficultés. Heureusement, une formation reçue au collège a permis d'améliorer ses compétences en lecture. Cependant, cette expérience m'a permis de comprendre à quel point la dyslexie est difficile à surmonter pour de nombreuses personnes.
 
-Motivated by his personal journey, Suh Jae developed **BlueScript** with the goal of alleviating the struggles faced by others with dyslexia. He recognized that the financial burden often makes overcoming dyslexia inaccessible for many. This realization led to his determination to create a free training program for dyslexia, offering people an opportunity to overcome it without economic constraints.
+Motivé par son parcours personnel, Suh Jae a développé **BlueScript** dans le but d'atténuer les difficultés rencontrées par les personnes atteintes de dyslexie. Il a reconnu que le fardeau financier rendait souvent la dyslexie inaccessible à de nombreuses personnes. Cette prise de conscience l'a conduit à vouloir créer un programme de formation gratuit pour la dyslexie, offrant aux gens la possibilité de la surmonter sans contraintes économiques.
 
-## An Open-Source Project
+## Un projet open-source
 
-BlueScript is an open-source project that anyone can use and contribute to for free. Both users and developers are encouraged to participate in improving the training programs. Currently, BlueScript is available in nine languages, with ongoing bug fixes and UI enhancements ([BlueScript GitHub](https://github.com/BlueScript-NPO)).
+BlueScript est un projet open-source que chacun peut utiliser et auquel chacun peut contribuer gratuitement. Les utilisateurs et les développeurs sont encouragés à participer à l'amélioration des programmes de formation. https://github.com/BlueScript-NPOActuellement, BlueScript est disponible en neuf langues, avec des corrections de bogues et des améliorations de l'interface utilisateur en cours ([BlueScript GitHub]()).
 
-## Training Modules
+## Modules de formation
 
-BlueScript provides a variety of training modules designed to stimulate the brain’s neurons and enhance reading skills for individuals with dyslexia. The main training modules include:
+BlueScript propose une variété de modules de formation conçus pour stimuler les neurones du cerveau et améliorer les capacités de lecture des personnes souffrant de dyslexie. Les principaux modules de formation comprennent
 
-1. [**Rapid Visual Perception**](/docs/training/visual/rapid-visual-perception): A training module where users quickly recognize and input letters displayed briefly on the screen.
-2. [**Sequential Visual Memory**](/docs/training/visual/sequential-visual-memory): A module where letters are displayed one at a time, and users must remember and input them.
-3. [**Character Sequencing**](/docs/training/visual/character-sequencing): Training that involves identifying and inputting letters in a specified order.
-4. [**Character Matching**](/docs/training/visual/character-matching): A module where users identify letters matching a given prompt among visually similar characters.
-5. [**Character Guesstimate**](/docs/training/visual/character-guesstimate): A module where letters gradually appear, and users must predict and input them as quickly as possible.
+1. /docs/training/visual/rapid-visual-perception[**Perception visuelle rapide**]() : Module de formation dans lequel les utilisateurs reconnaissent et saisissent rapidement des lettres affichées brièvement à l'écran.
+2. /docs/training/visual/sequential-visual-memory[**Mémoire visuelle séquentielle**]() : Module dans lequel les lettres sont affichées une par une et les utilisateurs doivent les mémoriser et les saisir.
+3. /docs/training/visual/character-sequencing[**Séquencement des caractères**]() : Formation qui consiste à identifier et à saisir des lettres dans un ordre précis.
+4. /docs/training/visual/character-matching[**Correspondance de caractères**]() : Module permettant aux utilisateurs d'identifier les lettres correspondant à un message donné parmi des caractères visuellement similaires.
+5. /docs/training/visual/character-guesstimate[**Ignostic des personnages**]() : Un module où les lettres apparaissent progressivement et où les utilisateurs doivent les prédire et les saisir le plus rapidement possible.
 
-These modules are designed to stimulate the brain in various ways, ensuring users remain engaged and do not become desensitized to repeated stimuli.
+Ces modules sont conçus pour stimuler le cerveau de différentes manières, ce qui permet aux utilisateurs de rester engagés et de ne pas se désensibiliser à des stimuli répétés.
