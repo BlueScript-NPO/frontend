@@ -1,26 +1,24 @@
 ---
-title: Préparation à la formation
-description: Mise en place de l'environnement de formation à BlueScript
+title: Configuration de la formation
+description: Comment organiser des sessions de formation efficaces
 ---
 
-## Matériel
+## Vue d'ensemble
 
-BlueScript est une application web qui peut être utilisée sur n'importe quel système d'exploitation. Cependant, pour une formation efficace, il est recommandé d'utiliser un appareil qui répond aux critères suivants.
+La formation BlueScript permet aux utilisateurs de personnaliser leurs paramètres de formation. Le niveau de difficulté de la formation a un impact significatif sur son succès. Si la difficulté est trop élevée, la formation devient trop difficile et moins efficace. Inversement, si la difficulté est trop faible, la formation peut devenir monotone, ce qui réduit également son efficacité. C'est pourquoi il est essentiel d'ajuster la difficulté de manière appropriée pour mener des sessions de formation efficaces.
 
-### Exigences relatives aux appareils
+## Adaptation de la difficulté
 
-- Un ordinateur, un portable ou une tablette équipé d'un clavier physique.
-- Un écran d'au moins 7 pouces (17,78 cm).
+/trainVisitez la page [Formation] ( ) pour sélectionner un module de formation. Vous pouvez également cliquer sur le bouton **Aide** pour apprendre à utiliser chaque module de formation.
 
-### Outils utiles
+/select-procedure.png![select-procedure](){width="1024" height="576"}
 
-- Un carnet de notes pour enregistrer les progrès de la formation (une fonctionnalité de compte pour sauvegarder les enregistrements de formation sera bientôt ajoutée).
-- Des bouchons d'oreille ou des écouteurs pour bloquer les bruits dans un environnement distrayant.
+Une fois que vous avez sélectionné un module de formation, vous pouvez configurer ses paramètres comme indiqué dans l'image ci-dessous. Tous les modules de formation ont des paramètres pour **la durée** et **le type de personnage**, qui n'affectent pas la difficulté. En outre, chaque module comprend des paramètres uniques. **Les réglages du haut ont un impact plus important sur la difficulté que ceux du bas.** \*\* Les réglages du haut ont un impact plus important sur la difficulté que ceux du bas.
 
-## Posture d'entraînement
+/setting-example.png![setting-example](){width="1024" height="576"}
 
-Maintenez une distance d'environ 30 cm par rapport à votre moniteur pendant l'entraînement. Cela correspond à peu près à la longueur diagonale d'une feuille de papier A4.
+Par exemple, dans le module Perception visuelle rapide, l'ajustement de la **longueur de caractères** d'un cran à l'aide des flèches latérales a un impact plus important sur la difficulté que l'ajustement du **temps d'affichage** d'un cran. Reportez-vous à la documentation de chaque module pour plus de détails sur ses paramètres spécifiques.
 
-Ne posez pas vos mains sur le clavier lorsque vous ne saisissez pas de réponses. Dans les sessions de formation nécessitant une mémorisation rapide à court terme, le fait de prépositionner vos mains sur le clavier ou de vous préparer à taper des réponses prématurément peut réduire l'efficacité de la formation.
+## Résultats de la formation
 
-Évitez de parler tout seul ou de marmonner pendant l'entraînement. Le fait de répéter les messages à voix haute ou de les murmurer peut avoir un impact négatif sur l'amélioration des fonctions cognitives visuelles.
+Les résultats de l'entraînement sont des indicateurs cruciaux pour ajuster la difficulté des sessions suivantes. Utilisez les résultats pour ajuster la difficulté comme suit :
