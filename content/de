@@ -1,20 +1,19 @@
 ---
-title: Zeichenreihenfolge
-description: Training zum Auffinden und Eingeben von Zeichen nacheinander
+title: Zeichenübereinstimmung
+description: Training zum Auffinden und Anklicken passender Zeichen aus visuell ähnlichen Optionen
 ---
 
 ## Übersicht
 
-Beim Zeichensequenztraining geht es darum, die auf dem Bildschirm angezeigten Zeichen mit Hilfe der rechten Pfeiltaste und der Leertaste in einer bestimmten Reihenfolge zu finden und einzugeben. Dieses Training verbessert die zeitliche visuelle Verarbeitung, die visuelle Aufmerksamkeit, die visuelle Unterscheidung, das räumliche Denken und die visuelle Geschwindigkeit.
+Beim Training der Zeichenübereinstimmung werden Zeichenfolgen angeklickt, die visuell mit einem vorgegebenen Beispiel übereinstimmen. Dieses Training verbessert die visuelle Planung, die Wahrnehmungsgeschwindigkeit, die Formwahrnehmung, das visuelle Gedächtnis, die motorischen Fähigkeiten der Augen, die Richtungsabhängigkeit und die zeitliche visuelle Verarbeitung.
 
 Jeder Trainingsversuch folgt dieser Abfolge und wird so lange wiederholt, bis die zugewiesene Trainingszeit überschritten ist:
 
-1. Zu Beginn eines Versuchs wird oben eine Zeichenfolge angezeigt, und darunter wird ein Eingabefeld eingeblendet.\
-   /character-sequencing-1.png![character-sequencing-1](){width="1024" height="576"}
-2. Verwenden Sie die rechte Pfeiltaste, um den Cursor in das Eingabefeld zu bewegen. Wenn der Cursor auf ein Zeichen in der Sequenz trifft, drücken Sie die Leertaste. Wenn Sie ein Zeichen überspringen oder die Leertaste bei einem falschen Zeichen drücken, gilt dies als Fehler, und der Cursor bewegt sich zum nächsten richtigen Zeichen in der Folge.\
-   /character-sequencing-2.png![Zeichen-Sequenzierung-2](){width="1024" height="576"}\
-   In der obigen Abbildung wurden zum Beispiel die Zeichen a, b, c, d und e bereits gefunden. Das nächste einzugebende Zeichen ist ㅜ. Wenn Sie ㅜ verpassen oder die Leertaste bei einem falschen Zeichen drücken, springt der Cursor zum nächsten Zeichen in der Folge, ㅈ.
-3. Der Versuch endet, wenn der Cursor das letzte Zeichen in der Sequenz erreicht.
+1. Zu Beginn eines Versuchs wird die Beispielzeichenkette oben angezeigt.\
+   /character-matching-1.png![character-matching-1](){width="1024" height="576"}
+2. Suchen Sie mit der Maus im Eingabefeld unten nach Zeichenfolgen, die dem Beispiel entsprechen, und klicken Sie sie an. Das Eingabefeld enthält 30 % richtige und 70 % falsche Antworten, wobei sich die falschen Zeichenfolgen nur um ein Zeichen vom Beispiel unterscheiden. Die Anzahl der verbleibenden richtigen Antworten wird ebenfalls unten angezeigt.\
+   /character-matching-2.png![character-matching-2](){width="1024" height="576"}
+3. Wenn alle richtigen Saiten gefunden wurden, geht das Training mit dem nächsten Versuch weiter.
 
 ## Trainingseinstellungen
 
@@ -35,22 +34,13 @@ Legt die Art der für das Training verwendeten Zeichen fest. Die Verwendung von 
 
 **Um den Schwierigkeitsgrad zu erhöhen**, wählen Sie komplexere Zeichentypen (z. B. von `Zahlen` auf `Alphabete + Zahlen`).
 
-### Sequenz Typ
+### Antwort Länge
 
-Legt die Art der für das Training verwendeten Sequenz fest. Die Optionen sind:
+Legt die Länge der Zeichenfolgen fest, die für das Training verwendet werden. Die Länge kann zwischen 2 und 6 eingestellt werden. Die Erhöhung der Anzahl der Zeichen **erhöht den Schwierigkeitsgrad erheblich**.
 
-- **Sequentiell**: Die Sequenz wird der Reihe nach angezeigt (z. B. "ABCD", "Und", "1234").
-- **Zufällig**: Die Sequenz wird zufällig angezeigt (z. B. `HOEB`, `аппак`, `0584`).
+### Anzahl der Antworten
 
-Die Verwendung einer sequentiellen Sequenz **senkt** den Schwierigkeitsgrad signifikant, während eine zufällige Sequenz ihn **signifikant erhöht**.
-
-::callout{colour="primary" icon="i-ph-lightbulb"}
-Wenn Sie eine zufällige Sequenz verwenden, ermutigen Sie die Auszubildenden, sich so viele Zeichen wie möglich zu merken und sie anhand ihres Gedächtnisses zu lokalisieren.
-::
-
-### Sequenz Länge
-
-Legt die Länge der für das Training verwendeten Sequenz fest. Die Länge kann von "1" bis "25" eingestellt werden, wobei längere Sequenzen den Schwierigkeitsgrad deutlich **erhöhen**.
+Legt die Anzahl der richtigen Antworten fest, die im Eingabefeld angezeigt werden. Diese kann zwischen 15 und 60 eingestellt werden. Mit zunehmender Anzahl richtiger Antworten **erhöht sich der Schwierigkeitsgrad leicht**.
 
 ## Anpassen der Trainingsschwierigkeit
 
