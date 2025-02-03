@@ -3,6 +3,41 @@ const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 const modelOpen = ref(false);
 
+definePageMeta({
+  layout: "dashboard",
+});
+
+const links = [
+  {
+    label: "Home",
+    icon: "i-heroicons-home",
+  },
+  {
+    label: "Inbox",
+    icon: "i-heroicons-inbox",
+    badge: "4",
+  },
+  {
+    label: "Users",
+    icon: "i-heroicons-user-group",
+  },
+  {
+    label: "Settings",
+    icon: "i-heroicons-cog-8-tooth",
+    children: [
+      {
+        label: "General",
+      },
+      {
+        label: "Members",
+      },
+      {
+        label: "Notifications",
+      },
+    ],
+  },
+];
+
 const signOut = inject<() => void>("signOut");
 </script>
 
@@ -41,20 +76,4 @@ const signOut = inject<() => void>("signOut");
       </template>
     </UCard>
   </UModal>
-
-  <ClientOnly>
-    <div class="flex flex-col items-center justify-center h-screen">
-      <UCard class="max-w-sm w-full">
-        <h1 class="text-2xl font-bold">Dashboard</h1>
-
-        <p>Welcome, {{ user?.user_metadata.full_name }}</p>
-
-        <div class="flex justify-end">
-          <UButton type="button" color="red" @click="modelOpen = true"
-            >Sign Out</UButton
-          >
-        </div>
-      </UCard>
-    </div>
-  </ClientOnly>
 </template>
