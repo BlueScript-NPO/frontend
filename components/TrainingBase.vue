@@ -71,7 +71,7 @@
 
       <template #footer>
         <div class="flex space-x-4 justify-end">
-          <UButton color="red" icon="i-ph-door-open" to="/train">
+          <UButton color="red" icon="i-ph-door-open" :to="localePath('/train')">
             {{ $t("train.quit") }}
           </UButton>
         </div>
@@ -82,6 +82,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed, watch } from "vue";
+const localePath = useLocalePath();
 
 interface Props {
   totalTrainingTime: number;
