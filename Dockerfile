@@ -3,10 +3,10 @@ ARG NODE_VERSION=23.5.0
 # Create build stage
 FROM node:${NODE_VERSION}-slim AS build
 
-# Enable pnpm
+# Enable and prepare pnpm with a known good version
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+RUN corepack prepare pnpm@8.6.0 --activate
 
 # Set the working directory inside the container
 WORKDIR /app
