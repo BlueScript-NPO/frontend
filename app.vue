@@ -33,11 +33,6 @@ const isDark = computed({
   },
 });
 
-const route = useRoute();
-const router = useRouter();
-const { locale, availableLocales } = useI18n();
-const lang = ref(route.query.lang as string);
-
 const head = useLocaleHead({
   addDirAttribute: true,
   identifierAttribute: "id",
