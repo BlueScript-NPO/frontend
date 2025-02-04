@@ -231,7 +231,7 @@
       },
       "name": {
         "title": "Nom",
-        "description": "Mettez à jour votre nom d'utilisateur Il apparaîtra dans le profil, les résultats d'entraînement et dans toute l'application."
+        "description": "Mettez à jour votre nom d'utilisateur. Il apparaîtra dans le profil, les résultats d'entraînement et dans toute l'application."
       },
       "email": {
         "title": "Courriel",
