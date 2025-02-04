@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 const localePath = useLocalePath();
+
 const supabase = useSupabaseClient();
 
 const { t } = useI18n();
@@ -29,7 +30,7 @@ const signInWithGoogle = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: localePath("/confirm"),
+      redirectTo: `${window.location.origin}${localePath("/confirm")}`,
     },
   });
   if (error) console.log(error);
