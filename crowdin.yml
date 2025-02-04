@@ -1,7 +1,3 @@
 files:
   - source: /locales/ko/*.json
     translation: /locales/%two_letters_code%/%original_file_name%
-  - source: /content/1.docs/1.getting-started/
-    translation: /content/%two_letters_code%/1.docs/1.getting-started/%original_file_name%
-  - source: content/1.docs/2.training/visual/
-    translation: /content/%two_letters_code%/1.docs/2.training/visual/%original_file_name%
