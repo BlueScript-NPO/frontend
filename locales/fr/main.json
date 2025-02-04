@@ -23,7 +23,7 @@
           "description": "Engagé pour l'accessibilité, BlueScript veille à ce que chacun ait un accès gratuit aux outils de soutien essentiels à la dyslexie."
         },
         "card3": {
-          "title": "Open Source",
+          "title": "Source ouverte",
           "description": "BlueScript accueille les contributions de tous. Accédez à notre code source pour modifier, améliorer et innover librement."
         },
         "card4": {
@@ -46,12 +46,12 @@
     "train": "Entraînement",
     "result": "Résultat",
     "docs": "Documentation",
-    "dashboard": "Dashboard",
+    "dashboard": "Tableau de bord",
     "account": {
-      "signIn": "Sign In",
-      "signedInAs": "Signed in as",
-      "dashboard": "Dashboard",
-      "signOut": "Sign Out"
+      "signIn": "S'inscrire",
+      "signedInAs": "Inscrit en tant que",
+      "dashboard": "Tableau de bord",
+      "signOut": "S'inscrire"
     }
   },
   "docs": {
@@ -198,49 +198,49 @@
     "upload": "Récupération des résultats"
   },
   "auth": {
-    "title": "Sign In",
-    "description": "Sign in to save your training results and settings.",
+    "title": "S'inscrire",
+    "description": "Connectez-vous pour sauvegarder vos résultats d'entraînement et vos paramètres.",
     "OAuth": {
-      "google": "Continue with Google"
+      "google": "Continuer avec Google"
     }
   },
   "dashboard": {
     "nav": {
-      "home": "Home",
-      "settings": "Settings"
+      "home": "Accueil",
+      "settings": "Paramètres"
     },
     "home": {
-      "welcome": "Hello from BlueScript!",
-      "description": "BlueScript Account is under development. It will allow you to save your training results and settings. Stay tuned for updates!"
+      "welcome": "Bonjour de BlueScript !",
+      "description": "Le compte BlueScript est en cours de développement. Il vous permettra de sauvegarder vos résultats d'entraînement et vos paramètres. Restez à l'écoute pour les mises à jour !"
     },
     "settings": {
-      "updateSuccess": "Settings updated successfully.",
-      "updateError": "There was an error updating your settings. Please try again.",
+      "updateSuccess": "Les paramètres ont été mis à jour avec succès.",
+      "updateError": "Une erreur s'est produite lors de la mise à jour de vos paramètres, veuillez réessayer.",
       "validate": {
-        "name": "Please enter your name.",
-        "email": "Email is invalid."
+        "name": "Veuillez saisir votre nom.",
+        "email": "L'adresse électronique n'est pas valide."
       },
       "theme": {
-        "title": "Theme",
-        "description": "Choose a theme that suits your preference."
+        "title": "Thème",
+        "description": "Choisissez un thème qui vous convient."
       },
       "account": {
-        "title": "Account",
-        "description": "Update your account details.",
-        "save": "Save Changes"
+        "title": "Compte",
+        "description": "Mettez à jour les détails de votre compte.",
+        "save": "Enregistrer les modifications"
       },
       "name": {
-        "title": "Name",
-        "description": "Update your username It will appear in profile, training results, and throughout the app."
+        "title": "Nom",
+        "description": "Mettez à jour votre nom d'utilisateur Il apparaîtra dans le profil, les résultats d'entraînement et dans toute l'application."
       },
       "email": {
-        "title": "Email",
-        "description": "Email is managed by OAuth providers, and cannot be changed. It will be used for notifications."
+        "title": "Courriel",
+        "description": "L'adresse électronique est gérée par les fournisseurs OAuth et ne peut pas être modifiée. Il sera utilisé pour les notifications."
       },
       "signOut": {
-        "title": "Sign Out",
-        "description": "Sign out of your account.",
-        "button": "Sign Out"
+        "title": "S'inscrire",
+        "description": "Déconnectez-vous de votre compte.",
+        "button": "S'inscrire"
       }
     }
   }
