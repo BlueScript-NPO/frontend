@@ -53,10 +53,10 @@ export default defineAppConfig({
           primary:
             "text-primary-500 hover:bg-primary-50 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500",
           white:
-            "text-gray-900 hover:bg-white focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500",
-          gray: "text-gray-700 hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-500",
+            "text-gray-900 hover:bg-white focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 hover:bg-gray-50",
+          gray: "text-gray-700 hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-500, hover:bg-gray-50",
           black:
-            "text-gray-900 hover:bg-gray-900 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500",
+            "text-gray-900 hover:bg-gray-900 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 hover:bg-gray-800",
         },
         link: {
           primary:

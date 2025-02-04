@@ -12,7 +12,20 @@ export default defineNuxtConfig({
     "@nuxtjs/seo",
     "nuxt-og-image",
     "@nuxt/fonts",
+    "@nuxtjs/supabase",
   ],
+
+  supabase: {
+    url: "https://oyzivnolzjqehavvntqz.supabase.co",
+    key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im95eml2bm9sempxZWhhdnZudHF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg1NjI0NzMsImV4cCI6MjA1NDEzODQ3M30.5h75afajh_8mdCQdGTFf_zaObOVgTkipqDaiC78COtI",
+    redirectOptions: {
+      login: "/auth",
+      callback: "/confirm",
+      include: ["/dashboard(/*)?"],
+      exclude: [],
+      cookieRedirect: false,
+    },
+  },
 
   nitro: {
     prerender: {
