@@ -48,10 +48,10 @@
     "docs": "Hilfe",
     "dashboard": "Dashboard",
     "account": {
-      "signIn": "Sign In",
-      "signedInAs": "Signed in as",
+      "signIn": "Eintragen",
+      "signedInAs": "Eingetragen als",
       "dashboard": "Dashboard",
-      "signOut": "Sign Out"
+      "signOut": "Abmelden"
     }
   },
   "docs": {
@@ -198,49 +198,49 @@
     "upload": "Abrufen von Ergebnissen"
   },
   "auth": {
-    "title": "Sign In",
-    "description": "Sign in to save your training results and settings.",
+    "title": "Eintragen",
+    "description": "Melden Sie sich an, um Ihre Trainingsergebnisse und Einstellungen zu speichern.",
     "OAuth": {
-      "google": "Continue with Google"
+      "google": "Weiter mit Google"
     }
   },
   "dashboard": {
     "nav": {
-      "home": "Home",
-      "settings": "Settings"
+      "home": "Startseite",
+      "settings": "Einstellungen"
     },
     "home": {
-      "welcome": "Hello from BlueScript!",
-      "description": "BlueScript Account is under development. It will allow you to save your training results and settings. Stay tuned for updates!"
+      "welcome": "Hallo von BlueScript!",
+      "description": "BlueScript Account ist in der Entwicklung. Es wird Ihnen ermöglichen, Ihre Trainingsergebnisse und Einstellungen zu speichern. Bleiben Sie dran für Updates!"
     },
     "settings": {
-      "updateSuccess": "Settings updated successfully.",
-      "updateError": "There was an error updating your settings. Please try again.",
+      "updateSuccess": "Einstellungen erfolgreich aktualisiert.",
+      "updateError": "Bei der Aktualisierung Ihrer Einstellungen ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
       "validate": {
-        "name": "Please enter your name.",
-        "email": "Email is invalid."
+        "name": "Bitte geben Sie Ihren Namen ein.",
+        "email": "E-Mail ist ungültig."
       },
       "theme": {
-        "title": "Theme",
-        "description": "Choose a theme that suits your preference."
+        "title": "Thema",
+        "description": "Wählen Sie ein Thema, das Ihren Vorlieben entspricht."
       },
       "account": {
-        "title": "Account",
-        "description": "Update your account details.",
-        "save": "Save Changes"
+        "title": "Konto",
+        "description": "Aktualisieren Sie Ihre Kontodaten.",
+        "save": "Änderungen speichern"
       },
       "name": {
         "title": "Name",
-        "description": "Update your username It will appear in profile, training results, and throughout the app."
+        "description": "Aktualisieren Sie Ihren Benutzernamen. Er wird im Profil, in den Trainingsergebnissen und in der gesamten App angezeigt."
       },
       "email": {
-        "title": "Email",
-        "description": "Email is managed by OAuth providers, and cannot be changed. It will be used for notifications."
+        "title": "E-Mail",
+        "description": "Die E-Mail wird von OAuth-Anbietern verwaltet und kann nicht geändert werden. Sie wird für Benachrichtigungen verwendet."
       },
       "signOut": {
-        "title": "Sign Out",
-        "description": "Sign out of your account.",
-        "button": "Sign Out"
+        "title": "Abmelden",
+        "description": "Melden Sie sich von Ihrem Konto ab.",
+        "button": "Abmelden"
       }
     }
   }
