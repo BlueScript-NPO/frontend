@@ -46,12 +46,12 @@
     "train": "トレーニング",
     "result": "結果",
     "docs": "ドキュメント",
-    "dashboard": "Dashboard",
+    "dashboard": "ダッシュボード",
     "account": {
-      "signIn": "Sign In",
-      "signedInAs": "Signed in as",
-      "dashboard": "Dashboard",
-      "signOut": "Sign Out"
+      "signIn": "サインイン",
+      "signedInAs": "としてサインイン",
+      "dashboard": "ダッシュボード",
+      "signOut": "サインアウト"
     }
   },
   "docs": {
@@ -198,49 +198,49 @@
     "upload": "結果を呼び出す"
   },
   "auth": {
-    "title": "Sign In",
-    "description": "Sign in to save your training results and settings.",
+    "title": "サインイン",
+    "description": "サインインして、トレーニング結果や設定を保存します。",
     "OAuth": {
-      "google": "Continue with Google"
+      "google": "グーグルで続行"
     }
   },
   "dashboard": {
     "nav": {
-      "home": "Home",
-      "settings": "Settings"
+      "home": "ホーム",
+      "settings": "設定"
     },
     "home": {
-      "welcome": "Hello from BlueScript!",
-      "description": "BlueScript Account is under development. It will allow you to save your training results and settings. Stay tuned for updates!"
+      "welcome": "BlueScriptからこんにちは！",
+      "description": "BlueScript Accountは開発中です。トレーニング結果や設定を保存できるようになります。 アップデートをお楽しみに！"
     },
     "settings": {
-      "updateSuccess": "Settings updated successfully.",
-      "updateError": "There was an error updating your settings. Please try again.",
+      "updateSuccess": "設定が正常に更新されました。",
+      "updateError": "設定を更新する際にエラーが発生しました。 もう一度お試しください。",
       "validate": {
-        "name": "Please enter your name.",
-        "email": "Email is invalid."
+        "name": "お名前を入力してください。",
+        "email": "メールは無効です。"
       },
       "theme": {
-        "title": "Theme",
-        "description": "Choose a theme that suits your preference."
+        "title": "テーマ",
+        "description": "お好みのテーマを選んでください。"
       },
       "account": {
-        "title": "Account",
-        "description": "Update your account details.",
-        "save": "Save Changes"
+        "title": "アカウント",
+        "description": "アカウントの詳細を更新します。",
+        "save": "変更の保存"
       },
       "name": {
-        "title": "Name",
-        "description": "Update your username It will appear in profile, training results, and throughout the app."
+        "title": "名称",
+        "description": "ユーザー名を更新 プロフィール、トレーニング結果、アプリ全体に表示されます。"
       },
       "email": {
-        "title": "Email",
-        "description": "Email is managed by OAuth providers, and cannot be changed. It will be used for notifications."
+        "title": "Eメール",
+        "description": "メールはOAuthプロバイダが管理しており、変更することはできません。通知に使用されます。"
       },
       "signOut": {
-        "title": "Sign Out",
-        "description": "Sign out of your account.",
-        "button": "Sign Out"
+        "title": "サインアウト",
+        "description": "アカウントからサインアウトします。",
+        "button": "サインアウト"
       }
     }
   }
