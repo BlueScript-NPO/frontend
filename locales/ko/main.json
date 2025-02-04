@@ -45,7 +45,14 @@
     "home": "홈",
     "train": "훈련",
     "result": "결과",
-    "docs": "도움말"
+    "docs": "도움말",
+    "dashboard": "Dashboard",
+    "account": {
+      "signIn": "Sign In",
+      "signedInAs": "Signed in as",
+      "dashboard": "Dashboard",
+      "signOut": "Sign Out"
+    }
   },
   "docs": {
     "toc": "목차"
@@ -189,5 +196,52 @@
     "correctCount": "정답 수",
     "correctCountDesc": "정답 응답의 수",
     "upload": "결과 불러오기"
+  },
+  "auth": {
+    "title": "Sign In",
+    "description": "Sign in to save your training results and settings.",
+    "OAuth": {
+      "google": "Continue with Google"
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "home": "Home",
+      "settings": "Settings"
+    },
+    "home": {
+      "welcome": "Hello from BlueScript!",
+      "description": "BlueScript Account is under development. It will allow you to save your training results and settings. Stay tuned for updates!"
+    },
+    "settings": {
+      "updateSuccess": "Settings updated successfully.",
+      "updateError": "There was an error updating your settings. Please try again.",
+      "validate": {
+        "name": "Please enter your name.",
+        "email": "Email is invalid."
+      },
+      "theme": {
+        "title": "Theme",
+        "description": "Choose a theme that suits your preference."
+      },
+      "account": {
+        "title": "Account",
+        "description": "Update your account details.",
+        "save": "Save Changes"
+      },
+      "name": {
+        "title": "Name",
+        "description": "Update your username It will appear in profile, training results, and throughout the app."
+      },
+      "email": {
+        "title": "Email",
+        "description": "Email is managed by OAuth providers, and cannot be changed. It will be used for notifications."
+      },
+      "signOut": {
+        "title": "Sign Out",
+        "description": "Sign out of your account.",
+        "button": "Sign Out"
+      }
+    }
   }
 }
