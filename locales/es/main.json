@@ -45,7 +45,14 @@
     "home": "Inicio",
     "train": "Entrenamiento",
     "result": "Resultado",
-    "docs": "Documentación"
+    "docs": "Documentación",
+    "dashboard": "Cuadro de mandos",
+    "account": {
+      "signIn": "Iniciar sesión",
+      "signedInAs": "Registrado como",
+      "dashboard": "Cuadro de mandos",
+      "signOut": "Cerrar sesión"
+    }
   },
   "docs": {
     "toc": "Índice"
@@ -189,5 +196,52 @@
     "correctCount": "Cantidad de Correctas",
     "correctCountDesc": "Número de respuestas correctas",
     "upload": "Recuperación de resultados"
+  },
+  "auth": {
+    "title": "Iniciar sesión",
+    "description": "Inicia sesión para guardar tus resultados y ajustes de entrenamiento.",
+    "OAuth": {
+      "google": "Continuar con Google"
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "home": "Inicio",
+      "settings": "Ajustes"
+    },
+    "home": {
+      "welcome": "¡Hola desde BlueScript!",
+      "description": "La Cuenta BlueScript está en desarrollo. Te permitirá guardar los resultados de tus entrenamientos y tu configuración. ¡Estate atento a las actualizaciones!"
+    },
+    "settings": {
+      "updateSuccess": "La configuración se ha actualizado correctamente.",
+      "updateError": "Se ha producido un error al actualizar tus ajustes. Por favor, inténtalo de nuevo.",
+      "validate": {
+        "name": "Por favor, introduzca su nombre.",
+        "email": "El correo electrónico no es válido."
+      },
+      "theme": {
+        "title": "Tema",
+        "description": "Elige un tema que se adapte a tus preferencias."
+      },
+      "account": {
+        "title": "Cuenta",
+        "description": "Actualice los datos de su cuenta.",
+        "save": "Guardar cambios"
+      },
+      "name": {
+        "title": "Nombre",
+        "description": "Actualiza tu nombre de usuario Aparecerá en el perfil, en los resultados de los entrenamientos y en toda la aplicación."
+      },
+      "email": {
+        "title": "Correo electrónico",
+        "description": "El correo electrónico es gestionado por los proveedores de OAuth, y no se puede cambiar. Se utilizará para las notificaciones."
+      },
+      "signOut": {
+        "title": "Cerrar sesión",
+        "description": "Salga de su cuenta.",
+        "button": "Cerrar sesión"
+      }
+    }
   }
 }

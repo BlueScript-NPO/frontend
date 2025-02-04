@@ -45,7 +45,14 @@
     "home": "首页",
     "train": "训练",
     "result": "结果",
-    "docs": "帮助"
+    "docs": "帮助",
+    "dashboard": "仪表板",
+    "account": {
+      "signIn": "登录",
+      "signedInAs": "登录为",
+      "dashboard": "仪表板",
+      "signOut": "签出"
+    }
   },
   "docs": {
     "toc": "目录"
@@ -189,5 +196,52 @@
     "correctCount": "正确次数",
     "correctCountDesc": "正确反应的次数",
     "upload": "检索结果"
+  },
+  "auth": {
+    "title": "登录",
+    "description": "登录以保存您的训练结果和设置。",
+    "OAuth": {
+      "google": "继续使用 Google"
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "home": "首页",
+      "settings": "设置"
+    },
+    "home": {
+      "welcome": "你好，来自 BlueScript！",
+      "description": "BlueScript 账户正在开发中。敬请期待更新！"
+    },
+    "settings": {
+      "updateSuccess": "设置更新成功。",
+      "updateError": "更新设置时出现错误，请重试。",
+      "validate": {
+        "name": "请输入您的姓名。",
+        "email": "电子邮件无效。"
+      },
+      "theme": {
+        "title": "主题",
+        "description": "选择一个适合自己喜好的主题。"
+      },
+      "account": {
+        "title": "账户",
+        "description": "更新您的账户详情。",
+        "save": "保存更改"
+      },
+      "name": {
+        "title": "名称",
+        "description": "更新用户名 用户名将显示在个人资料、训练结果和整个应用程序中。"
+      },
+      "email": {
+        "title": "电子邮件",
+        "description": "电子邮件由 OAuth 提供商管理，不可更改。它将用于通知。"
+      },
+      "signOut": {
+        "title": "签出",
+        "description": "退出您的账户。",
+        "button": "签出"
+      }
+    }
   }
 }

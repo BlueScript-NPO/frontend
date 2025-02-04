@@ -45,7 +45,14 @@
     "home": "ホーム",
     "train": "トレーニング",
     "result": "結果",
-    "docs": "ドキュメント"
+    "docs": "ドキュメント",
+    "dashboard": "ダッシュボード",
+    "account": {
+      "signIn": "サインイン",
+      "signedInAs": "としてサインイン",
+      "dashboard": "ダッシュボード",
+      "signOut": "サインアウト"
+    }
   },
   "docs": {
     "toc": "目次"
@@ -189,5 +196,52 @@
     "correctCount": "正解数",
     "correctCountDesc": "正解応答回数",
     "upload": "結果を呼び出す"
+  },
+  "auth": {
+    "title": "サインイン",
+    "description": "サインインして、トレーニング結果や設定を保存します。",
+    "OAuth": {
+      "google": "グーグルで続行"
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "home": "ホーム",
+      "settings": "設定"
+    },
+    "home": {
+      "welcome": "BlueScriptからこんにちは！",
+      "description": "BlueScript Accountは開発中です。トレーニング結果や設定を保存できるようになります。 アップデートをお楽しみに！"
+    },
+    "settings": {
+      "updateSuccess": "設定が正常に更新されました。",
+      "updateError": "設定を更新する際にエラーが発生しました。 もう一度お試しください。",
+      "validate": {
+        "name": "お名前を入力してください。",
+        "email": "メールは無効です。"
+      },
+      "theme": {
+        "title": "テーマ",
+        "description": "お好みのテーマを選んでください。"
+      },
+      "account": {
+        "title": "アカウント",
+        "description": "アカウントの詳細を更新します。",
+        "save": "変更の保存"
+      },
+      "name": {
+        "title": "名称",
+        "description": "ユーザー名を更新 プロフィール、トレーニング結果、アプリ全体に表示されます。"
+      },
+      "email": {
+        "title": "Eメール",
+        "description": "メールはOAuthプロバイダが管理しており、変更することはできません。通知に使用されます。"
+      },
+      "signOut": {
+        "title": "サインアウト",
+        "description": "アカウントからサインアウトします。",
+        "button": "サインアウト"
+      }
+    }
   }
 }

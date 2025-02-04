@@ -45,7 +45,14 @@
     "home": "首页",
     "train": "Ausbildung",
     "result": "Ergebnis",
-    "docs": "Hilfe"
+    "docs": "Hilfe",
+    "dashboard": "Dashboard",
+    "account": {
+      "signIn": "Eintragen",
+      "signedInAs": "Eingetragen als",
+      "dashboard": "Dashboard",
+      "signOut": "Abmelden"
+    }
   },
   "docs": {
     "toc": "Inhaltsübersicht"
@@ -189,5 +196,52 @@
     "correctCount": "Anzahl der richtigen Antworten",
     "correctCountDesc": "Anzahl der richtigen Antworten",
     "upload": "Abrufen von Ergebnissen"
+  },
+  "auth": {
+    "title": "Eintragen",
+    "description": "Melden Sie sich an, um Ihre Trainingsergebnisse und Einstellungen zu speichern.",
+    "OAuth": {
+      "google": "Weiter mit Google"
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "home": "Startseite",
+      "settings": "Einstellungen"
+    },
+    "home": {
+      "welcome": "Hallo von BlueScript!",
+      "description": "BlueScript Account ist in der Entwicklung. Es wird Ihnen ermöglichen, Ihre Trainingsergebnisse und Einstellungen zu speichern. Bleiben Sie dran für Updates!"
+    },
+    "settings": {
+      "updateSuccess": "Einstellungen erfolgreich aktualisiert.",
+      "updateError": "Bei der Aktualisierung Ihrer Einstellungen ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+      "validate": {
+        "name": "Bitte geben Sie Ihren Namen ein.",
+        "email": "E-Mail ist ungültig."
+      },
+      "theme": {
+        "title": "Thema",
+        "description": "Wählen Sie ein Thema, das Ihren Vorlieben entspricht."
+      },
+      "account": {
+        "title": "Konto",
+        "description": "Aktualisieren Sie Ihre Kontodaten.",
+        "save": "Änderungen speichern"
+      },
+      "name": {
+        "title": "Name",
+        "description": "Aktualisieren Sie Ihren Benutzernamen. Er wird im Profil, in den Trainingsergebnissen und in der gesamten App angezeigt."
+      },
+      "email": {
+        "title": "E-Mail",
+        "description": "Die E-Mail wird von OAuth-Anbietern verwaltet und kann nicht geändert werden. Sie wird für Benachrichtigungen verwendet."
+      },
+      "signOut": {
+        "title": "Abmelden",
+        "description": "Melden Sie sich von Ihrem Konto ab.",
+        "button": "Abmelden"
+      }
+    }
   }
 }
