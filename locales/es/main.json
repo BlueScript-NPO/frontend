@@ -231,7 +231,7 @@
       },
       "name": {
         "title": "Nombre",
-        "description": "Actualiza tu nombre de usuario Aparecerá en el perfil, en los resultados de los entrenamientos y en toda la aplicación."
+        "description": "Actualiza tu nombre de usuario. Aparecerá en el perfil, en los resultados de los entrenamientos y en toda la aplicación."
       },
       "email": {
         "title": "Correo electrónico",
