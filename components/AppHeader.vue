@@ -18,14 +18,14 @@ const items = [
   ],
   [
     {
-      label: "Dashboard",
+      label: t("nav.account.dashboard"),
       icon: "i-ph-speedometer",
       to: localePath("/dashboard"),
     },
   ],
   [
     {
-      label: "Sign out",
+      label: t("nav.account.signOut"),
       icon: "i-ph-arrow-line-up-right",
       click: signOut,
       color: "red",
@@ -44,40 +44,40 @@ const items = [
     </template>
 
     <template #right>
-      <UButton
-        class="block md:hidden"
-        variant="ghost"
-        color="gray"
-        square
-        icon="i-ph-magnifying-glass"
-        aria-label="Search documentation"
-        @click="toggleContentSearch"
-      ></UButton>
       <UContentSearchButton
-        class="hidden w-full md:flex md:max-w-48 lg:max-w-56 text-zinc-600 dark:text-zinc-300"
+        class="hidden w-full lg:flex max-w-56 text-zinc-600 dark:text-zinc-300"
         size="sm"
         :label="t('search.placeholder')"
       />
-
-      <client-only>
+      <ClientOnly>
         <UButton
-          label="Sign in"
+          :label="t('nav.account.signIn')"
           color="black"
           variant="ghost"
           trailing-icon="i-ph-arrow-right"
-          class="hidden lg:flex"
+          class=""
           :to="localePath('/auth')"
           v-if="!user"
         />
         <UDropdown
           :items="items"
-          :popper="{ placement: 'bottom-start' }"
+          :popper="{ placement: 'bottom' }"
           v-else
+          class="ml-2"
         >
-          <UAvatar :src="user?.user_metadata.avatar_url" alt="Avatar" />
+          <UButton color="black" variant="ghost" class="flex items-center p-0">
+            <span class="hidden lg:block max-w-[10rem] truncate">
+              {{ user?.user_metadata.full_name }}
+            </span>
+            <UAvatar
+              :src="user?.user_metadata.avatar_url"
+              size="sm"
+              alt="User Avatar"
+            />
+          </UButton>
           <template #account="{ item }">
             <div class="text-left">
-              <p>Signed in as</p>
+              <p>{{ t("nav.account.signedInAs") }}</p>
               <p class="truncate font-medium text-gray-900 dark:text-white">
                 {{ item.label }}
               </p>
@@ -93,7 +93,15 @@ const items = [
             />
           </template>
         </UDropdown>
-      </client-only>
+      </ClientOnly>
+      <UButton
+        class="lg:hidden"
+        variant="ghost"
+        color="white"
+        icon="i-ph-magnifying-glass"
+        aria-label="Search documentation"
+        @click="toggleContentSearch"
+      ></UButton>
     </template>
 
     <template #panel>

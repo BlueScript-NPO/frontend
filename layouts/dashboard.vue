@@ -1,51 +1,29 @@
 <script setup lang="ts">
 const localePath = useLocalePath();
+const { t } = useI18n();
 
 const links = [
   {
-    label: "Home",
-    icon: "i-heroicons-home",
+    label: t("dashboard.nav.home"),
+    icon: "i-ph-house-line",
+    to: localePath("/dashboard"),
   },
   {
-    label: "Inbox",
-    icon: "i-heroicons-inbox",
-    badge: "4",
-  },
-  {
-    label: "Users",
-    icon: "i-heroicons-user-group",
-  },
-  {
-    label: "Settings",
-    icon: "i-heroicons-cog-8-tooth",
-    children: [
-      {
-        label: "General",
-      },
-      {
-        label: "Members",
-      },
-      {
-        label: "Notifications",
-      },
-    ],
+    label: t("dashboard.nav.settings"),
+    icon: "i-ph-gear",
+    to: localePath("/dashboard/settings"),
   },
 ];
 </script>
 
 <template>
   <AppHeader />
-  <UDashboardPage>
-    <UDashboardPanel :width="300" collapsible class="h-[100svh]">
-      <UDashboardSidebar>
-        <UDashboardSidebarLinks :links="links" />
-      </UDashboardSidebar>
-    </UDashboardPanel>
-
-    <UMain>
+  <div class="w-full flex justify-center">
+    <div class="max-w-7xl w-full">
+      <UDashboardToolbar class="py-0 px-4 overflow-x-auto">
+        <UHorizontalNavigation :links="links" />
+      </UDashboardToolbar>
       <slot />
-    </UMain>
-  </UDashboardPage>
-
-  <AppFooter />
+    </div>
+  </div>
 </template>

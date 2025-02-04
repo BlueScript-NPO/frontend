@@ -47,7 +47,6 @@ const head = useLocaleHead({
 const signOut = async () => {
   const { error } = await supabase.auth.signOut();
   if (error) console.log(error);
-  console.log("Signed out");
   navigateTo(localePath("/auth"));
 };
 
