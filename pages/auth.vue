@@ -27,6 +27,9 @@ const supabase = useSupabaseClient();
 const { t } = useI18n();
 
 const signInWithGoogle = async () => {
+  console.log(
+    `Will be redirected to: ${window.location.origin}${localePath("/confirm")}`
+  );
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
