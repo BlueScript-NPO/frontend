@@ -45,7 +45,14 @@
     "home": "ホーム",
     "train": "トレーニング",
     "result": "結果",
-    "docs": "ドキュメント"
+    "docs": "ドキュメント",
+    "dashboard": "Dashboard",
+    "account": {
+      "signIn": "Sign In",
+      "signedInAs": "Signed in as",
+      "dashboard": "Dashboard",
+      "signOut": "Sign Out"
+    }
   },
   "docs": {
     "toc": "目次"
@@ -189,5 +196,52 @@
     "correctCount": "正解数",
     "correctCountDesc": "正解応答回数",
     "upload": "結果を呼び出す"
+  },
+  "auth": {
+    "title": "Sign In",
+    "description": "Sign in to save your training results and settings.",
+    "OAuth": {
+      "google": "Continue with Google"
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "home": "Home",
+      "settings": "Settings"
+    },
+    "home": {
+      "welcome": "Hello from BlueScript!",
+      "description": "BlueScript Account is under development. It will allow you to save your training results and settings. Stay tuned for updates!"
+    },
+    "settings": {
+      "updateSuccess": "Settings updated successfully.",
+      "updateError": "There was an error updating your settings. Please try again.",
+      "validate": {
+        "name": "Please enter your name.",
+        "email": "Email is invalid."
+      },
+      "theme": {
+        "title": "Theme",
+        "description": "Choose a theme that suits your preference."
+      },
+      "account": {
+        "title": "Account",
+        "description": "Update your account details.",
+        "save": "Save Changes"
+      },
+      "name": {
+        "title": "Name",
+        "description": "Update your username It will appear in profile, training results, and throughout the app."
+      },
+      "email": {
+        "title": "Email",
+        "description": "Email is managed by OAuth providers, and cannot be changed. It will be used for notifications."
+      },
+      "signOut": {
+        "title": "Sign Out",
+        "description": "Sign out of your account.",
+        "button": "Sign Out"
+      }
+    }
   }
 }
