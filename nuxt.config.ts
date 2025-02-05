@@ -132,6 +132,9 @@ function generateRouteRules() {
     "/docs/training/visual/": {
       redirect: "/docs/training/visual/rapid-visual-perception",
     },
+    "/docs/policies/": {
+      redirect: "/docs/policies/tos",
+    },
     "/": { prerender: true },
   };
 
@@ -143,6 +146,9 @@ function generateRouteRules() {
     };
     rules[`/${locale}/docs/training/visual/`] = {
       redirect: `/${locale}/docs/training/visual/rapid-visual-perception`,
+    };
+    rules[`/${locale}/docs/policies/`] = {
+      redirect: `/${locale}/docs/policies/tos`,
     };
     rules[`/${locale}/`] = { prerender: true };
   });
